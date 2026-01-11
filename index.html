@@ -26,7 +26,6 @@
       overflow-x:hidden;
     }
 
-    /* ✅ 어떤 해상도/스크롤에서도 배경이 화면 전체를 꽉 채우도록 고정 */
     body::before{
       content:"";
       position:fixed;
@@ -161,12 +160,18 @@
   <script>
     function tick(){
       const d = new Date();
+
       const y = d.getFullYear();
       const m = String(d.getMonth()+1).padStart(2,'0');
       const day = String(d.getDate()).padStart(2,'0');
+
+      const week = ["일","월","화","수","목","금","토"][d.getDay()];
+
       const hh = String(d.getHours()).padStart(2,'0');
       const mm = String(d.getMinutes()).padStart(2,'0');
-      document.getElementById('now').textContent = `🗓️ ${y}-${m}-${day}  ${hh}:${mm}`;
+
+      // ✅ 오늘 날짜 + 요일 + 시간
+      document.getElementById('now').textContent = `🗓️ ${y}-${m}-${day} (${week})  ${hh}:${mm}`;
     }
     tick();
     setInterval(tick, 1000 * 30);
