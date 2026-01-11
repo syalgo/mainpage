@@ -14,34 +14,56 @@
       --radius:16px;
     }
     *{box-sizing:border-box}
+
+    html, body{height:100%;}
+
     body{
       margin:0;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 10% 0%, rgba(80,120,255,.18), transparent 60%),
-                  radial-gradient(900px 500px at 100% 10%, rgba(0,220,180,.12), transparent 55%),
-                  var(--bg);
+      background: var(--bg);
       color:var(--text);
+      min-height:100vh;
+      overflow-x:hidden;
     }
+
+    /* ✅ 어떤 해상도/스크롤에서도 배경이 화면 전체를 꽉 채우도록 고정 */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      background:
+        radial-gradient(1200px 600px at 10% 0%, rgba(80,120,255,.18), transparent 60%),
+        radial-gradient(900px 500px at 100% 10%, rgba(0,220,180,.12), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.04), transparent 40%),
+        var(--bg);
+    }
+
     .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 40px;}
+
     header{
       display:flex; gap:14px; align-items:flex-start; justify-content:space-between;
       padding:18px 18px; border:1px solid var(--line); border-radius:var(--radius);
       background: rgba(18,27,47,.55); backdrop-filter: blur(8px);
     }
+
     .title h1{margin:0; font-size:22px; letter-spacing:-0.2px}
     .title p{margin:6px 0 0; color:var(--muted); font-size:13px; line-height:1.4}
+
     .badge{
       display:inline-flex; align-items:center; gap:8px;
       padding:8px 10px; border:1px solid var(--line); border-radius:999px;
       color:var(--muted); font-size:12px; white-space:nowrap;
       background: rgba(255,255,255,.03);
     }
+
     .grid{
       margin-top:16px;
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap:12px;
     }
+
     .card{
       grid-column: span 6;
       text-decoration:none;
@@ -53,21 +75,25 @@
       transition: transform .08s ease, border-color .08s ease;
       min-height:92px;
     }
+
     .card:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.18);}
     .card h2{margin:0; font-size:16px}
     .card p{margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.45}
+
     .wide{grid-column: span 12;}
-    .half{grid-column: span 6;}
+
     @media (max-width: 720px){
       .card{grid-column: span 12;}
       header{flex-direction:column; align-items:flex-start}
       .badge{align-self:flex-start}
     }
+
     .list{
       margin-top:10px;
       padding:0; list-style:none;
       border-top:1px solid var(--line);
     }
+
     .list li{
       padding:10px 0;
       border-bottom:1px solid var(--line);
@@ -75,22 +101,28 @@
       font-size:13px;
       display:flex; gap:10px; align-items:flex-start;
     }
-    .dot{width:8px; height:8px; border-radius:99px; background:rgba(255,255,255,.25); margin-top:6px; flex:0 0 auto;}
+
+    .dot{
+      width:8px; height:8px; border-radius:99px;
+      background:rgba(255,255,255,.25);
+      margin-top:6px; flex:0 0 auto;
+    }
+
     footer{margin-top:16px; color:var(--muted); font-size:12px; opacity:.9;}
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <header>
       <div class="title">
         <h1>세영 로보틱스 코딩학원 :)</h1>
-        <p>동탄대로시범길 148-20, 마추프라자 507호  010 - 9913 - 3072</p>
+        <p>동탄대로시범길 148-20, 마추프라자 507호&nbsp;&nbsp;&nbsp;010 - 9913 - 3072</p>
       </div>
       <div class="badge" id="now">⏱️ 로딩 중…</div>
     </header>
 
     <section class="grid">
-      <!-- 링크 카드들 -->
       <a class="card" href="https://syalgo.github.io/timetable/" target="_blank" rel="noopener">
         <h2>정보올림피아드 타임테이블</h2>
         <p>수업 시작/종료 알림 포함 페이지로 이동</p>
@@ -111,7 +143,6 @@
         <p>반별 커리큘럼/진도, 목표, 숙제 가이드</p>
       </a>
 
-      <!-- 공지 미리보기 -->
       <div class="card wide" style="cursor:default;">
         <h2>오늘의 메모</h2>
         <p>자주 바꾸는 내용을 메인에 짧게 노출 (예: 시험 일정, 준비물)</p>
@@ -123,12 +154,11 @@
     </section>
 
     <footer>
-      <div>원하는 링크는 카드 한 줄 복사해서 계속 추가하면 돼.</div>
+      <div> :0</div>
     </footer>
   </div>
 
   <script>
-    // 우측 상단 "현재 시각" 표시
     function tick(){
       const d = new Date();
       const y = d.getFullYear();
