@@ -132,9 +132,10 @@
         <p>휴강/보강, 준비물, 일정 변경 등을 정리</p>
       </a>
 
-      <a class="card" href="materials.html">
-        <h2>자료실</h2>
-        <p>PDF, 링크, 과제 안내, 설치 파일 링크 모음</p>
+      <!-- ✅ 여기만 변경: 자료실 -> GAME, 링크도 game1로 -->
+      <a class="card" href="https://syalgo.github.io/game1/" target="_blank" rel="noopener">
+        <h2>GAME</h2>
+        <p>미니게임 하러 가기 (랭킹 도전!)</p>
       </a>
 
       <a class="card" href="classes.html">
@@ -170,7 +171,6 @@
       const hh = String(d.getHours()).padStart(2,'0');
       const mm = String(d.getMinutes()).padStart(2,'0');
 
-      // ✅ 오늘 날짜 + 요일 + 시간
       document.getElementById('now').textContent = `🗓️ ${y}-${m}-${day} (${week})  ${hh}:${mm}`;
     }
     tick();
