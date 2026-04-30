@@ -81,10 +81,43 @@
 
     .wide{grid-column: span 12;}
 
+    .topic-grid{
+      grid-column: span 12;
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap:12px;
+    }
+
+    .topic-card{
+      min-height:70px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:14px 10px;
+      border:1px solid var(--line);
+      background: rgba(18,27,47,.6);
+      border-radius:var(--radius);
+      color:var(--text);
+      font-size:14px;
+      font-weight:600;
+      line-height:1.35;
+    }
+
     @media (max-width: 720px){
       .card{grid-column: span 12;}
       header{flex-direction:column; align-items:flex-start}
       .badge{align-self:flex-start}
+
+      .topic-grid{
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 420px){
+      .topic-grid{
+        grid-template-columns: 1fr;
+      }
     }
 
     .list{
@@ -122,17 +155,29 @@
     </header>
 
     <section class="grid">
-      <a class="card" href="https://syalgo.github.io/timetable/" target="_blank" rel="noopener">
+      <a class="card wide" href="https://syalgo.github.io/timetable/" target="_blank" rel="noopener">
         <h2>정보올림피아드 타임테이블</h2>
         <p>수업 시작/종료 알림 포함 페이지로 이동</p>
       </a>
+
+      <div class="topic-grid">
+        <div class="topic-card">경우의 수</div>
+        <div class="topic-card">그래프이론</div>
+        <div class="topic-card">논리 및 게임정리</div>
+        <div class="topic-card">논리와 불대수</div>
+        <div class="topic-card">수학규칙과 알고리즘1</div>
+        <div class="topic-card">수학규칙과 알고리즘2</div>
+        <div class="topic-card">알고리즘과 자료구조</div>
+        <div class="topic-card">정수론</div>
+        <div class="topic-card">조합론</div>
+        <div class="topic-card">집합과 관계정리</div>
+      </div>
 
       <a class="card" href="notice.html">
         <h2>공지사항</h2>
         <p>휴강/보강, 준비물, 일정 변경 등을 정리</p>
       </a>
 
-      <!-- ✅ 여기만 변경: 자료실 -> GAME, 링크도 game1로 -->
       <a class="card" href="https://syalgo.github.io/game1/" target="_blank" rel="noopener">
         <h2>GAME</h2>
         <p>미니게임 하러 가기 (랭킹 도전!)</p>
