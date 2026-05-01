@@ -13,6 +13,7 @@
       --line:rgba(255,255,255,.08);
       --radius:16px;
     }
+
     *{box-sizing:border-box}
 
     html, body{height:100%;}
@@ -38,58 +39,95 @@
         var(--bg);
     }
 
-    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 40px;}
-
-    header{
-      display:flex; gap:14px; align-items:flex-start; justify-content:space-between;
-      padding:18px 18px; border:1px solid var(--line); border-radius:var(--radius);
-      background: rgba(18,27,47,.55); backdrop-filter: blur(8px);
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:16px 22px 40px;
     }
 
-    .title h1{margin:0; font-size:22px; letter-spacing:-0.2px}
-    .title p{margin:6px 0 0; color:var(--muted); font-size:13px; line-height:1.4}
+    header{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      justify-content:space-between;
+      padding:22px 22px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background: rgba(18,27,47,.55);
+      backdrop-filter: blur(8px);
+    }
+
+    .title h1{
+      margin:0;
+      font-size:24px;
+      letter-spacing:-0.2px;
+    }
+
+    .title p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+    }
 
     .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px; border:1px solid var(--line); border-radius:999px;
-      color:var(--muted); font-size:12px; white-space:nowrap;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:12px;
+      white-space:nowrap;
       background: rgba(255,255,255,.03);
     }
 
     .grid{
-      margin-top:16px;
+      margin-top:18px;
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap:12px;
+      gap:14px;
     }
 
     .card{
-      grid-column: span 6;
+      grid-column: span 12;
       text-decoration:none;
       color:inherit;
       border:1px solid var(--line);
       background: rgba(18,27,47,.6);
       border-radius:var(--radius);
-      padding:16px 16px;
+      padding:18px 18px;
       transition: transform .08s ease, border-color .08s ease;
-      min-height:92px;
+      min-height:100px;
     }
 
-    .card:hover{transform: translateY(-2px); border-color: rgba(255,255,255,.18);}
-    .card h2{margin:0; font-size:16px}
-    .card p{margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.45}
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.18);
+    }
 
-    .wide{grid-column: span 12;}
+    .card h2{
+      margin:0;
+      font-size:18px;
+    }
+
+    .card p{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
+    }
 
     .topic-grid{
       grid-column: span 12;
       display:grid;
       grid-template-columns: repeat(5, 1fr);
-      gap:12px;
+      gap:14px;
     }
 
     .topic-card{
-      min-height:70px;
+      min-height:78px;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -99,48 +137,50 @@
       background: rgba(18,27,47,.6);
       border-radius:var(--radius);
       color:var(--text);
-      font-size:14px;
-      font-weight:600;
+      font-size:15px;
+      font-weight:700;
       line-height:1.35;
+      text-decoration:none;
+      transition: transform .08s ease, border-color .08s ease, background .08s ease;
     }
 
-    @media (max-width: 720px){
-      .card{grid-column: span 12;}
-      header{flex-direction:column; align-items:flex-start}
-      .badge{align-self:flex-start}
+    .topic-card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.18);
+      background: rgba(24,36,62,.75);
+    }
 
+    @media (max-width: 900px){
       .topic-grid{
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 420px){
+    @media (max-width: 520px){
+      .wrap{
+        padding:14px 14px 32px;
+      }
+
+      header{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .badge{
+        align-self:flex-start;
+      }
+
       .topic-grid{
         grid-template-columns: 1fr;
       }
     }
 
-    .list{
-      margin-top:10px;
-      padding:0; list-style:none;
-      border-top:1px solid var(--line);
-    }
-
-    .list li{
-      padding:10px 0;
-      border-bottom:1px solid var(--line);
+    footer{
+      margin-top:16px;
       color:var(--muted);
-      font-size:13px;
-      display:flex; gap:10px; align-items:flex-start;
+      font-size:12px;
+      opacity:.9;
     }
-
-    .dot{
-      width:8px; height:8px; border-radius:99px;
-      background:rgba(255,255,255,.25);
-      margin-top:6px; flex:0 0 auto;
-    }
-
-    footer{margin-top:16px; color:var(--muted); font-size:12px; opacity:.9;}
   </style>
 </head>
 
@@ -155,46 +195,23 @@
     </header>
 
     <section class="grid">
-      <a class="card wide" href="https://syalgo.github.io/timetable/" target="_blank" rel="noopener">
+      <a class="card" href="https://syalgo.github.io/timetable/" target="_blank" rel="noopener">
         <h2>정보올림피아드 타임테이블</h2>
         <p>수업 시작/종료 알림 포함 페이지로 이동</p>
       </a>
 
       <div class="topic-grid">
-        <div class="topic-card">경우의 수</div>
-        <div class="topic-card">그래프이론</div>
-        <div class="topic-card">논리 및 게임정리</div>
-        <div class="topic-card">논리와 불대수</div>
-        <div class="topic-card">수학규칙과 알고리즘1</div>
-        <div class="topic-card">수학규칙과 알고리즘2</div>
-        <div class="topic-card">알고리즘과 자료구조</div>
-        <div class="topic-card">정수론</div>
-        <div class="topic-card">조합론</div>
-        <div class="topic-card">집합과 관계정리</div>
-      </div>
+        <a class="topic-card" href="https://syalgo.github.io/lec1" target="_blank" rel="noopener">경우의 수</a>
+        <a class="topic-card" href="https://syalgo.github.io/lec2" target="_blank" rel="noopener">그래프이론</a>
+        <a class="topic-card" href="https://syalgo.github.io/lec3" target="_blank" rel="noopener">논리 및 게임정리</a>
+        <a class="topic-card" href="https://syalgo.github.io/lec4" target="_blank" rel="noopener">논리와 불대수</a>
+        <a class="topic-card" href="https://syalgo.github.io/lec5" target="_blank" rel="noopener">수학규칙과 알고리즘1</a>
 
-      <a class="card" href="notice.html">
-        <h2>공지사항</h2>
-        <p>휴강/보강, 준비물, 일정 변경 등을 정리</p>
-      </a>
-
-      <a class="card" href="https://syalgo.github.io/game1/" target="_blank" rel="noopener">
-        <h2>GAME</h2>
-        <p>미니게임 하러 가기 (랭킹 도전!)</p>
-      </a>
-
-      <a class="card" href="classes.html">
-        <h2>수업 안내</h2>
-        <p>반별 커리큘럼/진도, 목표, 숙제 가이드</p>
-      </a>
-
-      <div class="card wide" style="cursor:default;">
-        <h2>오늘의 메모</h2>
-        <p>자주 바꾸는 내용을 메인에 짧게 노출 (예: 시험 일정, 준비물)</p>
-        <ul class="list">
-          <li><span class="dot"></span><span>예시) 다음 주 모의고사: 토요일 10:00 ~ 12:00</span></li>
-          <li><span class="dot"></span><span>예시) 노트북/마우스 지참, 백준 계정 확인</span></li>
-        </ul>
+        <a class="topic-card" href="https://syalgo.github.io/lec6" target="_blank" rel="noopener">수학규칙과 알고리즘2</a>
+        <a class="topic-card" href="https://syalgo.github.io/lec7" target="_blank" rel="noopener">알고리즘과 자료구조</a>
+        <a class="topic-card" href="https://syalgo.github.io/lec8" target="_blank" rel="noopener">정수론</a>
+        <a class="topic-card" href="https://syalgo.github.io/lec9" target="_blank" rel="noopener">조합론</a>
+        <a class="topic-card" href="https://syalgo.github.io/lec10" target="_blank" rel="noopener">집합과 관계정리</a>
       </div>
     </section>
 
@@ -218,6 +235,7 @@
 
       document.getElementById('now').textContent = `🗓️ ${y}-${m}-${day} (${week})  ${hh}:${mm}`;
     }
+
     tick();
     setInterval(tick, 1000 * 30);
   </script>
