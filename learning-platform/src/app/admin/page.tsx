@@ -1,39 +1,38 @@
-const mockUsers = [
-  { name: "김학생", email: "student1@example.com", status: "승인 대기", basic: true, specialized: false, koi: false },
-  { name: "이학생", email: "student2@example.com", status: "승인", basic: true, specialized: true, koi: false },
-  { name: "박학생", email: "student3@example.com", status: "승인", basic: true, specialized: false, koi: true },
-];
+import { redirect } from "next/navigation";
+import AdminUsersTable from "@/components/AdminUsersTable";
+import { getSessionUser, listPlatformUsers } from "@/lib/auth-server";
+import { isFirebaseAdminConfigured } from "@/lib/firebase-admin";
 
-export default function AdminPage() {
+export default async function AdminPage() {
+  if (!isFirebaseAdminConfigured()) {
+    return (
+      <section className="access-state">
+        <span className="eyebrow">ADMIN SETUP</span>
+        <h1>Firebase 연결이 필요합니다.</h1>
+        <p>관리자 기능 코드는 준비되어 있습니다. Firebase 프로젝트와 Vercel 환경변수를 연결하면 실제 가입자 관리가 시작됩니다.</p>
+      </section>
+    );
+  }
+
+  const admin = await getSessionUser();
+  if (!admin) redirect("/login");
+  if (!admin.admin) {
+    return <section className="access-state"><h1>관리자 전용 메뉴입니다.</h1><p>현재 계정에는 관리자 권한이 없습니다.</p></section>;
+  }
+
+  const users = await listPlatformUsers();
+
   return (
     <section className="admin-page">
       <div className="section-heading">
-        <span className="eyebrow">ADMIN PREVIEW</span>
+        <span className="eyebrow">ADMIN</span>
         <h1>회원 승인 및 권한 관리</h1>
-        <p>현재는 예시 데이터입니다. Firebase 연결 후 실제 가입자가 여기에 표시됩니다.</p>
+        <p>승인 여부와 기본 교재·특성화고·정보올림피아드 이용 권한을 각각 설정합니다.</p>
       </div>
-      <div className="table-wrap">
-        <table>
-          <thead>
-            <tr><th>이름</th><th>이메일</th><th>상태</th><th>기본</th><th>특성화고</th><th>KOI</th></tr>
-          </thead>
-          <tbody>
-            {mockUsers.map((user) => (
-              <tr key={user.email}>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td><span className={user.status === "승인" ? "status approved" : "status pending"}>{user.status}</span></td>
-                <td>{user.basic ? "✓" : "—"}</td>
-                <td>{user.specialized ? "✓" : "—"}</td>
-                <td>{user.koi ? "✓" : "—"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <AdminUsersTable initialUsers={users} />
       <div className="pending-box wide">
-        <strong>다음 구현 단계</strong>
-        <p>실제 로그인 → 승인 대기 → 관리자 승인 → 과정별 권한 체크 → 서버 측 접근 차단 순서로 연결합니다.</p>
+        <strong>운영 원칙</strong>
+        <p>회원가입 직후에는 모든 과정 권한이 꺼져 있습니다. 학생 확인 후 승인과 필요한 과정만 체크하세요.</p>
       </div>
     </section>
   );
