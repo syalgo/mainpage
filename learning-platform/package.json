@@ -1,8 +1,8 @@
 {
   "name": "seyoung-learning-platform",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
-  "engines": { "node": ">=22" },
+  "engines": { "node": "22.x" },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
