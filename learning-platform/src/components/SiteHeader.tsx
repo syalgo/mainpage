@@ -10,7 +10,7 @@ export default async function SiteHeader() {
       <div className="header-inner">
         <Link className="brand" href="/">
           <span className="brand-mark">SY</span>
-          <span><strong>세영 학습 플랫폼</strong><small>SEYOUNG ONLINE CLASSROOM</small></span>
+          <span><strong>세영코딩 동탄2 청계점</strong><small>SEYOUNG ONLINE CLASSROOM</small></span>
         </Link>
         <nav className="nav-links">
           {user ? (
