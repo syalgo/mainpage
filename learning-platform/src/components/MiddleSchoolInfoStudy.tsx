@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { unitTwoLessons } from "@/data/middleSchoolInfoUnit2";
+import { unitThreeLessons } from "@/data/middleSchoolInfoUnit3";
 
 type StudySection = {
   title: string;
@@ -31,7 +32,7 @@ type Lesson = {
 const curriculum = [
   { roman: "I", title: "컴퓨팅 시스템", ready: true },
   { roman: "II", title: "데이터", ready: true },
-  { roman: "III", title: "알고리즘과 프로그래밍", ready: false },
+  { roman: "III", title: "알고리즘과 프로그래밍", ready: true },
   { roman: "IV", title: "인공지능", ready: false },
   { roman: "V", title: "디지털 문화", ready: false },
 ];
@@ -448,9 +449,10 @@ const unitOneLessons: Lesson[] = [
   },
 ];
 
-const studyUnits: Record<"I" | "II", Lesson[]> = {
+const studyUnits: Record<"I" | "II" | "III", Lesson[]> = {
   I: unitOneLessons,
   II: unitTwoLessons,
+  III: unitThreeLessons,
 };
 
 type ReadyUnit = keyof typeof studyUnits;
@@ -525,7 +527,7 @@ export default function MiddleSchoolInfoStudy() {
         <div>
           <span className="eyebrow">CURRICULUM</span>
           <strong style={{ display: "block", marginTop: 6 }}>2022 개정 정보 · 전체 대단원</strong>
-          <p>현재는 I. 컴퓨팅 시스템과 II. 데이터의 학습 자료가 준비되어 있습니다.</p>
+          <p>현재는 I. 컴퓨팅 시스템, II. 데이터, III. 알고리즘과 프로그래밍의 학습 자료가 준비되어 있습니다.</p>
         </div>
         <div
           style={{
@@ -713,6 +715,14 @@ export default function MiddleSchoolInfoStudy() {
                 onClick={() => selectUnit("II")}
               >
                 II. 데이터 학습 →
+              </button>
+            ) : activeUnit === "II" ? (
+              <button
+                type="button"
+                className="primary-button"
+                onClick={() => selectUnit("III")}
+              >
+                III. 알고리즘과 프로그래밍 학습 →
               </button>
             ) : (
               <Link className="secondary-button" href="/specialized" prefetch={false}>
