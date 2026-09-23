@@ -9,7 +9,7 @@ type Props = {
   eyebrow: string;
   title: string;
   description: string;
-  items: { title: string; description: string }[];
+  items: { title: string; description: string; href?: string }[];
 };
 
 export default async function ProtectedCoursePage(props: Props) {
