@@ -8,7 +8,11 @@ export default function SpecializedPage() {
       title="특성화고 대비반"
       description="디미고·대덕소마고 등 특성화고 지원을 위한 전용 학습 공간입니다."
       items={[
-        { title: "학교별 전형", description: "지원 학교의 전형 구조와 준비 항목을 정리합니다." },
+        {
+          title: "중학교 정보 교과서",
+          description: "중학교 정보 핵심 개념을 단원별로 학습하고 예제를 직접 풀어봅니다.",
+          href: "/specialized/middle-school-info",
+        },
         { title: "지필 평가", description: "수학적 사고력·알고리즘·프로그래밍 평가를 대비합니다." },
         { title: "심층 면접", description: "프로젝트·진로·문제 해결 과정 설명을 연습합니다." },
         { title: "포트폴리오", description: "활동 기록과 프로젝트 결과물을 체계적으로 준비합니다." },
