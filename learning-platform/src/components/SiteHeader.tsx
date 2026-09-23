@@ -1,9 +1,28 @@
-import Link from "next/link";
-import LogoutButton from "@/components/LogoutButton";
-import { getSessionUser } from "@/lib/auth-server";
+"use client";
 
-export default async function SiteHeader() {
-  const user = await getSessionUser();
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import LogoutButton from "@/components/LogoutButton";
+
+export default function SiteHeader() {
+  const [authenticated, setAuthenticated] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    let active = true;
+
+    fetch("/api/auth/session", { method: "GET", cache: "no-store" })
+      .then((response) => response.json())
+      .then((data) => {
+        if (active) setAuthenticated(Boolean(data?.authenticated));
+      })
+      .catch(() => {
+        if (active) setAuthenticated(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <header className="site-header">
@@ -13,9 +32,11 @@ export default async function SiteHeader() {
           <span><strong>세영코딩 동탄2 청계점</strong><small>SEYOUNG ONLINE CLASSROOM</small></span>
         </Link>
         <nav className="nav-links">
-          {user ? (
+          {authenticated === null ? (
+            <span className="header-auth-placeholder" aria-hidden="true" />
+          ) : authenticated ? (
             <span className="header-account">
-              <Link href="/account">내 계정</Link>
+              <Link href="/account" prefetch={false}>내 계정</Link>
               <LogoutButton />
             </span>
           ) : (
