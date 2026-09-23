@@ -12,6 +12,35 @@ function hasValidOrigin(request: NextRequest) {
   return origin === new URL(request.url).origin;
 }
 
+export async function GET() {
+  const app = getFirebaseAdminApp();
+  if (!app) {
+    return NextResponse.json({ authenticated: false }, {
+      headers: { "Cache-Control": "private, no-store" },
+    });
+  }
+
+  const cookieStore = await cookies();
+  const sessionCookie = cookieStore.get("session")?.value;
+  if (!sessionCookie) {
+    return NextResponse.json({ authenticated: false }, {
+      headers: { "Cache-Control": "private, no-store" },
+    });
+  }
+
+  try {
+    // 헤더 표시 여부만 확인하므로 Firestore 조회와 revocation 원격 확인은 하지 않습니다.
+    await getAuth(app).verifySessionCookie(sessionCookie, false);
+    return NextResponse.json({ authenticated: true }, {
+      headers: { "Cache-Control": "private, no-store" },
+    });
+  } catch {
+    return NextResponse.json({ authenticated: false }, {
+      headers: { "Cache-Control": "private, no-store" },
+    });
+  }
+}
+
 export async function POST(request: NextRequest) {
   if (!hasValidOrigin(request)) {
     return NextResponse.json({ error: "허용되지 않은 요청입니다." }, { status: 403 });
