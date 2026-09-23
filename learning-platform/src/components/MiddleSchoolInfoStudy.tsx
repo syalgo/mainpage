@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { unitTwoLessons } from "@/data/middleSchoolInfoUnit2";
 
 type StudySection = {
   title: string;
@@ -29,13 +30,13 @@ type Lesson = {
 
 const curriculum = [
   { roman: "I", title: "컴퓨팅 시스템", ready: true },
-  { roman: "II", title: "데이터", ready: false },
+  { roman: "II", title: "데이터", ready: true },
   { roman: "III", title: "알고리즘과 프로그래밍", ready: false },
   { roman: "IV", title: "인공지능", ready: false },
   { roman: "V", title: "디지털 문화", ready: false },
 ];
 
-const lessons: Lesson[] = [
+const unitOneLessons: Lesson[] = [
   {
     id: "system-understanding",
     chapter: "1-1",
@@ -447,10 +448,18 @@ const lessons: Lesson[] = [
   },
 ];
 
+const studyUnits: Record<"I" | "II", Lesson[]> = {
+  I: unitOneLessons,
+  II: unitTwoLessons,
+};
+
+type ReadyUnit = keyof typeof studyUnits;
+
 const STORAGE_KEY = "seyoung-middle-school-info-2022-unit1-v3";
 
 export default function MiddleSchoolInfoStudy() {
-  const [activeId, setActiveId] = useState(lessons[0].id);
+  const [activeUnit, setActiveUnit] = useState<ReadyUnit>("I");
+  const [activeId, setActiveId] = useState(unitOneLessons[0].id);
   const [revealed, setRevealed] = useState<string[]>([]);
 
   useEffect(() => {
@@ -462,12 +471,24 @@ export default function MiddleSchoolInfoStudy() {
     }
   }, []);
 
-  const activeLesson = lessons.find((lesson) => lesson.id === activeId) ?? lessons[0];
+  const activeLessons = studyUnits[activeUnit];
+  const activeLesson = activeLessons.find((lesson) => lesson.id === activeId) ?? activeLessons[0];
   const totalProblems = useMemo(
-    () => lessons.reduce((sum, lesson) => sum + (lesson.textbookProblems?.length ?? 0), 0),
+    () =>
+      Object.values(studyUnits)
+        .flat()
+        .reduce((sum, lesson) => sum + (lesson.textbookProblems?.length ?? 0), 0),
     [],
   );
   const progress = totalProblems === 0 ? 0 : Math.round((revealed.length / totalProblems) * 100);
+  const currentUnitTitle =
+    curriculum.find((unit) => unit.roman === activeUnit)?.title ?? "컴퓨팅 시스템";
+
+  function selectUnit(unit: ReadyUnit) {
+    setActiveUnit(unit);
+    setActiveId(studyUnits[unit][0].id);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
   function selectLesson(id: string) {
     setActiveId(id);
@@ -504,7 +525,7 @@ export default function MiddleSchoolInfoStudy() {
         <div>
           <span className="eyebrow">CURRICULUM</span>
           <strong style={{ display: "block", marginTop: 6 }}>2022 개정 정보 · 전체 대단원</strong>
-          <p>현재는 I. 컴퓨팅 시스템의 학습 자료가 준비되어 있습니다.</p>
+          <p>현재는 I. 컴퓨팅 시스템과 II. 데이터의 학습 자료가 준비되어 있습니다.</p>
         </div>
         <div
           style={{
@@ -513,22 +534,37 @@ export default function MiddleSchoolInfoStudy() {
             gap: 10,
           }}
         >
-          {curriculum.map((unit) => (
-            <div
-              key={unit.roman}
-              style={{
-                padding: "14px 15px",
-                borderRadius: 12,
-                border: unit.ready ? "1px solid #b8c8f5" : "1px solid #e5e7eb",
-                background: unit.ready ? "#f8faff" : "#f8fafc",
-                opacity: unit.ready ? 1 : 0.55,
-              }}
-            >
-              <b style={{ color: unit.ready ? "#2457d6" : "#667085" }}>{unit.roman}</b>
-              <div style={{ marginTop: 5, fontWeight: 700 }}>{unit.title}</div>
-              <small style={{ color: "#667085" }}>{unit.ready ? "학습 가능" : "자료 준비 중"}</small>
-            </div>
-          ))}
+          {curriculum.map((unit) => {
+            const selected = activeUnit === unit.roman;
+            return (
+              <button
+                type="button"
+                key={unit.roman}
+                disabled={!unit.ready}
+                onClick={() => unit.ready && selectUnit(unit.roman as ReadyUnit)}
+                style={{
+                  padding: "14px 15px",
+                  borderRadius: 12,
+                  border: selected
+                    ? "2px solid #2457d6"
+                    : unit.ready
+                      ? "1px solid #b8c8f5"
+                      : "1px solid #e5e7eb",
+                  background: selected ? "#eaf0ff" : unit.ready ? "#f8faff" : "#f8fafc",
+                  opacity: unit.ready ? 1 : 0.55,
+                  textAlign: "left",
+                  cursor: unit.ready ? "pointer" : "default",
+                  color: "inherit",
+                }}
+              >
+                <b style={{ color: unit.ready ? "#2457d6" : "#667085" }}>{unit.roman}</b>
+                <div style={{ marginTop: 5, fontWeight: 700 }}>{unit.title}</div>
+                <small style={{ color: "#667085" }}>
+                  {selected ? "학습 중" : unit.ready ? "학습 가능" : "자료 준비 중"}
+                </small>
+              </button>
+            );
+          })}
         </div>
       </section>
 
@@ -547,8 +583,8 @@ export default function MiddleSchoolInfoStudy() {
 
       <div className="textbook-layout">
         <aside className="unit-nav">
-          <strong>I. 컴퓨팅 시스템</strong>
-          {lessons.map((lesson) => (
+          <strong>{activeUnit}. {currentUnitTitle}</strong>
+          {activeLessons.map((lesson) => (
             <button
               type="button"
               key={lesson.id}
@@ -659,16 +695,24 @@ export default function MiddleSchoolInfoStudy() {
               <strong>다음 학습으로 이동</strong>
               <p>본문을 충분히 읽은 뒤 다음 구간으로 넘어가세요.</p>
             </div>
-            {lessons.findIndex((lesson) => lesson.id === activeId) < lessons.length - 1 ? (
+            {activeLessons.findIndex((lesson) => lesson.id === activeId) < activeLessons.length - 1 ? (
               <button
                 type="button"
                 className="primary-button"
                 onClick={() => {
-                  const index = lessons.findIndex((lesson) => lesson.id === activeId);
-                  selectLesson(lessons[index + 1].id);
+                  const index = activeLessons.findIndex((lesson) => lesson.id === activeId);
+                  selectLesson(activeLessons[index + 1].id);
                 }}
               >
                 다음 학습 →
+              </button>
+            ) : activeUnit === "I" ? (
+              <button
+                type="button"
+                className="primary-button"
+                onClick={() => selectUnit("II")}
+              >
+                II. 데이터 학습 →
               </button>
             ) : (
               <Link className="secondary-button" href="/specialized" prefetch={false}>
