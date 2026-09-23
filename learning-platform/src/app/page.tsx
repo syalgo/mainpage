@@ -17,7 +17,12 @@ export default function Home() {
 
       <div className="course-grid home-course-grid">
         {sections.map((section) => (
-          <Link href={section.href} className="menu-card home-menu-card" key={section.href}>
+          <Link
+            href={section.href}
+            prefetch={false}
+            className="menu-card home-menu-card"
+            key={section.href}
+          >
             <span className="menu-tag">{section.tag}</span>
             <h3>{section.label}</h3>
             <span className="menu-arrow">바로가기 →</span>
@@ -26,7 +31,7 @@ export default function Home() {
       </div>
 
       <div className="admin-home-row">
-        <Link href="/admin" className="secondary-button admin-home-button">
+        <Link href="/admin" prefetch={false} className="secondary-button admin-home-button">
           관리자 화면
         </Link>
       </div>
