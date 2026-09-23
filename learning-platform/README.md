@@ -23,3 +23,5 @@ Vercel + Next.js + Firebase 기반의 승인형 학습 사이트입니다.
 `FIREBASE_SETUP.md`와 `.env.example`을 참고하세요.
 
 > 실제 학생 데이터와 교재 원본 파일은 public GitHub 저장소에 저장하지 않습니다.
+
+<!-- production deploy trigger -->
