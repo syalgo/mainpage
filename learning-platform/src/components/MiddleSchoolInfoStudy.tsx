@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { unitTwoLessons } from "@/data/middleSchoolInfoUnit2";
 import { unitThreeLessons } from "@/data/middleSchoolInfoUnit3";
 import { unitFourLessons } from "@/data/middleSchoolInfoUnit4";
+import { unitFiveLessons } from "@/data/middleSchoolInfoUnit5";
 
 type StudySection = {
   title: string;
@@ -35,7 +36,7 @@ const curriculum = [
   { roman: "II", title: "데이터", ready: true },
   { roman: "III", title: "알고리즘과 프로그래밍", ready: true },
   { roman: "IV", title: "인공지능", ready: true },
-  { roman: "V", title: "디지털 문화", ready: false },
+  { roman: "V", title: "디지털 문화", ready: true },
 ];
 
 const unitOneLessons: Lesson[] = [
@@ -450,11 +451,12 @@ const unitOneLessons: Lesson[] = [
   },
 ];
 
-const studyUnits: Record<"I" | "II" | "III" | "IV", Lesson[]> = {
+const studyUnits: Record<"I" | "II" | "III" | "IV" | "V", Lesson[]> = {
   I: unitOneLessons,
   II: unitTwoLessons,
   III: unitThreeLessons,
   IV: unitFourLessons,
+  V: unitFiveLessons,
 };
 
 type ReadyUnit = keyof typeof studyUnits;
@@ -529,7 +531,7 @@ export default function MiddleSchoolInfoStudy() {
         <div>
           <span className="eyebrow">CURRICULUM</span>
           <strong style={{ display: "block", marginTop: 6 }}>2022 개정 정보 · 전체 대단원</strong>
-          <p>현재는 I. 컴퓨팅 시스템, II. 데이터, III. 알고리즘과 프로그래밍, IV. 인공지능의 학습 자료가 준비되어 있습니다.</p>
+          <p>I. 컴퓨팅 시스템부터 V. 디지털 문화까지 2022 개정 정보 교과서 전체 대단원의 학습 자료가 준비되어 있습니다.</p>
         </div>
         <div
           style={{
@@ -734,9 +736,17 @@ export default function MiddleSchoolInfoStudy() {
               >
                 IV. 인공지능 학습 →
               </button>
+            ) : activeUnit === "IV" ? (
+              <button
+                type="button"
+                className="primary-button"
+                onClick={() => selectUnit("V")}
+              >
+                V. 디지털 문화 학습 →
+              </button>
             ) : (
               <Link className="secondary-button" href="/specialized" prefetch={false}>
-                특성화고 대비반으로
+                전체 단원 학습 완료 · 특성화고 대비반으로
               </Link>
             )}
           </div>
