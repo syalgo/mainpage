@@ -8,6 +8,7 @@ Vercel + Next.js + Firebase 기반의 승인형 학습 사이트입니다.
 - `/account` 내 승인 상태와 과정 권한 확인
 - `/materials` 기본 교재
 - `/specialized` 특성화고 대비반
+- `/specialized/middle-school-info` 중학교 정보 교과서 학습
 - `/koi` 정보올림피아드 대비반
 - `/admin` 관리자 전용 승인 / 과정별 권한 관리
 
