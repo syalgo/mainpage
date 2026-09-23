@@ -1,5 +1,6 @@
 import "server-only";
 
+import { cache } from "react";
 import { cookies } from "next/headers";
 import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
@@ -35,7 +36,7 @@ function normalizeUser(uid: string, email: string, data: Record<string, unknown>
   };
 }
 
-export async function getSessionUser(): Promise<PlatformUser | null> {
+const getSessionUserCached = cache(async (): Promise<PlatformUser | null> => {
   const app = getFirebaseAdminApp();
   if (!app) return null;
 
@@ -51,6 +52,10 @@ export async function getSessionUser(): Promise<PlatformUser | null> {
   } catch {
     return null;
   }
+});
+
+export async function getSessionUser(): Promise<PlatformUser | null> {
+  return getSessionUserCached();
 }
 
 export async function listPlatformUsers(): Promise<PlatformUser[]> {
