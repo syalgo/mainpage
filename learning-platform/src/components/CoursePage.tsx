@@ -41,7 +41,12 @@ export default function CoursePage({ eyebrow, title, description, items }: Cours
           );
 
           return item.href ? (
-            <Link className="content-card content-card-link" href={item.href} key={item.title}>
+            <Link
+              className="content-card content-card-link"
+              href={item.href}
+              prefetch={false}
+              key={item.title}
+            >
               {content}
             </Link>
           ) : (
