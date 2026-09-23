@@ -181,3 +181,18 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
   .textbook-layout { grid-template-columns: 1fr; }
   .unit-nav { position: static; display: grid; grid-template-columns: 1fr; }
 }
+
+
+/* Navigation performance */
+.header-auth-placeholder { display: inline-block; width: 84px; height: 36px; }
+.route-loading { min-height: 420px; padding-top: 36px; }
+.route-loading-bar { width: 110px; height: 12px; margin-bottom: 22px; border-radius: 999px; background: #e4e9f2; animation: loading-pulse 1s ease-in-out infinite alternate; }
+.route-loading-card { padding: 28px; background: white; border: 1px solid var(--line); border-radius: 18px; }
+.route-loading-card span { display: block; height: 16px; margin: 14px 0; border-radius: 999px; background: #e9edf4; animation: loading-pulse 1s ease-in-out infinite alternate; }
+.route-loading-card span:nth-child(1) { width: 38%; height: 28px; }
+.route-loading-card span:nth-child(2) { width: 72%; }
+.route-loading-card span:nth-child(3) { width: 58%; }
+@keyframes loading-pulse {
+  from { opacity: .45; }
+  to { opacity: 1; }
+}
