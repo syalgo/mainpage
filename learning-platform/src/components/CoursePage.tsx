@@ -1,6 +1,9 @@
+import Link from "next/link";
+
 type CourseItem = {
   title: string;
   description: string;
+  href?: string;
 };
 
 type CoursePageProps = {
@@ -27,13 +30,26 @@ export default function CoursePage({ eyebrow, title, description, items }: Cours
       </div>
 
       <div className="content-grid">
-        {items.map((item, index) => (
-          <article className="content-card" key={item.title}>
-            <span className="content-number">{String(index + 1).padStart(2, "0")}</span>
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
-          </article>
-        ))}
+        {items.map((item, index) => {
+          const content = (
+            <>
+              <span className="content-number">{String(index + 1).padStart(2, "0")}</span>
+              <h2>{item.title}</h2>
+              <p>{item.description}</p>
+              {item.href && <span className="menu-arrow">학습하기 →</span>}
+            </>
+          );
+
+          return item.href ? (
+            <Link className="content-card content-card-link" href={item.href} key={item.title}>
+              {content}
+            </Link>
+          ) : (
+            <article className="content-card" key={item.title}>
+              {content}
+            </article>
+          );
+        })}
       </div>
     </section>
   );
