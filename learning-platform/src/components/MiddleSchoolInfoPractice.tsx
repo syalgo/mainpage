@@ -3,11 +3,24 @@
 import Link from "next/link";
 import { useState } from "react";
 
+type Publisher = {
+  id: string;
+  name: string;
+  fullName: string;
+};
+
 type Unit = {
   roman: string;
   title: string;
   description: string;
 };
+
+const publishers: Publisher[] = [
+  { id: "keumsung", name: "금성", fullName: "금성출판사" },
+  { id: "gilbut", name: "길벗", fullName: "길벗" },
+  { id: "cimass", name: "씨마스", fullName: "씨마스" },
+  { id: "chunjae", name: "천재", fullName: "천재교과서" },
+];
 
 const units: Unit[] = [
   {
@@ -41,7 +54,7 @@ const sections = [
   {
     tag: "CONCEPT",
     title: "개념 보충",
-    description: "자습서에서 교과서보다 자세하게 설명한 개념과 보충 내용을 정리합니다.",
+    description: "해당 자습서에서 교과서보다 자세히 설명한 개념과 보충 내용을 정리합니다.",
   },
   {
     tag: "BASIC",
@@ -61,7 +74,10 @@ const sections = [
 ];
 
 export default function MiddleSchoolInfoPractice() {
+  const [activePublisher, setActivePublisher] = useState(0);
   const [activeUnit, setActiveUnit] = useState(0);
+
+  const publisher = publishers[activePublisher];
   const unit = units[activeUnit];
 
   return (
@@ -71,8 +87,8 @@ export default function MiddleSchoolInfoPractice() {
           <span className="eyebrow">MIDDLE SCHOOL INFORMATION · PRACTICE</span>
           <h1>중학교 정보 문제풀이</h1>
           <p>
-            정보 자습서 4권의 내용을 책별로 나누지 않고, 2022 개정 정보의 5개 대단원에 맞춰
-            보충 설명과 문제를 통합해 학습합니다.
+            금성·길벗·씨마스·천재 자습서를 출판사별로 구분하고,
+            각 자습서의 1~5단원 문제와 보충 내용을 별도로 학습합니다.
           </p>
         </div>
         <Link className="secondary-button" href="/specialized" prefetch={false}>
@@ -80,23 +96,57 @@ export default function MiddleSchoolInfoPractice() {
         </Link>
       </div>
 
-      <div className="practice-unit-tabs">
-        {units.map((item, index) => (
-          <button
-            type="button"
-            key={item.roman}
-            className={activeUnit === index ? "active" : ""}
-            onClick={() => setActiveUnit(index)}
-          >
-            <span>{item.roman}</span>
-            <strong>{item.title}</strong>
-          </button>
-        ))}
-      </div>
+      <section className="practice-picker-block">
+        <div className="practice-picker-heading">
+          <span className="eyebrow">PUBLISHER</span>
+          <h2>자습서 선택</h2>
+        </div>
+
+        <div className="practice-publisher-tabs">
+          {publishers.map((item, index) => (
+            <button
+              type="button"
+              key={item.id}
+              className={activePublisher === index ? "active" : ""}
+              onClick={() => {
+                setActivePublisher(index);
+                setActiveUnit(0);
+              }}
+            >
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{item.name}</strong>
+              <small>{item.fullName}</small>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="practice-picker-block">
+        <div className="practice-picker-heading">
+          <span className="eyebrow">UNIT</span>
+          <h2>{publisher.name} 자습서 · 단원 선택</h2>
+        </div>
+
+        <div className="practice-unit-tabs">
+          {units.map((item, index) => (
+            <button
+              type="button"
+              key={item.roman}
+              className={activeUnit === index ? "active" : ""}
+              onClick={() => setActiveUnit(index)}
+            >
+              <span>{item.roman}</span>
+              <strong>{item.title}</strong>
+            </button>
+          ))}
+        </div>
+      </section>
 
       <section className="practice-unit-heading">
-        <span className="eyebrow">{unit.roman} UNIT</span>
-        <h2>{unit.title}</h2>
+        <span className="eyebrow">
+          {publisher.name.toUpperCase()} · {unit.roman} UNIT
+        </span>
+        <h2>{publisher.name} · {unit.title}</h2>
         <p>{unit.description}</p>
       </section>
 
@@ -107,18 +157,20 @@ export default function MiddleSchoolInfoPractice() {
             <h3>{section.title}</h3>
             <p>{section.description}</p>
             <div className="practice-empty-state">
-              <strong>자료 준비 중</strong>
-              <span>자습서 PDF가 등록되면 이 영역에 순서대로 반영됩니다.</span>
+              <strong>{publisher.name} · {unit.roman}단원 자료 준비 중</strong>
+              <span>
+                해당 출판사의 자습서 PDF가 등록되면 이 단원의 자료와 문제를 별도로 반영합니다.
+              </span>
             </div>
           </article>
         ))}
       </div>
 
       <div className="practice-structure-note">
-        <strong>자료 등록 방식</strong>
+        <strong>출판사별 독립 관리</strong>
         <p>
-          각 문제에는 단원·소단원·유형·난이도·자습서 출처 정보를 내부적으로 저장합니다.
-          학생 화면에서는 출판사나 책 순서보다 학습 단원과 난이도를 중심으로 보여줄 예정입니다.
+          금성·길벗·씨마스·천재의 문제는 서로 합치지 않고 출판사별로 구분합니다.
+          각 문제에는 출판사, 단원, 소단원, 문제 유형, 난이도 정보를 연결해 관리할 예정입니다.
         </p>
       </div>
     </section>
