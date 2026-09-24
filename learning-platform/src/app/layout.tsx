@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
+import IdleLogout from "@/components/IdleLogout";
 
 export const metadata: Metadata = {
   title: "세영 학습 플랫폼",
@@ -11,6 +12,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="ko">
       <body>
+        <IdleLogout />
         <SiteHeader />
         <main className="page-shell">{children}</main>
       </body>
