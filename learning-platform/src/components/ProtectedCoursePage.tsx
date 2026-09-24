@@ -10,6 +10,7 @@ type Props = {
   title: string;
   description: string;
   items: { title: string; description: string; href?: string }[];
+  hideIntro?: boolean;
 };
 
 export default async function ProtectedCoursePage(props: Props) {
@@ -49,5 +50,13 @@ export default async function ProtectedCoursePage(props: Props) {
     );
   }
 
-  return <CoursePage eyebrow={props.eyebrow} title={props.title} description={props.description} items={props.items} />;
+  return (
+    <CoursePage
+      eyebrow={props.eyebrow}
+      title={props.title}
+      description={props.description}
+      items={props.items}
+      hideIntro={props.hideIntro}
+    />
+  );
 }
