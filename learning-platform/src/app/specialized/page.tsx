@@ -11,8 +11,13 @@ export default function SpecializedPage() {
       items={[
         {
           title: "중학교 정보 교과서",
-          description: "중학교 정보 핵심 개념을 단원별로 학습하고 예제를 직접 풀어봅니다.",
+          description: "2022 개정 정보 교과서의 핵심 내용을 단원별로 학습합니다.",
           href: "/specialized/middle-school-info",
+        },
+        {
+          title: "중학교 정보 문제풀이",
+          description: "정보 자습서 4권의 보충 내용과 문제를 단원별로 통합해 학습합니다.",
+          href: "/specialized/middle-school-info-practice",
         },
         { title: "지필 평가", description: "수학적 사고력·알고리즘·프로그래밍 평가를 대비합니다." },
         { title: "심층 면접", description: "프로젝트·진로·문제 해결 과정 설명을 연습합니다." },
