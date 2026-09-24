@@ -215,10 +215,31 @@ export default function MiddleSchoolInfoPractice() {
         )}
 
         {question.type === "essay" ? (
-          <div className="practice-source-note">
-            <strong>작성 안내</strong>
-            <span>{question.guide}</span>
-          </div>
+          <>
+            <div className="practice-source-note">
+              <strong>작성 안내</strong>
+              <span>{question.guide}</span>
+            </div>
+            {question.modelAnswer && (
+              <>
+                <button
+                  type="button"
+                  className="secondary-button question-check"
+                  onClick={() =>
+                    setChecked((prev) => ({ ...prev, [question.id]: !prev[question.id] }))
+                  }
+                >
+                  {isChecked ? "예시 답안 닫기" : "예시 답안 보기"}
+                </button>
+                {isChecked && (
+                  <div className="answer-feedback correct">
+                    <strong>예시 답안</strong>
+                    <p>{question.modelAnswer}</p>
+                  </div>
+                )}
+              </>
+            )}
+          </>
         ) : gradeable ? (
           <>
             <button
@@ -309,12 +330,12 @@ export default function MiddleSchoolInfoPractice() {
             <span className="eyebrow">KEUMSUNG · TEST PREP</span>
             <h3>시험대비 생채도 평가 문제</h3>
             <p className="muted">
-              자습서 시험대비 객관식 11문제를 등록했습니다. 이번 첨부 정답 PDF에는 시험대비
-              정답·해설 페이지가 없어 현재는 답 선택 연습용으로 제공합니다.
+              자습서 시험대비 객관식 11문제를 등록했습니다. 추가로 제공된 정답·해설 자료를
+              연결해 모든 문제를 바로 채점할 수 있습니다.
             </p>
           </div>
           {keumsungUnit1.appliedQuestions.map((question, index) =>
-            renderQuestion(question, index + 1, false),
+            renderQuestion(question, index + 1, true),
           )}
         </section>
       );
