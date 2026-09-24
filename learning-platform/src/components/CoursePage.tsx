@@ -11,23 +11,26 @@ type CoursePageProps = {
   title: string;
   description: string;
   items: CourseItem[];
+  hideIntro?: boolean;
 };
 
-export default function CoursePage({ eyebrow, title, description, items }: CoursePageProps) {
+export default function CoursePage({ eyebrow, title, description, items, hideIntro = false }: CoursePageProps) {
   return (
     <section className="course-layout">
       <div className="course-hero">
         <span className="eyebrow">{eyebrow}</span>
         <h1>{title}</h1>
-        <p>{description}</p>
+        {!hideIntro && <p>{description}</p>}
       </div>
 
-      <div className="notice-card">
-        <div>
-          <strong>승인된 계정 전용 학습 공간</strong>
-          <p>현재 페이지는 서버에서 로그인 상태와 과정 권한을 확인한 뒤 표시됩니다.</p>
+      {!hideIntro && (
+        <div className="notice-card">
+          <div>
+            <strong>승인된 계정 전용 학습 공간</strong>
+            <p>현재 페이지는 서버에서 로그인 상태와 과정 권한을 확인한 뒤 표시됩니다.</p>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="content-grid">
         {items.map((item, index) => {
