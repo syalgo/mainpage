@@ -306,3 +306,62 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
 @media (max-width: 520px) {
   .practice-unit-tabs { grid-template-columns: 1fr; }
 }
+
+
+/* Information practice publisher selector */
+.practice-picker-block { margin: 24px 0 28px; }
+.practice-picker-heading { margin-bottom: 12px; }
+.practice-picker-heading h2 {
+  margin: 6px 0 0;
+  font-size: 24px;
+  letter-spacing: -.025em;
+}
+.practice-publisher-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.practice-publisher-tabs button {
+  min-height: 104px;
+  padding: 18px;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: white;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .18s ease, background .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.practice-publisher-tabs button:hover {
+  transform: translateY(-2px);
+  border-color: #b8c8f5;
+  box-shadow: 0 10px 24px rgba(15,23,42,.05);
+}
+.practice-publisher-tabs button.active {
+  border: 2px solid var(--blue);
+  background: var(--blue-soft);
+}
+.practice-publisher-tabs button > span {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+.practice-publisher-tabs button strong {
+  display: block;
+  font-size: 20px;
+}
+.practice-publisher-tabs button small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 12px;
+}
+@media (max-width: 820px) {
+  .practice-publisher-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .practice-publisher-tabs { grid-template-columns: 1fr; }
+}
