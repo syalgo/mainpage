@@ -308,47 +308,6 @@ export const keumsungUnit2 = {
       ] as PracticeQuestion[],
     },
     {
-      title: "중단원 점검",
-      description: "",
-      questions: [
-        {
-          id: "ks2-mid-01",
-          type: "short",
-          prompt: "이름, 날짜 등을 기준으로 데이터를 ______ 하면 원하는 데이터를 쉽게 찾아 쓸 수 있다.",
-          answers: ["분류"],
-          displayAnswer: "분류",
-        },
-        {
-          id: "ks2-mid-02",
-          type: "short",
-          prompt: "데이터 ______ 방법에는 인터넷 검색, 설문 조사, 면접 조사, 측정, 실험, 전문 서적 조사 등이 있다.",
-          answers: ["수집"],
-          displayAnswer: "수집",
-        },
-        {
-          id: "ks2-mid-03",
-          type: "short",
-          prompt: "데이터를 활용해 문제를 해결하기 위해서는 제일 먼저 ______을/를 통해 문제를 정확히 이해해야 한다.",
-          answers: ["문제 정의"],
-          displayAnswer: "문제 정의",
-        },
-        {
-          id: "ks2-mid-04",
-          type: "short",
-          prompt: "데이터를 체계적으로 정리해 표현하기 위해 목록이나 표 등으로 데이터를 ______하는 것이 필요하다.",
-          answers: ["구조화"],
-          displayAnswer: "구조화",
-        },
-        {
-          id: "ks2-mid-05",
-          type: "short",
-          prompt: "데이터를 분석한 결과로 문제 해결에 대한 결론을 얻는 것을 데이터 ______이라고 한다.",
-          answers: ["해석"],
-          displayAnswer: "해석",
-        },
-      ] as PracticeQuestion[],
-    },
-    {
       title: "대단원 마무리",
       description: "",
       questions: [
