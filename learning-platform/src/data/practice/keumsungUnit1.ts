@@ -131,7 +131,7 @@ export const keumsungUnit1 = {
   basicGroups: [
     {
       title: "개념 정리 쪽지 시험",
-      description: "자습서의 O/X 11문제입니다. 정답 PDF와 연결되어 바로 채점됩니다.",
+      description: "",
       questions: [
         { id: "ks1-ox-01", type: "ox", prompt: "컴퓨팅 시스템은 하드웨어와 소프트웨어로 구성되어 있다.", answer: "O" },
         { id: "ks1-ox-02", type: "ox", prompt: "하드웨어는 입력 장치, 기억 장치, 처리 장치 등 컴퓨팅 시스템을 구성하는 기계 장치이다.", answer: "O" },
@@ -148,7 +148,7 @@ export const keumsungUnit1 = {
     },
     {
       title: "개념 확인 문제",
-      description: "자습서의 개념 확인 12문제입니다. 정답과 해설 자료가 제공된 문제만 사용했습니다.",
+      description: "",
       questions: [
         {
           id: "ks1-basic-01",
