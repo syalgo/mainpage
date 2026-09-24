@@ -7,6 +7,7 @@ import {
   type PracticeQuestion,
 } from "@/data/practice/keumsungUnit1";
 import { keumsungUnit2 } from "@/data/practice/keumsungUnit2";
+import { keumsungUnit3 } from "@/data/practice/keumsungUnit3";
 
 type Publisher = {
   id: string;
@@ -113,7 +114,9 @@ export default function MiddleSchoolInfoPractice() {
         ? keumsungUnit1
         : activeUnit === 1
           ? keumsungUnit2
-          : null
+          : activeUnit === 2
+            ? keumsungUnit3
+            : null
       : null;
 
   function changePublisher(index: number) {
