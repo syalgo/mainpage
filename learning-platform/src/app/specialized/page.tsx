@@ -7,6 +7,7 @@ export default function SpecializedPage() {
       eyebrow="SPECIALIZED HIGH SCHOOL"
       title="특성화고 대비반"
       description="디미고·대덕소마고 등 특성화고 지원을 위한 전용 학습 공간입니다."
+      hideIntro
       items={[
         {
           title: "중학교 정보 교과서",
