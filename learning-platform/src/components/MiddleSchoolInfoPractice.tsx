@@ -328,7 +328,7 @@ export default function MiddleSchoolInfoPractice() {
         <section className="practice-question-group">
           <div className="question-section-title">
             <span className="eyebrow">KEUMSUNG · TEST PREP</span>
-            <h3>시험대비 생채도 평가 문제</h3>
+            <h3>시험대비 성취도 평가 문제</h3>
             <p className="muted">
               자습서 시험대비 객관식 11문제를 등록했습니다. 추가로 제공된 정답·해설 자료를
               연결해 모든 문제를 바로 채점할 수 있습니다.
@@ -450,13 +450,6 @@ export default function MiddleSchoolInfoPractice() {
         </div>
       )}
 
-      <div className="practice-structure-note">
-        <strong>출판사별 독립 관리</strong>
-        <p>
-          금성·길벗·씨마스·천재의 문제는 서로 합치지 않고 출판사별로 구분합니다.
-          각 문제에는 출판사, 단원, 문제 유형과 자료 출처를 연결해 관리합니다.
-        </p>
-      </div>
     </section>
   );
 }
