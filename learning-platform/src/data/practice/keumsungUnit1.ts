@@ -14,6 +14,13 @@ export type PracticeQuestion =
     }
   | {
       id: string;
+      type: "multi";
+      prompt: string;
+      options: string[];
+      answers?: number[];
+    }
+  | {
+      id: string;
       type: "short";
       prompt: string;
       answers?: string[];
