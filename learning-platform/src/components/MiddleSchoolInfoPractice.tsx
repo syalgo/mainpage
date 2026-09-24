@@ -266,11 +266,8 @@ export default function MiddleSchoolInfoPractice() {
           </>
         ) : (
           <div className="practice-source-note pending">
-            <strong>정답 자료 미등록</strong>
-            <span>
-              첨부된 시험대비 자료는 정답·해설 181쪽을 안내하지만, 이번 정답 PDF에는 해당
-              페이지가 포함되어 있지 않아 임의로 정답을 만들지 않았습니다.
-            </span>
+            <strong>정답 확인 준비 중</strong>
+            <span>정답과 해설을 준비 중입니다.</span>
           </div>
         )}
       </article>
@@ -311,7 +308,7 @@ export default function MiddleSchoolInfoPractice() {
               <div className="question-section-title">
                 <span className="eyebrow">KEUMSUNG · BASIC</span>
                 <h3>{group.title}</h3>
-                <p className="muted">{group.description}</p>
+                {group.description && <p className="muted">{group.description}</p>}
               </div>
               {group.questions.map((question) => {
                 questionNumber += 1;
@@ -329,10 +326,6 @@ export default function MiddleSchoolInfoPractice() {
           <div className="question-section-title">
             <span className="eyebrow">KEUMSUNG · TEST PREP</span>
             <h3>시험대비 성취도 평가 문제</h3>
-            <p className="muted">
-              자습서 시험대비 객관식 11문제를 등록했습니다. 추가로 제공된 정답·해설 자료를
-              연결해 모든 문제를 바로 채점할 수 있습니다.
-            </p>
           </div>
           {keumsungUnit1.appliedQuestions.map((question, index) =>
             renderQuestion(question, index + 1, true),
@@ -346,9 +339,6 @@ export default function MiddleSchoolInfoPractice() {
         <div className="question-section-title">
           <span className="eyebrow">KEUMSUNG · ADVANCED</span>
           <h3>서·논술형 · 수행평가</h3>
-          <p className="muted">
-            시험대비 자료의 서·논술형 및 수행평가 문제를 답안 작성형으로 정리했습니다.
-          </p>
         </div>
         {keumsungUnit1.advancedQuestions.map((question, index) =>
           renderQuestion(question, index + 1, false),
@@ -363,10 +353,6 @@ export default function MiddleSchoolInfoPractice() {
         <div>
           <span className="eyebrow">MIDDLE SCHOOL INFORMATION · PRACTICE</span>
           <h1>중학교 정보 문제풀이</h1>
-          <p>
-            금성·길벗·씨마스·천재 자습서를 출판사별로 구분하고,
-            각 자습서의 1~5단원 문제와 보충 내용을 별도로 학습합니다.
-          </p>
         </div>
         <Link className="secondary-button" href="/specialized" prefetch={false}>
           ← 특성화고 대비반
@@ -444,9 +430,7 @@ export default function MiddleSchoolInfoPractice() {
       ) : (
         <div className="practice-empty-state practice-page-empty">
           <strong>{publisher.name} · {unit.roman}단원 자료 준비 중</strong>
-          <span>
-            해당 출판사의 자습서 PDF가 등록되면 개념 보충과 실제 문제를 이 위치에 반영합니다.
-          </span>
+          <span>학습 자료를 준비 중입니다.</span>
         </div>
       )}
 
