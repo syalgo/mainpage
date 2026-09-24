@@ -196,3 +196,113 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
   from { opacity: .45; }
   to { opacity: 1; }
 }
+
+
+/* Middle school information practice */
+.practice-page { padding-top: 18px; }
+.practice-unit-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin: 26px 0 28px;
+}
+.practice-unit-tabs button {
+  min-height: 84px;
+  padding: 14px 15px;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: white;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .18s ease, background .18s ease, transform .18s ease;
+}
+.practice-unit-tabs button:hover {
+  transform: translateY(-2px);
+  border-color: #b8c8f5;
+}
+.practice-unit-tabs button.active {
+  border-color: var(--blue);
+  background: var(--blue-soft);
+}
+.practice-unit-tabs button span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+.practice-unit-tabs button strong {
+  display: block;
+  line-height: 1.35;
+}
+.practice-unit-heading { margin: 8px 0 20px; }
+.practice-unit-heading h2 {
+  margin: 7px 0 8px;
+  font-size: 34px;
+  letter-spacing: -.03em;
+}
+.practice-unit-heading p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.practice-section-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.practice-section-card {
+  padding: 26px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.practice-section-card h3 {
+  margin: 10px 0 8px;
+  font-size: 22px;
+}
+.practice-section-card > p {
+  margin: 0;
+  min-height: 54px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.practice-empty-state {
+  display: grid;
+  gap: 5px;
+  margin-top: 20px;
+  padding: 15px 16px;
+  border-radius: 11px;
+  background: #f8fafc;
+  border: 1px dashed #d0d5dd;
+}
+.practice-empty-state strong {
+  font-size: 13px;
+  color: #475467;
+}
+.practice-empty-state span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+.practice-structure-note {
+  margin-top: 22px;
+  padding: 20px 22px;
+  border-radius: 14px;
+  background: #f8faff;
+  border: 1px solid #dce6ff;
+}
+.practice-structure-note p {
+  margin: 6px 0 0;
+  color: #475467;
+  line-height: 1.7;
+}
+@media (max-width: 900px) {
+  .practice-unit-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .practice-section-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .practice-unit-tabs { grid-template-columns: 1fr; }
+}
