@@ -6,6 +6,7 @@ import {
   keumsungUnit1,
   type PracticeQuestion,
 } from "@/data/practice/keumsungUnit1";
+import { keumsungUnit2 } from "@/data/practice/keumsungUnit2";
 
 type Publisher = {
   id: string;
@@ -101,12 +102,19 @@ export default function MiddleSchoolInfoPractice() {
   const [activePublisher, setActivePublisher] = useState(0);
   const [activeUnit, setActiveUnit] = useState(0);
   const [activeSection, setActiveSection] = useState<PracticeSectionKey>("concept");
-  const [answers, setAnswers] = useState<Record<string, string | number>>({});
+  const [answers, setAnswers] = useState<Record<string, string | number | number[]>>({});
   const [checked, setChecked] = useState<Record<string, boolean>>({});
 
   const publisher = publishers[activePublisher];
   const unit = units[activeUnit];
-  const hasKeumsungUnit1 = publisher.id === "keumsung" && activeUnit === 0;
+  const activePracticeData =
+    publisher.id === "keumsung"
+      ? activeUnit === 0
+        ? keumsungUnit1
+        : activeUnit === 1
+          ? keumsungUnit2
+          : null
+      : null;
 
   function changePublisher(index: number) {
     setActivePublisher(index);
@@ -133,6 +141,15 @@ export default function MiddleSchoolInfoPractice() {
 
     if (question.type === "choice") {
       return value === question.answer;
+    }
+
+    if (question.type === "multi" && question.answers && Array.isArray(value)) {
+      const selected = [...value].sort((a, b) => a - b);
+      const correct = [...question.answers].sort((a, b) => a - b);
+      return (
+        selected.length === correct.length &&
+        selected.every((item, index) => item === correct[index])
+      );
     }
 
     if (question.type === "short" && question.answers) {
@@ -191,6 +208,32 @@ export default function MiddleSchoolInfoPractice() {
           </div>
         )}
 
+        {question.type === "multi" && (
+          <div className="option-list">
+            {question.options.map((option, index) => {
+              const selected = Array.isArray(value) ? value.includes(index) : false;
+              return (
+                <button
+                  type="button"
+                  key={option}
+                  className={selected ? "selected" : ""}
+                  onClick={() => {
+                    const current = Array.isArray(value) ? value : [];
+                    const next = selected
+                      ? current.filter((item) => item !== index)
+                      : [...current, index];
+                    setAnswers((prev) => ({ ...prev, [question.id]: next }));
+                    setChecked((prev) => ({ ...prev, [question.id]: false }));
+                  }}
+                >
+                  <span>{index + 1}</span>
+                  {option}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
         {question.type === "short" && (
           <input
             className="practice-answer-input"
@@ -245,7 +288,11 @@ export default function MiddleSchoolInfoPractice() {
             <button
               type="button"
               className="primary-button question-check"
-              disabled={value === undefined || value === ""}
+              disabled={
+                value === undefined ||
+                value === "" ||
+                (Array.isArray(value) && value.length === 0)
+              }
               onClick={() => checkQuestion(question)}
             >
               정답 확인
@@ -257,6 +304,9 @@ export default function MiddleSchoolInfoPractice() {
                 {!isCorrect && question.type === "ox" && <p>정답: {question.answer}</p>}
                 {!isCorrect && question.type === "choice" && question.answer !== undefined && (
                   <p>정답: {question.answer + 1}번</p>
+                )}
+                {!isCorrect && question.type === "multi" && question.answers && (
+                  <p>정답: {question.answers.map((answer) => answer + 1).join(", ")}번</p>
                 )}
                 {!isCorrect && question.type === "short" && (
                   <p>정답: {question.displayAnswer}</p>
@@ -275,10 +325,12 @@ export default function MiddleSchoolInfoPractice() {
   }
 
   function renderKeumsungContent() {
+    if (!activePracticeData) return null;
+
     if (activeSection === "concept") {
       return (
         <div className="practice-concept-list">
-          {keumsungUnit1.conceptSections.map((section) => (
+          {activePracticeData.conceptSections.map((section) => (
             <article className="concept-card" key={section.title}>
               <h3>{section.title}</h3>
               {section.paragraphs.map((paragraph) => (
@@ -303,7 +355,7 @@ export default function MiddleSchoolInfoPractice() {
       let questionNumber = 0;
       return (
         <div className="practice-question-area">
-          {keumsungUnit1.basicGroups.map((group) => (
+          {activePracticeData.basicGroups.map((group) => (
             <section className="practice-question-group" key={group.title}>
               <div className="question-section-title">
                 <span className="eyebrow">KEUMSUNG · BASIC</span>
@@ -327,7 +379,7 @@ export default function MiddleSchoolInfoPractice() {
             <span className="eyebrow">KEUMSUNG · TEST PREP</span>
             <h3>시험대비 성취도 평가 문제</h3>
           </div>
-          {keumsungUnit1.appliedQuestions.map((question, index) =>
+          {activePracticeData.appliedQuestions.map((question, index) =>
             renderQuestion(question, index + 1, true),
           )}
         </section>
@@ -340,7 +392,7 @@ export default function MiddleSchoolInfoPractice() {
           <span className="eyebrow">KEUMSUNG · ADVANCED</span>
           <h3>서·논술형 · 수행평가</h3>
         </div>
-        {keumsungUnit1.advancedQuestions.map((question, index) =>
+        {activePracticeData.advancedQuestions.map((question, index) =>
           renderQuestion(question, index + 1, false),
         )}
       </section>
@@ -425,7 +477,7 @@ export default function MiddleSchoolInfoPractice() {
         ))}
       </div>
 
-      {hasKeumsungUnit1 ? (
+      {activePracticeData ? (
         <div className="practice-material-content">{renderKeumsungContent()}</div>
       ) : (
         <div className="practice-empty-state practice-page-empty">
