@@ -415,7 +415,7 @@ export default function MiddleSchoolInfoPractice() {
           <span className="eyebrow">MIDDLE SCHOOL INFORMATION · PRACTICE</span>
           <h1>중학교 정보 문제풀이</h1>
         </div>
-        <Link className="secondary-button" href="/specialized" prefetch={false}>
+        <Link className="secondary-button" href="/specialized">
           ← 특성화고 대비반
         </Link>
       </div>
