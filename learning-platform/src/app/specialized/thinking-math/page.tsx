@@ -17,6 +17,7 @@ export default function ThinkingMathPage() {
         {
           title: "그래프 경로",
           description: "복잡한 길을, 점과 선만 남기면",
+          href: "/specialized/thinking-math/graph-path",
         },
         {
           title: "규칙과 일반화",
