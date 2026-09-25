@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { FieldValue, getFirestore } from "firebase-admin/firestore";
 import { getFirebaseAdminApp } from "@/lib/firebase-admin";
-import { getSessionUser } from "@/lib/auth-server";
+import { getStrictSessionUser } from "@/lib/auth-server";
 
 export async function PATCH(
   request: NextRequest,
   context: { params: Promise<{ uid: string }> },
 ) {
-  const admin = await getSessionUser();
+  const admin = await getStrictSessionUser();
   if (!admin?.admin) {
     return NextResponse.json({ error: "관리자 권한이 필요합니다." }, { status: 403 });
   }
