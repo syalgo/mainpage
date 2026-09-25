@@ -757,3 +757,81 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
   .thinking-nav { grid-template-columns: 1fr; }
   .thinking-question-list li { grid-template-columns: 36px 1fr; gap: 9px; }
 }
+
+
+/* Thinking math - graph path */
+.graph-figure {
+  margin: 20px 0 24px;
+  padding: 18px;
+  border: 1px solid #e4e0ef;
+  border-radius: 14px;
+  background: #faf9fd;
+}
+.graph-svg {
+  display: block;
+  width: min(100%, 520px);
+  height: auto;
+  margin: 0 auto;
+}
+.graph-edge {
+  stroke: #6d6594;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.graph-edge.blocked {
+  stroke: #b8b1c9;
+  stroke-dasharray: 7 7;
+}
+.graph-node {
+  fill: #5d5289;
+  stroke: white;
+  stroke-width: 3;
+}
+.graph-label {
+  fill: #443c67;
+  font-size: 17px;
+  font-weight: 800;
+}
+.graph-x {
+  fill: #b42318;
+  font-size: 34px;
+  font-weight: 900;
+  text-anchor: middle;
+}
+.complete-graphs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.complete-graph-item {
+  display: grid;
+  justify-items: center;
+  padding: 10px;
+  border: 1px solid #e7e3f0;
+  border-radius: 12px;
+  background: white;
+}
+.complete-graph-item .graph-svg {
+  width: 150px;
+}
+.complete-graph-item strong {
+  margin-top: -10px;
+  color: #5d5289;
+}
+.checker-board {
+  width: min(100%, 320px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  overflow: hidden;
+  border: 3px solid #5d5289;
+  border-radius: 8px;
+}
+.checker-board span.dark { background: #62558e; }
+.checker-board span.light { background: #f5f2fb; }
+
+@media (max-width: 620px) {
+  .complete-graphs { grid-template-columns: 1fr; }
+  .complete-graph-item .graph-svg { width: 190px; }
+}
