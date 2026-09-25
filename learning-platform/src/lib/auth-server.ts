@@ -36,7 +36,7 @@ function normalizeUser(uid: string, email: string, data: Record<string, unknown>
   };
 }
 
-const getSessionUserCached = cache(async (): Promise<PlatformUser | null> => {
+const getSessionUserCached = cache(async (checkRevoked: boolean): Promise<PlatformUser | null> => {
   const app = getFirebaseAdminApp();
   if (!app) return null;
 
@@ -45,7 +45,7 @@ const getSessionUserCached = cache(async (): Promise<PlatformUser | null> => {
   if (!sessionCookie) return null;
 
   try {
-    const decoded = await getAuth(app).verifySessionCookie(sessionCookie, true);
+    const decoded = await getAuth(app).verifySessionCookie(sessionCookie, checkRevoked);
     const email = decoded.email ?? "";
     const snapshot = await getFirestore(app).collection("users").doc(decoded.uid).get();
     return normalizeUser(decoded.uid, email, snapshot.exists ? snapshot.data() : {});
@@ -55,7 +55,11 @@ const getSessionUserCached = cache(async (): Promise<PlatformUser | null> => {
 });
 
 export async function getSessionUser(): Promise<PlatformUser | null> {
-  return getSessionUserCached();
+  return getSessionUserCached(false);
+}
+
+export async function getStrictSessionUser(): Promise<PlatformUser | null> {
+  return getSessionUserCached(true);
 }
 
 export async function listPlatformUsers(): Promise<PlatformUser[]> {
