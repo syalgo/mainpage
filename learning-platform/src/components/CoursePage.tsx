@@ -47,7 +47,6 @@ export default function CoursePage({ eyebrow, title, description, items, hideInt
             <Link
               className="content-card content-card-link"
               href={item.href}
-              prefetch={false}
               key={item.title}
             >
               {content}
