@@ -519,7 +519,7 @@ export default function MiddleSchoolInfoStudy() {
             문제는 교과서에 실제로 실린 문제만 제공합니다.
           </p>
         </div>
-        <Link className="secondary-button" href="/specialized" prefetch={false}>
+        <Link className="secondary-button" href="/specialized">
           ← 특성화고 대비반
         </Link>
       </div>
@@ -745,7 +745,7 @@ export default function MiddleSchoolInfoStudy() {
                 V. 디지털 문화 학습 →
               </button>
             ) : (
-              <Link className="secondary-button" href="/specialized" prefetch={false}>
+              <Link className="secondary-button" href="/specialized">
                 전체 단원 학습 완료 · 특성화고 대비반으로
               </Link>
             )}
