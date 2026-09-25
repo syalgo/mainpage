@@ -19,7 +19,11 @@ export default function SpecializedPage() {
           description: "정보 자습서 4권의 보충 내용과 문제를 단원별로 통합해 학습합니다.",
           href: "/specialized/middle-school-info-practice",
         },
-        { title: "지필 평가", description: "수학적 사고력·알고리즘·프로그래밍 평가를 대비합니다." },
+        {
+          title: "사고력 수학",
+          description: "경우의 수, 그래프 경로, 논리 추론 등 사고력 수학 주제를 학습합니다.",
+          href: "/specialized/thinking-math",
+        },
         { title: "심층 면접", description: "프로젝트·진로·문제 해결 과정 설명을 연습합니다." },
         { title: "포트폴리오", description: "활동 기록과 프로젝트 결과물을 체계적으로 준비합니다." },
       ]}
