@@ -36,7 +36,7 @@ export default function SiteHeader() {
             <span className="header-auth-placeholder" aria-hidden="true" />
           ) : authenticated ? (
             <span className="header-account">
-              <Link href="/account" prefetch={false}>내 계정</Link>
+              <Link href="/account">내 계정</Link>
               <LogoutButton />
             </span>
           ) : (
