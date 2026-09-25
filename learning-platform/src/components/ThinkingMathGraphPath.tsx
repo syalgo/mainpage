@@ -20,6 +20,7 @@ type GraphProblem = {
 const problems: GraphProblem[] = [
   {
     number: 1,
+    visual: "grid",
     statement: "A에서 B까지 최단 거리로 가려고 합니다.",
     questions: [
       "A에서 B까지 가는 방법은 모두 몇 가지인지 구하시오.",
@@ -47,6 +48,7 @@ const problems: GraphProblem[] = [
   },
   {
     number: 2,
+    visual: "grid",
     statement: "A에서 B까지 최단 거리로 가되, 점 C는 거치지 않아야 합니다.",
     questions: [
       "C를 지나지 않고 A에서 B까지 가는 방법은 모두 몇 가지인지 구하시오.",
@@ -72,6 +74,7 @@ const problems: GraphProblem[] = [
   },
   {
     number: 3,
+    visual: "gridBlocked",
     statement: "A에서 B까지 최단 거리로 가려고 합니다. 단, X 표시된 도로 구간은 공사 중이라 지나갈 수 없습니다.",
     questions: [
       "공사 중인 도로를 지나지 않고 A에서 B까지 가는 방법은 모두 몇 가지인지 구하시오.",
@@ -98,6 +101,7 @@ const problems: GraphProblem[] = [
   },
   {
     number: 4,
+    visual: "spaceship",
     statement: "우주선 내부에는 방 A, B, C, D가 있고, 방 사이와 우주 바깥으로 통하는 문이 모두 7개 있습니다. 우주인이 모든 문을 정확히 한 번씩 지나 이동하려고 합니다.",
     questions: [
       "우주인이 머무를 수 있는 자리를 모두 몇 곳인지 구하시오.",
@@ -148,6 +152,7 @@ const problems: GraphProblem[] = [
   },
   {
     number: 5,
+    visual: "flowers",
     statement: "꿀벌이 벌집에서 출발해서 꽃밭을 돌아다니려고 합니다. 벌집과 꽃 5송이 사이를 잇는 길이 다음과 같이 있습니다.",
     questions: [
       "각 점(벌집, 꽃1~꽃5)에 연결된 선의 개수를 세어 표로 정리하시오.",
@@ -190,6 +195,7 @@ const problems: GraphProblem[] = [
   },
   {
     number: 6,
+    visual: "flowersBlocked",
     statement: "5번의 꽃밭 그래프에서 꽃1과 꽃2 사이의 길이 거미줄 때문에 지나갈 수 없게 되었습니다.",
     questions: [
       "거미줄로 막힌 길을 제거한 뒤 각 점의 차수를 다시 세어 표로 정리하시오.",
@@ -233,6 +239,7 @@ const problems: GraphProblem[] = [
   },
   {
     number: 7,
+    visual: "islands",
     statement: "섬 A, B, C, D, E, F가 있고 섬 사이에 8개의 다리가 놓여 있습니다. 모든 다리를 한 번씩만 건너는 여행을 계획합니다.",
     questions: [
       "각 섬에서 뻗어나가는 다리의 개수를 세어 표로 정리하고, 모든 다리를 한 번씩만 건너는 것이 가능한지 결정하시오.",
@@ -276,6 +283,7 @@ const problems: GraphProblem[] = [
   },
   {
     number: 8,
+    visual: "poles",
     statement: "어느 군에 전봇대 5개(가, 나, 다, 라, 마)가 있고, 전봇대 사이를 잇는 산책로가 6개 있습니다. 통신관은 모든 산책로를 한 번씩만 걸어 점검하려고 합니다.",
     questions: [
       "각 전봇대에 연결된 산책로 개수를 세어 표로 정리하시오.",
@@ -316,6 +324,7 @@ const problems: GraphProblem[] = [
   },
   {
     number: 9,
+    visual: "complete",
     statement: "완전그래프는 모든 점이 서로 다른 모든 점과 선으로 연결된 그래프입니다. 점이 3개, 4개, 5개인 완전그래프를 살펴봅니다.",
     questions: [
       "위 완전그래프에서 각 점에 연결된 선의 개수를 표로 정리하시오.",
@@ -361,6 +370,7 @@ const problems: GraphProblem[] = [
   },
   {
     number: 10,
+    visual: "checker",
     statement: "5×5 체커보드의 칸이 흑과 백으로 번갈아 칠해져 있습니다. 말은 한 번에 위·아래·왼쪽·오른쪽의 이웃한 칸으로만 이동하며, 모든 칸을 정확히 한 번씩 방문하고 출발한 칸으로 돌아오려고 합니다.",
     questions: [
       "체커보드에서 흑 칸과 백 칸은 각각 몇 개인지 구하시오.",
@@ -486,7 +496,24 @@ function GridGraph({ blocked = false }: { blocked?: boolean }) {
 
 function ProblemVisual({ type }: { type: GraphProblem["visual"] }) {
   if (type === "grid") return <GridGraph />;
-  if (type === "gridBlocked") return <GridGraph blocked />;
+  if (type === "gridBlocked") {
+    const nodes = Array.from({ length: 4 }, (_, row) =>
+      Array.from({ length: 4 }, (_, col) => ({
+        id: `${col}${row}`,
+        x: 55 + col * 72,
+        y: 30 + row * 55,
+        label: col === 0 && row === 0 ? "A" : col === 3 && row === 3 ? "B" : undefined,
+      })),
+    ).flat();
+    const edges: [string, string][] = [];
+    for (let row = 0; row < 4; row += 1) {
+      for (let col = 0; col < 3; col += 1) edges.push([`${col}${row}`, `${col + 1}${row}`]);
+    }
+    for (let col = 0; col < 4; col += 1) {
+      for (let row = 0; row < 3; row += 1) edges.push([`${col}${row}`, `${col}${row + 1}`]);
+    }
+    return <SvgGraph nodes={nodes} edges={edges} blocked={["21", "22"]} />;
+  }
 
   if (type === "spaceship") {
     return <SvgGraph
