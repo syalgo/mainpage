@@ -398,16 +398,12 @@ export default function ThinkingMathCounting() {
 
       <article className="thinking-reading">
         <span className="thinking-label">읽을거리</span>
-        <h2>선택이 이어질 때 경우의 수는 어떻게 세어야 할까?</h2>
+        <h2>왜 3+2=5가 아니라 3×2=6일까?</h2>
         <p>
           상의가 3가지이고 하의가 2가지라면 옷차림은 3+2가 아니라 3×2=6가지가 됩니다.
           상의 하나를 고를 때마다 하의 2가지 선택이 이어지기 때문입니다.
         </p>
-        <p>
-          가능한 경우를 빠짐없이 세어 보면서 언제 더하고 언제 곱하는지, 같은 것이 섞였을 때 왜 나누는지,
-          순서가 없는 선택은 어떻게 세는지를 단계적으로 연결합니다.
-        </p>
-        <div className="thinking-reading-question">왜 3+2=5가 아니라 3×2=6일까?</div>
+        <div className="thinking-reading-question">레아가 입을 수 있는 옷차림은 모두 몇 가지일까? 그리고 왜 5가 아닐까?</div>
       </article>
 
       <div className="thinking-layout">
