@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import AdminUsersTable from "@/components/AdminUsersTable";
-import { getSessionUser, listPlatformUsers } from "@/lib/auth-server";
+import { getStrictSessionUser, listPlatformUsers } from "@/lib/auth-server";
 import { isFirebaseAdminConfigured } from "@/lib/firebase-admin";
 
 export default async function AdminPage() {
@@ -14,7 +14,7 @@ export default async function AdminPage() {
     );
   }
 
-  const admin = await getSessionUser();
+  const admin = await getStrictSessionUser();
   if (!admin) redirect("/login");
   if (!admin.admin) {
     return <section className="access-state"><h1>관리자 전용 메뉴입니다.</h1><p>현재 계정에는 관리자 권한이 없습니다.</p></section>;
