@@ -12,6 +12,7 @@ export default function ThinkingMathPage() {
         {
           title: "경우의 수",
           description: "왜 더하기가 아니라 곱하기일까?",
+          href: "/specialized/thinking-math/counting",
         },
         {
           title: "그래프 경로",
