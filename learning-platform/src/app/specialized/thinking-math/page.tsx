@@ -22,6 +22,7 @@ export default function ThinkingMathPage() {
         {
           title: "규칙과 일반화",
           description: "100번째를 한 번에 아는 법",
+          href: "/specialized/thinking-math/rules-generalization",
         },
         {
           title: "관계와 비교",
