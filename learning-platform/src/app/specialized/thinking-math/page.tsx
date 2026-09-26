@@ -27,6 +27,7 @@ export default function ThinkingMathPage() {
         {
           title: "관계와 비교",
           description: "쫓아가는 둘의 차이는 어떻게 변할까?",
+          href: "/specialized/thinking-math/relations-comparison",
         },
         {
           title: "최적화",
