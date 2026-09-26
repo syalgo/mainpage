@@ -446,9 +446,13 @@ function AnswerTableView({ table }: { table: AnswerTable }) {
 function LineChart({
   lines,
   yMax=2200,
+  showLines=true,
+  showIntermediateTicks=true,
 }: {
   lines: { label:string; start:number; speed:number; className:string }[];
   yMax?: number;
+  showLines?: boolean;
+  showIntermediateTicks?: boolean;
 }) {
   const width=360, height=220, left=42, bottom=188, top=20, right=340;
   const maxT=30;
@@ -458,8 +462,11 @@ function LineChart({
     <svg className="relation-chart" viewBox="0 0 360 220" role="img" aria-label="시간 거리 그래프">
       <line x1={left} y1={bottom} x2={right} y2={bottom} className="relation-axis"/>
       <line x1={left} y1={bottom} x2={left} y2={top} className="relation-axis"/>
-      {[0,10,20,30].map(t=><g key={t}><line x1={x(t)} y1={bottom} x2={x(t)} y2={top} className="relation-grid"/><text x={x(t)} y={207} className="relation-tick">{t}</text></g>)}
-      {lines.map((line)=>{
+      {[0,10,20,30].map(t=><g key={t}>
+        <line x1={x(t)} y1={bottom} x2={x(t)} y2={top} className="relation-grid"/>
+        {(t === 0 || showIntermediateTicks) && <text x={x(t)} y={207} className="relation-tick">{t}</text>}
+      </g>)}
+      {showLines && lines.map((line)=>{
         const d0=line.start, d1=line.start+line.speed*maxT;
         return <g key={line.label}>
           <line x1={x(0)} y1={y(d0)} x2={x(maxT)} y2={y(d1)} className={`relation-line ${line.className}`}/>
@@ -510,11 +517,14 @@ function ClockVisual({ slow=false }: { slow?:boolean }) {
 }
 
 function WalkVisual({ catchup=false }: { catchup?:boolean }) {
-  if(catchup) return <LineChart yMax={2200} lines={[
-    {label:"민준 60",start:300,speed:60,className:"purple"},
-    {label:"서아 70",start:0,speed:70,className:"green"},
-    {label:"서아 60",start:0,speed:60,className:"gray"},
-  ]}/>;
+  if(catchup) return (
+    <LineChart
+      yMax={2200}
+      lines={[]}
+      showLines={false}
+      showIntermediateTicks={false}
+    />
+  );
   return (
     <div className="relation-road">
       <div className="road-end">민준 출발</div>
@@ -565,7 +575,14 @@ function BacteriaVisual() {
 function ProblemVisual({ type }: { type: RelationProblem["visual"] }) {
   if(type==="water") return <WaterVisual/>;
   if(type==="hourglass") return <HourglassVisual/>;
-  if(type==="speedGraph") return <LineChart yMax={400} lines={[{label:"민준",start:0,speed:60,className:"purple"},{label:"서아",start:0,speed:40,className:"green"}]}/>;
+  if(type==="speedGraph") return (
+    <LineChart
+      yMax={400}
+      lines={[]}
+      showLines={false}
+      showIntermediateTicks={false}
+    />
+  );
   if(type==="work") return <WorkVisual/>;
   if(type==="clock") return <ClockVisual/>;
   if(type==="oppositeWalk") return <WalkVisual/>;
