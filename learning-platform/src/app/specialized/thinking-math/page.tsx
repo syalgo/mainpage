@@ -32,6 +32,7 @@ export default function ThinkingMathPage() {
         {
           title: "최적화",
           description: "가장 큰 것만 고르면 정말 1등일까?",
+          href: "/specialized/thinking-math/optimization",
         },
         {
           title: "창의적 문제해결력",
