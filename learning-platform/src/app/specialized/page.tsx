@@ -5,7 +5,7 @@ export default function SpecializedPage() {
     <ProtectedCoursePage
       permission="specialized"
       eyebrow="SPECIALIZED HIGH SCHOOL"
-      title="특성화고 대비반"
+      title="고등학교 입학전형 준비"
       description="디미고·대덕소마고 등 특성화고 지원을 위한 전용 학습 공간입니다."
       hideIntro
       items={[
@@ -20,11 +20,11 @@ export default function SpecializedPage() {
           href: "/specialized/middle-school-info-practice",
         },
         {
-          title: "사고력 수학",
+          title: "사고력 수학 - 기초",
           description: "경우의 수, 그래프 경로, 논리 추론 등 사고력 수학 주제를 학습합니다.",
           href: "/specialized/thinking-math",
         },
-        { title: "심층 면접", description: "프로젝트·진로·문제 해결 과정 설명을 연습합니다." },
+        { title: "직업기초 소양 평가", description: "직업기초 소양 평가를 위한 문제 해결과 기초 역량을 연습합니다." },
         { title: "포트폴리오", description: "활동 기록과 프로젝트 결과물을 체계적으로 준비합니다." },
       ]}
     />
