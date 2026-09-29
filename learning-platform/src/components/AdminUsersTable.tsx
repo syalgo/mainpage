@@ -44,7 +44,7 @@ export default function AdminUsersTable({ initialUsers }: { initialUsers: Platfo
         <table>
           <thead>
             <tr>
-              <th>이름</th><th>이메일</th><th>승인</th><th>기본 교재</th><th>특성화고</th><th>KOI</th><th>구분</th>
+              <th>이름</th><th>이메일</th><th>승인</th><th>기본 교재</th><th>고등학교 입학전형 준비</th><th>KOI</th><th>구분</th>
             </tr>
           </thead>
           <tbody>
