@@ -1781,7 +1781,7 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
 }
 .job-basic-section-tabs {
   display: grid;
-  grid-template-columns: repeat(5, minmax(145px, 1fr));
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
   gap: 10px;
 }
 .job-basic-section-tabs button {
