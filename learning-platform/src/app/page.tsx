@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const sections = [
   { href: "/materials", label: "기본 교재", tag: "ALL STUDENTS" },
-  { href: "/specialized", label: "특성화고 대비반", tag: "SPECIALIZED HS" },
+  { href: "/specialized", label: "고등학교 입학전형 준비", tag: "SPECIALIZED HS" },
   { href: "/koi", label: "정보올림피아드 대비반", tag: "KOI · ALGORITHM" },
 ];
 
