@@ -1,3 +1,7 @@
+import { jobBasicAdvancedSet1 } from "./jobBasicAdvancedSet1";
+import { jobBasicAdvancedSet2 } from "./jobBasicAdvancedSet2";
+import { jobBasicAdvancedSet3 } from "./jobBasicAdvancedSet3";
+
 export type JobBasicQuestion = {
   id: number;
   sectionId: string;
@@ -17,7 +21,6 @@ export const jobBasicSections = [
     subtitle: "문서이해 · 논증 · 조건추리 · 배열추리",
     start: 1,
     end: 20,
-    weight: "약 22%",
   },
   {
     id: "quant-data",
@@ -25,7 +28,6 @@ export const jobBasicSections = [
     subtitle: "응용계산 · 수추리 · 비율 · 도표·자료추리",
     start: 21,
     end: 45,
-    weight: "약 28%",
   },
   {
     id: "shape-space",
@@ -33,7 +35,6 @@ export const jobBasicSections = [
     subtitle: "도형규칙 · 회전·대칭 · 전개도 · 공간관계",
     start: 46,
     end: 70,
-    weight: "약 28%",
   },
   {
     id: "attention",
@@ -41,7 +42,6 @@ export const jobBasicSections = [
     subtitle: "문자·숫자 비교 · 규칙 적용 · 빠른 정확성",
     start: 71,
     end: 80,
-    weight: "약 11%",
   },
   {
     id: "mixed",
@@ -49,7 +49,27 @@ export const jobBasicSections = [
     subtitle: "영역 혼합 · 시간 압박형 · 다단계 판단",
     start: 81,
     end: 90,
-    weight: "약 11%",
+  },
+  {
+    id: "advanced1",
+    title: "심화 실전 1",
+    subtitle: "공개 직무적성·NCS·PSAT 유형 기반 고난도 종합",
+    start: 91,
+    end: 120,
+  },
+  {
+    id: "advanced2",
+    title: "심화 실전 2",
+    subtitle: "자료해석 · 조건추리 · 공간지각 심화",
+    start: 121,
+    end: 150,
+  },
+  {
+    id: "advanced3",
+    title: "심화 실전 3",
+    subtitle: "고난도 종합 · 시간 압박형 실전",
+    start: 151,
+    end: 180,
   },
 ] as const;
 
@@ -75,7 +95,7 @@ const q = (
   explanation,
 });
 
-export const jobBasicQuestions: JobBasicQuestion[] = [
+const baseJobBasicQuestions: JobBasicQuestion[] = [
   q(
     1,
     "verbal-logic",
@@ -578,3 +598,11 @@ A가 위, B가 앞을 향할 때 아래쪽 면은?`,["C","D","E","F"],1,"위 A�
 범인은 A,B 중 정확히 한 명이라고 할 때 범인은?`,["A","B","둘 다","결정할 수 없다"],1,"A가 범인이면 ① 참, ② 참, ③ 참으로 3개 참. B가 범인이면 ① 거짓, ② 거짓, ③ 참으로 정확히 1개 참. 따라서 B.",
     "★★★",100),
 ];
+
+export const jobBasicQuestions: JobBasicQuestion[] = [
+  ...baseJobBasicQuestions,
+  ...jobBasicAdvancedSet1,
+  ...jobBasicAdvancedSet2,
+  ...jobBasicAdvancedSet3,
+];
+
