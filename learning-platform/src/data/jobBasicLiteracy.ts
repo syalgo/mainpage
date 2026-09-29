@@ -12,61 +12,570 @@ export type JobBasicQuestion = {
 
 export const jobBasicSections = [
   {
-    "id": "diagnostic",
-    "title": "진단평가",
-    "subtitle": "1회차",
-    "start": 1,
-    "end": 10
+    id: "verbal-logic",
+    title: "언어 이해·논리추리",
+    subtitle: "문서이해 · 논증 · 조건추리 · 배열추리",
+    start: 1,
+    end: 20,
+    weight: "약 22%",
   },
   {
-    "id": "class1",
-    "title": "1회차 수업",
-    "subtitle": "언어이해·논리추리·수열 기초",
-    "start": 11,
-    "end": 45
+    id: "quant-data",
+    title: "계산·수열·자료해석",
+    subtitle: "응용계산 · 수추리 · 비율 · 도표·자료추리",
+    start: 21,
+    end: 45,
+    weight: "약 28%",
   },
   {
-    "id": "homework1",
-    "title": "1회차 숙제",
-    "subtitle": "언어·논리·수열",
-    "start": 46,
-    "end": 75
+    id: "shape-space",
+    title: "도형·형태·공간추리",
+    subtitle: "도형규칙 · 회전·대칭 · 전개도 · 공간관계",
+    start: 46,
+    end: 70,
+    weight: "약 28%",
   },
   {
-    "id": "class2",
-    "title": "2회차 수업",
-    "subtitle": "계산·수열·자료해석",
-    "start": 76,
-    "end": 110
+    id: "attention",
+    title: "주의집중·시각판별",
+    subtitle: "문자·숫자 비교 · 규칙 적용 · 빠른 정확성",
+    start: 71,
+    end: 80,
+    weight: "약 11%",
   },
   {
-    "id": "homework2",
-    "title": "2회차 숙제",
-    "subtitle": "수리·자료·공간",
-    "start": 111,
-    "end": 150
+    id: "mixed",
+    title: "종합 실전문제",
+    subtitle: "영역 혼합 · 시간 압박형 · 다단계 판단",
+    start: 81,
+    end: 90,
+    weight: "약 11%",
   },
-  {
-    "id": "class3",
-    "title": "3회차 수업",
-    "subtitle": "도형·공간·주의집중 + 종합",
-    "start": 151,
-    "end": 190
-  },
-  {
-    "id": "homework3",
-    "title": "3회차 숙제",
-    "subtitle": "도형·공간·주의집중",
-    "start": 191,
-    "end": 230
-  },
-  {
-    "id": "mock4",
-    "title": "4회차 실전 모의평가",
-    "subtitle": "실전 종합",
-    "start": 231,
-    "end": 280
-  }
 ] as const;
 
-export const jobBasicQuestions: JobBasicQuestion[] = [{"id":1,"sectionId":"diagnostic","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n문제를 빨리 푸는 것만큼 중요한 것은 문제의 조건을 정확히 읽는 일이다. 조건을 하나 놓치면 계산이 맞더라도 정답에 도달하기 어렵다.\n\n이 글의 중심 내용으로 가장 알맞은 것은?","options":["문제의 조건을 정확히 읽어야 한다.","계산 속도가 항상 가장 중요하다.","조건은 계산이 끝난 뒤 확인한다.","어려운 문제는 조건을 생략해도 된다."],"difficulty":"★☆☆","seconds":75,"answer":0,"explanation":"글은 빠른 풀이보다 조건을 정확히 파악하는 것이 중요하다고 강조한다."},{"id":2,"sectionId":"diagnostic","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n7, 15, 23, 31, 39, (   )","options":["51","43","47","55"],"difficulty":"★☆☆","seconds":60,"answer":2,"explanation":"매번 8씩 더한다. 따라서 다음 수는 47이다."},{"id":3,"sectionId":"diagnostic","category":"공간지각","prompt":"화살표 ←를 시계 방향으로 90° 회전하면 어느 방향이 되는가?","options":["→","↓","←","↑"],"difficulty":"★☆☆","seconds":45,"answer":3,"explanation":"90° 회전을 1번 적용하면 ← → ↑가 된다."},{"id":4,"sectionId":"diagnostic","category":"도형추리","prompt":"화살표가 같은 방향으로 90°씩 회전한다. 다음에 올 것은?\n\n↓  ←  ↑  →  ↓  ( ? )","options":["←","↑","→","↓"],"difficulty":"★☆☆","seconds":45,"answer":0,"explanation":"매번 시계 방향으로 90° 회전한다."},{"id":5,"sectionId":"diagnostic","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n자료를 비교할 때는 숫자의 크기만 보면 안 된다. 조사 대상의 수나 기준 시점이 다르면 같은 숫자라도 의미가 달라질 수 있다.\n\n글의 내용과 가장 가까운 것은?","options":["자료 비교에서는 기준 시점이 중요하지 않다.","큰 숫자는 언제나 더 좋은 결과를 뜻한다.","자료의 기준과 조사 조건을 함께 확인해야 한다.","조사 대상의 수는 결과 해석과 관계없다."],"difficulty":"★☆☆","seconds":75,"answer":2,"explanation":"자료는 수치뿐 아니라 기준·대상·시점을 함께 봐야 한다는 내용이다."},{"id":6,"sectionId":"diagnostic","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- D이면 B이다.\n- B이면 A이다.","options":["D이면 A이다.","D가 아니면 반드시 A가 아니다.","B이면 반드시 D이다.","A이면 반드시 D이다."],"difficulty":"★★☆","seconds":75,"answer":0,"explanation":"D → B, B → A이므로 연쇄적으로 D → A가 반드시 성립한다."},{"id":7,"sectionId":"diagnostic","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 2번째 사람은 누구인가?\n\n- 다는 2번째에 있다.\n- 나와 다는 서로 이웃한다.\n- 나는 바보다 앞선다.\n- 바는 4번째에 있다.","options":["다","마","바","나"],"difficulty":"★★☆","seconds":90,"answer":0,"explanation":"조건을 차례로 적용하면 순서는 나 - 다 - 마 - 바가 된다. 따라서 2번째는 다이다."},{"id":8,"sectionId":"diagnostic","category":"계산","prompt":"400의 25%는 얼마인가?","options":["100","110","120","90"],"difficulty":"★☆☆","seconds":45,"answer":0,"explanation":"400 × 25/100 = 100"},{"id":9,"sectionId":"diagnostic","category":"주의집중","prompt":"다음 중 좌우 문자열이 서로 다른 것은?","options":["QNLJV4V / QNLJV4V","KBG5KV9 / KBG5KV9","GDKDTRH / GDKDT6H","8SS4SJW / 8SS4SJW"],"difficulty":"★☆☆","seconds":35,"answer":2,"explanation":"3번째 쌍만 한 글자가 다르다."},{"id":10,"sectionId":"diagnostic","category":"자료해석","prompt":"다음은 네 반의 독서 권수이다. 가장 많은 반은?\n\nA반 56권 / B반 43권 / C반 21권 / D반 46권","options":["A반","B반","C반","D반"],"difficulty":"★☆☆","seconds":55,"answer":0,"explanation":"가장 큰 값은 56권인 A반이다."},{"id":11,"sectionId":"class1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n6, 9, 12, 15, 18, (   )","options":["21","19","23","25"],"difficulty":"★☆☆","seconds":60,"answer":0,"explanation":"매번 3씩 더한다. 따라서 다음 수는 21이다."},{"id":12,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n좋은 면접 답변은 길다고 좋은 것이 아니다. 질문의 핵심에 먼저 답하고, 필요한 근거와 사례를 덧붙이는 편이 이해하기 쉽다.\n\n가장 적절한 면접 답변 방식은?","options":["질문과 관계없는 경험을 많이 말한다.","핵심 답변을 먼저 말하고 근거와 사례를 덧붙인다.","결론 없이 사례만 나열한다.","가능한 한 길게 말한다."],"difficulty":"★★☆","seconds":75,"answer":1,"explanation":"글에서 결론을 먼저 말하고 근거와 사례를 덧붙이라고 제안한다."},{"id":13,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n정보를 많이 가지고 있다고 항상 판단을 잘하는 것은 아니다. 중요한 정보와 중요하지 않은 정보를 구분하지 못하면 오히려 판단이 느려질 수 있다.\n\n이 글에서 강조하는 능력은?","options":["판단을 미루는 능력","필요한 정보를 선별하는 능력","정보를 가능한 많이 모으기만 하는 능력","모든 정보를 외우는 능력"],"difficulty":"★★☆","seconds":75,"answer":1,"explanation":"정보의 양보다 중요한 정보를 골라내는 능력을 강조한다."},{"id":14,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n문제를 빨리 푸는 것만큼 중요한 것은 문제의 조건을 정확히 읽는 일이다. 조건을 하나 놓치면 계산이 맞더라도 정답에 도달하기 어렵다.\n\n다음 글의 내용과 일치하는 것은?","options":["문제의 조건을 정확히 읽어야 한다.","조건은 계산이 끝난 뒤 확인한다.","어려운 문제는 조건을 생략해도 된다.","계산 속도가 항상 가장 중요하다."],"difficulty":"★★☆","seconds":75,"answer":0,"explanation":"글은 빠른 풀이보다 조건을 정확히 파악하는 것이 중요하다고 강조한다."},{"id":15,"sectionId":"class1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n4, 9, 15, 22, 30, (   )","options":["39","45","36","42"],"difficulty":"★★☆","seconds":60,"answer":0,"explanation":"더하는 수가 5, 6, 7, …처럼 1씩 증가한다. 따라서 다음 수는 39이다."},{"id":16,"sectionId":"class1","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 3번째 사람은 누구인가?\n\n- 다는 2번째에 있다.\n- 바와 다는 서로 이웃한다.\n- 나는 4번째에 있다.\n- 가는 1번째에 있다.","options":["나","다","바","가"],"difficulty":"★★☆","seconds":90,"answer":2,"explanation":"조건을 차례로 적용하면 순서는 가 - 다 - 바 - 나가 된다. 따라서 3번째는 바이다."},{"id":17,"sectionId":"class1","category":"논리·조건추리","prompt":"1부터 4까지의 자연수 중 하나를 정했다. 다음 세 문장 중 정확히 하나만 참일 때, 정한 수는?\n\n- 수는 2보다 크다.\n- 수는 2이다.\n- 수는 짝수이다.","options":["1","2","3","4"],"difficulty":"★★★","seconds":100,"answer":2,"explanation":"각 수를 대입해 참인 문장의 개수를 세면 3일 때만 정확히 하나가 참이다."},{"id":18,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n팀 프로젝트에서 모든 사람이 같은 의견을 가질 필요는 없다. 서로 다른 의견을 근거와 함께 설명하고, 목적에 가장 적합한 선택을 찾는 과정이 중요하다.\n\n글에서 강조하는 태도는?","options":["다수의 의견을 무조건 따르는 태도","갈등을 피하기 위해 의견을 말하지 않는 태도","자신의 의견을 끝까지 고집하는 태도","서로 다른 의견을 근거로 조정하는 태도"],"difficulty":"★☆☆","seconds":75,"answer":3,"explanation":"의견 차이를 피하는 것이 아니라 근거를 바탕으로 조정하는 것을 강조한다."},{"id":19,"sectionId":"class1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n3, 9, 27, 81, 243, (   )","options":["729","801","873","657"],"difficulty":"★☆☆","seconds":60,"answer":0,"explanation":"매번 3배 한다. 따라서 다음 수는 729이다."},{"id":20,"sectionId":"class1","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 1번째 사람은 누구인가?\n\n- 바는 3번째에 있다.\n- 다와 나는 서로 이웃한다.\n- 나는 다보다 앞선다.","options":["다","마","나","바"],"difficulty":"★★☆","seconds":90,"answer":2,"explanation":"조건을 차례로 적용하면 순서는 나 - 다 - 바 - 마가 된다. 따라서 1번째는 나이다."},{"id":21,"sectionId":"class1","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 3번째 사람은 누구인가?\n\n- 다와 나는 서로 이웃한다.\n- 가와 나는 서로 이웃한다.\n- 다는 라보다 앞선다.\n- 라와 가는 서로 이웃한다.","options":["가","나","다","라"],"difficulty":"★★☆","seconds":90,"answer":0,"explanation":"조건을 차례로 적용하면 순서는 다 - 나 - 가 - 라가 된다. 따라서 3번째는 가이다."},{"id":22,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n어떤 규칙이 우연인지 확인하려면 한두 사례만 보아서는 부족하다. 여러 사례에서 같은 결과가 반복되는지 확인해야 한다.\n\n이 글의 핵심은?","options":["사례는 하나면 충분하다.","우연과 규칙은 구별할 수 없다.","여러 사례를 통해 규칙의 일관성을 확인해야 한다.","규칙은 검증하지 않아도 된다."],"difficulty":"★★☆","seconds":75,"answer":2,"explanation":"반복되는 사례를 통해 우연과 규칙을 구별하자는 내용이다."},{"id":23,"sectionId":"class1","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 4번째 사람은 누구인가?\n\n- 가와 라는 서로 이웃한다.\n- 나와 가는 서로 이웃한다.\n- 나와 바는 서로 이웃한다.\n- 바는 라보다 앞선다.","options":["라","가","바","나"],"difficulty":"★★☆","seconds":90,"answer":0,"explanation":"조건을 차례로 적용하면 순서는 바 - 나 - 가 - 라가 된다. 따라서 4번째는 라이다."},{"id":24,"sectionId":"class1","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- E이면 B이다.\n- B이면 D이다.","options":["E가 아니면 반드시 D가 아니다.","D이면 반드시 E이다.","B이면 반드시 E이다.","E이면 D이다."],"difficulty":"★★☆","seconds":75,"answer":3,"explanation":"E → B, B → D이므로 연쇄적으로 E → D가 반드시 성립한다."},{"id":25,"sectionId":"class1","category":"논리·조건추리","prompt":"1부터 4까지의 자연수 중 하나를 정했다. 다음 세 문장 중 정확히 하나만 참일 때, 정한 수는?\n\n- 수는 4이다.\n- 수는 짝수이다.\n- 수는 3보다 작다.","options":["1","2","3","4"],"difficulty":"★★★","seconds":100,"answer":0,"explanation":"각 수를 대입해 참인 문장의 개수를 세면 1일 때만 정확히 하나가 참이다."},{"id":26,"sectionId":"class1","category":"논리·조건추리","prompt":"1부터 4까지의 자연수 중 하나를 정했다. 다음 세 문장 중 정확히 하나만 참일 때, 정한 수는?\n\n- 수는 4이다.\n- 수는 짝수이다.\n- 수는 3보다 작다.","options":["1","2","3","4"],"difficulty":"★★★","seconds":100,"answer":0,"explanation":"각 수를 대입해 참인 문장의 개수를 세면 1일 때만 정확히 하나가 참이다."},{"id":27,"sectionId":"class1","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- D이면 F이다.\n- F이면 E이다.","options":["E이면 반드시 D이다.","F이면 반드시 D이다.","D이면 E이다.","D가 아니면 반드시 E가 아니다."],"difficulty":"★★☆","seconds":75,"answer":2,"explanation":"D → F, F → E이므로 연쇄적으로 D → E가 반드시 성립한다."},{"id":28,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n시험에서 어려운 한 문제에 너무 오래 머물면 뒤의 쉬운 문제를 풀 시간이 부족해질 수 있다. 따라서 제한시간이 있는 시험에서는 문제별 시간을 조절해야 한다.\n\n필자가 제안하는 방법은?","options":["쉬운 문제는 마지막까지 미룬다.","모든 문제에 같은 시간을 반드시 쓴다.","어려운 문제부터 끝까지 붙잡는다.","문제별 풀이 시간을 조절한다."],"difficulty":"★☆☆","seconds":75,"answer":3,"explanation":"제한시간 안에서 전체 문제를 다루기 위해 시간 배분을 권한다."},{"id":29,"sectionId":"class1","category":"논리·조건추리","prompt":"1부터 4까지의 자연수 중 하나를 정했다. 다음 세 문장 중 정확히 하나만 참일 때, 정한 수는?\n\n- 수는 2보다 크다.\n- 수는 4이다.\n- 수는 홀수이다.","options":["1","2","3","4"],"difficulty":"★★★","seconds":100,"answer":0,"explanation":"각 수를 대입해 참인 문장의 개수를 세면 1일 때만 정확히 하나가 참이다."},{"id":30,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n팀 프로젝트에서 모든 사람이 같은 의견을 가질 필요는 없다. 서로 다른 의견을 근거와 함께 설명하고, 목적에 가장 적합한 선택을 찾는 과정이 중요하다.\n\n다음 글의 내용과 일치하는 것은?","options":["갈등을 피하기 위해 의견을 말하지 않는 태도","자신의 의견을 끝까지 고집하는 태도","서로 다른 의견을 근거로 조정하는 태도","다수의 의견을 무조건 따르는 태도"],"difficulty":"★★☆","seconds":75,"answer":2,"explanation":"의견 차이를 피하는 것이 아니라 근거를 바탕으로 조정하는 것을 강조한다."},{"id":31,"sectionId":"class1","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- D이면 A이다.\n- A이면 E이다.","options":["D가 아니면 반드시 E가 아니다.","E이면 반드시 D이다.","A이면 반드시 D이다.","D이면 E이다."],"difficulty":"★★☆","seconds":75,"answer":3,"explanation":"D → A, A → E이므로 연쇄적으로 D → E가 반드시 성립한다."},{"id":32,"sectionId":"class1","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- A이면 B이다.\n- B이면 D이다.","options":["B이면 반드시 A이다.","A가 아니면 반드시 D가 아니다.","D이면 반드시 A이다.","A이면 D이다."],"difficulty":"★★☆","seconds":75,"answer":3,"explanation":"A → B, B → D이므로 연쇄적으로 A → D가 반드시 성립한다."},{"id":33,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n그래프의 세로축이 0에서 시작하지 않으면 실제 차이보다 변화가 더 커 보일 수 있다. 따라서 그래프를 해석할 때 축의 범위를 확인해야 한다.\n\n그래프를 볼 때 확인해야 할 것으로 가장 알맞은 것은?","options":["제목의 글꼴","자료의 배열 순서만","축의 범위","그래프의 색상"],"difficulty":"★☆☆","seconds":75,"answer":2,"explanation":"세로축 범위에 따라 시각적 인상이 달라질 수 있다고 설명한다."},{"id":34,"sectionId":"class1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n6, 17, 11, 21, 16, (   )","options":["25","29","23","27"],"difficulty":"★★☆","seconds":60,"answer":0,"explanation":"홀수 번째 항은 5씩, 짝수 번째 항은 4씩 증가한다. 따라서 다음 수는 25이다."},{"id":35,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n새로운 개념을 공부할 때 설명만 읽는 것보다 직접 문제에 적용해 보는 것이 이해에 도움이 된다. 틀린 문제를 다시 설명해 보는 과정도 개념을 점검하는 좋은 방법이다.\n\n글에서 권장하지 않는 학습 방법은?","options":["틀린 문제를 다시 설명해 본다.","개념을 문제에 적용한다.","문제를 통해 이해를 확인한다.","틀린 문제를 확인하지 않고 넘어간다."],"difficulty":"★★☆","seconds":75,"answer":3,"explanation":"오답을 다시 설명하며 개념을 점검하는 것이 좋다고 하므로, 확인하지 않고 넘어가는 것은 반대된다."},{"id":36,"sectionId":"class1","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 2번째 사람은 누구인가?\n\n- 나는 라보다 앞선다.\n- 나는 1번째에 있다.\n- 가는 라보다 앞선다.\n- 가는 마보다 앞선다.","options":["가","라","나","마"],"difficulty":"★★☆","seconds":90,"answer":0,"explanation":"조건을 차례로 적용하면 순서는 나 - 가 - 라 - 마가 된다. 따라서 2번째는 가이다."},{"id":37,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n알고리즘은 문제를 해결하기 위한 절차이다. 같은 문제라도 여러 알고리즘이 가능하며, 더 적은 시간이나 자원을 사용하는 방법이 더 효율적일 수 있다.\n\n이 글에서 알 수 있는 내용은?","options":["자원을 많이 사용할수록 좋은 알고리즘이다.","알고리즘은 반드시 하나만 존재한다.","같은 문제에도 여러 해결 절차가 있을 수 있다.","효율성은 알고리즘과 관계없다."],"difficulty":"★☆☆","seconds":75,"answer":2,"explanation":"글에 같은 문제라도 여러 알고리즘이 가능하다고 명시되어 있다."},{"id":38,"sectionId":"class1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n3, 6, 9, 15, 24, (   )","options":["39","42","45","36"],"difficulty":"★★☆","seconds":60,"answer":0,"explanation":"앞의 두 수를 더해 다음 수를 만든다. 따라서 다음 수는 39이다."},{"id":39,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n자료를 비교할 때는 숫자의 크기만 보면 안 된다. 조사 대상의 수나 기준 시점이 다르면 같은 숫자라도 의미가 달라질 수 있다.\n\n글의 내용과 가장 가까운 것은?","options":["큰 숫자는 언제나 더 좋은 결과를 뜻한다.","자료 비교에서는 기준 시점이 중요하지 않다.","자료의 기준과 조사 조건을 함께 확인해야 한다.","조사 대상의 수는 결과 해석과 관계없다."],"difficulty":"★☆☆","seconds":75,"answer":2,"explanation":"자료는 수치뿐 아니라 기준·대상·시점을 함께 봐야 한다는 내용이다."},{"id":40,"sectionId":"class1","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- B이면 E이다.\n- E이면 D이다.","options":["B이면 D이다.","D이면 반드시 B이다.","E이면 반드시 B이다.","B가 아니면 반드시 D가 아니다."],"difficulty":"★★☆","seconds":75,"answer":0,"explanation":"B → E, E → D이므로 연쇄적으로 B → D가 반드시 성립한다."},{"id":41,"sectionId":"class1","category":"논리·조건추리","prompt":"1부터 4까지의 자연수 중 하나를 정했다. 다음 세 문장 중 정확히 하나만 참일 때, 정한 수는?\n\n- 수는 짝수이다.\n- 수는 3보다 작다.\n- 수는 1이다.","options":["1","2","3","4"],"difficulty":"★★★","seconds":100,"answer":3,"explanation":"각 수를 대입해 참인 문장의 개수를 세면 4일 때만 정확히 하나가 참이다."},{"id":42,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n창의적인 해결책은 아무 근거 없이 떠오르는 생각과는 다르다. 문제의 조건을 이해하고, 기존 방법의 한계를 살핀 뒤 새로운 방법을 제안할 때 더 설득력이 있다.\n\n창의적인 해결책에 대한 설명으로 알맞은 것은?","options":["문제 조건과 상관없는 아이디어가 가장 좋다.","문제와 기존 방법을 이해한 뒤 새로운 방법을 제안해야 한다.","근거가 없을수록 창의적이다.","기존 방법은 살펴볼 필요가 없다."],"difficulty":"★☆☆","seconds":75,"answer":1,"explanation":"글은 창의성도 문제 조건과 기존 방법에 대한 이해를 바탕으로 해야 한다고 말한다."},{"id":43,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n수열 문제를 풀 때 처음 보이는 두 수의 관계만으로 규칙을 확정하면 틀릴 수 있다. 최소한 여러 항에 같은 규칙이 적용되는지 확인해야 한다.\n\n이 글의 조언으로 적절한 것은?","options":["여러 항에서 규칙이 일관되게 적용되는지 확인한다.","수열에서는 검산이 필요 없다.","첫 두 항만 보고 규칙을 정한다.","규칙은 항상 한 번만 적용된다."],"difficulty":"★☆☆","seconds":75,"answer":0,"explanation":"수열의 규칙은 여러 항에서 일관되는지 검증해야 한다."},{"id":44,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n문제를 빨리 푸는 것만큼 중요한 것은 문제의 조건을 정확히 읽는 일이다. 조건을 하나 놓치면 계산이 맞더라도 정답에 도달하기 어렵다.\n\n이 글의 중심 내용으로 가장 알맞은 것은?","options":["조건은 계산이 끝난 뒤 확인한다.","문제의 조건을 정확히 읽어야 한다.","어려운 문제는 조건을 생략해도 된다.","계산 속도가 항상 가장 중요하다."],"difficulty":"★☆☆","seconds":75,"answer":1,"explanation":"글은 빠른 풀이보다 조건을 정확히 파악하는 것이 중요하다고 강조한다."},{"id":45,"sectionId":"class1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n자료를 비교할 때는 숫자의 크기만 보면 안 된다. 조사 대상의 수나 기준 시점이 다르면 같은 숫자라도 의미가 달라질 수 있다.\n\n다음 글을 통해 알 수 있는 것으로 가장 적절한 것은?","options":["조사 대상의 수는 결과 해석과 관계없다.","자료의 기준과 조사 조건을 함께 확인해야 한다.","자료 비교에서는 기준 시점이 중요하지 않다.","큰 숫자는 언제나 더 좋은 결과를 뜻한다."],"difficulty":"★★☆","seconds":75,"answer":1,"explanation":"자료는 수치뿐 아니라 기준·대상·시점을 함께 봐야 한다는 내용이다."},{"id":46,"sectionId":"homework1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n문제를 빨리 푸는 것만큼 중요한 것은 문제의 조건을 정확히 읽는 일이다. 조건을 하나 놓치면 계산이 맞더라도 정답에 도달하기 어렵다.\n\n이 글의 중심 내용으로 가장 알맞은 것은?","options":["조건은 계산이 끝난 뒤 확인한다.","어려운 문제는 조건을 생략해도 된다.","문제의 조건을 정확히 읽어야 한다.","계산 속도가 항상 가장 중요하다."],"difficulty":"★☆☆","seconds":75,"answer":2,"explanation":"글은 빠른 풀이보다 조건을 정확히 파악하는 것이 중요하다고 강조한다."},{"id":47,"sectionId":"homework1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n자료를 비교할 때는 숫자의 크기만 보면 안 된다. 조사 대상의 수나 기준 시점이 다르면 같은 숫자라도 의미가 달라질 수 있다.\n\n글의 내용과 가장 가까운 것은?","options":["자료의 기준과 조사 조건을 함께 확인해야 한다.","조사 대상의 수는 결과 해석과 관계없다.","큰 숫자는 언제나 더 좋은 결과를 뜻한다.","자료 비교에서는 기준 시점이 중요하지 않다."],"difficulty":"★☆☆","seconds":75,"answer":0,"explanation":"자료는 수치뿐 아니라 기준·대상·시점을 함께 봐야 한다는 내용이다."},{"id":48,"sectionId":"homework1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n팀 프로젝트에서 모든 사람이 같은 의견을 가질 필요는 없다. 서로 다른 의견을 근거와 함께 설명하고, 목적에 가장 적합한 선택을 찾는 과정이 중요하다.\n\n글에서 강조하는 태도는?","options":["갈등을 피하기 위해 의견을 말하지 않는 태도","서로 다른 의견을 근거로 조정하는 태도","자신의 의견을 끝까지 고집하는 태도","다수의 의견을 무조건 따르는 태도"],"difficulty":"★☆☆","seconds":75,"answer":1,"explanation":"의견 차이를 피하는 것이 아니라 근거를 바탕으로 조정하는 것을 강조한다."},{"id":49,"sectionId":"homework1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n알고리즘은 문제를 해결하기 위한 절차이다. 같은 문제라도 여러 알고리즘이 가능하며, 더 적은 시간이나 자원을 사용하는 방법이 더 효율적일 수 있다.\n\n이 글에서 알 수 있는 내용은?","options":["자원을 많이 사용할수록 좋은 알고리즘이다.","효율성은 알고리즘과 관계없다.","알고리즘은 반드시 하나만 존재한다.","같은 문제에도 여러 해결 절차가 있을 수 있다."],"difficulty":"★☆☆","seconds":75,"answer":3,"explanation":"글에 같은 문제라도 여러 알고리즘이 가능하다고 명시되어 있다."},{"id":50,"sectionId":"homework1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n시험에서 어려운 한 문제에 너무 오래 머물면 뒤의 쉬운 문제를 풀 시간이 부족해질 수 있다. 따라서 제한시간이 있는 시험에서는 문제별 시간을 조절해야 한다.\n\n필자가 제안하는 방법은?","options":["모든 문제에 같은 시간을 반드시 쓴다.","문제별 풀이 시간을 조절한다.","어려운 문제부터 끝까지 붙잡는다.","쉬운 문제는 마지막까지 미룬다."],"difficulty":"★☆☆","seconds":75,"answer":1,"explanation":"제한시간 안에서 전체 문제를 다루기 위해 시간 배분을 권한다."},{"id":51,"sectionId":"homework1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n창의적인 해결책은 아무 근거 없이 떠오르는 생각과는 다르다. 문제의 조건을 이해하고, 기존 방법의 한계를 살핀 뒤 새로운 방법을 제안할 때 더 설득력이 있다.\n\n창의적인 해결책에 대한 설명으로 알맞은 것은?","options":["문제 조건과 상관없는 아이디어가 가장 좋다.","문제와 기존 방법을 이해한 뒤 새로운 방법을 제안해야 한다.","기존 방법은 살펴볼 필요가 없다.","근거가 없을수록 창의적이다."],"difficulty":"★☆☆","seconds":75,"answer":1,"explanation":"글은 창의성도 문제 조건과 기존 방법에 대한 이해를 바탕으로 해야 한다고 말한다."},{"id":52,"sectionId":"homework1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n수열 문제를 풀 때 처음 보이는 두 수의 관계만으로 규칙을 확정하면 틀릴 수 있다. 최소한 여러 항에 같은 규칙이 적용되는지 확인해야 한다.\n\n이 글의 조언으로 적절한 것은?","options":["첫 두 항만 보고 규칙을 정한다.","수열에서는 검산이 필요 없다.","여러 항에서 규칙이 일관되게 적용되는지 확인한다.","규칙은 항상 한 번만 적용된다."],"difficulty":"★☆☆","seconds":75,"answer":2,"explanation":"수열의 규칙은 여러 항에서 일관되는지 검증해야 한다."},{"id":53,"sectionId":"homework1","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n그래프의 세로축이 0에서 시작하지 않으면 실제 차이보다 변화가 더 커 보일 수 있다. 따라서 그래프를 해석할 때 축의 범위를 확인해야 한다.\n\n그래프를 볼 때 확인해야 할 것으로 가장 알맞은 것은?","options":["그래프의 색상","축의 범위","자료의 배열 순서만","제목의 글꼴"],"difficulty":"★☆☆","seconds":75,"answer":1,"explanation":"세로축 범위에 따라 시각적 인상이 달라질 수 있다고 설명한다."},{"id":54,"sectionId":"homework1","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 1번째 사람은 누구인가?\n\n- 라와 가는 서로 이웃한다.\n- 라와 나는 서로 이웃한다.\n- 가와 바는 서로 이웃한다.\n- 나는 라보다 앞선다.","options":["가","나","바","라"],"difficulty":"★★☆","seconds":90,"answer":1,"explanation":"조건을 차례로 적용하면 순서는 나 - 라 - 가 - 바가 된다. 따라서 1번째는 나이다."},{"id":55,"sectionId":"homework1","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- D이면 F이다.\n- F이면 A이다.","options":["F이면 반드시 D이다.","D이면 A이다.","D가 아니면 반드시 A가 아니다.","A이면 반드시 D이다."],"difficulty":"★★☆","seconds":75,"answer":1,"explanation":"D → F, F → A이므로 연쇄적으로 D → A가 반드시 성립한다."},{"id":56,"sectionId":"homework1","category":"논리·조건추리","prompt":"1부터 4까지의 자연수 중 하나를 정했다. 다음 세 문장 중 정확히 하나만 참일 때, 정한 수는?\n\n- 수는 2이다.\n- 수는 홀수이다.\n- 수는 3보다 작다.","options":["1","2","3","4"],"difficulty":"★★★","seconds":100,"answer":2,"explanation":"각 수를 대입해 참인 문장의 개수를 세면 3일 때만 정확히 하나가 참이다."},{"id":57,"sectionId":"homework1","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 2번째 사람은 누구인가?\n\n- 라와 가는 서로 이웃한다.\n- 라는 2번째에 있다.\n- 가는 마보다 앞선다.\n- 마는 4번째에 있다.","options":["마","라","바","가"],"difficulty":"★★☆","seconds":90,"answer":1,"explanation":"조건을 차례로 적용하면 순서는 바 - 라 - 가 - 마가 된다. 따라서 2번째는 라이다."},{"id":58,"sectionId":"homework1","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- B이면 C이다.\n- C이면 A이다.","options":["C이면 반드시 B이다.","A이면 반드시 B이다.","B이면 A이다.","B가 아니면 반드시 A가 아니다."],"difficulty":"★★☆","seconds":75,"answer":2,"explanation":"B → C, C → A이므로 연쇄적으로 B → A가 반드시 성립한다."},{"id":59,"sectionId":"homework1","category":"논리·조건추리","prompt":"1부터 4까지의 자연수 중 하나를 정했다. 다음 세 문장 중 정확히 하나만 참일 때, 정한 수는?\n\n- 수는 2이다.\n- 수는 3보다 작다.\n- 수는 홀수이다.","options":["1","2","3","4"],"difficulty":"★★★","seconds":100,"answer":2,"explanation":"각 수를 대입해 참인 문장의 개수를 세면 3일 때만 정확히 하나가 참이다."},{"id":60,"sectionId":"homework1","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 1번째 사람은 누구인가?\n\n- 가는 2번째에 있다.\n- 라와 마는 서로 이웃한다.\n- 라는 3번째에 있다.","options":["라","마","다","가"],"difficulty":"★★☆","seconds":90,"answer":2,"explanation":"조건을 차례로 적용하면 순서는 다 - 가 - 라 - 마가 된다. 따라서 1번째는 다이다."},{"id":61,"sectionId":"homework1","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- F이면 A이다.\n- A이면 C이다.","options":["A이면 반드시 F이다.","F이면 C이다.","F가 아니면 반드시 C가 아니다.","C이면 반드시 F이다."],"difficulty":"★★☆","seconds":75,"answer":1,"explanation":"F → A, A → C이므로 연쇄적으로 F → C가 반드시 성립한다."},{"id":62,"sectionId":"homework1","category":"논리·조건추리","prompt":"1부터 4까지의 자연수 중 하나를 정했다. 다음 세 문장 중 정확히 하나만 참일 때, 정한 수는?\n\n- 수는 짝수이다.\n- 수는 3이다.\n- 수는 2보다 크다.","options":["1","2","3","4"],"difficulty":"★★★","seconds":100,"answer":1,"explanation":"각 수를 대입해 참인 문장의 개수를 세면 2일 때만 정확히 하나가 참이다."},{"id":63,"sectionId":"homework1","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 2번째 사람은 누구인가?\n\n- 마는 4번째에 있다.\n- 라와 마는 서로 이웃한다.\n- 다는 1번째에 있다.","options":["다","라","바","마"],"difficulty":"★★☆","seconds":90,"answer":2,"explanation":"조건을 차례로 적용하면 순서는 다 - 바 - 라 - 마가 된다. 따라서 2번째는 바이다."},{"id":64,"sectionId":"homework1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n2, 8, 14, 20, 26, (   )","options":["35","38","29","32"],"difficulty":"★☆☆","seconds":60,"answer":3,"explanation":"매번 6씩 더한다. 따라서 다음 수는 32이다."},{"id":65,"sectionId":"homework1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n5, 10, 20, 40, 80, (   )","options":["192","160","144","176"],"difficulty":"★☆☆","seconds":60,"answer":1,"explanation":"매번 2배 한다. 따라서 다음 수는 160이다."},{"id":66,"sectionId":"homework1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n1, 5, 10, 16, 23, (   )","options":["34","31","28","37"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"더하는 수가 4, 5, 6, …처럼 1씩 증가한다. 따라서 다음 수는 31이다."},{"id":67,"sectionId":"homework1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n1, 16, 6, 22, 11, (   )","options":["32","28","30","26"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"홀수 번째 항은 5씩, 짝수 번째 항은 6씩 증가한다. 따라서 다음 수는 28이다."},{"id":68,"sectionId":"homework1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n3, 3, 6, 9, 15, (   )","options":["28","22","24","26"],"difficulty":"★★☆","seconds":60,"answer":2,"explanation":"앞의 두 수를 더해 다음 수를 만든다. 따라서 다음 수는 24이다."},{"id":69,"sectionId":"homework1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n5, 10, 13, 26, 29, (   )","options":["58","68","53","63"],"difficulty":"★★☆","seconds":60,"answer":0,"explanation":"×2, +3을 번갈아 적용한다. 따라서 다음 수는 58이다."},{"id":70,"sectionId":"homework1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n16, 25, 34, 43, 52, (   )","options":["73","61","67","55"],"difficulty":"★☆☆","seconds":60,"answer":1,"explanation":"매번 9씩 더한다. 따라서 다음 수는 61이다."},{"id":71,"sectionId":"homework1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n5, 15, 45, 135, 405, (   )","options":["1457","1336","1215","1094"],"difficulty":"★☆☆","seconds":60,"answer":2,"explanation":"매번 3배 한다. 따라서 다음 수는 1215이다."},{"id":72,"sectionId":"homework1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n1, 6, 12, 19, 27, (   )","options":["39","42","36","33"],"difficulty":"★★☆","seconds":60,"answer":2,"explanation":"더하는 수가 5, 6, 7, …처럼 1씩 증가한다. 따라서 다음 수는 36이다."},{"id":73,"sectionId":"homework1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n4, 18, 7, 25, 10, (   )","options":["29","32","38","35"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"홀수 번째 항은 3씩, 짝수 번째 항은 7씩 증가한다. 따라서 다음 수는 32이다."},{"id":74,"sectionId":"homework1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n1, 2, 3, 5, 8, (   )","options":["13","15","12","14"],"difficulty":"★★☆","seconds":60,"answer":0,"explanation":"앞의 두 수를 더해 다음 수를 만든다. 따라서 다음 수는 13이다."},{"id":75,"sectionId":"homework1","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n3, 6, 9, 18, 21, (   )","options":["50","38","46","42"],"difficulty":"★★☆","seconds":60,"answer":3,"explanation":"×2, +3을 번갈아 적용한다. 따라서 다음 수는 42이다."},{"id":76,"sectionId":"class2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n8, 16, 19, 38, 41, (   )","options":["98","74","90","82"],"difficulty":"★★☆","seconds":60,"answer":3,"explanation":"×2, +3을 번갈아 적용한다. 따라서 다음 수는 82이다."},{"id":77,"sectionId":"class2","category":"계산","prompt":"시속 40km로 200km를 이동하면 몇 시간이 걸리는가?","options":["7시간","5시간","6시간","4시간"],"difficulty":"★☆☆","seconds":50,"answer":1,"explanation":"시간=거리÷속력=200÷40=5시간."},{"id":78,"sectionId":"class2","category":"계산","prompt":"네 수 13, 32, 16, 39의 평균은?","options":["23","25","29","27"],"difficulty":"★☆☆","seconds":50,"answer":1,"explanation":"합은 100이고 4로 나누면 25이다."},{"id":79,"sectionId":"class2","category":"계산","prompt":"150의 15%는 얼마인가?","options":["20","24","22","26"],"difficulty":"★☆☆","seconds":45,"answer":2,"explanation":"150 × 15/100 = 22"},{"id":80,"sectionId":"class2","category":"계산","prompt":"24,000원인 상품을 25% 할인하면 판매가는?","options":["17,000원","18,000원","6,000원","19,000원"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"할인 후 가격은 24,000×75%=18,000원이다."},{"id":81,"sectionId":"class2","category":"계산","prompt":"네 수 29, 13, 16, 42의 평균은?","options":["27","25","23","29"],"difficulty":"★☆☆","seconds":50,"answer":1,"explanation":"합은 100이고 4로 나누면 25이다."},{"id":82,"sectionId":"class2","category":"계산","prompt":"시속 50km로 150km를 이동하면 몇 시간이 걸리는가?","options":["4시간","3시간","2시간","5시간"],"difficulty":"★☆☆","seconds":50,"answer":1,"explanation":"시간=거리÷속력=150÷50=3시간."},{"id":83,"sectionId":"class2","category":"계산","prompt":"16,000원인 상품을 20% 할인하면 판매가는?","options":["13,800원","3,200원","11,800원","12,800원"],"difficulty":"★★☆","seconds":60,"answer":3,"explanation":"할인 후 가격은 16,000×80%=12,800원이다."},{"id":84,"sectionId":"class2","category":"계산","prompt":"120의 20%는 얼마인가?","options":["28","26","22","24"],"difficulty":"★☆☆","seconds":45,"answer":3,"explanation":"120 × 20/100 = 24"},{"id":85,"sectionId":"class2","category":"계산","prompt":"A:B의 수가 4:6이고 합이 150일 때 A는 얼마인가?","options":["45","60","75","90"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"전체 비는 10이고 한 단위는 15. A=4×15=60."},{"id":86,"sectionId":"class2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n5, 11, 18, 26, 35, (   )","options":["41","45","53","49"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"더하는 수가 6, 7, 8, …처럼 1씩 증가한다. 따라서 다음 수는 45이다."},{"id":87,"sectionId":"class2","category":"계산","prompt":"어떤 값이 30에서 10% 증가했다. 증가한 값은?","options":["33","41","29","37"],"difficulty":"★★☆","seconds":60,"answer":0,"explanation":"30×(1+10/100)=33"},{"id":88,"sectionId":"class2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n1, 20, 3, 25, 5, (   )","options":["27","36","33","30"],"difficulty":"★★☆","seconds":60,"answer":3,"explanation":"홀수 번째 항은 2씩, 짝수 번째 항은 5씩 증가한다. 따라서 다음 수는 30이다."},{"id":89,"sectionId":"class2","category":"자료해석","prompt":"전체 학생 160명 중 20%가 A 프로그램을 선택했다. A 프로그램 선택 학생은 몇 명인가?","options":["27","37","42","32"],"difficulty":"★★☆","seconds":55,"answer":3,"explanation":"160×20/100=32명이다."},{"id":90,"sectionId":"class2","category":"자료해석","prompt":"어떤 수치가 80에서 100로 증가했다. 증가율은?","options":["25%","20%","30%","35%"],"difficulty":"★★☆","seconds":75,"answer":0,"explanation":"증가량은 20, 증가율=20/80×100=25%이다."},{"id":91,"sectionId":"class2","category":"계산","prompt":"200의 15%는 얼마인가?","options":["27","30","36","33"],"difficulty":"★☆☆","seconds":45,"answer":1,"explanation":"200 × 15/100 = 30"},{"id":92,"sectionId":"class2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n17, 20, 23, 26, 29, (   )","options":["29","35","32","38"],"difficulty":"★☆☆","seconds":60,"answer":2,"explanation":"매번 3씩 더한다. 따라서 다음 수는 32이다."},{"id":93,"sectionId":"class2","category":"자료해석","prompt":"어떤 동아리의 참가자가 1학기 28명, 2학기 40명이었다. 증가한 인원은?","options":["12","9","18","15"],"difficulty":"★☆☆","seconds":45,"answer":0,"explanation":"40-28=12명 증가했다."},{"id":94,"sectionId":"class2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n2, 6, 18, 54, 162, (   )","options":["486","438","534","582"],"difficulty":"★☆☆","seconds":60,"answer":0,"explanation":"매번 3배 한다. 따라서 다음 수는 486이다."},{"id":95,"sectionId":"class2","category":"자료해석","prompt":"어떤 수치가 40에서 44로 증가했다. 증가율은?","options":["20%","10%","5%","15%"],"difficulty":"★★☆","seconds":75,"answer":1,"explanation":"증가량은 4, 증가율=4/40×100=10%이다."},{"id":96,"sectionId":"class2","category":"자료해석","prompt":"어떤 동아리의 참가자가 1학기 21명, 2학기 38명이었다. 증가한 인원은?","options":["17","23","14","20"],"difficulty":"★☆☆","seconds":45,"answer":0,"explanation":"38-21=17명 증가했다."},{"id":97,"sectionId":"class2","category":"계산","prompt":"네 수 23, 18, 18, 37의 평균은?","options":["26","22","28","24"],"difficulty":"★☆☆","seconds":50,"answer":3,"explanation":"합은 96이고 4로 나누면 24이다."},{"id":98,"sectionId":"class2","category":"계산","prompt":"A:B의 수가 4:5이고 합이 126일 때 A는 얼마인가?","options":["56","70","84","42"],"difficulty":"★★☆","seconds":60,"answer":0,"explanation":"전체 비는 9이고 한 단위는 14. A=4×14=56."},{"id":99,"sectionId":"class2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n4, 6, 9, 13, 18, (   )","options":["22","26","28","24"],"difficulty":"★★☆","seconds":60,"answer":3,"explanation":"더하는 수가 2, 3, 4, …처럼 1씩 증가한다. 따라서 다음 수는 24이다."},{"id":100,"sectionId":"class2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n5, 5, 10, 15, 25, (   )","options":["40","44","48","36"],"difficulty":"★★☆","seconds":60,"answer":0,"explanation":"앞의 두 수를 더해 다음 수를 만든다. 따라서 다음 수는 40이다."},{"id":101,"sectionId":"class2","category":"자료해석","prompt":"월별 이용자 수가 39, 30, 17, 26명이다. 월평균 이용자 수는?","options":["26","28","32","30"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"합계 112를 4개월로 나누면 28명이다."},{"id":102,"sectionId":"class2","category":"계산","prompt":"어떤 값이 30에서 25% 증가했다. 증가한 값은?","options":["33","37","41","45"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"30×(1+25/100)=37"},{"id":103,"sectionId":"class2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n13, 15, 17, 19, 21, (   )","options":["25","21","23","27"],"difficulty":"★☆☆","seconds":60,"answer":2,"explanation":"매번 2씩 더한다. 따라서 다음 수는 23이다."},{"id":104,"sectionId":"class2","category":"자료해석","prompt":"전체 학생 100명 중 30%가 A 프로그램을 선택했다. A 프로그램 선택 학생은 몇 명인가?","options":["40","25","35","30"],"difficulty":"★★☆","seconds":55,"answer":3,"explanation":"100×30/100=30명이다."},{"id":105,"sectionId":"class2","category":"자료해석","prompt":"다음은 네 반의 독서 권수이다. 가장 많은 반은?\n\nA반 28권 / B반 62권 / C반 42권 / D반 44권","options":["A반","B반","C반","D반"],"difficulty":"★☆☆","seconds":55,"answer":1,"explanation":"가장 큰 값은 62권인 B반이다."},{"id":106,"sectionId":"class2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n1, 3, 9, 27, 81, (   )","options":["243","291","267","219"],"difficulty":"★☆☆","seconds":60,"answer":0,"explanation":"매번 3배 한다. 따라서 다음 수는 243이다."},{"id":107,"sectionId":"class2","category":"계산","prompt":"A:B의 수가 3:2이고 합이 45일 때 A는 얼마인가?","options":["18","45","27","36"],"difficulty":"★★☆","seconds":60,"answer":2,"explanation":"전체 비는 5이고 한 단위는 9. A=3×9=27."},{"id":108,"sectionId":"class2","category":"자료해석","prompt":"월별 이용자 수가 24, 15, 31, 30명이다. 월평균 이용자 수는?","options":["27","23","25","29"],"difficulty":"★★☆","seconds":60,"answer":2,"explanation":"합계 100를 4개월로 나누면 25명이다."},{"id":109,"sectionId":"class2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n1, 16, 5, 21, 9, (   )","options":["30","24","26","28"],"difficulty":"★★☆","seconds":60,"answer":2,"explanation":"홀수 번째 항은 4씩, 짝수 번째 항은 5씩 증가한다. 따라서 다음 수는 26이다."},{"id":110,"sectionId":"class2","category":"자료해석","prompt":"다음은 네 반의 독서 권수이다. 가장 많은 반은?\n\nA반 56권 / B반 47권 / C반 34권 / D반 54권","options":["A반","B반","C반","D반"],"difficulty":"★☆☆","seconds":55,"answer":0,"explanation":"가장 큰 값은 56권인 A반이다."},{"id":111,"sectionId":"homework2","category":"계산","prompt":"150의 30%는 얼마인가?","options":["45","49","53","41"],"difficulty":"★☆☆","seconds":45,"answer":0,"explanation":"150 × 30/100 = 45"},{"id":112,"sectionId":"homework2","category":"계산","prompt":"A:B의 수가 6:7이고 합이 78일 때 A는 얼마인가?","options":["42","30","48","36"],"difficulty":"★★☆","seconds":60,"answer":3,"explanation":"전체 비는 13이고 한 단위는 6. A=6×6=36."},{"id":113,"sectionId":"homework2","category":"계산","prompt":"네 수 16, 47, 19, 26의 평균은?","options":["27","25","29","31"],"difficulty":"★☆☆","seconds":50,"answer":0,"explanation":"합은 108이고 4로 나누면 27이다."},{"id":114,"sectionId":"homework2","category":"계산","prompt":"16,000원인 상품을 30% 할인하면 판매가는?","options":["10,200원","12,200원","11,200원","4,800원"],"difficulty":"★★☆","seconds":60,"answer":2,"explanation":"할인 후 가격은 16,000×70%=11,200원이다."},{"id":115,"sectionId":"homework2","category":"계산","prompt":"시속 40km로 80km를 이동하면 몇 시간이 걸리는가?","options":["2시간","1시간","3시간","4시간"],"difficulty":"★☆☆","seconds":50,"answer":0,"explanation":"시간=거리÷속력=80÷40=2시간."},{"id":116,"sectionId":"homework2","category":"계산","prompt":"어떤 값이 20에서 10% 증가했다. 증가한 값은?","options":["22","26","30","18"],"difficulty":"★★☆","seconds":60,"answer":0,"explanation":"20×(1+10/100)=22"},{"id":117,"sectionId":"homework2","category":"계산","prompt":"180의 40%는 얼마인가?","options":["79","72","86","65"],"difficulty":"★☆☆","seconds":45,"answer":1,"explanation":"180 × 40/100 = 72"},{"id":118,"sectionId":"homework2","category":"계산","prompt":"A:B의 수가 3:2이고 합이 45일 때 A는 얼마인가?","options":["45","18","27","36"],"difficulty":"★★☆","seconds":60,"answer":2,"explanation":"전체 비는 5이고 한 단위는 9. A=3×9=27."},{"id":119,"sectionId":"homework2","category":"계산","prompt":"네 수 33, 20, 21, 18의 평균은?","options":["27","21","25","23"],"difficulty":"★☆☆","seconds":50,"answer":3,"explanation":"합은 92이고 4로 나누면 23이다."},{"id":120,"sectionId":"homework2","category":"계산","prompt":"12,000원인 상품을 25% 할인하면 판매가는?","options":["10,000원","8,000원","3,000원","9,000원"],"difficulty":"★★☆","seconds":60,"answer":3,"explanation":"할인 후 가격은 12,000×75%=9,000원이다."},{"id":121,"sectionId":"homework2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n4, 7, 10, 13, 16, (   )","options":["18","21","19","20"],"difficulty":"★☆☆","seconds":60,"answer":2,"explanation":"매번 3씩 더한다. 따라서 다음 수는 19이다."},{"id":122,"sectionId":"homework2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n5, 15, 45, 135, 405, (   )","options":["1336","1094","1457","1215"],"difficulty":"★☆☆","seconds":60,"answer":3,"explanation":"매번 3배 한다. 따라서 다음 수는 1215이다."},{"id":123,"sectionId":"homework2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n5, 8, 12, 17, 23, (   )","options":["27","36","30","33"],"difficulty":"★★☆","seconds":60,"answer":2,"explanation":"더하는 수가 3, 4, 5, …처럼 1씩 증가한다. 따라서 다음 수는 30이다."},{"id":124,"sectionId":"homework2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n4, 17, 9, 24, 14, (   )","options":["28","31","34","37"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"홀수 번째 항은 5씩, 짝수 번째 항은 7씩 증가한다. 따라서 다음 수는 31이다."},{"id":125,"sectionId":"homework2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n2, 2, 4, 6, 10, (   )","options":["18","15","17","16"],"difficulty":"★★☆","seconds":60,"answer":3,"explanation":"앞의 두 수를 더해 다음 수를 만든다. 따라서 다음 수는 16이다."},{"id":126,"sectionId":"homework2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n7, 14, 17, 34, 37, (   )","options":["74","81","67","88"],"difficulty":"★★☆","seconds":60,"answer":0,"explanation":"×2, +3을 번갈아 적용한다. 따라서 다음 수는 74이다."},{"id":127,"sectionId":"homework2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n17, 20, 23, 26, 29, (   )","options":["32","29","38","35"],"difficulty":"★☆☆","seconds":60,"answer":0,"explanation":"매번 3씩 더한다. 따라서 다음 수는 32이다."},{"id":128,"sectionId":"homework2","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n4, 12, 36, 108, 324, (   )","options":["972","875","1069","1166"],"difficulty":"★☆☆","seconds":60,"answer":0,"explanation":"매번 3배 한다. 따라서 다음 수는 972이다."},{"id":129,"sectionId":"homework2","category":"자료해석","prompt":"다음은 네 반의 독서 권수이다. 가장 많은 반은?\n\nA반 31권 / B반 59권 / C반 32권 / D반 27권","options":["A반","B반","C반","D반"],"difficulty":"★☆☆","seconds":55,"answer":1,"explanation":"가장 큰 값은 59권인 B반이다."},{"id":130,"sectionId":"homework2","category":"자료해석","prompt":"어떤 동아리의 참가자가 1학기 24명, 2학기 29명이었다. 증가한 인원은?","options":["8","5","11","2"],"difficulty":"★☆☆","seconds":45,"answer":1,"explanation":"29-24=5명 증가했다."},{"id":131,"sectionId":"homework2","category":"자료해석","prompt":"전체 학생 160명 중 50%가 A 프로그램을 선택했다. A 프로그램 선택 학생은 몇 명인가?","options":["90","75","85","80"],"difficulty":"★★☆","seconds":55,"answer":3,"explanation":"160×50/100=80명이다."},{"id":132,"sectionId":"homework2","category":"자료해석","prompt":"어떤 수치가 80에서 96로 증가했다. 증가율은?","options":["20%","25%","15%","30%"],"difficulty":"★★☆","seconds":75,"answer":0,"explanation":"증가량은 16, 증가율=16/80×100=20%이다."},{"id":133,"sectionId":"homework2","category":"자료해석","prompt":"월별 이용자 수가 37, 30, 20, 41명이다. 월평균 이용자 수는?","options":["32","34","30","36"],"difficulty":"★★☆","seconds":60,"answer":0,"explanation":"합계 128를 4개월로 나누면 32명이다."},{"id":134,"sectionId":"homework2","category":"자료해석","prompt":"다음은 네 반의 독서 권수이다. 가장 많은 반은?\n\nA반 58권 / B반 32권 / C반 63권 / D반 78권","options":["A반","B반","C반","D반"],"difficulty":"★☆☆","seconds":55,"answer":3,"explanation":"가장 큰 값은 78권인 D반이다."},{"id":135,"sectionId":"homework2","category":"자료해석","prompt":"어떤 동아리의 참가자가 1학기 21명, 2학기 46명이었다. 증가한 인원은?","options":["28","31","22","25"],"difficulty":"★☆☆","seconds":45,"answer":3,"explanation":"46-21=25명 증가했다."},{"id":136,"sectionId":"homework2","category":"자료해석","prompt":"전체 학생 120명 중 50%가 A 프로그램을 선택했다. A 프로그램 선택 학생은 몇 명인가?","options":["60","70","65","55"],"difficulty":"★★☆","seconds":55,"answer":0,"explanation":"120×50/100=60명이다."},{"id":137,"sectionId":"homework2","category":"자료해석","prompt":"어떤 수치가 60에서 90로 증가했다. 증가율은?","options":["45%","55%","60%","50%"],"difficulty":"★★☆","seconds":75,"answer":3,"explanation":"증가량은 30, 증가율=30/60×100=50%이다."},{"id":138,"sectionId":"homework2","category":"자료해석","prompt":"월별 이용자 수가 18, 16, 33, 17명이다. 월평균 이용자 수는?","options":["19","21","23","25"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"합계 84를 4개월로 나누면 21명이다."},{"id":139,"sectionId":"homework2","category":"자료해석","prompt":"다음은 네 반의 독서 권수이다. 가장 많은 반은?\n\nA반 42권 / B반 44권 / C반 40권 / D반 77권","options":["A반","B반","C반","D반"],"difficulty":"★☆☆","seconds":55,"answer":3,"explanation":"가장 큰 값은 77권인 D반이다."},{"id":140,"sectionId":"homework2","category":"자료해석","prompt":"어떤 동아리의 참가자가 1학기 46명, 2학기 70명이었다. 증가한 인원은?","options":["27","30","24","21"],"difficulty":"★☆☆","seconds":45,"answer":2,"explanation":"70-46=24명 증가했다."},{"id":141,"sectionId":"homework2","category":"공간지각","prompt":"화살표 ↓를 시계 방향으로 180° 회전하면 어느 방향이 되는가?","options":["←","↑","↓","→"],"difficulty":"★☆☆","seconds":45,"answer":1,"explanation":"90° 회전을 2번 적용하면 ↓ → ↑가 된다."},{"id":142,"sectionId":"homework2","category":"공간지각","prompt":"화살표 →를 세로 거울에 비춘 모습은?","options":["←","↓","↑","→"],"difficulty":"★★☆","seconds":50,"answer":0,"explanation":"세로 거울에서는 좌우가 바뀌므로 →의 거울상은 ←이다."},{"id":143,"sectionId":"homework2","category":"공간지각","prompt":"다음 정육면체 전개도를 접었을 때 E와 마주 보는 면은?\n\n    [C]\n[F][B][E][D]\n    [A]","options":["B","C","F","D"],"difficulty":"★★★","seconds":100,"answer":2,"explanation":"이 전개도에서 마주 보는 면은 B-D, F-E, C-A이다. 따라서 E의 반대 면은 F이다."},{"id":144,"sectionId":"homework2","category":"공간지각","prompt":"아래층에 블록 6개가 있고, 그 위층에 블록 1개가 놓여 있다. 전체 블록 수는? (가려진 추가 블록은 없다고 가정)","options":["8","9","7","6"],"difficulty":"★☆☆","seconds":45,"answer":2,"explanation":"층별 블록 수를 더하면 6+1=7개이다."},{"id":145,"sectionId":"homework2","category":"공간지각","prompt":"화살표 ←를 시계 방향으로 90° 회전하면 어느 방향이 되는가?","options":["↓","↑","←","→"],"difficulty":"★☆☆","seconds":45,"answer":1,"explanation":"90° 회전을 1번 적용하면 ← → ↑가 된다."},{"id":146,"sectionId":"homework2","category":"공간지각","prompt":"화살표 ←를 세로 거울에 비춘 모습은?","options":["↓","→","←","↑"],"difficulty":"★★☆","seconds":50,"answer":1,"explanation":"세로 거울에서는 좌우가 바뀌므로 ←의 거울상은 →이다."},{"id":147,"sectionId":"homework2","category":"공간지각","prompt":"다음 정육면체 전개도를 접었을 때 D와 마주 보는 면은?\n\n    [D]\n[E][C][B][A]\n    [F]","options":["E","C","F","B"],"difficulty":"★★★","seconds":100,"answer":2,"explanation":"이 전개도에서 마주 보는 면은 C-A, E-B, D-F이다. 따라서 D의 반대 면은 F이다."},{"id":148,"sectionId":"homework2","category":"공간지각","prompt":"아래층에 블록 4개가 있고, 그 위층에 블록 1개가 놓여 있다. 전체 블록 수는? (가려진 추가 블록은 없다고 가정)","options":["6","7","5","4"],"difficulty":"★☆☆","seconds":45,"answer":2,"explanation":"층별 블록 수를 더하면 4+1=5개이다."},{"id":149,"sectionId":"homework2","category":"공간지각","prompt":"화살표 ↓를 시계 방향으로 180° 회전하면 어느 방향이 되는가?","options":["↑","↓","←","→"],"difficulty":"★☆☆","seconds":45,"answer":0,"explanation":"90° 회전을 2번 적용하면 ↓ → ↑가 된다."},{"id":150,"sectionId":"homework2","category":"공간지각","prompt":"화살표 ←를 세로 거울에 비춘 모습은?","options":["←","↑","↓","→"],"difficulty":"★★☆","seconds":50,"answer":3,"explanation":"세로 거울에서는 좌우가 바뀌므로 ←의 거울상은 →이다."},{"id":151,"sectionId":"class3","category":"공간지각","prompt":"화살표 ←를 세로 거울에 비춘 모습은?","options":["←","↑","→","↓"],"difficulty":"★★☆","seconds":50,"answer":2,"explanation":"세로 거울에서는 좌우가 바뀌므로 ←의 거울상은 →이다."},{"id":152,"sectionId":"class3","category":"공간지각","prompt":"다음 정육면체 전개도를 접었을 때 A와 마주 보는 면은?\n\n    [F]\n[B][D][E][C]\n    [A]","options":["B","D","F","E"],"difficulty":"★★★","seconds":100,"answer":2,"explanation":"이 전개도에서 마주 보는 면은 D-C, B-E, F-A이다. 따라서 A의 반대 면은 F이다."},{"id":153,"sectionId":"class3","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 4번째 사람은 누구인가?\n\n- 나는 다보다 앞선다.\n- 마는 다보다 앞선다.\n- 바는 나보다 앞선다.\n- 나는 3번째에 있다.","options":["바","마","다","나"],"difficulty":"★★☆","seconds":90,"answer":2,"explanation":"조건을 차례로 적용하면 순서는 바 - 마 - 나 - 다가 된다. 따라서 4번째는 다이다."},{"id":154,"sectionId":"class3","category":"공간지각","prompt":"다음 정육면체 전개도를 접었을 때 F와 마주 보는 면은?\n\n    [A]\n[E][B][D][F]\n    [C]","options":["A","E","B","D"],"difficulty":"★★★","seconds":100,"answer":2,"explanation":"이 전개도에서 마주 보는 면은 B-F, E-D, A-C이다. 따라서 F의 반대 면은 B이다."},{"id":155,"sectionId":"class3","category":"공간지각","prompt":"아래층에 블록 4개가 있고, 그 위층에 블록 1개가 놓여 있다. 전체 블록 수는? (가려진 추가 블록은 없다고 가정)","options":["5","7","4","6"],"difficulty":"★☆☆","seconds":45,"answer":0,"explanation":"층별 블록 수를 더하면 4+1=5개이다."},{"id":156,"sectionId":"class3","category":"자료해석","prompt":"월별 이용자 수가 15, 29, 19, 25명이다. 월평균 이용자 수는?","options":["20","26","24","22"],"difficulty":"★★☆","seconds":60,"answer":3,"explanation":"합계 88를 4개월로 나누면 22명이다."},{"id":157,"sectionId":"class3","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- C이면 A이다.\n- A이면 B이다.","options":["C가 아니면 반드시 B가 아니다.","A이면 반드시 C이다.","C이면 B이다.","B이면 반드시 C이다."],"difficulty":"★★☆","seconds":75,"answer":2,"explanation":"C → A, A → B이므로 연쇄적으로 C → B가 반드시 성립한다."},{"id":158,"sectionId":"class3","category":"공간지각","prompt":"화살표 →를 세로 거울에 비춘 모습은?","options":["↑","←","↓","→"],"difficulty":"★★☆","seconds":50,"answer":1,"explanation":"세로 거울에서는 좌우가 바뀌므로 →의 거울상은 ←이다."},{"id":159,"sectionId":"class3","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 1번째 사람은 누구인가?\n\n- 나는 1번째에 있다.\n- 라는 다보다 앞선다.\n- 다와 마는 서로 이웃한다.\n- 다는 4번째에 있다.","options":["나","라","마","다"],"difficulty":"★★☆","seconds":90,"answer":0,"explanation":"조건을 차례로 적용하면 순서는 나 - 라 - 마 - 다가 된다. 따라서 1번째는 나이다."},{"id":160,"sectionId":"class3","category":"자료해석","prompt":"전체 학생 200명 중 30%가 A 프로그램을 선택했다. A 프로그램 선택 학생은 몇 명인가?","options":["70","60","65","55"],"difficulty":"★★☆","seconds":55,"answer":1,"explanation":"200×30/100=60명이다."},{"id":161,"sectionId":"class3","category":"자료해석","prompt":"다음은 네 반의 독서 권수이다. 가장 많은 반은?\n\nA반 21권 / B반 80권 / C반 44권 / D반 46권","options":["A반","B반","C반","D반"],"difficulty":"★☆☆","seconds":55,"answer":1,"explanation":"가장 큰 값은 80권인 B반이다."},{"id":162,"sectionId":"class3","category":"자료해석","prompt":"다음은 네 반의 독서 권수이다. 가장 많은 반은?\n\nA반 24권 / B반 72권 / C반 74권 / D반 66권","options":["A반","B반","C반","D반"],"difficulty":"★☆☆","seconds":55,"answer":2,"explanation":"가장 큰 값은 74권인 C반이다."},{"id":163,"sectionId":"class3","category":"도형추리","prompt":"다음 도형 수열에서 빈칸에 들어갈 것은?\n\n○  ◆  □  ▲  ○  ( ? )","options":["○","◇","●","◆"],"difficulty":"★★★","seconds":70,"answer":3,"explanation":"모양은 4개 도형이 일정한 순서로 반복되고, 채움 여부는 한 칸씩 번갈아 변한다. 두 규칙을 함께 적용하면 다음 도형은 ◆이다."},{"id":164,"sectionId":"class3","category":"논리·조건추리","prompt":"1부터 4까지의 자연수 중 하나를 정했다. 다음 세 문장 중 정확히 하나만 참일 때, 정한 수는?\n\n- 수는 4이다.\n- 수는 짝수이다.\n- 수는 3보다 작다.","options":["1","2","3","4"],"difficulty":"★★★","seconds":100,"answer":0,"explanation":"각 수를 대입해 참인 문장의 개수를 세면 1일 때만 정확히 하나가 참이다."},{"id":165,"sectionId":"class3","category":"도형추리","prompt":"화살표가 같은 방향으로 90°씩 회전한다. 다음에 올 것은?\n\n↓  ←  ↑  →  ↓  ( ? )","options":["←","↓","→","↑"],"difficulty":"★☆☆","seconds":45,"answer":0,"explanation":"매번 시계 방향으로 90° 회전한다."},{"id":166,"sectionId":"class3","category":"도형추리","prompt":"다음 규칙에 따라 빈칸에 들어갈 도형은?\n\n□  ■  □  ■  □  ( ? )","options":["◆","■","▲","●"],"difficulty":"★☆☆","seconds":40,"answer":1,"explanation":"같은 도형이 빈 모양과 채운 모양으로 번갈아 나온다. 따라서 ■이다."},{"id":167,"sectionId":"class3","category":"도형추리","prompt":"다음 도형 수열에서 빈칸에 들어갈 것은?\n\n◇  ■  ○  ▲  ◇  ( ? )","options":["□","○","■","●"],"difficulty":"★★★","seconds":70,"answer":2,"explanation":"모양은 4개 도형이 일정한 순서로 반복되고, 채움 여부는 한 칸씩 번갈아 변한다. 두 규칙을 함께 적용하면 다음 도형은 ■이다."},{"id":168,"sectionId":"class3","category":"도형추리","prompt":"○ 형태의 관계가 아니라 '빈 도형 → 같은 도형을 채움'의 관계이다. 다음 대응에서 ?에 들어갈 것은?\n\n□ : ■ = △ : ?","options":["□","▲","■","△"],"difficulty":"★★☆","seconds":55,"answer":1,"explanation":"첫 번째 관계는 빈 도형을 같은 모양의 채운 도형으로 바꾸는 것이다. 따라서 △는 ▲가 된다."},{"id":169,"sectionId":"class3","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- B이면 D이다.\n- D이면 C이다.","options":["B이면 C이다.","C이면 반드시 B이다.","D이면 반드시 B이다.","B가 아니면 반드시 C가 아니다."],"difficulty":"★★☆","seconds":75,"answer":0,"explanation":"B → D, D → C이므로 연쇄적으로 B → C가 반드시 성립한다."},{"id":170,"sectionId":"class3","category":"도형추리","prompt":"화살표가 같은 방향으로 90°씩 회전한다. 다음에 올 것은?\n\n↑  →  ↓  ←  ↑  ( ? )","options":["↓","↑","←","→"],"difficulty":"★☆☆","seconds":45,"answer":3,"explanation":"매번 시계 방향으로 90° 회전한다."},{"id":171,"sectionId":"class3","category":"도형추리","prompt":"화살표가 같은 방향으로 90°씩 회전한다. 다음에 올 것은?\n\n↑  →  ↓  ←  ↑  ( ? )","options":["→","↑","↓","←"],"difficulty":"★☆☆","seconds":45,"answer":0,"explanation":"매번 시계 방향으로 90° 회전한다."},{"id":172,"sectionId":"class3","category":"도형추리","prompt":"다음 규칙에 따라 빈칸에 들어갈 도형은?\n\n△  ▲  △  ▲  △  ( ? )","options":["●","▲","■","◆"],"difficulty":"★☆☆","seconds":40,"answer":1,"explanation":"같은 도형이 빈 모양과 채운 모양으로 번갈아 나온다. 따라서 ▲이다."},{"id":173,"sectionId":"class3","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- C이면 E이다.\n- E이면 F이다.","options":["F이면 반드시 C이다.","E이면 반드시 C이다.","C이면 F이다.","C가 아니면 반드시 F가 아니다."],"difficulty":"★★☆","seconds":75,"answer":2,"explanation":"C → E, E → F이므로 연쇄적으로 C → F가 반드시 성립한다."},{"id":174,"sectionId":"class3","category":"공간지각","prompt":"화살표 ↑를 세로 거울에 비춘 모습은?","options":["↑","→","↓","←"],"difficulty":"★★☆","seconds":50,"answer":0,"explanation":"세로 거울에서는 좌우가 바뀌므로 ↑의 거울상은 ↑이다."},{"id":175,"sectionId":"class3","category":"공간지각","prompt":"화살표 →를 시계 방향으로 180° 회전하면 어느 방향이 되는가?","options":["↑","↓","←","→"],"difficulty":"★☆☆","seconds":45,"answer":2,"explanation":"90° 회전을 2번 적용하면 → → ←가 된다."},{"id":176,"sectionId":"class3","category":"공간지각","prompt":"화살표 ↑를 시계 방향으로 270° 회전하면 어느 방향이 되는가?","options":["↑","←","↓","→"],"difficulty":"★☆☆","seconds":45,"answer":1,"explanation":"90° 회전을 3번 적용하면 ↑ → ←가 된다."},{"id":177,"sectionId":"class3","category":"자료해석","prompt":"어떤 동아리의 참가자가 1학기 40명, 2학기 46명이었다. 증가한 인원은?","options":["3","9","12","6"],"difficulty":"★☆☆","seconds":45,"answer":3,"explanation":"46-40=6명 증가했다."},{"id":178,"sectionId":"class3","category":"도형추리","prompt":"다음 규칙에 따라 빈칸에 들어갈 도형은?\n\n◇  ◆  ◇  ◆  ◇  ( ? )","options":["●","▲","■","◆"],"difficulty":"★☆☆","seconds":40,"answer":3,"explanation":"같은 도형이 빈 모양과 채운 모양으로 번갈아 나온다. 따라서 ◆이다."},{"id":179,"sectionId":"class3","category":"공간지각","prompt":"아래층에 블록 5개가 있고, 그 위층에 블록 3개가 놓여 있다. 전체 블록 수는? (가려진 추가 블록은 없다고 가정)","options":["7","10","9","8"],"difficulty":"★☆☆","seconds":45,"answer":3,"explanation":"층별 블록 수를 더하면 5+3=8개이다."},{"id":180,"sectionId":"class3","category":"자료해석","prompt":"어떤 동아리의 참가자가 1학기 43명, 2학기 66명이었다. 증가한 인원은?","options":["26","23","20","29"],"difficulty":"★☆☆","seconds":45,"answer":1,"explanation":"66-43=23명 증가했다."},{"id":181,"sectionId":"class3","category":"논리·조건추리","prompt":"1부터 4까지의 자연수 중 하나를 정했다. 다음 세 문장 중 정확히 하나만 참일 때, 정한 수는?\n\n- 수는 짝수이다.\n- 수는 2보다 크다.\n- 수는 3이다.","options":["1","2","3","4"],"difficulty":"★★★","seconds":100,"answer":1,"explanation":"각 수를 대입해 참인 문장의 개수를 세면 2일 때만 정확히 하나가 참이다."},{"id":182,"sectionId":"class3","category":"공간지각","prompt":"화살표 ↑를 시계 방향으로 90° 회전하면 어느 방향이 되는가?","options":["↑","→","←","↓"],"difficulty":"★☆☆","seconds":45,"answer":1,"explanation":"90° 회전을 1번 적용하면 ↑ → →가 된다."},{"id":183,"sectionId":"class3","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 2번째 사람은 누구인가?\n\n- 다는 라보다 앞선다.\n- 라와 다는 서로 이웃한다.\n- 바와 라는 서로 이웃한다.\n- 라는 3번째에 있다.","options":["바","나","다","라"],"difficulty":"★★☆","seconds":90,"answer":2,"explanation":"조건을 차례로 적용하면 순서는 나 - 다 - 라 - 바가 된다. 따라서 2번째는 다이다."},{"id":184,"sectionId":"class3","category":"도형추리","prompt":"다음 도형의 개수 규칙을 보고 빈칸을 고르시오.\n\n○  /  ○○  /  ○○○  /  ○○○○  /  ( ? )","options":["○○○○○","○○○○○○","○○○","○○○○"],"difficulty":"★☆☆","seconds":40,"answer":0,"explanation":"원 개수가 1개씩 증가하므로 다음은 5개이다."},{"id":185,"sectionId":"class3","category":"자료해석","prompt":"어떤 수치가 100에서 125로 증가했다. 증가율은?","options":["20%","30%","35%","25%"],"difficulty":"★★☆","seconds":75,"answer":3,"explanation":"증가량은 25, 증가율=25/100×100=25%이다."},{"id":186,"sectionId":"class3","category":"도형추리","prompt":"○ 형태의 관계가 아니라 '빈 도형 → 같은 도형을 채움'의 관계이다. 다음 대응에서 ?에 들어갈 것은?\n\n□ : ■ = △ : ?","options":["■","△","▲","□"],"difficulty":"★★☆","seconds":55,"answer":2,"explanation":"첫 번째 관계는 빈 도형을 같은 모양의 채운 도형으로 바꾸는 것이다. 따라서 △는 ▲가 된다."},{"id":187,"sectionId":"class3","category":"자료해석","prompt":"어떤 수치가 60에서 75로 증가했다. 증가율은?","options":["35%","20%","25%","30%"],"difficulty":"★★☆","seconds":75,"answer":2,"explanation":"증가량은 15, 증가율=15/60×100=25%이다."},{"id":188,"sectionId":"class3","category":"자료해석","prompt":"전체 학생 160명 중 30%가 A 프로그램을 선택했다. A 프로그램 선택 학생은 몇 명인가?","options":["48","43","53","58"],"difficulty":"★★☆","seconds":55,"answer":0,"explanation":"160×30/100=48명이다."},{"id":189,"sectionId":"class3","category":"도형추리","prompt":"다음 도형의 개수 규칙을 보고 빈칸을 고르시오.\n\n○  /  ○○  /  ○○○  /  ○○○○  /  ( ? )","options":["○○○○","○○○","○○○○○","○○○○○○"],"difficulty":"★☆☆","seconds":40,"answer":2,"explanation":"원 개수가 1개씩 증가하므로 다음은 5개이다."},{"id":190,"sectionId":"class3","category":"자료해석","prompt":"월별 이용자 수가 39, 14, 15, 28명이다. 월평균 이용자 수는?","options":["28","24","22","26"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"합계 96를 4개월로 나누면 24명이다."},{"id":191,"sectionId":"homework3","category":"도형추리","prompt":"화살표가 같은 방향으로 90°씩 회전한다. 다음에 올 것은?\n\n↑  →  ↓  ←  ↑  ( ? )","options":["↑","→","←","↓"],"difficulty":"★☆☆","seconds":45,"answer":1,"explanation":"매번 시계 방향으로 90° 회전한다."},{"id":192,"sectionId":"homework3","category":"도형추리","prompt":"다음 규칙에 따라 빈칸에 들어갈 도형은?\n\n○  ●  ○  ●  ○  ( ? )","options":["■","●","◆","▲"],"difficulty":"★☆☆","seconds":40,"answer":1,"explanation":"같은 도형이 빈 모양과 채운 모양으로 번갈아 나온다. 따라서 ●이다."},{"id":193,"sectionId":"homework3","category":"도형추리","prompt":"다음 도형의 개수 규칙을 보고 빈칸을 고르시오.\n\n○  /  ○○  /  ○○○  /  ○○○○  /  ( ? )","options":["○○○○○○","○○○○○","○○○","○○○○"],"difficulty":"★☆☆","seconds":40,"answer":1,"explanation":"원 개수가 1개씩 증가하므로 다음은 5개이다."},{"id":194,"sectionId":"homework3","category":"도형추리","prompt":"○ 형태의 관계가 아니라 '빈 도형 → 같은 도형을 채움'의 관계이다. 다음 대응에서 ?에 들어갈 것은?\n\n○ : ● = ◇ : ?","options":["○","●","◆","◇"],"difficulty":"★★☆","seconds":55,"answer":2,"explanation":"첫 번째 관계는 빈 도형을 같은 모양의 채운 도형으로 바꾸는 것이다. 따라서 ◇는 ◆가 된다."},{"id":195,"sectionId":"homework3","category":"도형추리","prompt":"다음 도형 수열에서 빈칸에 들어갈 것은?\n\n△  ●  ◇  ■  △  ( ? )","options":["◆","◇","●","○"],"difficulty":"★★★","seconds":70,"answer":2,"explanation":"모양은 4개 도형이 일정한 순서로 반복되고, 채움 여부는 한 칸씩 번갈아 변한다. 두 규칙을 함께 적용하면 다음 도형은 ●이다."},{"id":196,"sectionId":"homework3","category":"도형추리","prompt":"화살표가 같은 방향으로 90°씩 회전한다. 다음에 올 것은?\n\n←  ↑  →  ↓  ←  ( ? )","options":["↓","→","↑","←"],"difficulty":"★☆☆","seconds":45,"answer":2,"explanation":"매번 시계 방향으로 90° 회전한다."},{"id":197,"sectionId":"homework3","category":"도형추리","prompt":"다음 규칙에 따라 빈칸에 들어갈 도형은?\n\n△  ▲  △  ▲  △  ( ? )","options":["●","■","◆","▲"],"difficulty":"★☆☆","seconds":40,"answer":3,"explanation":"같은 도형이 빈 모양과 채운 모양으로 번갈아 나온다. 따라서 ▲이다."},{"id":198,"sectionId":"homework3","category":"도형추리","prompt":"다음 도형의 개수 규칙을 보고 빈칸을 고르시오.\n\n○  /  ○○  /  ○○○  /  ○○○○  /  ( ? )","options":["○○○○","○○○○○○","○○○","○○○○○"],"difficulty":"★☆☆","seconds":40,"answer":3,"explanation":"원 개수가 1개씩 증가하므로 다음은 5개이다."},{"id":199,"sectionId":"homework3","category":"도형추리","prompt":"○ 형태의 관계가 아니라 '빈 도형 → 같은 도형을 채움'의 관계이다. 다음 대응에서 ?에 들어갈 것은?\n\n□ : ■ = △ : ?","options":["□","▲","△","■"],"difficulty":"★★☆","seconds":55,"answer":1,"explanation":"첫 번째 관계는 빈 도형을 같은 모양의 채운 도형으로 바꾸는 것이다. 따라서 △는 ▲가 된다."},{"id":200,"sectionId":"homework3","category":"도형추리","prompt":"다음 도형 수열에서 빈칸에 들어갈 것은?\n\n◆  ○  ▲  □  ◆  ( ? )","options":["△","○","●","▲"],"difficulty":"★★★","seconds":70,"answer":1,"explanation":"모양은 4개 도형이 일정한 순서로 반복되고, 채움 여부는 한 칸씩 번갈아 변한다. 두 규칙을 함께 적용하면 다음 도형은 ○이다."},{"id":201,"sectionId":"homework3","category":"도형추리","prompt":"화살표가 같은 방향으로 90°씩 회전한다. 다음에 올 것은?\n\n↑  →  ↓  ←  ↑  ( ? )","options":["↑","←","→","↓"],"difficulty":"★☆☆","seconds":45,"answer":2,"explanation":"매번 시계 방향으로 90° 회전한다."},{"id":202,"sectionId":"homework3","category":"도형추리","prompt":"다음 규칙에 따라 빈칸에 들어갈 도형은?\n\n○  ●  ○  ●  ○  ( ? )","options":["▲","●","■","◆"],"difficulty":"★☆☆","seconds":40,"answer":1,"explanation":"같은 도형이 빈 모양과 채운 모양으로 번갈아 나온다. 따라서 ●이다."},{"id":203,"sectionId":"homework3","category":"도형추리","prompt":"다음 도형의 개수 규칙을 보고 빈칸을 고르시오.\n\n○  /  ○○  /  ○○○  /  ○○○○  /  ( ? )","options":["○○○○","○○○○○","○○○","○○○○○○"],"difficulty":"★☆☆","seconds":40,"answer":1,"explanation":"원 개수가 1개씩 증가하므로 다음은 5개이다."},{"id":204,"sectionId":"homework3","category":"도형추리","prompt":"○ 형태의 관계가 아니라 '빈 도형 → 같은 도형을 채움'의 관계이다. 다음 대응에서 ?에 들어갈 것은?\n\n○ : ● = △ : ?","options":["▲","○","●","△"],"difficulty":"★★☆","seconds":55,"answer":0,"explanation":"첫 번째 관계는 빈 도형을 같은 모양의 채운 도형으로 바꾸는 것이다. 따라서 △는 ▲가 된다."},{"id":205,"sectionId":"homework3","category":"도형추리","prompt":"다음 도형 수열에서 빈칸에 들어갈 것은?\n\n◆  □  ▲  ○  ◆  ( ? )","options":["■","□","○","●"],"difficulty":"★★★","seconds":70,"answer":1,"explanation":"모양은 4개 도형이 일정한 순서로 반복되고, 채움 여부는 한 칸씩 번갈아 변한다. 두 규칙을 함께 적용하면 다음 도형은 □이다."},{"id":206,"sectionId":"homework3","category":"도형추리","prompt":"화살표가 같은 방향으로 90°씩 회전한다. 다음에 올 것은?\n\n↓  ←  ↑  →  ↓  ( ? )","options":["↓","→","←","↑"],"difficulty":"★☆☆","seconds":45,"answer":2,"explanation":"매번 시계 방향으로 90° 회전한다."},{"id":207,"sectionId":"homework3","category":"도형추리","prompt":"다음 규칙에 따라 빈칸에 들어갈 도형은?\n\n○  ●  ○  ●  ○  ( ? )","options":["▲","■","●","◆"],"difficulty":"★☆☆","seconds":40,"answer":2,"explanation":"같은 도형이 빈 모양과 채운 모양으로 번갈아 나온다. 따라서 ●이다."},{"id":208,"sectionId":"homework3","category":"도형추리","prompt":"다음 도형의 개수 규칙을 보고 빈칸을 고르시오.\n\n○  /  ○○  /  ○○○  /  ○○○○  /  ( ? )","options":["○○○○○○","○○○○","○○○○○","○○○"],"difficulty":"★☆☆","seconds":40,"answer":2,"explanation":"원 개수가 1개씩 증가하므로 다음은 5개이다."},{"id":209,"sectionId":"homework3","category":"공간지각","prompt":"화살표 ←를 시계 방향으로 90° 회전하면 어느 방향이 되는가?","options":["↓","→","↑","←"],"difficulty":"★☆☆","seconds":45,"answer":2,"explanation":"90° 회전을 1번 적용하면 ← → ↑가 된다."},{"id":210,"sectionId":"homework3","category":"공간지각","prompt":"화살표 ←를 세로 거울에 비춘 모습은?","options":["→","↑","↓","←"],"difficulty":"★★☆","seconds":50,"answer":0,"explanation":"세로 거울에서는 좌우가 바뀌므로 ←의 거울상은 →이다."},{"id":211,"sectionId":"homework3","category":"공간지각","prompt":"다음 정육면체 전개도를 접었을 때 C와 마주 보는 면은?\n\n    [C]\n[D][A][F][B]\n    [E]","options":["A","F","D","E"],"difficulty":"★★★","seconds":100,"answer":3,"explanation":"이 전개도에서 마주 보는 면은 A-B, D-F, C-E이다. 따라서 C의 반대 면은 E이다."},{"id":212,"sectionId":"homework3","category":"공간지각","prompt":"아래층에 블록 5개가 있고, 그 위층에 블록 1개가 놓여 있다. 전체 블록 수는? (가려진 추가 블록은 없다고 가정)","options":["7","8","5","6"],"difficulty":"★☆☆","seconds":45,"answer":3,"explanation":"층별 블록 수를 더하면 5+1=6개이다."},{"id":213,"sectionId":"homework3","category":"공간지각","prompt":"화살표 ↑를 시계 방향으로 90° 회전하면 어느 방향이 되는가?","options":["↓","↑","→","←"],"difficulty":"★☆☆","seconds":45,"answer":2,"explanation":"90° 회전을 1번 적용하면 ↑ → →가 된다."},{"id":214,"sectionId":"homework3","category":"공간지각","prompt":"화살표 ↑를 세로 거울에 비춘 모습은?","options":["↓","←","→","↑"],"difficulty":"★★☆","seconds":50,"answer":3,"explanation":"세로 거울에서는 좌우가 바뀌므로 ↑의 거울상은 ↑이다."},{"id":215,"sectionId":"homework3","category":"공간지각","prompt":"다음 정육면체 전개도를 접었을 때 D와 마주 보는 면은?\n\n    [B]\n[E][D][C][F]\n    [A]","options":["B","C","E","F"],"difficulty":"★★★","seconds":100,"answer":3,"explanation":"이 전개도에서 마주 보는 면은 D-F, E-C, B-A이다. 따라서 D의 반대 면은 F이다."},{"id":216,"sectionId":"homework3","category":"공간지각","prompt":"아래층에 블록 4개가 있고, 그 위층에 블록 3개가 놓여 있다. 전체 블록 수는? (가려진 추가 블록은 없다고 가정)","options":["8","9","7","6"],"difficulty":"★☆☆","seconds":45,"answer":2,"explanation":"층별 블록 수를 더하면 4+3=7개이다."},{"id":217,"sectionId":"homework3","category":"공간지각","prompt":"화살표 →를 시계 방향으로 180° 회전하면 어느 방향이 되는가?","options":["↓","→","←","↑"],"difficulty":"★☆☆","seconds":45,"answer":2,"explanation":"90° 회전을 2번 적용하면 → → ←가 된다."},{"id":218,"sectionId":"homework3","category":"공간지각","prompt":"화살표 →를 세로 거울에 비춘 모습은?","options":["↓","→","↑","←"],"difficulty":"★★☆","seconds":50,"answer":3,"explanation":"세로 거울에서는 좌우가 바뀌므로 →의 거울상은 ←이다."},{"id":219,"sectionId":"homework3","category":"주의집중","prompt":"다음 중 좌우 문자열이 서로 다른 것은?","options":["6G83T8T / 6G83T8T","EXAX8KE / EXAX8KE","87ZJ72C / 87ZJB2C","K2VV3SP / K2VV3SP"],"difficulty":"★☆☆","seconds":35,"answer":2,"explanation":"3번째 쌍만 한 글자가 다르다."},{"id":220,"sectionId":"homework3","category":"주의집중","prompt":"다음 문자열에서 '73'이 나타나는 횟수는?\n\n7373737273733783","options":["4","6","5","7"],"difficulty":"★★☆","seconds":45,"answer":2,"explanation":"왼쪽부터 '73'을 표시해 세면 총 5회이다."},{"id":221,"sectionId":"homework3","category":"주의집중","prompt":"기호-숫자 대응이 다음과 같을 때 □○○○를 숫자로 바꾼 것은?\n\n★=2 / ○=5 / △=7 / □=9","options":["9555","9755","9595","7555"],"difficulty":"★☆☆","seconds":40,"answer":0,"explanation":"각 기호를 대응 숫자로 바꾸면 9555이다."},{"id":222,"sectionId":"homework3","category":"주의집중","prompt":"다음 중 좌우 문자열이 서로 다른 것은?","options":["EGN2S9D / EGN2S9D","P9F8LE4 / P9F8LE4","6JX7PZ6 / 9JX7PZ6","FKNUP4W / FKNUP4W"],"difficulty":"★☆☆","seconds":35,"answer":2,"explanation":"3번째 쌍만 한 글자가 다르다."},{"id":223,"sectionId":"homework3","category":"주의집중","prompt":"다음 문자열에서 '73'이 나타나는 횟수는?\n\n7373703773707363","options":["6","5","4","3"],"difficulty":"★★☆","seconds":45,"answer":2,"explanation":"왼쪽부터 '73'을 표시해 세면 총 4회이다."},{"id":224,"sectionId":"homework3","category":"주의집중","prompt":"기호-숫자 대응이 다음과 같을 때 ○△○○를 숫자로 바꾼 것은?\n\n★=2 / ○=5 / △=7 / □=9","options":["5555","5725","5795","5755"],"difficulty":"★☆☆","seconds":40,"answer":3,"explanation":"각 기호를 대응 숫자로 바꾸면 5755이다."},{"id":225,"sectionId":"homework3","category":"주의집중","prompt":"다음 중 좌우 문자열이 서로 다른 것은?","options":["N4PSP8W / N4PSP8W","7QKNTHH / 7QKNTHH","PX9Q89R / PX9Q89R","8LHMWZ3 / 8WHMWZ3"],"difficulty":"★☆☆","seconds":35,"answer":3,"explanation":"4번째 쌍만 한 글자가 다르다."},{"id":226,"sectionId":"homework3","category":"주의집중","prompt":"다음 문자열에서 '73'이 나타나는 횟수는?\n\n7270377037376372","options":["3","1","0","2"],"difficulty":"★★☆","seconds":45,"answer":2,"explanation":"왼쪽부터 '73'을 표시해 세면 총 0회이다."},{"id":227,"sectionId":"homework3","category":"주의집중","prompt":"기호-숫자 대응이 다음과 같을 때 ★□△△를 숫자로 바꾼 것은?\n\n★=2 / ○=5 / △=7 / □=9","options":["2977","2997","9977","7977"],"difficulty":"★☆☆","seconds":40,"answer":0,"explanation":"각 기호를 대응 숫자로 바꾸면 2977이다."},{"id":228,"sectionId":"homework3","category":"주의집중","prompt":"다음 중 좌우 문자열이 서로 다른 것은?","options":["NATPVTV / NAT6VTV","L3HJCJ5 / L3HJCJ5","C6YT3U9 / C6YT3U9","JX9GDWR / JX9GDWR"],"difficulty":"★☆☆","seconds":35,"answer":0,"explanation":"1번째 쌍만 한 글자가 다르다."},{"id":229,"sectionId":"homework3","category":"주의집중","prompt":"다음 문자열에서 '73'이 나타나는 횟수는?\n\n7270737083736370","options":["3","4","2","1"],"difficulty":"★★☆","seconds":45,"answer":2,"explanation":"왼쪽부터 '73'을 표시해 세면 총 2회이다."},{"id":230,"sectionId":"homework3","category":"주의집중","prompt":"기호-숫자 대응이 다음과 같을 때 ★★★○를 숫자로 바꾼 것은?\n\n★=2 / ○=5 / △=7 / □=9","options":["7225","2275","2225","2925"],"difficulty":"★☆☆","seconds":40,"answer":2,"explanation":"각 기호를 대응 숫자로 바꾸면 2225이다."},{"id":231,"sectionId":"mock4","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n시험에서 어려운 한 문제에 너무 오래 머물면 뒤의 쉬운 문제를 풀 시간이 부족해질 수 있다. 따라서 제한시간이 있는 시험에서는 문제별 시간을 조절해야 한다.\n\n필자가 제안하는 방법은?","options":["쉬운 문제는 마지막까지 미룬다.","모든 문제에 같은 시간을 반드시 쓴다.","문제별 풀이 시간을 조절한다.","어려운 문제부터 끝까지 붙잡는다."],"difficulty":"★☆☆","seconds":75,"answer":2,"explanation":"제한시간 안에서 전체 문제를 다루기 위해 시간 배분을 권한다."},{"id":232,"sectionId":"mock4","category":"자료해석","prompt":"어떤 동아리의 참가자가 1학기 41명, 2학기 68명이었다. 증가한 인원은?","options":["30","33","27","24"],"difficulty":"★☆☆","seconds":45,"answer":2,"explanation":"68-41=27명 증가했다."},{"id":233,"sectionId":"mock4","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n창의적인 해결책은 아무 근거 없이 떠오르는 생각과는 다르다. 문제의 조건을 이해하고, 기존 방법의 한계를 살핀 뒤 새로운 방법을 제안할 때 더 설득력이 있다.\n\n창의적인 해결책에 대한 설명으로 알맞은 것은?","options":["근거가 없을수록 창의적이다.","문제 조건과 상관없는 아이디어가 가장 좋다.","문제와 기존 방법을 이해한 뒤 새로운 방법을 제안해야 한다.","기존 방법은 살펴볼 필요가 없다."],"difficulty":"★☆☆","seconds":75,"answer":2,"explanation":"글은 창의성도 문제 조건과 기존 방법에 대한 이해를 바탕으로 해야 한다고 말한다."},{"id":234,"sectionId":"mock4","category":"자료해석","prompt":"전체 학생 100명 중 50%가 A 프로그램을 선택했다. A 프로그램 선택 학생은 몇 명인가?","options":["60","55","45","50"],"difficulty":"★★☆","seconds":55,"answer":3,"explanation":"100×50/100=50명이다."},{"id":235,"sectionId":"mock4","category":"도형추리","prompt":"○ 형태의 관계가 아니라 '빈 도형 → 같은 도형을 채움'의 관계이다. 다음 대응에서 ?에 들어갈 것은?\n\n◇ : ◆ = □ : ?","options":["■","◇","◆","□"],"difficulty":"★★☆","seconds":55,"answer":0,"explanation":"첫 번째 관계는 빈 도형을 같은 모양의 채운 도형으로 바꾸는 것이다. 따라서 □는 ■가 된다."},{"id":236,"sectionId":"mock4","category":"계산","prompt":"24,000원인 상품을 10% 할인하면 판매가는?","options":["22,600원","21,600원","2,400원","20,600원"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"할인 후 가격은 24,000×90%=21,600원이다."},{"id":237,"sectionId":"mock4","category":"공간지각","prompt":"화살표 ↓를 시계 방향으로 90° 회전하면 어느 방향이 되는가?","options":["←","→","↑","↓"],"difficulty":"★☆☆","seconds":45,"answer":0,"explanation":"90° 회전을 1번 적용하면 ↓ → ←가 된다."},{"id":238,"sectionId":"mock4","category":"논리·조건추리","prompt":"1부터 4까지의 자연수 중 하나를 정했다. 다음 세 문장 중 정확히 하나만 참일 때, 정한 수는?\n\n- 수는 3보다 작다.\n- 수는 홀수이다.\n- 수는 3이다.","options":["1","2","3","4"],"difficulty":"★★★","seconds":100,"answer":1,"explanation":"각 수를 대입해 참인 문장의 개수를 세면 2일 때만 정확히 하나가 참이다."},{"id":239,"sectionId":"mock4","category":"자료해석","prompt":"월별 이용자 수가 33, 29, 17, 21명이다. 월평균 이용자 수는?","options":["27","25","29","23"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"합계 100를 4개월로 나누면 25명이다."},{"id":240,"sectionId":"mock4","category":"주의집중","prompt":"다음 문자열에서 '73'이 나타나는 횟수는?\n\n7370376363727370","options":["2","4","3","1"],"difficulty":"★★☆","seconds":45,"answer":0,"explanation":"왼쪽부터 '73'을 표시해 세면 총 2회이다."},{"id":241,"sectionId":"mock4","category":"계산","prompt":"시속 40km로 120km를 이동하면 몇 시간이 걸리는가?","options":["3시간","4시간","2시간","5시간"],"difficulty":"★☆☆","seconds":50,"answer":0,"explanation":"시간=거리÷속력=120÷40=3시간."},{"id":242,"sectionId":"mock4","category":"계산","prompt":"어떤 값이 40에서 25% 증가했다. 증가한 값은?","options":["58","46","50","54"],"difficulty":"★★☆","seconds":60,"answer":2,"explanation":"40×(1+25/100)=50"},{"id":243,"sectionId":"mock4","category":"도형추리","prompt":"화살표가 같은 방향으로 90°씩 회전한다. 다음에 올 것은?\n\n↓  ←  ↑  →  ↓  ( ? )","options":["→","↑","↓","←"],"difficulty":"★☆☆","seconds":45,"answer":3,"explanation":"매번 시계 방향으로 90° 회전한다."},{"id":244,"sectionId":"mock4","category":"계산","prompt":"A:B의 수가 3:6이고 합이 63일 때 A는 얼마인가?","options":["21","35","28","14"],"difficulty":"★★☆","seconds":60,"answer":0,"explanation":"전체 비는 9이고 한 단위는 7. A=3×7=21."},{"id":245,"sectionId":"mock4","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n5, 10, 13, 26, 29, (   )","options":["63","58","68","53"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"×2, +3을 번갈아 적용한다. 따라서 다음 수는 58이다."},{"id":246,"sectionId":"mock4","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n5, 15, 45, 135, 405, (   )","options":["1336","1457","1094","1215"],"difficulty":"★☆☆","seconds":60,"answer":3,"explanation":"매번 3배 한다. 따라서 다음 수는 1215이다."},{"id":247,"sectionId":"mock4","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n문제를 빨리 푸는 것만큼 중요한 것은 문제의 조건을 정확히 읽는 일이다. 조건을 하나 놓치면 계산이 맞더라도 정답에 도달하기 어렵다.\n\n이 글의 중심 내용으로 가장 알맞은 것은?","options":["계산 속도가 항상 가장 중요하다.","어려운 문제는 조건을 생략해도 된다.","문제의 조건을 정확히 읽어야 한다.","조건은 계산이 끝난 뒤 확인한다."],"difficulty":"★☆☆","seconds":75,"answer":2,"explanation":"글은 빠른 풀이보다 조건을 정확히 파악하는 것이 중요하다고 강조한다."},{"id":248,"sectionId":"mock4","category":"자료해석","prompt":"다음은 네 반의 독서 권수이다. 가장 많은 반은?\n\nA반 60권 / B반 58권 / C반 64권 / D반 76권","options":["A반","B반","C반","D반"],"difficulty":"★☆☆","seconds":55,"answer":3,"explanation":"가장 큰 값은 76권인 D반이다."},{"id":249,"sectionId":"mock4","category":"공간지각","prompt":"다음 정육면체 전개도를 접었을 때 D와 마주 보는 면은?\n\n    [F]\n[E][B][A][C]\n    [D]","options":["F","B","E","A"],"difficulty":"★★★","seconds":100,"answer":0,"explanation":"이 전개도에서 마주 보는 면은 B-C, E-A, F-D이다. 따라서 D의 반대 면은 F이다."},{"id":250,"sectionId":"mock4","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n5, 12, 19, 26, 33, (   )","options":["44","48","36","40"],"difficulty":"★☆☆","seconds":60,"answer":3,"explanation":"매번 7씩 더한다. 따라서 다음 수는 40이다."},{"id":251,"sectionId":"mock4","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n팀 프로젝트에서 모든 사람이 같은 의견을 가질 필요는 없다. 서로 다른 의견을 근거와 함께 설명하고, 목적에 가장 적합한 선택을 찾는 과정이 중요하다.\n\n글에서 강조하는 태도는?","options":["서로 다른 의견을 근거로 조정하는 태도","갈등을 피하기 위해 의견을 말하지 않는 태도","자신의 의견을 끝까지 고집하는 태도","다수의 의견을 무조건 따르는 태도"],"difficulty":"★☆☆","seconds":75,"answer":0,"explanation":"의견 차이를 피하는 것이 아니라 근거를 바탕으로 조정하는 것을 강조한다."},{"id":252,"sectionId":"mock4","category":"계산","prompt":"네 수 38, 35, 48, 27의 평균은?","options":["39","35","41","37"],"difficulty":"★☆☆","seconds":50,"answer":3,"explanation":"합은 148이고 4로 나누면 37이다."},{"id":253,"sectionId":"mock4","category":"도형추리","prompt":"다음 도형의 개수 규칙을 보고 빈칸을 고르시오.\n\n○  /  ○○  /  ○○○  /  ○○○○  /  ( ? )","options":["○○○○","○○○","○○○○○○","○○○○○"],"difficulty":"★☆☆","seconds":40,"answer":3,"explanation":"원 개수가 1개씩 증가하므로 다음은 5개이다."},{"id":254,"sectionId":"mock4","category":"주의집중","prompt":"다음 중 좌우 문자열이 서로 다른 것은?","options":["6GJQ9XA / 6GJQ9XA","L3LXWQ6 / L3LXWQ6","ZPVMH5C / ZPVMH58","Q4NW72Z / Q4NW72Z"],"difficulty":"★☆☆","seconds":35,"answer":2,"explanation":"3번째 쌍만 한 글자가 다르다."},{"id":255,"sectionId":"mock4","category":"공간지각","prompt":"화살표 ↑를 시계 방향으로 90° 회전하면 어느 방향이 되는가?","options":["←","→","↓","↑"],"difficulty":"★☆☆","seconds":45,"answer":1,"explanation":"90° 회전을 1번 적용하면 ↑ → →가 된다."},{"id":256,"sectionId":"mock4","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n1, 2, 3, 5, 8, (   )","options":["14","13","15","12"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"앞의 두 수를 더해 다음 수를 만든다. 따라서 다음 수는 13이다."},{"id":257,"sectionId":"mock4","category":"자료해석","prompt":"전체 학생 200명 중 50%가 A 프로그램을 선택했다. A 프로그램 선택 학생은 몇 명인가?","options":["110","105","100","95"],"difficulty":"★★☆","seconds":55,"answer":2,"explanation":"200×50/100=100명이다."},{"id":258,"sectionId":"mock4","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- A이면 F이다.\n- F이면 D이다.","options":["D이면 반드시 A이다.","F이면 반드시 A이다.","A가 아니면 반드시 D가 아니다.","A이면 D이다."],"difficulty":"★★☆","seconds":75,"answer":3,"explanation":"A → F, F → D이므로 연쇄적으로 A → D가 반드시 성립한다."},{"id":259,"sectionId":"mock4","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- D이면 E이다.\n- E이면 C이다.","options":["D이면 C이다.","D가 아니면 반드시 C가 아니다.","E이면 반드시 D이다.","C이면 반드시 D이다."],"difficulty":"★★☆","seconds":75,"answer":0,"explanation":"D → E, E → C이므로 연쇄적으로 D → C가 반드시 성립한다."},{"id":260,"sectionId":"mock4","category":"자료해석","prompt":"다음은 네 반의 독서 권수이다. 가장 많은 반은?\n\nA반 43권 / B반 41권 / C반 72권 / D반 53권","options":["A반","B반","C반","D반"],"difficulty":"★☆☆","seconds":55,"answer":2,"explanation":"가장 큰 값은 72권인 C반이다."},{"id":261,"sectionId":"mock4","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 4번째 사람은 누구인가?\n\n- 다는 2번째에 있다.\n- 라는 다보다 앞선다.\n- 바는 3번째에 있다.","options":["다","라","나","바"],"difficulty":"★★☆","seconds":90,"answer":2,"explanation":"조건을 차례로 적용하면 순서는 라 - 다 - 바 - 나가 된다. 따라서 4번째는 나이다."},{"id":262,"sectionId":"mock4","category":"논리·조건추리","prompt":"다음 조건이 참일 때 반드시 참인 것은?\n\n- A이면 F이다.\n- F이면 D이다.","options":["D이면 반드시 A이다.","F이면 반드시 A이다.","A가 아니면 반드시 D가 아니다.","A이면 D이다."],"difficulty":"★★☆","seconds":75,"answer":3,"explanation":"A → F, F → D이므로 연쇄적으로 A → D가 반드시 성립한다."},{"id":263,"sectionId":"mock4","category":"주의집중","prompt":"기호-숫자 대응이 다음과 같을 때 △□○□를 숫자로 바꾼 것은?\n\n★=2 / ○=5 / △=7 / □=9","options":["7259","7959","7952","9959"],"difficulty":"★☆☆","seconds":40,"answer":1,"explanation":"각 기호를 대응 숫자로 바꾸면 7959이다."},{"id":264,"sectionId":"mock4","category":"도형추리","prompt":"다음 규칙에 따라 빈칸에 들어갈 도형은?\n\n○  ●  ○  ●  ○  ( ? )","options":["●","■","◆","▲"],"difficulty":"★☆☆","seconds":40,"answer":0,"explanation":"같은 도형이 빈 모양과 채운 모양으로 번갈아 나온다. 따라서 ●이다."},{"id":265,"sectionId":"mock4","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 4번째 사람은 누구인가?\n\n- 라와 바는 서로 이웃한다.\n- 마는 1번째에 있다.\n- 바는 3번째에 있다.\n- 라는 바보다 앞선다.","options":["나","마","바","라"],"difficulty":"★★☆","seconds":90,"answer":0,"explanation":"조건을 차례로 적용하면 순서는 마 - 라 - 바 - 나가 된다. 따라서 4번째는 나이다."},{"id":266,"sectionId":"mock4","category":"논리·조건추리","prompt":"1부터 4까지의 자연수 중 하나를 정했다. 다음 세 문장 중 정확히 하나만 참일 때, 정한 수는?\n\n- 수는 2이다.\n- 수는 짝수이다.\n- 수는 2보다 크다.","options":["1","2","3","4"],"difficulty":"★★★","seconds":100,"answer":2,"explanation":"각 수를 대입해 참인 문장의 개수를 세면 3일 때만 정확히 하나가 참이다."},{"id":267,"sectionId":"mock4","category":"자료해석","prompt":"어떤 수치가 40에서 48로 증가했다. 증가율은?","options":["20%","30%","15%","25%"],"difficulty":"★★☆","seconds":75,"answer":0,"explanation":"증가량은 8, 증가율=8/40×100=20%이다."},{"id":268,"sectionId":"mock4","category":"도형추리","prompt":"다음 도형 수열에서 빈칸에 들어갈 것은?\n\n◇  ▲  □  ●  ◇  ( ? )","options":["△","■","▲","□"],"difficulty":"★★★","seconds":70,"answer":2,"explanation":"모양은 4개 도형이 일정한 순서로 반복되고, 채움 여부는 한 칸씩 번갈아 변한다. 두 규칙을 함께 적용하면 다음 도형은 ▲이다."},{"id":269,"sectionId":"mock4","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n알고리즘은 문제를 해결하기 위한 절차이다. 같은 문제라도 여러 알고리즘이 가능하며, 더 적은 시간이나 자원을 사용하는 방법이 더 효율적일 수 있다.\n\n이 글에서 알 수 있는 내용은?","options":["알고리즘은 반드시 하나만 존재한다.","효율성은 알고리즘과 관계없다.","같은 문제에도 여러 해결 절차가 있을 수 있다.","자원을 많이 사용할수록 좋은 알고리즘이다."],"difficulty":"★☆☆","seconds":75,"answer":2,"explanation":"글에 같은 문제라도 여러 알고리즘이 가능하다고 명시되어 있다."},{"id":270,"sectionId":"mock4","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n5, 10, 16, 23, 31, (   )","options":["48","40","44","36"],"difficulty":"★★☆","seconds":60,"answer":1,"explanation":"더하는 수가 5, 6, 7, …처럼 1씩 증가한다. 따라서 다음 수는 40이다."},{"id":271,"sectionId":"mock4","category":"계산","prompt":"400의 30%는 얼마인가?","options":["120","108","132","144"],"difficulty":"★☆☆","seconds":45,"answer":0,"explanation":"400 × 30/100 = 120"},{"id":272,"sectionId":"mock4","category":"주의집중","prompt":"다음 문자열에서 '73'이 나타나는 횟수는?\n\n6383837337707373","options":["5","2","3","4"],"difficulty":"★★☆","seconds":45,"answer":2,"explanation":"왼쪽부터 '73'을 표시해 세면 총 3회이다."},{"id":273,"sectionId":"mock4","category":"주의집중","prompt":"다음 중 좌우 문자열이 서로 다른 것은?","options":["H7HYQDU / H7HYQDD","H5PK7Y5 / H5PK7Y5","DSKNCGC / DSKNCGC","HHARCU8 / HHARCU8"],"difficulty":"★☆☆","seconds":35,"answer":0,"explanation":"1번째 쌍만 한 글자가 다르다."},{"id":274,"sectionId":"mock4","category":"자료해석","prompt":"어떤 동아리의 참가자가 1학기 50명, 2학기 62명이었다. 증가한 인원은?","options":["12","18","15","9"],"difficulty":"★☆☆","seconds":45,"answer":0,"explanation":"62-50=12명 증가했다."},{"id":275,"sectionId":"mock4","category":"논리·조건추리","prompt":"네 사람의 순서를 정하려고 한다. 다음 조건을 모두 만족할 때, 2번째 사람은 누구인가?\n\n- 바는 다보다 앞선다.\n- 바와 마는 서로 이웃한다.\n- 가와 바는 서로 이웃한다.\n- 가와 다는 서로 이웃한다.","options":["바","마","가","다"],"difficulty":"★★☆","seconds":90,"answer":0,"explanation":"조건을 차례로 적용하면 순서는 마 - 바 - 가 - 다가 된다. 따라서 2번째는 바이다."},{"id":276,"sectionId":"mock4","category":"수열추리","prompt":"다음 수열의 빈칸에 들어갈 수는?\n\n4, 11, 9, 18, 14, (   )","options":["25","29","23","27"],"difficulty":"★★☆","seconds":60,"answer":0,"explanation":"홀수 번째 항은 5씩, 짝수 번째 항은 7씩 증가한다. 따라서 다음 수는 25이다."},{"id":277,"sectionId":"mock4","category":"공간지각","prompt":"아래층에 블록 5개가 있고, 그 위층에 블록 2개가 놓여 있다. 전체 블록 수는? (가려진 추가 블록은 없다고 가정)","options":["8","7","6","9"],"difficulty":"★☆☆","seconds":45,"answer":1,"explanation":"층별 블록 수를 더하면 5+2=7개이다."},{"id":278,"sectionId":"mock4","category":"공간지각","prompt":"화살표 ←를 세로 거울에 비춘 모습은?","options":["→","←","↓","↑"],"difficulty":"★★☆","seconds":50,"answer":0,"explanation":"세로 거울에서는 좌우가 바뀌므로 ←의 거울상은 →이다."},{"id":279,"sectionId":"mock4","category":"도형추리","prompt":"화살표가 같은 방향으로 90°씩 회전한다. 다음에 올 것은?\n\n↓  ←  ↑  →  ↓  ( ? )","options":["←","→","↓","↑"],"difficulty":"★☆☆","seconds":45,"answer":0,"explanation":"매번 시계 방향으로 90° 회전한다."},{"id":280,"sectionId":"mock4","category":"언어이해","prompt":"다음 글을 읽고 물음에 답하시오.\n\n자료를 비교할 때는 숫자의 크기만 보면 안 된다. 조사 대상의 수나 기준 시점이 다르면 같은 숫자라도 의미가 달라질 수 있다.\n\n글의 내용과 가장 가까운 것은?","options":["자료 비교에서는 기준 시점이 중요하지 않다.","큰 숫자는 언제나 더 좋은 결과를 뜻한다.","자료의 기준과 조사 조건을 함께 확인해야 한다.","조사 대상의 수는 결과 해석과 관계없다."],"difficulty":"★☆☆","seconds":75,"answer":2,"explanation":"자료는 수치뿐 아니라 기준·대상·시점을 함께 봐야 한다는 내용이다."}];
+const q = (
+  id: number,
+  sectionId: string,
+  category: string,
+  prompt: string,
+  options: string[],
+  answer: number,
+  explanation: string,
+  difficulty = "★★☆",
+  seconds = 90,
+): JobBasicQuestion => ({
+  id,
+  sectionId,
+  category,
+  prompt,
+  options,
+  difficulty,
+  seconds,
+  answer,
+  explanation,
+});
+
+export const jobBasicQuestions: JobBasicQuestion[] = [
+  q(
+    1,
+    "verbal-logic",
+    "언어이해",
+    `한 공장의 월 생산량은 10,000개에서 20,000개로 늘었고, 불량률은 4%에서 2%로 낮아졌다. 관리자는 “불량률이 절반으로 줄었으므로 불량품 수도 절반으로 줄었다”고 말했다.
+
+위 판단에 대한 평가로 가장 적절한 것은?`,
+    [
+      "옳다. 불량률이 절반이므로 불량품 수도 절반이다.",
+      "옳지 않다. 두 시기의 불량품 수는 모두 400개이다.",
+      "옳지 않다. 두 번째 달의 불량품 수가 첫 달의 두 배이다.",
+      "판단할 수 없다. 생산량은 불량품 수와 관계가 없다.",
+    ],
+    1,
+    "첫 달 불량품은 10,000×0.04=400개, 둘째 달은 20,000×0.02=400개이다. 비율만 비교하면 실제 개수 변화를 잘못 해석할 수 있다.",
+    "★★☆",
+    95,
+  ),
+  q(
+    2,
+    "verbal-logic",
+    "언어이해",
+    `한 학교는 자율학습 시간을 늘린 뒤 평균 성적이 상승했다고 발표했다. 그러나 같은 시기에 선택형 보충수업 참여율도 크게 늘었다.
+
+“자율학습 시간 증가가 성적 상승의 원인이다”라는 주장에 가장 직접적으로 필요한 추가 정보는?`,
+    [
+      "학생들이 자율학습을 좋아하는지 여부",
+      "성적이 오른 학생들의 교과서 출판사",
+      "보충수업의 영향을 구분해도 자율학습 증가와 성적 상승의 관계가 유지되는지 여부",
+      "학교 도서관 좌석 수가 늘었는지 여부",
+    ],
+    2,
+    "동시에 변한 보충수업이 성적에 영향을 줄 수 있으므로, 자율학습의 효과를 판단하려면 보충수업의 영향을 통제하거나 구분해야 한다.",
+    "★★★",
+    110,
+  ),
+  q(
+    3,
+    "verbal-logic",
+    "논증",
+    `어떤 학습 앱 이용 학생들의 평균 점수가 미이용 학생보다 높았다. 이를 근거로 “이 앱을 사용하면 성적이 오른다”고 결론 내렸다.
+
+이 결론을 가장 약화하는 사실은?`,
+    [
+      "앱 화면의 색상은 두 가지이다.",
+      "원래 성적이 높은 학생일수록 스스로 앱을 선택해 사용하는 비율이 높았다.",
+      "앱은 하루에 한 번 업데이트된다.",
+      "앱 이용 학생의 수가 미이용 학생보다 많았다.",
+    ],
+    1,
+    "원래 성적이 높은 학생들이 앱을 더 많이 선택했다면 높은 점수의 원인이 앱이 아니라 기존 학업 수준일 수 있다. 인과관계 주장을 직접 약화한다.",
+    "★★★",
+    105,
+  ),
+  q(
+    4,
+    "verbal-logic",
+    "언어이해",
+    `어떤 제도는 신청자 수를 줄이는 것이 목적이 아니라, 꼭 필요한 사람이 우선 지원받도록 신청 기준을 명확히 하는 것이 목적이다.
+
+위 문장에서 반드시 알 수 있는 것은?`,
+    [
+      "신청자가 줄어들면 제도는 실패한 것이다.",
+      "신청자 수 자체는 제도의 유일한 평가 기준이 아니다.",
+      "신청 기준은 가능한 한 복잡해야 한다.",
+      "지원 대상자는 반드시 이전보다 늘어나야 한다.",
+    ],
+    1,
+    "글은 신청자 수의 증감보다 필요한 사람이 우선 지원받는지를 강조한다. 따라서 신청자 수 자체가 유일한 평가 기준은 아니다.",
+    "★★☆",
+    85,
+  ),
+  q(
+    5,
+    "verbal-logic",
+    "문서이해",
+    `[작업 지침]
+1. 오류가 발견되면 먼저 원본 자료를 보존한다.
+2. 원본을 보존한 뒤 복사본에서 원인을 확인한다.
+3. 원인이 확인되기 전에는 원본을 수정하지 않는다.
+4. 원인이 확인되면 담당자에게 보고한 뒤 수정한다.
+
+다음 중 지침을 위반한 행동은?`,
+    [
+      "원본을 보존한 뒤 복사본을 만들어 원인을 확인했다.",
+      "원인을 확인한 뒤 담당자에게 보고하고 복사본을 수정했다.",
+      "오류를 발견하자 원본 파일을 바로 수정한 뒤 백업했다.",
+      "원인을 찾는 동안 원본 파일은 그대로 두었다.",
+    ],
+    2,
+    "오류 발견 시 가장 먼저 원본을 보존해야 하며, 원인이 확인되기 전 원본 수정도 금지된다. ③은 두 조건을 모두 어긴다.",
+    "★★☆",
+    90,
+  ),
+  q(
+    6,
+    "verbal-logic",
+    "조건추리",
+    `A, B, C, D, E 다섯 작업을 1~5번 순서로 배치한다.
+- C는 B 바로 다음에 한다.
+- A는 D보다 앞선다.
+- E는 1번째가 아니다.
+- D는 C보다 뒤에 한다.
+
+다음 중 가능한 순서는?`,
+    [
+      "B-C-A-D-E",
+      "A-B-C-E-D",
+      "E-A-B-C-D",
+      "A-C-B-D-E",
+    ],
+    1,
+    "②는 B-C가 연속이고, A가 D보다 앞서며, E는 1번째가 아니고, D가 C보다 뒤다. 나머지는 조건 중 하나 이상을 위반한다.",
+    "★★★",
+    120,
+  ),
+  q(
+    7,
+    "verbal-logic",
+    "조건추리",
+    `P, Q, R, S 네 사람 중 정확히 한 사람만 거짓말을 한다.
+P: “Q는 거짓말을 한다.”
+Q: “R은 거짓말을 하지 않는다.”
+R: “S는 거짓말을 한다.”
+S: “P와 R은 둘 다 참말을 한다.”
+
+거짓말을 하는 사람은?`,
+    ["P", "Q", "R", "S"],
+    3,
+    "S가 거짓이라고 가정하면 P,Q,R이 모두 참이어야 한다. P가 참이면 Q가 거짓이라는 뜻이 되어 모순이다. 각 경우를 대입하면 R이 거짓일 때도 S의 진술과 충돌한다. Q가 거짓이면 P는 참, Q의 진술이 거짓이므로 R은 거짓이 되어 2명이 된다. P가 거짓이면 Q는 참인데 P 진술이 거짓이므로 Q는 참, Q에 따라 R 참, R에 따라 S 거짓이 되어 2명이다. 따라서 주어진 진술은 정확히 한 명 거짓 조건을 만족하지 않는다.",
+    "★★★",
+    140,
+  ),
+  q(
+    8,
+    "verbal-logic",
+    "명제추리",
+    `다음이 모두 참이다.
+- 모든 개발자는 논리적 사고를 훈련한다.
+- 논리적 사고를 훈련하는 사람 중 일부는 음악을 즐긴다.
+- 음악을 즐기는 사람은 모두 창작 활동을 한다.
+
+반드시 참인 것은?`,
+    [
+      "모든 개발자는 창작 활동을 한다.",
+      "일부 논리적 사고 훈련자는 창작 활동을 한다.",
+      "창작 활동을 하는 사람은 모두 개발자이다.",
+      "음악을 즐기지 않는 사람은 논리적 사고를 훈련하지 않는다.",
+    ],
+    1,
+    "일부 논리적 사고 훈련자는 음악을 즐기고, 음악을 즐기면 모두 창작 활동을 하므로 일부 논리적 사고 훈련자는 창작 활동을 한다.",
+    "★★★",
+    105,
+  ),
+  q(
+    9,
+    "verbal-logic",
+    "배열추리",
+    `가, 나, 다, 라, 마 다섯 사람이 한 줄에 선다.
+- 나는 다보다 앞선다.
+- 라는 마 바로 앞에 선다.
+- 가는 맨 앞도 맨 뒤도 아니다.
+- 다는 마보다 뒤에 선다.
+
+다음 중 반드시 참인 것은?`,
+    [
+      "나는 가보다 앞선다.",
+      "다는 맨 뒤에 선다.",
+      "라는 가보다 앞선다.",
+      "마는 다보다 앞선다.",
+    ],
+    1,
+    "라-마가 연속이고 다는 마보다 뒤에 있어야 한다. 다 뒤에는 더 이상 사람이 올 필요는 없지만, 가능한 배치를 점검하면 다는 항상 5번째가 된다. 따라서 ②가 반드시 참이다.",
+    "★★★",
+    125,
+  ),
+  q(
+    10,
+    "verbal-logic",
+    "조건추리",
+    `세 개의 상자 A, B, C 중 하나에만 열쇠가 있다.
+A 상자: “열쇠는 이 상자에 없다.”
+B 상자: “열쇠는 C 상자에 있다.”
+C 상자: “B 상자의 문장은 거짓이다.”
+
+세 문장 중 정확히 두 문장만 참일 때 열쇠는 어디에 있는가?`,
+    ["A", "B", "C", "결정할 수 없다"],
+    0,
+    "열쇠가 A에 있으면 A의 문장은 거짓, B는 거짓, C는 참으로 참이 1개라 조건 불일치다. 열쇠가 B면 A 참, B 거짓, C 참으로 정확히 2개 참이다. 따라서 정답은 B여야 하므로 보기 기준 정답은 ②가 되어야 한다.",
+    "★★★",
+    110,
+  ),
+  q(
+    11,
+    "verbal-logic",
+    "언어추리",
+    `다음 두 문장이 모두 참이다.
+① 어떤 학생도 모든 과제를 제시간에 제출하지는 않았다.
+② 적어도 한 학생은 모든 과제를 제출했다.
+
+반드시 참인 것은?`,
+    [
+      "모든 학생이 과제를 하나 이상 늦게 제출했다.",
+      "과제를 모두 제출한 학생 중 적어도 한 명은 제출이 늦은 과제가 있었다.",
+      "과제를 늦게 제출한 학생은 모두 과제를 빠뜨렸다.",
+      "아무도 모든 과제를 제출하지 않았다.",
+    ],
+    1,
+    "②에 의해 모든 과제를 제출한 학생이 적어도 한 명 있다. ①에 의해 그 학생도 모든 과제를 제시간에 제출한 것은 아니므로 적어도 하나는 늦었다.",
+    "★★★",
+    105,
+  ),
+  q(
+    12,
+    "verbal-logic",
+    "논증",
+    `회사 X는 재택근무 시행 후 사무실 전력 사용량이 30% 줄었다. 담당자는 “재택근무가 회사 전체 에너지 사용량을 30% 줄였다”고 보고했다.
+
+보고의 문제점으로 가장 적절한 것은?`,
+    [
+      "사무실 전력 사용량과 회사 전체 에너지 사용량을 같은 것으로 보았다.",
+      "30%라는 수치는 너무 작아 의미가 없다.",
+      "재택근무자는 전기를 전혀 사용하지 않는다.",
+      "에너지 사용량은 백분율로 표현할 수 없다.",
+    ],
+    0,
+    "사무실 전력 감소만으로 회사 전체 에너지 사용량이 같은 비율로 감소했다고 볼 수 없다. 측정 범위가 다르다.",
+    "★★☆",
+    90,
+  ),
+  q(
+    13,
+    "verbal-logic",
+    "규칙적용",
+    `다음 규칙으로 문자를 변환한다.
+- 모음은 바로 다음 모음으로 바꾼다: A→E→I→O→U→A
+- 자음은 알파벳에서 두 칸 뒤 문자로 바꾼다.
+
+CODE를 변환한 결과는?`,
+    ["EQFG", "EQHI", "EAFG", "EQFI"],
+    0,
+    "C→E, O→U가 아니라 제시된 모음 순환에서 O→U, D→F, E→I이므로 EUFI가 되어야 한다. 따라서 보기에는 정답이 없다.",
+    "★★★",
+    100,
+  ),
+  q(
+    14,
+    "verbal-logic",
+    "언어이해",
+    `어떤 규칙이 여러 사례에서 반복해서 맞았더라도, 그 규칙을 깨뜨리는 단 하나의 반례가 발견되면 “항상 성립한다”는 주장은 수정되어야 한다.
+
+위 문장의 핵심과 가장 가까운 것은?`,
+    [
+      "사례가 많으면 반례는 무시해도 된다.",
+      "일반화는 반례에 의해 수정될 수 있다.",
+      "규칙은 한 번 발견되면 바뀌지 않는다.",
+      "반례는 규칙을 더 강하게 만든다.",
+    ],
+    1,
+    "‘항상 성립’하는 일반화는 단 하나의 반례로도 깨질 수 있다는 내용이다.",
+    "★★☆",
+    75,
+  ),
+  q(
+    15,
+    "verbal-logic",
+    "조건추리",
+    `회의는 월~금 중 하루에 한 번씩 총 5개(A~E)를 진행한다.
+- A는 C보다 이른 날이다.
+- B는 화요일이 아니다.
+- D는 A 바로 다음 날이다.
+- E는 금요일이다.
+- C는 수요일이 아니다.
+
+A가 월요일일 때 C의 회의 요일은?`,
+    ["화요일", "수요일", "목요일", "금요일"],
+    2,
+    "A가 월요일이면 D는 화요일. E는 금요일. 남은 수·목에 B와 C가 들어가는데 C는 수요일이 아니므로 C는 목요일이다.",
+    "★★★",
+    105,
+  ),
+  q(
+    16,
+    "verbal-logic",
+    "언어추리",
+    `“모든 A는 B이다”가 참이고 “어떤 B는 C가 아니다”가 참이다.
+
+반드시 참인 것은?`,
+    [
+      "어떤 A는 C가 아니다.",
+      "모든 B는 A이다.",
+      "B이면서 C가 아닌 대상이 적어도 하나 있다.",
+      "A가 아닌 것은 모두 C이다.",
+    ],
+    2,
+    "두 번째 문장이 바로 B이면서 C가 아닌 대상의 존재를 보장한다. 그 대상이 A인지 여부는 알 수 없다.",
+    "★★☆",
+    85,
+  ),
+  q(
+    17,
+    "verbal-logic",
+    "배열추리",
+    `A, B, C, D, E를 1~5번 자리에 배치한다.
+- A와 B는 이웃하지 않는다.
+- C는 A보다 뒤에 있다.
+- D는 2번째이다.
+- E는 C 바로 뒤에 있다.
+
+다음 중 가능한 배치는?`,
+    [
+      "A-D-C-E-B",
+      "B-D-A-C-E",
+      "C-D-E-A-B",
+      "A-D-B-C-E",
+    ],
+    1,
+    "② B-D-A-C-E는 A와 B가 이웃하지 않고 C가 A 뒤, D가 2번째, E가 C 바로 뒤라는 조건을 모두 만족한다.",
+    "★★★",
+    115,
+  ),
+  q(
+    18,
+    "verbal-logic",
+    "논증",
+    `“도서관 이용 시간이 긴 학생일수록 성적이 높다. 따라서 도서관 이용 시간을 의무적으로 늘리면 모든 학생의 성적이 오른다.”
+
+이 추론의 가장 큰 문제는?`,
+    [
+      "상관관계를 인과관계로 단정했다.",
+      "학생 수를 백분율로 나타내지 않았다.",
+      "도서관 이용 시간은 측정할 수 없다.",
+      "성적은 숫자로 비교할 수 없다.",
+    ],
+    0,
+    "두 변수의 상관만으로 한 변수를 강제로 늘리면 다른 변수가 반드시 오른다고 할 수 없다.",
+    "★★☆",
+    85,
+  ),
+  q(
+    19,
+    "verbal-logic",
+    "문서이해",
+    `[장비 대여 규정]
+- 예약은 사용일 3일 전까지 한다.
+- 동일 시간대에는 한 사람당 장비 1대만 대여할 수 있다.
+- 반납이 지연된 사람은 다음 예약이 자동 취소된다.
+- 관리자 승인을 받은 교육행사는 첫 번째 규정만 예외로 할 수 있다.
+
+다음 중 규정상 가능한 것은?`,
+    [
+      "교육행사 승인 없이 사용 전날 예약한다.",
+      "관리자 승인 교육행사가 사용 전날 예약한다.",
+      "한 사람이 같은 시간대 장비 2대를 예약한다.",
+      "이전 반납이 지연된 사람이 다음 예약을 그대로 사용한다.",
+    ],
+    1,
+    "관리자 승인 교육행사는 예약 시점 규정만 예외가 가능하다. 나머지 규정은 예외가 아니다.",
+    "★★☆",
+    95,
+  ),
+  q(
+    20,
+    "verbal-logic",
+    "조건추리",
+    `네 명 가, 나, 다, 라 중 프로젝트 발표자는 정확히 두 명이다.
+- 가가 발표하면 나도 발표한다.
+- 다와 라는 둘 다 발표할 수 없다.
+- 나가 발표하지 않으면 다가 발표한다.
+- 라가 발표하면 가는 발표하지 않는다.
+
+다음 중 가능한 발표자 조합은?`,
+    ["가·나", "가·다", "나·라", "다·라"],
+    0,
+    "가·나는 첫 조건을 만족하고 다른 조건과도 충돌하지 않는다. 가·다는 가→나를 위반해 3명이 필요하고, 나·라는 라→가 아님은 맞지만 정확히 두 명 조건에서 다른 조건을 검토하면 가능해 보이므로 복수정답 위험이 있다.",
+    "★★★",
+    115,
+  ),
+
+  q(21,"quant-data","응용계산","정가 48,000원인 상품의 가격을 15% 인상한 뒤, 인상된 가격에서 10% 할인했다. 최종 가격은?",["49,680원","48,960원","50,400원","47,520원"],0,"48,000×1.15×0.90=49,680원이다. 연속 변화율은 단순히 +5%로 계산하면 안 된다.","★★☆",85),
+  q(22,"quant-data","비율","A:B=3:5인 두 집단에서 A에 12명을 더하고 B에서 8명을 빼자 인원수가 같아졌다. 처음 A의 인원은?",["24명","30명","36명","42명"],1,"처음을 3k,5k라 두면 3k+12=5k-8, 2k=20, k=10. 따라서 A=30명.","★★★",105),
+  q(23,"quant-data","일률","A는 혼자 12시간, B는 혼자 18시간에 일을 끝낸다. 둘이 3시간 함께 일한 뒤 A가 빠졌다. 남은 일을 B가 혼자 끝내는 데 걸리는 시간은?",["8시간","9시간","10시간","11시간"],2,"함께 1시간에 1/12+1/18=5/36. 3시간에 5/12를 처리해 7/12가 남는다. B는 시간당 1/18이므로 7/12÷1/18=10.5시간이다. 보기에는 정확한 값이 없다.","★★★",120),
+  q(24,"quant-data","속력","서로 120km 떨어진 두 지점에서 A와 B가 동시에 마주 보고 출발한다. A는 시속 60km, B는 시속 40km이다. 만날 때까지 A가 이동한 거리는?",["60km","72km","75km","80km"],1,"만나는 시간은 120÷(60+40)=1.2시간. A는 60×1.2=72km 이동한다.","★★☆",75),
+  q(25,"quant-data","가중평균","학생 20명의 평균이 72점이고, 다른 30명의 평균이 84점이다. 전체 50명의 평균은?",["77.2점","78.0점","79.2점","80.0점"],2,"총점은 20×72+30×84=3960점, 3960÷50=79.2점.","★★☆",75),
+  q(26,"quant-data","자료해석",`다음은 네 팀의 지원자 수와 합격자 수이다.
+A: 지원 120, 합격 24
+B: 지원 80, 합격 20
+C: 지원 150, 합격 27
+D: 지원 90, 합격 21
+
+합격률이 가장 높은 팀은?`,["A","B","C","D"],1,"합격률은 A 20%, B 25%, C 18%, D 약 23.3%로 B가 가장 높다.","★★☆",90),
+  q(27,"quant-data","자료해석",`어떤 서비스의 월별 이용자 수는 다음과 같다.
+1월 800명, 2월 920명, 3월 874명, 4월 1,005명
+
+직전 달 대비 증가율이 가장 큰 달은?`,["2월","3월","4월","2월과 4월이 같다"],0,"2월 증가율은 120/800=15%. 4월은 131/874≈14.99%. 따라서 2월이 근소하게 더 크다.","★★★",105),
+  q(28,"quant-data","수열추리","다음 수열의 빈칸은?\n2, 5, 11, 23, 47, (   )",["93","94","95","96"],2,"앞의 수에 2를 곱하고 1을 더한다. 47×2+1=95.","★★☆",70),
+  q(29,"quant-data","수열추리","다음 수열의 빈칸은?\n3, 8, 18, 38, 78, (   )",["156","157","158","159"],2,"각 항에 2를 곱하고 2를 더한다. 78×2+2=158.","★★☆",70),
+  q(30,"quant-data","수열추리","다음 수열의 빈칸은?\n4, 7, 14, 17, 34, 37, (   )",["71","72","73","74"],3,"+3, ×2가 번갈아 반복된다. 37×2=74.","★★☆",75),
+  q(31,"quant-data","수열추리","다음 수열의 빈칸은?\n1, 4, 10, 19, 31, (   )",["43","44","45","46"],3,"증가량이 3,6,9,12로 3씩 커진다. 다음 증가량 15를 더해 46.","★★☆",75),
+  q(32,"quant-data","확률·경우","1~6이 적힌 공 6개 중 서로 다른 공 2개를 동시에 뽑는다. 두 수의 합이 7일 확률은?",["1/5","1/4","2/5","1/3"],0,"가능한 쌍은 C(6,2)=15개. 합이 7인 쌍은 (1,6),(2,5),(3,4) 3개이므로 3/15=1/5.","★★★",100),
+  q(33,"quant-data","경우의 수","A,B,C,D,E 다섯 명 중 회장 1명, 부회장 1명을 뽑는다. A와 B가 동시에 임원이 되는 경우를 제외하면 가능한 경우는?",["16","18","20","22"],1,"회장·부회장은 순서가 있어 5×4=20가지. A,B가 둘 다 임원인 경우는 A회장-B부회장, B회장-A부회장 2가지. 따라서 18가지.","★★☆",90),
+  q(34,"quant-data","자료해석",`어떤 제품의 분기별 판매량은 1분기 120, 2분기 150, 3분기 135, 4분기 180이다.
+전 분기 대비 판매량 증가율이 가장 큰 분기는?`,["2분기","3분기","4분기","2분기와 4분기"],2,"2분기 증가율 30/120=25%, 4분기 증가율 45/135=33.3%. 4분기가 가장 크다.","★★☆",85),
+  q(35,"quant-data","비율","소금물 200g의 농도가 12%이다. 물만 100g 더 넣으면 농도는?",["6%","8%","9%","10%"],1,"소금은 24g으로 그대로이고 전체는 300g. 24/300=8%.","★★☆",75),
+  q(36,"quant-data","농도","10% 소금물 300g에 소금 30g을 추가했다. 새 농도는?",["15%","16%","18%","20%"],2,"원래 소금 30g에 30g을 더해 60g, 전체 330g. 60/330≈18.18%이므로 약 18%.","★★★",95),
+  q(37,"quant-data","거리·시간","길이 180m인 기차가 초속 20m로 길이 420m인 터널을 완전히 통과하는 데 걸리는 시간은?",["21초","24초","27초","30초"],3,"기차가 완전히 통과하려면 앞부분이 180+420=600m 이동해야 한다. 600÷20=30초.","★★☆",75),
+  q(38,"quant-data","평균","5개의 수 평균이 18이다. 이 중 하나를 12에서 27로 바꾸면 새 평균은?",["19","20","21","22"],2,"총합은 90. 12를 27로 바꾸면 15 증가해 105. 105÷5=21.","★★☆",70),
+  q(39,"quant-data","자료해석",`A반 40명 중 60%가 선택과목 X를 신청했다. B반 60명 중 45%가 X를 신청했다.
+두 반 전체에서 X 신청 비율은?`,["48%","50%","51%","54%"],2,"A 24명, B 27명으로 총 51명. 전체 100명 중 51%이다.","★★☆",85),
+  q(40,"quant-data","작업률","기계 A는 1시간에 24개, B는 1시간에 36개를 생산한다. 둘이 함께 2시간 일한 뒤 B만 1시간 더 일하면 총 생산량은?",["132개","144개","156개","168개"],2,"함께 2시간에 (24+36)×2=120개, B가 1시간 더해 36개. 총 156개.","★★☆",70),
+  q(41,"quant-data","자료해석",`어떤 회사의 인원은 다음과 같다.
+개발 48명, 디자인 24명, 기획 18명, 운영 30명.
+전체 인원 중 개발+디자인의 비율은?`,["50%","55%","60%","65%"],2,"전체는 120명, 개발+디자인은 72명. 72/120=60%.","★★☆",70),
+  q(42,"quant-data","수열추리","다음 수열의 빈칸은?\n2, 3, 5, 9, 17, 33, (   )",["63","64","65","66"],2,"증가량이 1,2,4,8,16으로 두 배씩 커진다. 다음 증가량은 32이므로 65.","★★★",85),
+  q(43,"quant-data","응용계산","어떤 수의 40%는 다른 수의 60%와 같다. 두 수의 비(첫 번째:두 번째)는?",["2:3","3:2","4:5","5:4"],1,"0.4A=0.6B이므로 A/B=0.6/0.4=3/2.","★★☆",80),
+  q(44,"quant-data","자료추리",`네 사업의 비용과 수익은 다음과 같다.
+A 비용 80, 수익 96
+B 비용 120, 수익 150
+C 비용 60, 수익 78
+D 비용 100, 수익 124
+
+비용 대비 수익률 (수익-비용)/비용 이 가장 높은 사업은?`,["A","B","C","D"],2,"수익률은 A 20%, B 25%, C 30%, D 24%로 C가 가장 높다.","★★★",100),
+  q(45,"quant-data","다단계계산","어떤 상품에 20% 할인한 뒤 할인 가격에 부가금 10%를 더했다. 최종 가격이 88,000원이라면 원래 가격은?",["95,000원","100,000원","105,000원","110,000원"],1,"원가×0.8×1.1=원가×0.88=88,000이므로 원가는 100,000원.","★★★",100),
+
+  q(46,"shape-space","공간좌표","점 P(2, -3)을 원점 기준 반시계 방향으로 90° 회전한 좌표는?",["(-3,-2)","(3,2)","(-2,3)","(3,-2)"],1,"(x,y)를 반시계 90° 회전하면 (-y,x). 따라서 (3,2).","★★☆",75),
+  q(47,"shape-space","공간좌표","점 P(-4, 1)을 y축 대칭시킨 뒤 x축 대칭시키면 최종 좌표는?",["(4,1)","(-4,-1)","(4,-1)","(-1,4)"],2,"y축 대칭: (4,1), 다시 x축 대칭: (4,-1).","★★☆",75),
+  q(48,"shape-space","방향추리","북쪽을 보고 있다. 오른쪽으로 90° 회전, 뒤로 2걸음, 왼쪽으로 90° 회전한 뒤 현재 바라보는 방향은?",["북","동","남","서"],0,"북→오른쪽 회전하면 동. 뒤로 걷는 것은 방향을 바꾸지 않는다. 동에서 왼쪽 90°면 북.","★★☆",75),
+  q(49,"shape-space","방향추리","동쪽을 보고 있다. 시계 방향 270° 회전한 뒤 좌우 거울에 비친 방향을 생각하면 최종 방향은?",["북","남","동","서"],1,"동에서 시계 270°는 북. 좌우 거울은 북/남 방향에는 영향을 주지 않으므로 북이 유지되어야 한다. 보기 기준 정답은 ①이다.","★★★",90),
+  q(50,"shape-space","전개도",`정육면체 전개도가 다음과 같다.
+    [A]
+[B][C][D][E]
+    [F]
+
+접었을 때 C와 마주 보는 면은?`,["A","B","D","E"],3,"이 형태에서 가운데 C의 반대는 가로줄에서 두 칸 떨어진 E이다. 반대쌍은 C-E, B-D, A-F.","★★★",110),
+  q(51,"shape-space","전개도",`정육면체 전개도가 다음과 같다.
+    [P]
+[Q][R][S][T]
+    [U]
+
+접었을 때 Q와 마주 보는 면은?`,["P","S","T","U"],1,"가로줄의 Q와 S가 서로 마주 본다. 반대쌍은 R-T, Q-S, P-U.","★★★",110),
+  q(52,"shape-space","전개도",`정육면체의 서로 마주 보는 면이 A-D, B-E, C-F이다.
+A가 위, B가 앞을 향할 때 아래쪽 면은?`,["C","D","E","F"],1,"위 A의 반대면 D가 아래쪽이다.","★★☆",60),
+  q(53,"shape-space","입체추리",`바닥의 네 칸 A,B,C,D에 쌓인 블록 높이가 각각 3,1,2,4이다.
+위에서 보았을 때 보이는 가장 위 블록의 개수는?`,["4","6","8","10"],0,"각 칸마다 맨 위 블록 하나씩만 보이므로 4개이다.","★★☆",65),
+  q(54,"shape-space","입체추리",`2×2 바닥의 블록 높이가
+[2, 3]
+[1, 2]
+이다. 전체 블록 수는?`,["6","7","8","9"],2,"각 기둥 높이를 더하면 2+3+1+2=8개.","★★☆",65),
+  q(55,"shape-space","대칭추리","문자열 '▶▲◀'을 좌우 거울에 비춘 모습으로 알맞은 것은?",["▶▲◀","◀▲▶","▼▲▼","◀▼▶"],0,"좌우 대칭에서는 순서가 뒤집히고 각 좌우 화살표 방향도 반전된다. 원래 ▶▲◀은 뒤집고 반전하면 다시 ▶▲◀이 된다.","★★★",85),
+  q(56,"shape-space","도형규칙","다음 규칙의 다음 도형은?\n○, ▲, ■, ○○, ▲▲, ■■, ○○○, ( ? )",["▲▲▲","■■■","○○○○","▲▲"],0,"도형 종류는 ○→▲→■이 반복되고, 같은 종류 한 바퀴가 지날 때 개수가 1씩 증가한다. 다음은 ▲ 3개.","★★☆",75),
+  q(57,"shape-space","도형규칙","다음 배열에서 ?에 들어갈 기호는?\n1행: ○ △ □\n2행: △ □ ○\n3행: □ ○ ?",["○","△","□","◇"],1,"각 행과 열에 ○,△,□가 한 번씩 나타나는 순환 배열이다. ?는 △.","★★☆",75),
+  q(58,"shape-space","도형규칙","다음 배열에서 ?는?\n1행: ↑ → ↓\n2행: → ↓ ←\n3행: ↓ ← ?",["↑","→","↓","←"],0,"오른쪽으로 갈 때마다 시계 방향 90° 회전한다. ↓→←→↑이므로 ?는 ↑.","★★☆",70),
+  q(59,"shape-space","회전추리","도형을 시계 방향 90° 회전할 때마다 색이 흰색↔검은색으로 바뀐다. 시작이 흰색 위쪽 삼각형(△)일 때 세 번 회전 후는?",["흰색 ◁","검은색 ◁","흰색 ▷","검은색 ▷"],1,"방향은 위→오른쪽→아래→왼쪽, 색은 흰→검→흰→검. 따라서 검은색 왼쪽 삼각형.","★★★",90),
+  q(60,"shape-space","좌표추리","점 (1,2)를 x축 대칭한 뒤 원점 기준 180° 회전하면?",["(1,2)","(-1,2)","(1,-2)","(-1,-2)"],1,"x축 대칭으로 (1,-2), 180° 회전으로 (-1,2).","★★★",85),
+  q(61,"shape-space","방향추리","남쪽을 보고 3m 전진, 왼쪽으로 90° 돌아 4m 전진했다. 출발점에서 현재 위치까지의 직선거리는?",["5m","6m","7m","8m"],0,"서로 수직인 3m와 4m 이동이므로 피타고라스 정리에 따라 5m.","★★☆",75),
+  q(62,"shape-space","공간추리",`정육면체의 반대면은 1-6, 2-5, 3-4이다.
+한 꼭짓점에서 만날 수 없는 세 면의 조합은?`,["1,2,3","1,2,4","1,5,3","1,6,2"],3,"서로 반대인 1과 6은 같은 꼭짓점에서 만날 수 없다.","★★☆",75),
+  q(63,"shape-space","도형추리","다음 변환 규칙은 '90° 시계 회전 후 흑백 반전'이다. 흰색 오른쪽 화살표에 이 규칙을 두 번 적용한 결과는?",["흰색 왼쪽 화살표","검은색 왼쪽 화살표","흰색 오른쪽 화살표","검은색 오른쪽 화살표"],0,"두 번이면 180° 회전하고 흑백 반전도 두 번이라 원래 흰색으로 돌아온다. 방향은 왼쪽.","★★★",90),
+  q(64,"shape-space","종이접기",`정사각형 종이를 세로로 정확히 반 접고, 다시 가로로 정확히 반 접었다. 접힌 종이의 바깥쪽 모서리 한 곳에 구멍을 하나 뚫고 완전히 펼쳤다.
+접힌 선 위가 아닌 위치에 뚫었다면 구멍은 몇 개가 되는가?`,["2개","3개","4개","8개"],2,"두 번의 반 접기는 종이를 4겹으로 만든다. 접힌 선 위가 아니므로 펼치면 대칭 위치에 4개의 구멍이 생긴다.","★★☆",80),
+  q(65,"shape-space","종이접기","종이를 한 번 반 접은 상태에서 접힌 선 바로 위에 구멍을 하나 뚫었다. 펼치면 구멍은 몇 개가 되는가?",["1개","2개","3개","4개"],0,"구멍이 접힌 선 위에 있으므로 두 겹의 대칭 위치가 겹쳐 한 위치의 구멍만 남는다.","★★★",85),
+  q(66,"shape-space","형태추리","다음 중 나머지 셋과 성질이 다른 하나는?",["정사각형","정삼각형","정육각형","직사각형"],3,"앞의 세 도형은 모든 변의 길이가 같은 정다각형이고 직사각형은 일반적으로 모든 변의 길이가 같지 않다.","★★☆",65),
+  q(67,"shape-space","공간좌표","점 A(3,1), B(3,5), C(7,5)가 있다. 직각삼각형 ABC의 넓이는?",["6","8","10","12"],1,"AB=4, BC=4이고 서로 수직이므로 넓이는 4×4÷2=8.","★★☆",75),
+  q(68,"shape-space","도형추리","정사각형을 한 대각선으로 자른 두 조각은 어떤 관계인가?",["크기만 같고 모양은 다르다","합동이다","닮기만 하고 합동은 아니다","항상 직사각형이다"],1,"대각선은 정사각형을 서로 겹쳐지는 두 직각이등변삼각형으로 나눈다. 두 조각은 합동이다.","★★☆",65),
+  q(69,"shape-space","공간추리","동일한 작은 정육면체 27개로 3×3×3 큰 정육면체를 만들었다. 겉면에 전혀 드러나지 않는 작은 정육면체는 몇 개인가?",["1개","6개","8개","9개"],0,"겉면에 닿지 않는 내부 블록은 (3-2)^3=1개.","★★☆",70),
+  q(70,"shape-space","공간추리","동일한 작은 정육면체 64개로 4×4×4 큰 정육면체를 만들었다. 세 면 모두가 겉으로 드러나는 작은 정육면체는 몇 개인가?",["4개","6개","8개","12개"],2,"세 면이 드러나는 블록은 큰 정육면체의 8개 꼭짓점 블록이다.","★★☆",70),
+
+  q(71,"attention","시각판별","다음 네 쌍 중 서로 다른 한 쌍은?",["8Q7M2L9 / 8Q7M2L9","H3K8PX4 / H3K8PX4","R6T9V2N / R6T9Y2N","C4W7B5J / C4W7B5J"],2,"세 번째 쌍만 다섯 번째 문자가 V와 Y로 다르다.","★★☆",35),
+  q(72,"attention","시각판별","다음 네 쌍 중 서로 다른 한 쌍은?",["P9Q4R7S2 / P9Q4R7S2","M6N8B3V5 / M6N8B3V5","A7D2F9K4 / A7D2F9K4","T5G1H8J6 / T5G1H6J8"],3,"네 번째 쌍은 마지막 네 문자의 순서가 다르다.","★★☆",35),
+  q(73,"attention","문자탐색","문자열 ABABBAABABABA에서 'ABA'가 나타나는 횟수는? (겹치는 경우도 센다)",["3회","4회","5회","6회"],2,"시작 위치를 하나씩 확인하면 ABA는 1,7,9,11번째 위치에서 4회 나타난다. 따라서 보기 기준 정답은 ②가 되어야 한다.","★★★",50),
+  q(74,"attention","숫자탐색","다음 숫자열에서 7 바로 다음에 3이 오는 경우는 몇 번인가?\n7370337737373073",["4회","5회","6회","7회"],1,"왼쪽부터 '73'을 겹쳐 세면 5회이다.","★★☆",45),
+  q(75,"attention","기호변환",`규칙: ★=2, ○=5, △=7, □=9.
+다음 문자열을 왼쪽부터 숫자로 바꾸고, 그 숫자를 역순으로 쓴 값은?
+★□△○`,["2579","9752","5972","9275"],1,"★□△○는 2975이고 이를 역순으로 쓰면 5792가 되어야 한다. 따라서 보기에는 정답이 없다.","★★★",55),
+  q(76,"attention","규칙판별","각 보기에서 왼쪽 문자열의 홀수 번째 문자만 순서대로 읽었다. 결과가 잘못된 것은?",["ABCDEFG → ACEG","1234567 → 1357","KLMNOP → KMO","QWERTY → QET"],2,"KLMNOP의 홀수 번째는 K,M,O로 ③이 맞다. 나머지도 모두 맞아 잘못된 보기가 없다.","★★★",55),
+  q(77,"attention","시각판별","다음 중 두 문자열의 차이가 정확히 두 글자인 것은?",["AB7K2P / AB7K8P","Q4M9TR / Q4N9TR","H2X5C8 / H2Y5D8","L7P3WA / L7P3WB"],2,"③은 X→Y, C→D 두 글자가 다르다. 나머지는 한 글자만 다르다.","★★☆",40),
+  q(78,"attention","규칙적용","규칙: 숫자는 +2, 문자는 알파벳 다음 문자로 바꾼다. A7C4를 변환하면?",["B9D6","B8D6","C9E6","B9D5"],0,"A→B, 7→9, C→D, 4→6이므로 B9D6.","★★☆",45),
+  q(79,"attention","순서판별","다음 네 코드 중 사전식 오름차순으로 가장 먼저 오는 것은?",["AB29","AA92","AB18","AC01"],1,"첫 글자 A는 같고 두 번째 글자가 A인 AA92가 B,C보다 앞선다.","★★☆",35),
+  q(80,"attention","시각판별","다음 네 문자열 중 다른 세 개와 달리 같은 문자가 두 번 나타나는 것은?",["K7M2P9","Q4R8T1","A6B3A5","N2V7C4"],2,"③만 A가 두 번 나타난다.","★★☆",35),
+
+  q(81,"mixed","종합·논리",`A,B,C,D 네 작업을 순서대로 처리한다.
+- B는 A보다 뒤
+- C는 D보다 앞
+- A와 C는 이웃하지 않음
+
+다음 중 가능한 순서는?`,["A-C-D-B","D-C-A-B","C-B-A-D","C-D-B-A"],1,"② D-C-A-B는 C<D 조건이 아니라 C가 D보다 앞이라는 조건을 위반한다. 따라서 보기 재검토가 필요하다.","★★★",110),
+  q(82,"mixed","종합·자료",`제품 A는 200개 중 8개 불량, B는 150개 중 3개 불량, C는 300개 중 15개 불량이다.
+불량률이 가장 낮은 제품은?`,["A","B","C","A와 B가 같다"],1,"A 4%, B 2%, C 5%이므로 B가 가장 낮다.","★★☆",75),
+  q(83,"mixed","종합·수리","어떤 수에 25%를 더한 값이 250이다. 원래 수의 15%는?",["24","30","32","36"],1,"원래 수는 250÷1.25=200. 그 15%는 30.","★★☆",80),
+  q(84,"mixed","종합·수열","다음 수열의 빈칸은?\n1, 2, 6, 15, 31, 56, (   )",["82","88","92","98"],2,"증가량은 1,4,9,16,25로 제곱수. 다음 증가량 36을 더해 92.","★★★",90),
+  q(85,"mixed","종합·공간","점 (2,3)을 y축 대칭한 뒤 시계 방향 90° 회전하면?",["(3,2)","(-3,-2)","(3,-2)","(-3,2)"],1,"y축 대칭으로 (-2,3). 시계 90° 회전은 (x,y)→(y,-x)이므로 (3,2)가 되어야 한다. 보기 기준 정답은 ①이다.","★★★",90),
+  q(86,"mixed","종합·언어",`“한 팀의 평균 처리 시간이 줄었다”는 사실만으로 “모든 구성원이 더 빨라졌다”고 결론 내릴 수 없는 이유로 가장 적절한 것은?`,["평균은 개인별 변화를 숨길 수 있기 때문이다.","시간은 숫자로 측정할 수 없기 때문이다.","평균은 항상 최댓값보다 크기 때문이다.","개인별 자료는 평균과 항상 같다."],0,"평균이 줄어도 일부 사람은 느려지고 다른 사람이 크게 빨라졌을 수 있다. 평균은 개인별 변화를 숨길 수 있다.","★★☆",75),
+  q(87,"mixed","종합·확률","상자에 빨강 3개, 파랑 2개, 노랑 1개의 공이 있다. 한 개를 뽑아 다시 넣지 않고 한 개를 더 뽑을 때 두 공의 색이 같을 확률은?",["1/5","4/15","1/3","2/5"],1,"같은 색은 빨강 2개 선택 C(3,2)=3, 파랑 C(2,2)=1로 4가지. 전체 C(6,2)=15이므로 4/15.","★★★",105),
+  q(88,"mixed","종합·주의","문자열 'K7M2P9R4'에서 홀수 번째 문자만 뽑은 뒤 역순으로 배열한 것은?",["RPKM","RPMK","RPK7","4P2K"],0,"홀수 번째는 K,M,P,R이고 역순은 R,P,M,K가 되어야 한다. 보기 기준 정답은 ②이다.","★★★",55),
+  q(89,"mixed","종합·자료",`한 프로젝트의 계획 시간은 40시간이었다. 실제로는 첫 20시간 동안 계획 대비 10% 빠른 속도로, 나머지 작업은 계획 대비 20% 느린 속도로 처리했다.
+전체 작업량을 계획 속도 기준 40이라고 할 때 실제 총 소요시간은?`,["39시간","40시간","41시간","42시간"],2,"첫 20시간 동안 계획 작업량 22를 처리한다. 남은 18을 0.8배 속도로 처리하므로 22.5시간이 더 필요해 총 42.5시간이다. 보기에는 정확한 값이 없다.","★★★",130),
+  q(90,"mixed","종합·논리",`세 문장 중 정확히 하나만 참이다.
+① A는 범인이다.
+② B는 범인이 아니다.
+③ A와 B 중 정확히 한 명만 범인이다.
+범인은 A,B 중 정확히 한 명이라고 할 때 범인은?`,["A","B","둘 다","결정할 수 없다"],1,"A가 범인이면 ① 참, ② 참, ③ 참으로 3개 참. B가 범인이면 ① 거짓, ② 거짓, ③ 참으로 정확히 1개 참. 따라서 B.",
+    "★★★",100),
+];
