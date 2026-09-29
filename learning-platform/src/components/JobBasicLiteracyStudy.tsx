@@ -121,25 +121,6 @@ export default function JobBasicLiteracyStudy() {
         </Link>
       </div>
 
-      <div className="job-basic-summary">
-        <div>
-          <strong>90</strong>
-          <span>전체 문항</span>
-        </div>
-        <div>
-          <strong>5개</strong>
-          <span>준비 영역</span>
-        </div>
-        <div>
-          <strong>중·상</strong>
-          <span>중심 난도</span>
-        </div>
-        <p>
-          공개된 직무적성검사·NCS 문제 유형과 전형 평가 방향을 참고해 재구성한
-          연습문항입니다. 특정 학교 기출문제 원문을 복제한 자료는 아닙니다.
-        </p>
-      </div>
-
       <div className="job-basic-mode-tabs" role="tablist" aria-label="학습 자료 선택">
         <button
           type="button"
@@ -166,7 +147,7 @@ export default function JobBasicLiteracyStudy() {
             onClick={() => setSectionId(section.id)}
           >
             <strong>{section.title}</strong>
-            <span>{section.start}~{section.end}번 · {section.weight}</span>
+            <span>{section.start}~{section.end}번</span>
           </button>
         ))}
       </div>
@@ -174,7 +155,7 @@ export default function JobBasicLiteracyStudy() {
       <div className="job-basic-section-head">
         <div>
           <span>
-            {activeSection.start}~{activeSection.end}번 · {activeSection.weight}
+            {activeSection.start}~{activeSection.end}번
           </span>
           <h2>{activeSection.title}</h2>
           <p>{activeSection.subtitle}</p>
