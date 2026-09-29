@@ -5,7 +5,7 @@ export default function ThinkingMathPage() {
     <ProtectedCoursePage
       permission="specialized"
       eyebrow="THINKING MATH"
-      title="사고력 수학"
+      title="사고력 수학 - 기초"
       description=""
       hideIntro
       items={[
