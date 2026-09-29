@@ -81,7 +81,7 @@ function QuestionCard({
 
 export default function JobBasicLiteracyStudy() {
   const [mode, setMode] = useState<ViewMode>("workbook");
-  const [sectionId, setSectionId] = useState(jobBasicSections[0].id);
+  const [sectionId, setSectionId] = useState<string>(jobBasicSections[0].id);
   const [answers, setAnswers] = useState<Record<number, number>>({});
 
   const activeSection =
