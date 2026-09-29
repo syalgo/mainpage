@@ -10,7 +10,7 @@ export default async function MiddleSchoolInfoPracticePage() {
       <section className="access-state">
         <span className="eyebrow">SETUP MODE</span>
         <h1>중학교 정보 문제풀이</h1>
-        <p>Firebase 연결 후 승인된 특성화고 대비반 계정만 이용할 수 있습니다.</p>
+        <p>Firebase 연결 후 승인된 고등학교 입학전형 준비 계정만 이용할 수 있습니다.</p>
         <Link className="secondary-button" href="/specialized">돌아가기</Link>
       </section>
     );
@@ -34,8 +34,8 @@ export default async function MiddleSchoolInfoPracticePage() {
     return (
       <section className="access-state">
         <span className="eyebrow">NO COURSE ACCESS</span>
-        <h1>특성화고 대비반 권한이 없습니다.</h1>
-        <p>관리자에게 특성화고 대비반 이용 권한을 요청해주세요.</p>
+        <h1>고등학교 입학전형 준비 권한이 없습니다.</h1>
+        <p>관리자에게 고등학교 입학전형 준비 이용 권한을 요청해주세요.</p>
         <Link className="secondary-button" href="/account">내 권한 확인</Link>
       </section>
     );
