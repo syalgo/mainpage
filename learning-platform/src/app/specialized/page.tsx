@@ -24,7 +24,11 @@ export default function SpecializedPage() {
           description: "경우의 수, 그래프 경로, 논리 추론 등 사고력 수학 주제를 학습합니다.",
           href: "/specialized/thinking-math",
         },
-        { title: "직업기초 소양 평가", description: "직업기초 소양 평가를 위한 문제 해결과 기초 역량을 연습합니다." },
+        {
+          title: "직업기초 소양 평가",
+          description: "언어·논리·수열·수리·자료·도형·공간·주의집중 유형을 회차별로 연습합니다.",
+          href: "/specialized/job-basic-literacy",
+        },
         { title: "포트폴리오", description: "활동 기록과 프로젝트 결과물을 체계적으로 준비합니다." },
       ]}
     />
