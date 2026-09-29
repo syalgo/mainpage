@@ -112,8 +112,8 @@ export default function JobBasicLiteracyStudy() {
           <span className="eyebrow">JOB BASIC LITERACY</span>
           <h1>직업기초 소양 평가</h1>
           <p>
-            언어이해·논리추리·수열·계산·자료해석·도형·공간·주의집중을
-            회차별로 연습합니다.
+            언어·논리, 수리·자료, 도형·공간, 주의집중을 실제 직무적성검사형
+            시간 압박과 다단계 사고에 맞춰 연습합니다.
           </p>
         </div>
         <Link className="secondary-button" href="/specialized">
@@ -123,18 +123,21 @@ export default function JobBasicLiteracyStudy() {
 
       <div className="job-basic-summary">
         <div>
-          <strong>280</strong>
+          <strong>90</strong>
           <span>전체 문항</span>
         </div>
         <div>
-          <strong>4회</strong>
-          <span>집중 과정</span>
+          <strong>5개</strong>
+          <span>준비 영역</span>
         </div>
         <div>
-          <strong>8개</strong>
-          <span>핵심 유형</span>
+          <strong>중·상</strong>
+          <span>중심 난도</span>
         </div>
-        <p>연습문항으로 구성된 학습 자료이며 공식 기출문제가 아닙니다.</p>
+        <p>
+          공개된 직무적성검사·NCS 문제 유형과 전형 평가 방향을 참고해 재구성한
+          연습문항입니다. 특정 학교 기출문제 원문을 복제한 자료는 아닙니다.
+        </p>
       </div>
 
       <div className="job-basic-mode-tabs" role="tablist" aria-label="학습 자료 선택">
@@ -163,7 +166,7 @@ export default function JobBasicLiteracyStudy() {
             onClick={() => setSectionId(section.id)}
           >
             <strong>{section.title}</strong>
-            <span>{section.start}~{section.end}번</span>
+            <span>{section.start}~{section.end}번 · {section.weight}</span>
           </button>
         ))}
       </div>
@@ -171,7 +174,7 @@ export default function JobBasicLiteracyStudy() {
       <div className="job-basic-section-head">
         <div>
           <span>
-            {activeSection.start}~{activeSection.end}번
+            {activeSection.start}~{activeSection.end}번 · {activeSection.weight}
           </span>
           <h2>{activeSection.title}</h2>
           <p>{activeSection.subtitle}</p>
