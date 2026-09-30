@@ -34,6 +34,11 @@ export default function SpecializedPage() {
           description: "언어·논리·수열·수리·자료·도형·공간·주의집중 유형을 회차별로 연습합니다.",
           href: "/specialized/job-basic-literacy",
         },
+        {
+          title: "정보용어 백과",
+          description: "정보 교과·컴퓨터 과학·알고리즘에서 자주 사용하는 핵심 용어를 찾아보고 정리합니다.",
+          href: "/specialized/information-glossary",
+        },
       ]}
     />
   );
