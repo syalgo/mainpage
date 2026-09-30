@@ -2671,3 +2671,47 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
     grid-template-columns: 1fr;
   }
 }
+
+
+.contest-complexity-caution {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px solid #ead9b7;
+  border-radius: 12px;
+  background: #fffaf0;
+}
+.contest-complexity-caution strong {
+  color: #84652e;
+}
+.contest-complexity-caution p {
+  margin: 6px 0 0;
+  color: #6e6046;
+  line-height: 1.7;
+}
+.contest-complexity-summary {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  margin-top: 14px;
+  padding: 18px;
+  border: 1px solid #cfdcf3;
+  border-radius: 14px;
+  background: #f5f8fe;
+}
+.contest-complexity-summary > strong {
+  color: #315f9e;
+}
+.contest-complexity-summary p {
+  margin: 0 0 8px;
+  color: #40516e;
+  line-height: 1.7;
+}
+.contest-complexity-summary p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 650px) {
+  .contest-complexity-summary {
+    grid-template-columns: 1fr;
+  }
+}
