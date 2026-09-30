@@ -3335,3 +3335,118 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
   color: #4f5d73;
   line-height: 1.75;
 }
+
+
+/* Memory layout guide */
+.contest-memory-layout {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid #d8e0ef;
+  border-radius: 14px;
+  background: #f8faff;
+}
+.contest-memory-layout-heading > span {
+  display: block;
+  color: #65579a;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .07em;
+}
+.contest-memory-layout-heading h5 {
+  margin: 6px 0 0;
+  color: #315f9e;
+  font-size: 18px;
+}
+.contest-memory-layout-heading p {
+  margin: 7px 0 0;
+  color: #586579;
+  line-height: 1.75;
+}
+.contest-memory-layout-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.contest-memory-layout-grid > div {
+  padding: 14px 15px;
+  border: 1px solid #e4e8f1;
+  border-radius: 11px;
+  background: #fff;
+}
+.contest-memory-layout-grid span,
+.contest-memory-layout-grid b {
+  display: block;
+}
+.contest-memory-layout-grid span {
+  color: #6a5f8e;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+.contest-memory-layout-grid b {
+  margin-top: 4px;
+  color: #40385f;
+}
+.contest-memory-layout-grid p {
+  margin: 6px 0 0;
+  color: #657083;
+  line-height: 1.68;
+}
+.contest-memory-layout code {
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: #eef2f8;
+  color: #4b4f68;
+  font-family: Consolas, "Courier New", monospace;
+}
+.contest-memory-compare {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.contest-memory-compare > div {
+  overflow: hidden;
+  border: 1px solid #e4e8f1;
+  border-radius: 11px;
+  background: #fff;
+}
+.contest-memory-compare > div > strong {
+  display: block;
+  padding: 12px 14px;
+  color: #40385f;
+  background: #fbfafd;
+  border-bottom: 1px solid #ece8f2;
+}
+.contest-memory-compare pre {
+  margin: 0;
+  padding: 14px;
+  overflow-x: auto;
+  background: #101720;
+  color: #eef3f7;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.contest-memory-compare pre code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+.contest-memory-compare p {
+  margin: 0;
+  padding: 12px 14px 14px;
+  color: #657083;
+  line-height: 1.68;
+}
+
+@media (max-width: 900px) {
+  .contest-memory-compare {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 760px) {
+  .contest-memory-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
