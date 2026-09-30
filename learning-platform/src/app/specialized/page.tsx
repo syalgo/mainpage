@@ -10,6 +10,11 @@ export default function SpecializedPage() {
       hideIntro
       items={[
         {
+          title: "대회입상자 심화면접",
+          description: "정보올림피아드 등 대회 실적을 바탕으로 알고리즘·문제해결력·진로·인성 면접을 준비합니다.",
+          href: "/specialized/competition-interview",
+        },
+        {
           title: "중학교 정보 교과서",
           description: "2022 개정 정보 교과서의 핵심 내용을 단원별로 학습합니다.",
           href: "/specialized/middle-school-info",
@@ -28,11 +33,6 @@ export default function SpecializedPage() {
           title: "직업기초 소양 평가",
           description: "언어·논리·수열·수리·자료·도형·공간·주의집중 유형을 회차별로 연습합니다.",
           href: "/specialized/job-basic-literacy",
-        },
-        {
-          title: "대회입상자 심화면접",
-          description: "정보올림피아드 등 대회 실적을 바탕으로 알고리즘·문제해결력·진로·인성 면접을 준비합니다.",
-          href: "/specialized/competition-interview",
         },
       ]}
     />
