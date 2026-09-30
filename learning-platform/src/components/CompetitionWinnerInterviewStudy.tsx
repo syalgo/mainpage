@@ -858,7 +858,7 @@ export default function CompetitionWinnerInterviewStudy() {
       <section className="contest-interview-official">
         <div className="contest-section-heading">
           <span>OFFICIAL GUIDE</span>
-          <h2>학교가 공개한 심층면접 핵심</h2>
+          <h2>심층면접 핵심</h2>
           <p>2027학년도 한국디지털미디어고등학교 입학안내 기준</p>
         </div>
 
@@ -1125,11 +1125,55 @@ export default function CompetitionWinnerInterviewStudy() {
             <span>SPACE COMPLEXITY</span>
             <h4>공간복잡도 → 실제 자료구조 크기 계산 → 메모리 제한과 비교</h4>
             <ol>
-              <li>알고리즘이 추가로 사용하는 배열·리스트·큐·스택·재귀 호출 등을 확인합니다.</li>
+              <li>알고리즘이 추가로 사용하는 배열·벡터·스택·큐·그래프·재귀 호출 등을 확인합니다.</li>
               <li>추가 공간이 입력 크기 N에 따라 어떻게 증가하는지 O(1), O(N), O(N²)처럼 Big-O로 정리합니다.</li>
-              <li>실제로 저장하는 원소 수 × 자료형 크기로 필요한 Byte를 계산합니다.</li>
-              <li>KB 또는 MB로 환산한 뒤 문제의 메모리 제한 안에서 가능한지 판단합니다.</li>
+              <li>실제로 저장하는 원소 수 × 자료형 크기를 기본값으로 계산하고, 자료구조 자체의 여유 공간과 관리용 메모리도 고려합니다.</li>
+              <li>재귀를 사용한다면 최대 재귀 깊이와 한 번 호출할 때 필요한 스택 프레임 크기도 함께 확인합니다.</li>
+              <li>전체 사용량을 KB 또는 MB로 환산한 뒤 문제의 메모리 제한과 비교합니다.</li>
             </ol>
+
+            <div className="contest-memory-guide">
+              <strong>배열·vector·stack·queue는 모두 원소 수 × 자료형 크기만 계산하면 될까?</strong>
+              <p>
+                <b>원소 수 × 자료형 크기</b>는 좋은 출발점이지만, 모든 자료구조의 실제 사용량과 정확히 같지는 않습니다.
+                배열은 거의 그대로 계산할 수 있지만 STL 컨테이너는 원소 저장 공간 외에 관리용 메모리와 여유 공간이 추가될 수 있습니다.
+              </p>
+
+              <div className="contest-memory-structure-grid">
+                <div>
+                  <span>배열</span>
+                  <b>거의 그대로 계산</b>
+                  <p>
+                    <code>int a[10000]</code>이면 int가 4Byte일 때 약 40,000Byte입니다.
+                    전역·static 배열이면 호출 스택이 아니라 정적 메모리 영역에 저장됩니다.
+                  </p>
+                </div>
+                <div>
+                  <span>vector</span>
+                  <b>capacity 기준으로 생각</b>
+                  <p>
+                    <code>vector&lt;int&gt;</code>는 보통 실제 확보한 <b>capacity × 4Byte</b>가 원소 저장 공간입니다.
+                    vector 객체 자체와 동적 할당 관리 비용도 조금 추가되며, capacity가 size보다 클 수도 있습니다.
+                  </p>
+                </div>
+                <div>
+                  <span>stack / queue</span>
+                  <b>원소 크기 + 컨테이너 오버헤드</b>
+                  <p>
+                    C++의 <code>stack</code>, <code>queue</code>는 기본적으로 <code>deque</code>를 사용하므로
+                    단순히 원소 수 × 자료형 크기보다 조금 더 사용합니다. 블록·포인터 등의 관리 메모리가 추가됩니다.
+                  </p>
+                </div>
+                <div>
+                  <span>그래프 인접 리스트</span>
+                  <b>간선 수를 기준으로 계산</b>
+                  <p>
+                    무방향 그래프에서 간선 M개를 양쪽에 저장하면 실제 정수 저장은 대략 <b>2M개</b>입니다.
+                    <code>vector&lt;vector&lt;int&gt;&gt;</code>라면 각 vector 객체와 동적 할당 오버헤드도 추가됩니다.
+                  </p>
+                </div>
+              </div>
+            </div>
 
             <div className="contest-space-examples">
               <div className="contest-complexity-example">
@@ -1141,10 +1185,10 @@ export default function CompetitionWinnerInterviewStudy() {
               </div>
 
               <div className="contest-complexity-example">
-                <strong>예시 2 · int 배열 10,000,000개</strong>
+                <strong>예시 2 · vector&lt;int&gt;에 10,000개 저장</strong>
                 <p>
-                  <b>10,000,000 × 4Byte = 40,000,000Byte ≈ 40MB</b>입니다.
-                  공간복잡도는 O(N)이며, 메모리 제한이 32MB라면 사용할 수 없고 512MB라면 사용할 수 있습니다.
+                  capacity가 정확히 10,000이라면 원소 저장 공간은 약 <b>10,000 × 4Byte = 40KB</b>입니다.
+                  다만 capacity가 16,384처럼 더 크게 잡혀 있다면 약 <b>65.5KB</b>를 확보한 상태이며 vector 객체·할당 관리 비용이 추가됩니다.
                 </p>
               </div>
 
@@ -1158,11 +1202,73 @@ export default function CompetitionWinnerInterviewStudy() {
               </div>
 
               <div className="contest-complexity-example">
-                <strong>예시 4 · long long 배열 1,000,000개</strong>
+                <strong>예시 4 · 무방향 그래프 M=300,000</strong>
                 <p>
-                  long long을 8Byte로 계산하면
-                  <b>1,000,000 × 8Byte = 8,000,000Byte ≈ 8MB</b>입니다.
-                  공간복잡도는 O(N), 실제 메모리 사용량은 약 8MB입니다.
+                  인접 리스트에 간선을 양쪽으로 저장하면 정수 목적지 정보가 약 <b>600,000개</b>입니다.
+                  목적지만 int로 저장한다고 단순 계산하면 약 <b>2.4MB</b>이고, vector와 동적 할당 오버헤드는 별도로 추가됩니다.
+                </p>
+              </div>
+            </div>
+
+            <div className="contest-recursion-memory">
+              <div className="contest-recursion-heading">
+                <span>RECURSION & STACK MEMORY</span>
+                <h5>재귀 호출도 메모리를 사용합니다</h5>
+                <p>
+                  재귀 함수가 한 번 호출될 때마다 호출 스택에 <b>스택 프레임</b>이 하나씩 쌓입니다.
+                  스택 프레임에는 매개변수, 지역 변수, 반환 주소, 저장된 레지스터, 정렬을 위한 여유 공간 등이 들어갑니다.
+                </p>
+              </div>
+
+              <div className="contest-recursion-grid">
+                <div>
+                  <strong>공간복잡도 계산</strong>
+                  <p>
+                    한 호출의 프레임 크기가 상수라면 재귀 깊이가 D일 때 추가 공간은 보통 <b>O(D)</b>입니다.
+                    트리 DFS가 최악의 경우 깊이 N까지 내려가면 재귀 스택 공간도 O(N)입니다.
+                  </p>
+                </div>
+                <div>
+                  <strong>호출당 메모리는 고정값이 아님</strong>
+                  <p>
+                    정확한 프레임 크기는 컴파일러, 최적화 옵션, CPU, 매개변수·지역 변수에 따라 달라집니다.
+                    따라서 “재귀 1번 = 정확히 몇 Byte”라고 하나의 값으로 외우면 안 됩니다.
+                  </p>
+                </div>
+                <div>
+                  <strong>큰 지역 배열은 특히 위험</strong>
+                  <p>
+                    재귀 함수 안에 <code>int temp[1000]</code>이 있다면 호출 한 번마다 배열만 약 <b>4KB</b>입니다.
+                    재귀 깊이가 1,000이면 배열만 단순 계산해도 약 <b>4MB</b>가 스택에 쌓입니다.
+                  </p>
+                </div>
+                <div>
+                  <strong>메모리 제한과 스택 제한은 다를 수 있음</strong>
+                  <p>
+                    문제의 메모리 제한이 512MB여도 프로그램의 호출 스택 한도는 그보다 훨씬 작을 수 있습니다.
+                    따라서 총 메모리 제한 안이라고 해서 깊은 재귀가 반드시 안전한 것은 아닙니다.
+                  </p>
+                </div>
+              </div>
+
+              <div className="contest-recursion-example">
+                <strong>재귀는 몇 번까지 가능한가?</strong>
+                <p>
+                  <b>고정된 안전 횟수는 없습니다.</b> 대략적으로는
+                  <code> 최대 깊이 ≈ 사용 가능한 스택 크기 ÷ 호출 1회의 스택 프레임 크기</code>로 생각할 수 있습니다.
+                  예를 들어 사용할 수 있는 스택이 8MB라고 가정하면 프레임이 1KB인 재귀는 이론상 약 8,000단계,
+                  프레임이 4KB라면 약 2,000단계 수준에서 이미 한계에 가까워집니다.
+                  실제로는 런타임·정렬·기타 호출 공간이 있으므로 이 계산보다 여유를 두어야 합니다.
+                </p>
+              </div>
+
+              <div className="contest-complexity-caution">
+                <strong>알고리즘 문제에서의 실전 판단</strong>
+                <p>
+                  깊이가 O(log N)인 이분 탐색·균형 분할 재귀는 대체로 깊이가 작습니다.
+                  반면 연결 리스트 모양의 트리 DFS처럼 최악 깊이가 N이고 N이 수십만까지 갈 수 있다면
+                  재귀 DFS는 스택 오버플로 위험이 있으므로 <b>명시적인 stack을 사용하는 반복문 DFS</b>도 함께 검토하는 것이 안전합니다.
+                  이 경우에도 메모리는 O(N)이지만 호출 스택 대신 동적 메모리 영역의 컨테이너를 사용하게 됩니다.
                 </p>
               </div>
             </div>
