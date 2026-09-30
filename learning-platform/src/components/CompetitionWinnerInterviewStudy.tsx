@@ -1001,7 +1001,7 @@ function QuestionGroup({
 
 export default function CompetitionWinnerInterviewStudy() {
   return (
-    <section className="contest-interview-page">
+    <section id="page-top" className="contest-interview-page">
       <div className="contest-interview-topbar">
         <div>
           <span className="eyebrow">DIMIGO · SPECIAL ADMISSION</span>
@@ -1017,7 +1017,27 @@ export default function CompetitionWinnerInterviewStudy() {
         </Link>
       </div>
 
-      <section className="contest-interview-official">
+      <nav className="contest-section-nav" aria-label="대회입상자 심화면접 단원 바로가기">
+        <div className="contest-section-nav-heading">
+          <strong>단원 바로가기</strong>
+          <span>원하는 단원을 누르면 해당 위치로 바로 이동합니다.</span>
+        </div>
+        <div className="contest-section-nav-links">
+          <a href="#official">심층면접 핵심</a>
+          <a href="#algorithm-answer">알고리즘 답변</a>
+          <a href="#prepare">준비 6가지</a>
+          <a href="#problem-analysis">문제 분석 항목</a>
+          <a href="#complexity">시간·공간복잡도</a>
+          <a href="#core-concepts">알고리즘·자료구조</a>
+          <a href="#analysis-practice">분석 연습 10문제</a>
+          <a href="#koi-2026">2026 KOI 분석</a>
+          <a href="#practice-questions">예상·연습 질문</a>
+          <a href="#answer-frame">답변 구조</a>
+          <a href="#mock-interview">10분 모의면접</a>
+        </div>
+      </nav>
+
+      <section id="official" className="contest-interview-official">
         <div className="contest-section-heading">
           <span>OFFICIAL GUIDE</span>
           <h2>심층면접 핵심</h2>
@@ -1073,7 +1093,7 @@ export default function CompetitionWinnerInterviewStudy() {
         </div>
       </section>
 
-      <section className="contest-interview-koi">
+      <section id="algorithm-answer" className="contest-interview-koi">
         <div className="contest-section-heading">
           <span>ALGORITHM ANSWER GUIDE</span>
           <h2>알고리즘 문제 풀이과정에 대한 답변</h2>
@@ -1089,7 +1109,7 @@ export default function CompetitionWinnerInterviewStudy() {
         </div>
       </section>
 
-      <section className="contest-interview-prepare">
+      <section id="prepare" className="contest-interview-prepare">
         <div className="contest-section-heading">
           <span>PREPARATION</span>
           <h2>지원자가 반드시 준비해야 할 6가지</h2>
@@ -1105,7 +1125,7 @@ export default function CompetitionWinnerInterviewStudy() {
         </div>
       </section>
 
-      <section className="contest-interview-problem-sheet">
+      <section id="problem-analysis" className="contest-interview-problem-sheet">
         <div className="contest-section-heading">
           <span>PROBLEM ANALYSIS</span>
           <h2>문제 분석 항목</h2>
@@ -1152,7 +1172,7 @@ export default function CompetitionWinnerInterviewStudy() {
 
       </section>
 
-      <section className="contest-interview-complexity">
+      <section id="complexity" className="contest-interview-complexity">
         <div className="contest-complexity-guide">
           <div className="contest-complexity-heading">
             <span>COMPLEXITY ANALYSIS</span>
@@ -1588,7 +1608,7 @@ int main() {
         </div>
       </section>
 
-      <section className="contest-core-concepts">
+      <section id="core-concepts" className="contest-core-concepts">
         <div className="contest-section-heading">
           <span>ALGORITHM & DATA STRUCTURE</span>
           <h2>알고리즘·자료구조 핵심 개념</h2>
@@ -1706,7 +1726,7 @@ int main() {
         </div>
       </section>
 
-      <section className="contest-analysis-practice">
+      <section id="analysis-practice" className="contest-analysis-practice">
         <div className="contest-section-heading">
           <span>ANALYSIS PRACTICE</span>
           <h2>문제 분석 연습 10문제</h2>
@@ -1766,7 +1786,7 @@ int main() {
         </div>
       </section>
 
-      <section className="contest-koi-2026-review">
+      <section id="koi-2026" className="contest-koi-2026-review">
         <div className="contest-section-heading">
           <span>2026 KOI OFFICIAL REVIEW</span>
           <h2>2026 정보올림피아드 1차·2차 문제 분석</h2>
@@ -1848,13 +1868,22 @@ int main() {
         ))}
       </section>
 
-      <section className="contest-interview-questions">
+      <section id="practice-questions" className="contest-interview-questions">
         <div className="contest-section-heading">
           <span>PRACTICE QUESTIONS</span>
           <h2>예상·연습 질문</h2>
           <p>
             아래 문항은 공식 기출문항이 아니라, 학교가 공개한 평가 방향을 바탕으로
             대회입상자의 알고리즘·문제해결 역량을 점검하기 위한 연습 질문입니다.
+          </p>
+        </div>
+
+        <div className="contest-official-question-note">
+          <strong>학교가 공개한 실제 기출·심화질문 방향을 이미 반영했습니다</strong>
+          <p>
+            2026학년도 공개 기출의 <b>지원 학과 적합성·전공 역량</b>, <b>가장 열심히 공부한 과목과 이유</b>는
+            아래 진로목표·학업역량 질문에 포함되어 있습니다. 또한 학교가 제시한 실적설명서 기반 심화질문 예시의
+            <b>구현 방법을 선택한 이유, 다른 방법과의 장단점</b>도 대표 문제 심층 분석과 조건 변경·응용 질문에 반영했습니다.
           </p>
         </div>
 
@@ -1890,7 +1919,7 @@ int main() {
         />
       </section>
 
-      <section className="contest-interview-answer-frame">
+      <section id="answer-frame" className="contest-interview-answer-frame">
         <div className="contest-section-heading">
           <span>ANSWER FRAME</span>
           <h2>답변은 이렇게 구조화합니다</h2>
@@ -1923,7 +1952,7 @@ int main() {
         </div>
       </section>
 
-      <section className="contest-interview-mock">
+      <section id="mock-interview" className="contest-interview-mock">
         <div className="contest-section-heading">
           <span>10-MINUTE MOCK</span>
           <h2>10분 모의면접 연습 구성</h2>
@@ -1947,31 +1976,9 @@ int main() {
         </p>
       </section>
 
-      <section className="contest-interview-past">
-        <div className="contest-section-heading">
-          <span>PAST QUESTION</span>
-          <h2>학교가 공개한 실제 기출의 방향</h2>
-          <p>2026학년도 심층면접 기출문항의 취지를 요약했습니다.</p>
-        </div>
-        <div className="contest-past-grid">
-          <article>
-            <span>기출 요지 01</span>
-            <h3>왜 내가 지원 학과에 적합한 학생인지 전공 역량을 근거로 설명하기</h3>
-            <p>
-              대회 성적만 말하는 것이 아니라, 그 성적을 만들기까지의 학습 과정과
-              문제해결 능력을 지원 학과와 연결해서 설명합니다.
-            </p>
-          </article>
-          <article>
-            <span>기출 요지 02</span>
-            <h3>가장 열심히 공부한 과목과 그 이유를 구체적으로 설명하기</h3>
-            <p>
-              어떤 과목을 좋아한다는 수준을 넘어, 무엇을 어떻게 공부했고 그 경험이
-              자신의 진로·전공 학습과 어떻게 이어졌는지 준비합니다.
-            </p>
-          </article>
-        </div>
-      </section>
+      <a className="contest-floating-top" href="#page-top" aria-label="페이지 맨 위로 이동">
+        TOP
+      </a>
     </section>
   );
 }
