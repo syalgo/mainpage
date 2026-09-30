@@ -1185,6 +1185,113 @@ export default function CompetitionWinnerInterviewStudy() {
               </p>
             </div>
 
+            <div className="contest-memory-layout">
+              <div className="contest-memory-layout-heading">
+                <span>MEMORY LAYOUT</span>
+                <h5>같은 4MB라도 어디에 저장하느냐가 중요합니다</h5>
+                <p>
+                  공간복잡도는 총 사용량만 보는 것이 아니라, 그 메모리가 <b>전역·정적 영역, Stack, Heap</b> 중 어디에 잡히는지도 함께 이해하면 좋습니다.
+                  특히 큰 지역 배열과 깊은 재귀 호출은 Stack을 사용하므로 문제의 전체 메모리 제한과 별개로 스택 한도에 먼저 걸릴 수 있습니다.
+                </p>
+              </div>
+
+              <div className="contest-memory-layout-grid">
+                <div>
+                  <span>전역변수 · static</span>
+                  <b>Data / BSS 영역</b>
+                  <p>
+                    함수 밖에 선언한 전역 배열이나 <code>static</code> 변수는 이 영역에 저장됩니다.
+                    큰 배열을 전역으로 선언하는 이유 중 하나는 함수 호출 Stack을 크게 사용하지 않기 위해서입니다.
+                  </p>
+                </div>
+
+                <div>
+                  <span>일반 지역변수</span>
+                  <b>Stack 영역</b>
+                  <p>
+                    함수 안의 일반 지역변수와 지역 배열은 보통 Stack에 저장됩니다.
+                    작은 변수는 괜찮지만, 수 MB짜리 지역 배열은 Stack 한도 때문에 실행 중 오류가 날 수 있습니다.
+                  </p>
+                </div>
+
+                <div>
+                  <span>new · malloc · vector의 원소</span>
+                  <b>Heap 영역</b>
+                  <p>
+                    동적으로 확보한 메모리는 Heap을 사용합니다.
+                    <code>vector&lt;int&gt; v(1000000)</code>에서 vector 객체 자체는 지역변수일 수 있지만, 정수 100만 개의 실제 저장 공간은 Heap에 잡힙니다.
+                  </p>
+                </div>
+
+                <div>
+                  <span>함수 호출 · 재귀</span>
+                  <b>Stack 영역</b>
+                  <p>
+                    함수가 호출될 때마다 매개변수·지역변수·반환 정보 등을 담은 스택 프레임이 쌓입니다.
+                    재귀가 깊어질수록 Stack 사용량도 계속 증가합니다.
+                  </p>
+                </div>
+              </div>
+
+              <div className="contest-memory-compare">
+                <div>
+                  <strong>전역 배열</strong>
+                  <pre><code>{`int a[1000000];
+
+int main() {
+    return 0;
+}`}</code></pre>
+                  <p>
+                    약 4MB를 사용하며 주로 <b>Data/BSS 영역</b>에 저장됩니다.
+                  </p>
+                </div>
+
+                <div>
+                  <strong>지역 배열</strong>
+                  <pre><code>{`int main() {
+    int a[1000000];
+    return 0;
+}`}</code></pre>
+                  <p>
+                    같은 약 4MB지만 보통 <b>Stack 영역</b>에 저장되므로 실행 환경의 스택 한도가 작으면 문제가 될 수 있습니다.
+                  </p>
+                </div>
+
+                <div>
+                  <strong>vector</strong>
+                  <pre><code>{`#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> a(1000000);
+    return 0;
+}`}</code></pre>
+                  <p>
+                    정수 데이터 약 4MB는 주로 <b>Heap 영역</b>에 저장됩니다.
+                  </p>
+                </div>
+              </div>
+
+              <div className="contest-complexity-caution">
+                <strong>메모리 제한과 Stack 제한은 같은 말이 아닙니다</strong>
+                <p>
+                  예를 들어 문제에 메모리 제한이 512MB라고 적혀 있어도 Stack을 512MB까지 사용할 수 있다는 뜻은 아닙니다.
+                  Stack 크기는 운영체제·컴파일 환경·온라인 저지 설정에 따라 별도로 제한될 수 있습니다.
+                  따라서 <b>큰 지역 배열과 깊은 재귀는 별도로 주의</b>해야 합니다.
+                </p>
+              </div>
+
+              <div className="contest-memory-simple-rule">
+                <strong>학생용 핵심 정리</strong>
+                <p>
+                  <b>큰 전역/static 배열 → Data/BSS</b>,
+                  <b> 일반 지역변수·재귀 호출 → Stack</b>,
+                  <b> vector의 실제 데이터·new·malloc → Heap</b>으로 기억하면 됩니다.
+                  공간복잡도 Big-O가 같아도 저장 위치에 따라 실행 안정성이 달라질 수 있습니다.
+                </p>
+              </div>
+            </div>
+
             <div className="contest-space-examples">
               <div className="contest-complexity-example">
                 <strong>예시 1 · int 배열 10,000개</strong>
