@@ -166,6 +166,46 @@ const bigOExamples = [
   }
 ];
 
+const cKeywordTokens = new Set([
+  "int", "long", "char", "float", "double", "return",
+  "if", "else", "for", "while", "break", "continue",
+]);
+
+const cFunctionTokens = new Set([
+  "main", "printf", "scanf", "merge", "mergeSort",
+]);
+
+function getCTokenClass(token: string) {
+  if (token.startsWith("//")) return "is-comment";
+  if (token.startsWith("#")) return "is-preprocessor";
+  if (token.startsWith("<") && token.endsWith(">")) return "is-header";
+  if (token.startsWith('"') || token.startsWith("'")) return "is-string";
+  if (/^\d+$/.test(token)) return "is-number";
+  if (cKeywordTokens.has(token)) return "is-keyword";
+  if (cFunctionTokens.has(token)) return "is-function";
+  return "";
+}
+
+function renderCLine(line: string, keyPrefix: string) {
+  if (!line) return " ";
+
+  const tokenPattern = /("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\/\/.*$|#\w+|<[^>\n]+>|\b(?:int|long|char|float|double|return|if|else|for|while|break|continue)\b|\b(?:main|printf|scanf|mergeSort|merge)\b|\b\d+\b)/g;
+
+  return line.split(tokenPattern).filter(Boolean).map((token, index) => {
+    const className = getCTokenClass(token);
+
+    if (!className) {
+      return token;
+    }
+
+    return (
+      <span className={`contest-code-token ${className}`} key={`${keyPrefix}-${index}`}>
+        {token}
+      </span>
+    );
+  });
+}
+
 function QuestionGroup({
   number,
   title,
@@ -388,18 +428,21 @@ export default function CompetitionWinnerInterviewStudy() {
 
             <div className="contest-bigo-examples">
               {bigOExamples.map((item, index) => (
-                <article className="contest-bigo-example" key={item.title}>
-                  <div className="contest-bigo-example-head">
+                <details className="contest-bigo-example" key={item.title}>
+                  <summary className="contest-bigo-example-head">
                     <span>{String(index + 1).padStart(2, "0")}</span>
                     <div>
                       <h4>{item.title} · {item.complexity}</h4>
                       <p>{item.problem}</p>
                     </div>
-                  </div>
+                    <b className="contest-bigo-toggle" aria-hidden="true" />
+                  </summary>
+
                   <div className="contest-bigo-analysis">
                     <strong>분석</strong>
                     <p>{item.analysis}</p>
                   </div>
+
                   <div className="contest-bigo-operation">
                     <div>
                       <span>예시 입력 크기</span>
@@ -411,24 +454,27 @@ export default function CompetitionWinnerInterviewStudy() {
                       <p>{item.operationDetail}</p>
                     </div>
                   </div>
+
                   <div className="contest-bigo-highlight-note">
-                    아래 코드에서 <strong>색으로 표시된 부분</strong>이 시간복잡도를 판단할 때 중심적으로 확인할 코드입니다.
-                    입력을 읽고 출력하는 부분은 제외하고 핵심 알고리즘을 기준으로 봅니다.
+                    아래 코드에서 <strong>강조된 글자색</strong>이 시간복잡도를 판단할 때 중심적으로 확인할 코드입니다.
+                    나머지 코드는 문법 요소에 따라 색을 구분해 표시했습니다.
                   </div>
+
                   <pre className="contest-bigo-code"><code>
                     {item.code.split("\n").map((line, lineIndex) => {
                       const highlighted = item.highlightContains.some((part) => line.includes(part));
+
                       return (
                         <span
                           className={`contest-bigo-code-line${highlighted ? " is-highlighted" : ""}`}
                           key={`${item.title}-${lineIndex}`}
                         >
-                          {line || " "}
+                          {renderCLine(line, `${item.title}-${lineIndex}`)}
                         </span>
                       );
                     })}
                   </code></pre>
-                </article>
+                </details>
               ))}
             </div>
 
