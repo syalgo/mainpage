@@ -91,6 +91,231 @@ const prepChecklist = [
   },
 ];
 
+const bigOExamples = [
+  {
+    title: "반복문 1개",
+    complexity: "O(N)",
+    summary: "N번 반복하면 핵심 연산의 횟수가 N에 비례합니다.",
+    problem: "예시 문제: N이 주어졌을 때 1부터 N까지의 합을 구하세요.",
+    analysis: "덧셈이 N번 수행되므로 T(N) = N입니다. 따라서 O(N)입니다.",
+    code: \`#include <stdio.h>
+
+int main(void) {
+    int N;
+    long long sum = 0;
+
+    scanf("%d", &N);
+
+    for (int i = 1; i <= N; i++) {
+        sum += i;
+    }
+
+    printf("%lld\\n", sum);
+    return 0;
+}\`,
+  },
+  {
+    title: "중첩 반복문",
+    complexity: "O(N²)",
+    summary: "N번 반복하는 반복문 안에서 다시 N번 반복하면 N × N번 수행됩니다.",
+    problem: "예시 문제: 1부터 N까지의 수로 만들 수 있는 순서쌍 (i, j)의 개수를 구하세요.",
+    analysis: "바깥 반복문 N번 × 안쪽 반복문 N번 = N²번이므로 O(N²)입니다.",
+    code: \`#include <stdio.h>
+
+int main(void) {
+    int N;
+    long long count = 0;
+
+    scanf("%d", &N);
+
+    for (int i = 1; i <= N; i++) {
+        for (int j = 1; j <= N; j++) {
+            count++;
+        }
+    }
+
+    printf("%lld\\n", count);
+    return 0;
+}\`,
+  },
+  {
+    title: "순차 실행",
+    complexity: "O(N²)",
+    summary: "O(N) 작업 뒤에 O(N²) 작업을 실행하면 더 빠르게 증가하는 N²이 남습니다.",
+    problem: "예시 문제: 1부터 N까지의 합을 구한 뒤, 모든 순서쌍 (i, j)의 개수도 구하세요.",
+    analysis: "첫 번째 반복문은 N번, 두 번째 중첩 반복문은 N²번입니다. T(N) = N + N²이므로 O(N²)입니다.",
+    code: \`#include <stdio.h>
+
+int main(void) {
+    int N;
+    long long sum = 0;
+    long long count = 0;
+
+    scanf("%d", &N);
+
+    for (int i = 1; i <= N; i++) {
+        sum += i;
+    }
+
+    for (int i = 1; i <= N; i++) {
+        for (int j = 1; j <= N; j++) {
+            count++;
+        }
+    }
+
+    printf("%lld %lld\\n", sum, count);
+    return 0;
+}\`,
+  },
+  {
+    title: "상수 제거",
+    complexity: "O(N)",
+    summary: "3N + 20처럼 상수배와 고정 횟수는 N이 커질수록 영향이 작아져 생략합니다.",
+    problem: "예시 문제: 1부터 N까지의 합을 세 번 계산한 뒤, 추가 연산을 20번 수행하세요.",
+    analysis: "N번 반복을 3번 수행하고 고정 연산을 20번 수행하므로 T(N) = 3N + 20입니다. 상수 3과 20을 생략하면 O(N)입니다.",
+    code: \`#include <stdio.h>
+
+int main(void) {
+    int N;
+    long long total = 0;
+
+    scanf("%d", &N);
+
+    for (int i = 1; i <= N; i++) {
+        total += i;
+    }
+
+    for (int i = 1; i <= N; i++) {
+        total += i;
+    }
+
+    for (int i = 1; i <= N; i++) {
+        total += i;
+    }
+
+    for (int i = 0; i < 20; i++) {
+        total++;
+    }
+
+    printf("%lld\\n", total);
+    return 0;
+}\`,
+  },
+  {
+    title: "범위를 절반씩 감소",
+    complexity: "O(log N)",
+    summary: "탐색 범위를 매번 절반으로 줄이면 반복 횟수는 log₂N에 비례합니다.",
+    problem: "예시 문제: 오름차순으로 정렬된 N개의 정수에서 목표값 X가 있는지 이분 탐색으로 찾으세요.",
+    analysis: "탐색 범위가 N → N/2 → N/4 → …로 줄어듭니다. 약 log₂N번 만에 범위가 1이 되므로 O(log N)입니다.",
+    code: \`#include <stdio.h>
+
+int main(void) {
+    int N, X;
+    int a[100000];
+
+    scanf("%d", &N);
+
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    scanf("%d", &X);
+
+    int left = 0;
+    int right = N - 1;
+    int found = 0;
+
+    while (left <= right) {
+        int mid = (left + right) / 2;
+
+        if (a[mid] == X) {
+            found = 1;
+            break;
+        } else if (a[mid] < X) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    printf("%d\\n", found);
+    return 0;
+}\`,
+  },
+  {
+    title: "정렬 후 한 번 순회",
+    complexity: "O(N log N)",
+    summary: "O(N log N) 정렬 뒤에 O(N) 순회를 해도 전체는 O(N log N)입니다.",
+    problem: "예시 문제: N개의 정수를 정렬한 뒤 서로 다른 값의 개수를 구하세요.",
+    analysis: "병합 정렬이 O(N log N), 정렬 후 서로 다른 값을 세는 순회가 O(N)입니다. T(N) = N log N + N이므로 O(N log N)입니다.",
+    code: \`#include <stdio.h>
+
+int a[100000];
+int temp[100000];
+
+void merge(int left, int mid, int right) {
+    int i = left;
+    int j = mid + 1;
+    int k = left;
+
+    while (i <= mid && j <= right) {
+        if (a[i] <= a[j]) {
+            temp[k++] = a[i++];
+        } else {
+            temp[k++] = a[j++];
+        }
+    }
+
+    while (i <= mid) {
+        temp[k++] = a[i++];
+    }
+
+    while (j <= right) {
+        temp[k++] = a[j++];
+    }
+
+    for (int t = left; t <= right; t++) {
+        a[t] = temp[t];
+    }
+}
+
+void mergeSort(int left, int right) {
+    if (left >= right) {
+        return;
+    }
+
+    int mid = (left + right) / 2;
+
+    mergeSort(left, mid);
+    mergeSort(mid + 1, right);
+    merge(left, mid, right);
+}
+
+int main(void) {
+    int N;
+
+    scanf("%d", &N);
+
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    mergeSort(0, N - 1);
+
+    int uniqueCount = 0;
+
+    for (int i = 0; i < N; i++) {
+        if (i == 0 || a[i] != a[i - 1]) {
+            uniqueCount++;
+        }
+    }
+
+    printf("%d\\n", uniqueCount);
+    return 0;
+}\`,
+  },
+];
+
 function QuestionGroup({
   number,
   title,
@@ -278,7 +503,7 @@ export default function CompetitionWinnerInterviewStudy() {
         <div className="contest-complexity-guide">
           <div className="contest-complexity-heading">
             <span>COMPLEXITY ANALYSIS</span>
-            <h3>시간복잡도와 메모리 사용량 분석하기</h3>
+            <h3>시간복잡도와 공간복잡도 분석하기</h3>
             <p>
               알고리즘 문제에는 보통 시간 제한, 메모리 제한, 입력 크기의 최댓값이 함께 주어집니다.
               따라서 Big-O만 구하는 데서 끝나지 않고, 실제 최댓값을 대입해 시간과 메모리 제한 안에서 가능한지 판단해야 합니다.
@@ -291,45 +516,45 @@ export default function CompetitionWinnerInterviewStudy() {
               먼저 핵심 연산이 입력 크기 N에 따라 몇 번 수행되는지 식으로 나타낸 뒤,
               N이 매우 커졌을 때 가장 큰 영향을 주는 항만 남겨 O( ) 안에 적습니다.
             </p>
-            <div className="contest-complexity-reference-grid">
-              <div>
-                <span>반복문 1개</span>
-                <b>O(N)</b>
-                <p>N번 반복하면 연산량은 N에 비례</p>
-              </div>
-              <div>
-                <span>중첩 반복문</span>
-                <b>O(N²)</b>
-                <p>N번 반복 안에서 다시 N번 반복 → N × N</p>
-              </div>
-              <div>
-                <span>순차 실행</span>
-                <b>O(N²)</b>
-                <p>O(N) + O(N²) → 더 크게 증가하는 N²만 남김</p>
-              </div>
-              <div>
-                <span>상수 제거</span>
-                <b>O(N)</b>
-                <p>3N + 20 → N이 커질수록 N항이 지배적이므로 O(N)</p>
-              </div>
-              <div>
-                <span>범위를 절반씩 감소</span>
-                <b>O(log N)</b>
-                <p>N → N/2 → N/4 → … 처럼 탐색 범위를 절반씩 줄임</p>
-              </div>
-              <div>
-                <span>정렬 후 한 번 순회</span>
-                <b>O(N log N)</b>
-                <p>O(N log N) + O(N) → O(N log N)</p>
-              </div>
-            </div>
-            <div className="contest-complexity-example">
-              <strong>예시 · 이중 반복문</strong>
+
+            <div className="contest-bigo-core">
+              <strong>핵심 연산이란?</strong>
               <p>
-                바깥 반복문이 N번, 안쪽 반복문도 매번 N번 실행된다면
-                전체 연산 횟수는 N × N = N²입니다. 따라서 <b>O(N²)</b>로 표기합니다.
+                알고리즘에서 입력 크기가 커질수록 반복해서 수행되는 주요 작업을 뜻합니다.
+                예를 들어 비교, 덧셈·곱셈, 값 대입, 배열 접근, 탐색, 교환 같은 연산이 핵심 연산이 될 수 있습니다.
+                Big-O에서는 CPU 명령 하나하나를 정확히 세기보다, 이런 핵심 작업이 N에 따라 몇 번 반복되는지를 중심으로 증가 정도를 분석합니다.
               </p>
             </div>
+
+            <div className="contest-complexity-reference-grid">
+              {bigOExamples.map((item) => (
+                <div key={item.title}>
+                  <span>{item.title}</span>
+                  <b>{item.complexity}</b>
+                  <p>{item.summary}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="contest-bigo-examples">
+              {bigOExamples.map((item, index) => (
+                <article className="contest-bigo-example" key={item.title}>
+                  <div className="contest-bigo-example-head">
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <div>
+                      <h4>{item.title} · {item.complexity}</h4>
+                      <p>{item.problem}</p>
+                    </div>
+                  </div>
+                  <div className="contest-bigo-analysis">
+                    <strong>분석</strong>
+                    <p>{item.analysis}</p>
+                  </div>
+                  <pre className="contest-bigo-code"><code>{item.code}</code></pre>
+                </article>
+              ))}
+            </div>
+
             <div className="contest-complexity-caution">
               <strong>기억할 규칙</strong>
               <p>
