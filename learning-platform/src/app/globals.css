@@ -3784,25 +3784,12 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
   color: #687183;
   line-height: 1.75;
 }
-.elementary-glossary-source-note,
 .elementary-glossary-quick,
 .elementary-glossary-browser {
   padding: 24px 26px;
   border: 1px solid #ddd7ed;
   border-radius: 18px;
   background: #fff;
-}
-.elementary-glossary-source-note {
-  border-color: #cfdcf3;
-  background: #f5f8fe;
-}
-.elementary-glossary-source-note strong {
-  color: #315f9e;
-}
-.elementary-glossary-source-note p {
-  margin: 7px 0 0;
-  color: #566379;
-  line-height: 1.72;
 }
 .elementary-glossary-section-heading > span {
   display: block;
@@ -4046,7 +4033,6 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
   .elementary-glossary-topbar .secondary-button {
     margin-top: 16px;
   }
-  .elementary-glossary-source-note,
   .elementary-glossary-quick,
   .elementary-glossary-browser {
     padding: 20px 16px;
