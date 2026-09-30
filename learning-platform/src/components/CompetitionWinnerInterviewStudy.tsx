@@ -285,6 +285,60 @@ export default function CompetitionWinnerInterviewStudy() {
             </p>
           </div>
 
+          <div className="contest-complexity-reference">
+            <strong>Big-O 표기법 작성하는 방법</strong>
+            <p>
+              먼저 핵심 연산이 입력 크기 N에 따라 몇 번 수행되는지 식으로 나타낸 뒤,
+              N이 매우 커졌을 때 가장 큰 영향을 주는 항만 남겨 O( ) 안에 적습니다.
+            </p>
+            <div className="contest-complexity-reference-grid">
+              <div>
+                <span>반복문 1개</span>
+                <b>O(N)</b>
+                <p>N번 반복하면 연산량은 N에 비례</p>
+              </div>
+              <div>
+                <span>중첩 반복문</span>
+                <b>O(N²)</b>
+                <p>N번 반복 안에서 다시 N번 반복 → N × N</p>
+              </div>
+              <div>
+                <span>순차 실행</span>
+                <b>O(N²)</b>
+                <p>O(N) + O(N²) → 더 크게 증가하는 N²만 남김</p>
+              </div>
+              <div>
+                <span>상수 제거</span>
+                <b>O(N)</b>
+                <p>3N + 20 → N이 커질수록 N항이 지배적이므로 O(N)</p>
+              </div>
+              <div>
+                <span>범위를 절반씩 감소</span>
+                <b>O(log N)</b>
+                <p>N → N/2 → N/4 → … 처럼 탐색 범위를 절반씩 줄임</p>
+              </div>
+              <div>
+                <span>정렬 후 한 번 순회</span>
+                <b>O(N log N)</b>
+                <p>O(N log N) + O(N) → O(N log N)</p>
+              </div>
+            </div>
+            <div className="contest-complexity-example">
+              <strong>예시 · 이중 반복문</strong>
+              <p>
+                바깥 반복문이 N번, 안쪽 반복문도 매번 N번 실행된다면
+                전체 연산 횟수는 N × N = N²입니다. 따라서 <b>O(N²)</b>로 표기합니다.
+              </p>
+            </div>
+            <div className="contest-complexity-caution">
+              <strong>기억할 규칙</strong>
+              <p>
+                상수는 생략하고, 여러 항이 있으면 N이 커질수록 가장 빠르게 증가하는 항만 남깁니다.
+                서로 독립적인 입력 크기 N과 M을 각각 처리한다면 O(N + M)처럼 두 변수를 그대로 사용합니다.
+              </p>
+            </div>
+          </div>
+
           <div className="contest-complexity-grid">
             <article>
               <span>TIME COMPLEXITY</span>
