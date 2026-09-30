@@ -278,60 +278,110 @@ export default function CompetitionWinnerInterviewStudy() {
         <div className="contest-complexity-guide">
           <div className="contest-complexity-heading">
             <span>COMPLEXITY ANALYSIS</span>
-            <h3>시간·공간 복잡도 분석 방법</h3>
+            <h3>시간복잡도와 메모리 사용량 분석하기</h3>
             <p>
-              복잡도는 단순히 O(N)이라는 결과만 외우는 것이 아니라,
-              어떤 연산과 자료구조 때문에 그 복잡도가 나오는지 설명할 수 있어야 합니다.
+              알고리즘 문제에는 보통 시간 제한, 메모리 제한, 입력 크기의 최댓값이 함께 주어집니다.
+              따라서 Big-O만 구하는 데서 끝나지 않고, 실제 최댓값을 대입해 시간과 메모리 제한 안에서 가능한지 판단해야 합니다.
             </p>
           </div>
 
           <div className="contest-complexity-grid">
             <article>
               <span>TIME COMPLEXITY</span>
-              <h4>시간복잡도는 연산 횟수를 N으로 표현합니다</h4>
+              <h4>시간복잡도 → 최대 N 대입 → 연산량 계산 → 시간 제한과 비교</h4>
               <ol>
-                <li>입력 크기를 나타내는 값을 N으로 정합니다.</li>
-                <li>반복문·재귀·정렬·탐색이 몇 번 수행되는지 확인합니다.</li>
-                <li>가장 빠르게 증가하는 항만 남겨 Big-O로 표현합니다.</li>
-                <li>문제의 N 제한에서 실제로 수행 가능한지도 함께 판단합니다.</li>
+                <li>탐색·정렬·반복문 등 핵심 알고리즘의 시간복잡도를 Big-O로 구합니다.</li>
+                <li>문제에서 주어진 N의 최댓값을 대입합니다.</li>
+                <li>최악의 경우 대략 몇 번 연산하는지 계산합니다.</li>
+                <li>그 연산량이 시간 제한 안에 가능한지 판단합니다.</li>
               </ol>
+
               <div className="contest-complexity-example">
-                <strong>예시 · 배열에서 최댓값 찾기</strong>
+                <strong>예시 · N ≤ 10,000이고 알고리즘이 O(N²)인 경우</strong>
                 <p>
-                  원소 N개를 처음부터 끝까지 한 번씩 확인하므로 연산 횟수가 N에 비례합니다.
-                  따라서 시간복잡도는 <b>O(N)</b>입니다.
+                  10,000 × 10,000 = <b>100,000,000</b>이므로 최악의 경우 약 1억 번의 연산이 필요합니다.
+                  알고리즘 문제에서는 빠르게 가능성을 판단할 때 <b>1억 번의 단순 연산 ≈ 1초</b> 정도를 매우 거친 기준으로 사용하기도 합니다.
+                  따라서 시간 제한이 1초라면 O(N²)은 경계선이거나 위험하다고 판단할 수 있습니다.
+                </p>
+              </div>
+
+              <div className="contest-complexity-caution">
+                <strong>주의</strong>
+                <p>
+                  1억 번 = 정확히 1초라는 공식은 아닙니다. 언어, 연산 종류, 컴퓨터 성능, 입출력 등에 따라 실제 시간은 달라집니다.
+                  특히 Python은 같은 연산 횟수라도 C/C++보다 오래 걸릴 수 있으므로 대략적인 판단 기준으로 사용합니다.
                 </p>
               </div>
             </article>
 
             <article>
-              <span>SPACE COMPLEXITY</span>
-              <h4>공간복잡도는 추가로 사용하는 메모리를 계산합니다</h4>
+              <span>MEMORY ANALYSIS</span>
+              <h4>공간복잡도 → 실제 자료구조 크기 계산 → 메모리 제한과 비교</h4>
               <ol>
-                <li>입력 데이터 자체를 제외하고 추가로 만든 저장공간을 확인합니다.</li>
-                <li>배열·리스트·큐·스택·방문 배열과 재귀 호출 스택을 포함합니다.</li>
-                <li>추가 저장공간의 크기를 N에 대한 식으로 나타내 Big-O로 정리합니다.</li>
-                <li>메모리 제한 안에서 사용할 수 있는 크기인지 확인합니다.</li>
+                <li>추가로 사용하는 배열·리스트·큐·스택·재귀 호출 등을 확인합니다.</li>
+                <li>공간복잡도를 O(N), O(N²)처럼 Big-O로 정리합니다.</li>
+                <li>실제로 저장하는 원소 수 × 자료형 크기로 Byte를 계산합니다.</li>
+                <li>KB 또는 MB로 환산한 뒤 문제의 메모리 제한과 비교합니다.</li>
               </ol>
+
               <div className="contest-complexity-example">
-                <strong>예시 · 배열에서 최댓값 찾기</strong>
+                <strong>예시 · int 배열 10,000개</strong>
                 <p>
-                  최댓값을 저장할 변수 몇 개만 추가로 사용하므로 입력 크기 N이 커져도
-                  추가 메모리는 일정합니다. 따라서 공간복잡도는 <b>O(1)</b>입니다.
+                  일반적인 온라인 저지 환경에서 int를 4Byte로 계산하면
+                  <b> 10,000 × 4Byte = 40,000Byte</b>입니다.
+                  이는 약 <b>40KB = 0.04MB</b>입니다. 40MB가 아닙니다.
+                </p>
+              </div>
+
+              <div className="contest-complexity-example">
+                <strong>예시 · int 배열 10,000,000개</strong>
+                <p>
+                  10,000,000 × 4Byte = <b>40,000,000Byte ≈ 40MB</b>입니다.
+                  따라서 메모리 제한이 32MB라면 사용할 수 없고, 512MB라면 충분히 사용할 수 있다고 판단할 수 있습니다.
                 </p>
               </div>
             </article>
           </div>
 
           <div className="contest-complexity-reference">
-            <strong>대표적인 분석 예시</strong>
+            <strong>시간복잡도 빠르게 판단하기 · N = 10,000인 경우</strong>
             <div className="contest-complexity-reference-grid">
-              <div><span>한 번 순회</span><b>O(N)</b><p>N개 원소를 한 번씩 확인</p></div>
-              <div><span>이중 반복문</span><b>O(N²)</b><p>각 원소마다 다시 N개를 확인</p></div>
-              <div><span>정렬</span><b>O(N log N)</b><p>일반적인 비교 기반 정렬</p></div>
-              <div><span>이분 탐색</span><b>O(log N)</b><p>탐색 범위를 절반씩 줄임</p></div>
-              <div><span>N칸 배열</span><b>O(N)</b><p>입력 크기만큼 추가 배열 사용</p></div>
-              <div><span>변수 몇 개</span><b>O(1)</b><p>N과 무관한 고정 크기 메모리</p></div>
+              <div><span>O(N)</span><b>약 10,000회</b><p>데이터를 한 번 순회</p></div>
+              <div><span>O(N log N)</span><b>약 13만 회</b><p>일반적인 정렬 수준</p></div>
+              <div><span>O(N²)</span><b>1억 회</b><p>시간 제한을 반드시 확인</p></div>
+              <div><span>O(N³)</span><b>1조 회</b><p>일반적으로 사실상 불가능</p></div>
+            </div>
+          </div>
+
+          <div className="contest-complexity-reference">
+            <strong>자주 사용하는 자료형 크기</strong>
+            <div className="contest-complexity-reference-grid">
+              <div><span>char</span><b>1Byte</b><p>문자·작은 정수</p></div>
+              <div><span>short</span><b>2Byte</b><p>일반적인 크기 기준</p></div>
+              <div><span>int / float</span><b>4Byte</b><p>대부분의 알고리즘 문제에서 자주 사용</p></div>
+              <div><span>long long / double</span><b>8Byte</b><p>큰 정수·실수</p></div>
+            </div>
+          </div>
+
+          <div className="contest-complexity-reference">
+            <strong>메모리 계산 예시</strong>
+            <div className="contest-complexity-reference-grid">
+              <div><span>int 10,000개</span><b>약 40KB</b><p>10,000 × 4Byte</p></div>
+              <div><span>int 10,000,000개</span><b>약 40MB</b><p>10,000,000 × 4Byte</p></div>
+              <div><span>long long 1,000,000개</span><b>약 8MB</b><p>1,000,000 × 8Byte</p></div>
+              <div><span>int[1000][1000]</span><b>약 4MB</b><p>1,000 × 1,000 × 4Byte</p></div>
+            </div>
+          </div>
+
+          <div className="contest-complexity-summary">
+            <strong>핵심 정리</strong>
+            <div>
+              <p><b>시간</b> : 시간복잡도 → N의 최댓값 대입 → 대략적인 연산 횟수 계산 → 시간 제한과 비교</p>
+              <p><b>메모리</b> : 공간복잡도 → 원소 개수 × 자료형 크기 → KB/MB 환산 → 메모리 제한과 비교</p>
+              <p>
+                즉, <b>Big-O는 입력이 커질 때 증가하는 정도</b>를 보는 것이고,
+                실제 연산 횟수와 MB 계산은 그 알고리즘이 해당 문제의 제한 안에서 정말 사용할 수 있는지를 확인하는 과정입니다.
+              </p>
             </div>
           </div>
         </div>
