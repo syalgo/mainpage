@@ -98,21 +98,11 @@ const bigOExamples = [
     summary: "N번 반복하면 핵심 연산의 횟수가 N에 비례합니다.",
     problem: "예시 문제: N이 주어졌을 때 1부터 N까지의 합을 구하세요.",
     analysis: "덧셈이 N번 수행되므로 T(N) = N입니다. 따라서 O(N)입니다.",
-    code: `#include <stdio.h>
-
-int main(void) {
-    int N;
-    long long sum = 0;
-
-    scanf("%d", &N);
-
-    for (int i = 1; i <= N; i++) {
-        sum += i;
-    }
-
-    printf("%lld\\n", sum);
-    return 0;
-}`,
+    nValue: "N = 10,000",
+    operationCount: "10,000회",
+    operationDetail: "합을 갱신하는 핵심 연산 sum += i가 N번 실행됩니다.",
+    highlightContains: ["for (int i = 1; i <= N; i++) {","sum += i;"],
+    code: "#include <stdio.h>\n\nint main() {\n    int N;\n    long long sum = 0;\n\n    scanf(\"%d\", &N);\n\n    for (int i = 1; i <= N; i++) {\n        sum += i;\n    }\n\n    printf(\"%lld\\n\", sum);\n    return 0;\n}",
   },
   {
     title: "중첩 반복문",
@@ -120,23 +110,11 @@ int main(void) {
     summary: "N번 반복하는 반복문 안에서 다시 N번 반복하면 N × N번 수행됩니다.",
     problem: "예시 문제: 1부터 N까지의 수로 만들 수 있는 순서쌍 (i, j)의 개수를 구하세요.",
     analysis: "바깥 반복문 N번 × 안쪽 반복문 N번 = N²번이므로 O(N²)입니다.",
-    code: `#include <stdio.h>
-
-int main(void) {
-    int N;
-    long long count = 0;
-
-    scanf("%d", &N);
-
-    for (int i = 1; i <= N; i++) {
-        for (int j = 1; j <= N; j++) {
-            count++;
-        }
-    }
-
-    printf("%lld\\n", count);
-    return 0;
-}`,
+    nValue: "N = 10,000",
+    operationCount: "100,000,000회",
+    operationDetail: "10,000 × 10,000 = 100,000,000이므로 count++가 1억 번 실행됩니다.",
+    highlightContains: ["for (int i = 1; i <= N; i++) {","for (int j = 1; j <= N; j++) {","count++;"],
+    code: "#include <stdio.h>\n\nint main() {\n    int N;\n    long long count = 0;\n\n    scanf(\"%d\", &N);\n\n    for (int i = 1; i <= N; i++) {\n        for (int j = 1; j <= N; j++) {\n            count++;\n        }\n    }\n\n    printf(\"%lld\\n\", count);\n    return 0;\n}",
   },
   {
     title: "순차 실행",
@@ -144,28 +122,11 @@ int main(void) {
     summary: "O(N) 작업 뒤에 O(N²) 작업을 실행하면 더 빠르게 증가하는 N²이 남습니다.",
     problem: "예시 문제: 1부터 N까지의 합을 구한 뒤, 모든 순서쌍 (i, j)의 개수도 구하세요.",
     analysis: "첫 번째 반복문은 N번, 두 번째 중첩 반복문은 N²번입니다. T(N) = N + N²이므로 O(N²)입니다.",
-    code: `#include <stdio.h>
-
-int main(void) {
-    int N;
-    long long sum = 0;
-    long long count = 0;
-
-    scanf("%d", &N);
-
-    for (int i = 1; i <= N; i++) {
-        sum += i;
-    }
-
-    for (int i = 1; i <= N; i++) {
-        for (int j = 1; j <= N; j++) {
-            count++;
-        }
-    }
-
-    printf("%lld %lld\\n", sum, count);
-    return 0;
-}`,
+    nValue: "N = 10,000",
+    operationCount: "100,010,000회",
+    operationDetail: "10,000 + (10,000 × 10,000) = 100,010,000입니다. 큰 항 N²이 전체 증가율을 결정합니다.",
+    highlightContains: ["for (int i = 1; i <= N; i++) {","sum += i;","for (int j = 1; j <= N; j++) {","count++;"],
+    code: "#include <stdio.h>\n\nint main() {\n    int N;\n    long long sum = 0;\n    long long count = 0;\n\n    scanf(\"%d\", &N);\n\n    for (int i = 1; i <= N; i++) {\n        sum += i;\n    }\n\n    for (int i = 1; i <= N; i++) {\n        for (int j = 1; j <= N; j++) {\n            count++;\n        }\n    }\n\n    printf(\"%lld %lld\\n\", sum, count);\n    return 0;\n}",
   },
   {
     title: "상수 제거",
@@ -173,33 +134,11 @@ int main(void) {
     summary: "3N + 20처럼 상수배와 고정 횟수는 N이 커질수록 영향이 작아져 생략합니다.",
     problem: "예시 문제: 1부터 N까지의 합을 세 번 계산한 뒤, 추가 연산을 20번 수행하세요.",
     analysis: "N번 반복을 3번 수행하고 고정 연산을 20번 수행하므로 T(N) = 3N + 20입니다. 상수 3과 20을 생략하면 O(N)입니다.",
-    code: `#include <stdio.h>
-
-int main(void) {
-    int N;
-    long long total = 0;
-
-    scanf("%d", &N);
-
-    for (int i = 1; i <= N; i++) {
-        total += i;
-    }
-
-    for (int i = 1; i <= N; i++) {
-        total += i;
-    }
-
-    for (int i = 1; i <= N; i++) {
-        total += i;
-    }
-
-    for (int i = 0; i < 20; i++) {
-        total++;
-    }
-
-    printf("%lld\\n", total);
-    return 0;
-}`,
+    nValue: "N = 10,000",
+    operationCount: "30,020회",
+    operationDetail: "(10,000 × 3) + 20 = 30,020입니다. N이 커질수록 상수배 3과 고정값 20의 영향은 상대적으로 작아집니다.",
+    highlightContains: ["for (int i = 1; i <= N; i++) {","total += i;","for (int i = 0; i < 20; i++) {","total++;"],
+    code: "#include <stdio.h>\n\nint main() {\n    int N;\n    long long total = 0;\n\n    scanf(\"%d\", &N);\n\n    for (int i = 1; i <= N; i++) {\n        total += i;\n    }\n\n    for (int i = 1; i <= N; i++) {\n        total += i;\n    }\n\n    for (int i = 1; i <= N; i++) {\n        total += i;\n    }\n\n    for (int i = 0; i < 20; i++) {\n        total++;\n    }\n\n    printf(\"%lld\\n\", total);\n    return 0;\n}",
   },
   {
     title: "범위를 절반씩 감소",
@@ -207,40 +146,11 @@ int main(void) {
     summary: "탐색 범위를 매번 절반으로 줄이면 반복 횟수는 log₂N에 비례합니다.",
     problem: "예시 문제: 오름차순으로 정렬된 N개의 정수에서 목표값 X가 있는지 이분 탐색으로 찾으세요.",
     analysis: "탐색 범위가 N → N/2 → N/4 → …로 줄어듭니다. 약 log₂N번 만에 범위가 1이 되므로 O(log N)입니다.",
-    code: `#include <stdio.h>
-
-int main(void) {
-    int N, X;
-    int a[100000];
-
-    scanf("%d", &N);
-
-    for (int i = 0; i < N; i++) {
-        scanf("%d", &a[i]);
-    }
-
-    scanf("%d", &X);
-
-    int left = 0;
-    int right = N - 1;
-    int found = 0;
-
-    while (left <= right) {
-        int mid = (left + right) / 2;
-
-        if (a[mid] == X) {
-            found = 1;
-            break;
-        } else if (a[mid] < X) {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
-        }
-    }
-
-    printf("%d\\n", found);
-    return 0;
-}`,
+    nValue: "N = 1,000,000",
+    operationCount: "최대 약 20회",
+    operationDetail: "log₂(1,000,000) ≈ 19.93이므로 탐색 범위를 약 20번 절반으로 줄이면 결과를 판단할 수 있습니다.",
+    highlightContains: ["while (left <= right) {","int mid = (left + right) / 2;","if (a[mid] == X) {","} else if (a[mid] < X) {","left = mid + 1;","right = mid - 1;"],
+    code: "#include <stdio.h>\n\nint main() {\n    int N, X;\n    int a[1000000];\n\n    scanf(\"%d\", &N);\n\n    for (int i = 0; i < N; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n\n    scanf(\"%d\", &X);\n\n    int left = 0;\n    int right = N - 1;\n    int found = 0;\n\n    while (left <= right) {\n        int mid = (left + right) / 2;\n\n        if (a[mid] == X) {\n            found = 1;\n            break;\n        } else if (a[mid] < X) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n        }\n    }\n\n    printf(\"%d\\n\", found);\n    return 0;\n}",
   },
   {
     title: "정렬 후 한 번 순회",
@@ -248,72 +158,12 @@ int main(void) {
     summary: "O(N log N) 정렬 뒤에 O(N) 순회를 해도 전체는 O(N log N)입니다.",
     problem: "예시 문제: N개의 정수를 정렬한 뒤 서로 다른 값의 개수를 구하세요.",
     analysis: "병합 정렬이 O(N log N), 정렬 후 서로 다른 값을 세는 순회가 O(N)입니다. T(N) = N log N + N이므로 O(N log N)입니다.",
-    code: `#include <stdio.h>
-
-int a[100000];
-int temp[100000];
-
-void merge(int left, int mid, int right) {
-    int i = left;
-    int j = mid + 1;
-    int k = left;
-
-    while (i <= mid && j <= right) {
-        if (a[i] <= a[j]) {
-            temp[k++] = a[i++];
-        } else {
-            temp[k++] = a[j++];
-        }
-    }
-
-    while (i <= mid) {
-        temp[k++] = a[i++];
-    }
-
-    while (j <= right) {
-        temp[k++] = a[j++];
-    }
-
-    for (int t = left; t <= right; t++) {
-        a[t] = temp[t];
-    }
-}
-
-void mergeSort(int left, int right) {
-    if (left >= right) {
-        return;
-    }
-
-    int mid = (left + right) / 2;
-
-    mergeSort(left, mid);
-    mergeSort(mid + 1, right);
-    merge(left, mid, right);
-}
-
-int main(void) {
-    int N;
-
-    scanf("%d", &N);
-
-    for (int i = 0; i < N; i++) {
-        scanf("%d", &a[i]);
-    }
-
-    mergeSort(0, N - 1);
-
-    int uniqueCount = 0;
-
-    for (int i = 0; i < N; i++) {
-        if (i == 0 || a[i] != a[i - 1]) {
-            uniqueCount++;
-        }
-    }
-
-    printf("%d\\n", uniqueCount);
-    return 0;
-}`,
-  },
+    nValue: "N = 65,536",
+    operationCount: "약 1,114,112회 규모",
+    operationDetail: "65,536 × log₂65,536 + 65,536 = 65,536 × 16 + 65,536 = 1,114,112입니다. 실제 명령 수와 정확히 같지는 않지만 Big-O 기준의 연산 규모를 비교하기 위한 계산입니다.",
+    highlightContains: ["while (i <= mid && j <= right) {","while (i <= mid) {","while (j <= right) {","mergeSort(left, mid);","mergeSort(mid + 1, right);","merge(left, mid, right);","mergeSort(0, N - 1);","if (i == 0 || a[i] != a[i - 1]) {","uniqueCount++;"],
+    code: "#include <stdio.h>\n\nint a[100000];\nint temp[100000];\n\nvoid merge(int left, int mid, int right) {\n    int i = left;\n    int j = mid + 1;\n    int k = left;\n\n    while (i <= mid && j <= right) {\n        if (a[i] <= a[j]) {\n            temp[k++] = a[i++];\n        } else {\n            temp[k++] = a[j++];\n        }\n    }\n\n    while (i <= mid) {\n        temp[k++] = a[i++];\n    }\n\n    while (j <= right) {\n        temp[k++] = a[j++];\n    }\n\n    for (int t = left; t <= right; t++) {\n        a[t] = temp[t];\n    }\n}\n\nvoid mergeSort(int left, int right) {\n    if (left >= right) {\n        return;\n    }\n\n    int mid = (left + right) / 2;\n\n    mergeSort(left, mid);\n    mergeSort(mid + 1, right);\n    merge(left, mid, right);\n}\n\nint main() {\n    int N;\n\n    scanf(\"%d\", &N);\n\n    for (int i = 0; i < N; i++) {\n        scanf(\"%d\", &a[i]);\n    }\n\n    mergeSort(0, N - 1);\n\n    int uniqueCount = 0;\n\n    for (int i = 0; i < N; i++) {\n        if (i == 0 || a[i] != a[i - 1]) {\n            uniqueCount++;\n        }\n    }\n\n    printf(\"%d\\n\", uniqueCount);\n    return 0;\n}",
+  }
 ];
 
 function QuestionGroup({
@@ -550,7 +400,34 @@ export default function CompetitionWinnerInterviewStudy() {
                     <strong>분석</strong>
                     <p>{item.analysis}</p>
                   </div>
-                  <pre className="contest-bigo-code"><code>{item.code}</code></pre>
+                  <div className="contest-bigo-operation">
+                    <div>
+                      <span>예시 입력 크기</span>
+                      <strong>{item.nValue}</strong>
+                    </div>
+                    <div>
+                      <span>핵심 연산 횟수</span>
+                      <strong>{item.operationCount}</strong>
+                      <p>{item.operationDetail}</p>
+                    </div>
+                  </div>
+                  <div className="contest-bigo-highlight-note">
+                    아래 코드에서 <strong>색으로 표시된 부분</strong>이 시간복잡도를 판단할 때 중심적으로 확인할 코드입니다.
+                    입력을 읽고 출력하는 부분은 제외하고 핵심 알고리즘을 기준으로 봅니다.
+                  </div>
+                  <pre className="contest-bigo-code"><code>
+                    {item.code.split("\n").map((line, lineIndex) => {
+                      const highlighted = item.highlightContains.some((part) => line.includes(part));
+                      return (
+                        <span
+                          className={`contest-bigo-code-line${highlighted ? " is-highlighted" : ""}`}
+                          key={`${item.title}-${lineIndex}`}
+                        >
+                          {line || " "}
+                        </span>
+                      );
+                    })}
+                  </code></pre>
                 </article>
               ))}
             </div>
