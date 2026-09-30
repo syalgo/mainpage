@@ -2809,3 +2809,72 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
     font-size: 12px;
   }
 }
+
+
+/* Big-O operation counts and highlighted code */
+.contest-bigo-operation {
+  display: grid;
+  grid-template-columns: minmax(150px, .7fr) minmax(0, 1.3fr);
+  gap: 10px;
+  padding: 0 18px 16px;
+}
+.contest-bigo-operation > div {
+  padding: 14px 15px;
+  border: 1px solid #e3dfee;
+  border-radius: 11px;
+  background: #faf9fd;
+}
+.contest-bigo-operation span,
+.contest-bigo-operation strong {
+  display: block;
+}
+.contest-bigo-operation span {
+  color: #756b93;
+  font-size: 11px;
+  font-weight: 850;
+}
+.contest-bigo-operation strong {
+  margin-top: 5px;
+  color: #514586;
+  font-size: 17px;
+}
+.contest-bigo-operation p {
+  margin: 6px 0 0;
+  color: #687183;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.contest-bigo-highlight-note {
+  margin: 0 18px 14px;
+  padding: 11px 13px;
+  border-left: 3px solid #d4b23d;
+  background: #fff9df;
+  color: #665b34;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.contest-bigo-highlight-note strong {
+  color: #7a6519;
+}
+.contest-bigo-code-line {
+  display: block;
+  min-height: 1.65em;
+  margin: 0 -18px;
+  padding: 0 18px;
+}
+.contest-bigo-code-line.is-highlighted {
+  border-left: 4px solid #f0c94b;
+  background: rgba(240, 201, 75, .18);
+  color: #fff0a8;
+  font-weight: 700;
+}
+
+@media (max-width: 650px) {
+  .contest-bigo-operation {
+    grid-template-columns: 1fr;
+    padding: 0 15px 14px;
+  }
+  .contest-bigo-highlight-note {
+    margin: 0 15px 12px;
+  }
+}
