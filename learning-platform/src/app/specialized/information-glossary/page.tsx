@@ -6,11 +6,17 @@ export default function InformationGlossaryPage() {
       permission="specialized"
       eyebrow="INFORMATION GLOSSARY"
       title="정보용어 백과"
-      description="정보 교과·컴퓨터 과학·알고리즘에서 자주 사용하는 핵심 용어를 정리하는 학습 공간입니다."
+      description="정보 교과와 컴퓨터 과학에서 자주 사용하는 핵심 용어를 수준별로 정리합니다."
       items={[
         {
-          title: "정보용어 백과",
-          description: "용어 목록과 세부 설명을 순차적으로 추가합니다.",
+          title: "초등 정보용어",
+          description: "첨부된 초등 소프트웨어 용어 자료를 바탕으로 4개 영역의 핵심 용어를 정리합니다.",
+          href: "/specialized/information-glossary/elementary",
+        },
+        {
+          title: "중등 정보용어",
+          description: "중학교 정보 교과에서 사용하는 핵심 개념과 용어를 정리하는 공간입니다.",
+          href: "/specialized/information-glossary/middle",
         },
       ]}
       hideIntro
