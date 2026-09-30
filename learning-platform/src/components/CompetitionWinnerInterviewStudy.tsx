@@ -166,6 +166,239 @@ const bigOExamples = [
   }
 ];
 
+const analysisPracticeProblems = [
+  {
+    title: "최소 길이 배송 구간",
+    topic: "투 포인터",
+    problem:
+      "양의 정수 N개가 일렬로 놓여 있습니다. 연속한 구간의 합이 S 이상이 되는 구간 중 길이가 가장 짧은 구간의 길이를 구하세요. 조건을 만족하는 구간이 없으면 0을 출력합니다.",
+    constraints: "1 ≤ N ≤ 200,000, 1 ≤ A[i] ≤ 10,000, 1 ≤ S ≤ 10^9",
+    keyConstraint:
+      "모든 값이 양수이므로 오른쪽 끝을 늘리면 구간 합은 감소하지 않고, 왼쪽 끝을 줄이면 합이 감소합니다.",
+    naive:
+      "모든 시작점과 끝점을 확인하면 O(N²)입니다. N=200,000이면 약 400억 개의 구간을 확인해야 하므로 불가능합니다.",
+    algorithm:
+      "왼쪽 포인터와 오른쪽 포인터를 두고 오른쪽을 한 번씩 늘립니다. 합이 S 이상이 되면 조건을 유지하는 동안 왼쪽을 줄이며 최소 길이를 갱신합니다.",
+    correctness:
+      "값이 모두 양수이므로 현재 오른쪽 끝에서 합이 S 이상인 순간, 왼쪽을 가능한 만큼 당겨 얻은 구간이 그 오른쪽 끝을 사용하는 최소 길이 구간입니다.",
+    time:
+      "O(N)",
+    operation:
+      "N=200,000일 때 두 포인터가 각각 최대 N번 이동하므로 핵심 이동은 대략 400,000회 규모입니다.",
+    space:
+      "O(1) 추가 공간",
+    memory:
+      "입력을 배열로 저장하면 O(N), 스트리밍으로 처리 가능한 형태라면 핵심 알고리즘의 추가 변수는 상수 개수입니다.",
+  },
+  {
+    title: "교차하지 않는 신호선",
+    topic: "LIS · 이분 탐색",
+    problem:
+      "왼쪽 기둥의 1번부터 N번 위치에 연결된 신호선이 오른쪽 기둥의 서로 다른 위치 B[i]로 이어집니다. 서로 교차하지 않도록 최대한 많은 신호선을 남기려고 할 때 남길 수 있는 최대 개수를 구하세요.",
+    constraints: "1 ≤ N ≤ 200,000, B[i]는 서로 다른 1..N의 값",
+    keyConstraint:
+      "왼쪽 위치는 이미 증가 순서이므로 교차하지 않으려면 선택한 B[i]도 증가해야 합니다. 결국 B 수열의 최장 증가 부분수열 길이를 구하는 문제입니다.",
+    naive:
+      "각 위치에서 이전 위치를 모두 확인하는 DP는 O(N²)이라 N=200,000에서 불가능합니다.",
+    algorithm:
+      "길이별 증가 부분수열의 가능한 최소 마지막 값을 배열에 유지하고, 각 B[i]를 lower_bound로 들어갈 위치를 찾아 갱신합니다.",
+    correctness:
+      "같은 길이의 증가 부분수열이라면 마지막 값이 작을수록 이후 값을 이어 붙이기 유리하므로 최소 마지막 값만 유지해도 최종 LIS 길이는 보존됩니다.",
+    time:
+      "O(N log N)",
+    operation:
+      "N=200,000, log₂N≈17.6이므로 이분 탐색 비교는 대략 350만 회 규모입니다.",
+    space:
+      "O(N)",
+    memory:
+      "int 배열 N개를 사용하면 약 200,000×4Byte≈0.8MB가 필요합니다.",
+  },
+  {
+    title: "무료 문이 있는 미로",
+    topic: "0-1 BFS",
+    problem:
+      "H×W 격자에서 상하좌우로 이동합니다. 빈 칸으로 이동하는 비용은 0이고, 잠긴 문이 있는 칸으로 들어가면 비용이 1입니다. 시작점에서 도착점까지 이동할 때 열어야 하는 문의 최소 개수를 구하세요.",
+    constraints: "1 ≤ H,W ≤ 1,000, 전체 칸 수 ≤ 1,000,000",
+    keyConstraint:
+      "간선 비용이 일반적인 여러 값이 아니라 0 또는 1뿐입니다. 따라서 우선순위 큐를 쓰는 다익스트라보다 0-1 BFS가 적합합니다.",
+    naive:
+      "모든 경로를 탐색하는 방식은 경우의 수가 폭발합니다. 단순 BFS도 이동 횟수만 최소화하므로 비용 0/1을 올바르게 처리하지 못합니다.",
+    algorithm:
+      "deque를 사용합니다. 비용 0인 간선으로 갱신되면 앞쪽에, 비용 1인 간선으로 갱신되면 뒤쪽에 넣어 작은 비용의 정점을 먼저 처리합니다.",
+    correctness:
+      "deque의 앞쪽에는 현재 비용을 증가시키지 않는 정점이 유지되므로, 다익스트라에서 가장 작은 거리 정점을 먼저 처리하는 성질을 0/1 가중치에 맞게 구현할 수 있습니다.",
+    time:
+      "O(HW)",
+    operation:
+      "칸이 1,000,000개라면 각 칸의 최대 4개 이웃을 확인하므로 대략 수백만 번의 간선 확인 규모입니다.",
+    space:
+      "O(HW)",
+    memory:
+      "거리 int 배열만 계산해도 1,000,000×4Byte≈4MB이며, 격자와 deque 저장 공간이 추가됩니다.",
+  },
+  {
+    title: "산간 배송 최단 시간",
+    topic: "다익스트라",
+    problem:
+      "N개의 마을과 M개의 단방향 도로가 있습니다. 각 도로의 이동 시간은 1 이상의 양수입니다. 1번 마을에서 모든 마을까지의 최단 시간을 구하세요. 도달할 수 없는 마을은 -1로 표시합니다.",
+    constraints: "1 ≤ N ≤ 200,000, 1 ≤ M ≤ 400,000, 도로 시간 ≤ 10^9",
+    keyConstraint:
+      "간선 가중치가 모두 양수이고 정점과 간선 수가 매우 커서 O(N²) 다익스트라는 사용할 수 없습니다.",
+    naive:
+      "방문하지 않은 정점 중 최소 거리를 매번 선형 탐색하면 O(N²)입니다. N=200,000에서는 약 400억 수준이 됩니다.",
+    algorithm:
+      "인접 리스트와 최소 힙을 사용한 다익스트라를 적용합니다. 더 짧은 거리를 찾을 때만 힙에 새 상태를 넣고, 오래된 상태는 건너뜁니다.",
+    correctness:
+      "모든 간선 가중치가 음수가 아니므로 힙에서 확정되는 가장 작은 거리의 정점은 이후 다른 경로를 통해 더 짧아질 수 없습니다.",
+    time:
+      "O((N+M) log N)",
+    operation:
+      "M=400,000, N=200,000에서 log₂N≈17.6이므로 힙 연산은 대략 수백만~천만 회 규모로 판단합니다.",
+    space:
+      "O(N+M)",
+    memory:
+      "거리 배열은 약 0.8MB(int 기준)이지만 큰 가중치 합을 위해 long long을 쓰면 약 1.6MB이며, 인접 리스트가 주 메모리를 차지합니다.",
+  },
+  {
+    title: "점프 에너지 최소화",
+    topic: "동적 계획법",
+    problem:
+      "1번부터 N번까지 돌이 있고 각 돌의 높이 H[i]가 주어집니다. i번 돌에서는 i+1 또는 i+2번 돌로 이동할 수 있고, 이동 비용은 두 돌 높이 차이의 절댓값입니다. 1번에서 N번까지 가는 최소 비용을 구하세요.",
+    constraints: "2 ≤ N ≤ 1,000,000, 0 ≤ H[i] ≤ 10^9",
+    keyConstraint:
+      "N이 매우 크지만 i번째 상태는 바로 앞의 두 상태만 필요합니다.",
+    naive:
+      "가능한 모든 점프 경로를 재귀적으로 탐색하면 경우의 수가 피보나치처럼 증가해 지수 시간이 걸립니다.",
+    algorithm:
+      "dp[i]=i번 돌까지의 최소 비용으로 두고 dp[i-1], dp[i-2]에서 오는 두 경우의 최솟값을 사용합니다. 이전 두 값만 보관하면 배열도 필요 없습니다.",
+    correctness:
+      "마지막 이동은 반드시 i-1 또는 i-2에서 오므로 두 최적 부분문제 중 더 작은 값에 마지막 이동 비용을 더하면 전체 최적해가 됩니다.",
+    time:
+      "O(N)",
+    operation:
+      "N=1,000,000이면 각 위치에서 상수 개의 비교와 덧셈만 하므로 약 100만 단계 규모입니다.",
+    space:
+      "O(1) 추가 공간",
+    memory:
+      "이전 두 DP 값만 유지하면 long long 변수 몇 개만 필요합니다. 높이를 전부 저장하지 않고 순차 입력 처리도 가능합니다.",
+  },
+  {
+    title: "시험실 최소 개수",
+    topic: "정렬 · 우선순위 큐",
+    problem:
+      "N개의 시험이 각각 시작 시각과 종료 시각을 가집니다. 한 시험실에서는 앞 시험이 끝난 시각과 같거나 이후에 다음 시험을 시작할 수 있습니다. 모든 시험을 배치하기 위한 최소 시험실 수를 구하세요.",
+    constraints: "1 ≤ N ≤ 300,000, 0 ≤ 시작 < 종료 ≤ 10^9",
+    keyConstraint:
+      "동시에 진행되는 시험의 최대 개수가 필요한 시험실 수와 같습니다.",
+    naive:
+      "시험 하나를 배치할 때마다 모든 기존 시험실의 종료 시각을 확인하면 최악 O(N²)이 됩니다.",
+    algorithm:
+      "시험을 시작 시각순으로 정렬하고, 사용 중인 시험실의 종료 시각을 최소 힙에 저장합니다. 가장 빨리 끝나는 시험실을 재사용할 수 있으면 pop 후 새 종료 시각을 push합니다.",
+    correctness:
+      "새 시험이 시작될 때 가장 빨리 끝나는 시험실조차 비어 있지 않다면 다른 모든 시험실도 사용할 수 없으므로 새 시험실이 반드시 필요합니다.",
+    time:
+      "O(N log N)",
+    operation:
+      "N=300,000, log₂N≈18.2이므로 정렬과 힙 처리는 각각 수백만 회 비교 규모입니다.",
+    space:
+      "O(N)",
+    memory:
+      "최악의 경우 종료 시각 N개를 힙에 저장합니다. long long이면 약 2.4MB의 원소 데이터가 필요하며 컨테이너 오버헤드가 추가됩니다.",
+  },
+  {
+    title: "오른쪽 첫 번째 높은 탑",
+    topic: "단조 스택",
+    problem:
+      "N개의 탑 높이가 왼쪽부터 주어집니다. 각 탑마다 오른쪽에 있으면서 자신보다 처음으로 높은 탑의 번호를 구하세요. 없으면 0을 출력합니다.",
+    constraints: "1 ≤ N ≤ 1,000,000, 1 ≤ 높이 ≤ 10^9",
+    keyConstraint:
+      "각 위치에서 오른쪽을 끝까지 다시 찾으면 O(N²)이지만, 이미 더 낮아서 의미가 없어진 후보는 다시 볼 필요가 없습니다.",
+    naive:
+      "각 탑마다 오른쪽으로 선형 탐색하면 최악 1조 번 가까운 비교가 생길 수 있습니다.",
+    algorithm:
+      "높이가 단조 감소하도록 인덱스를 스택에 유지합니다. 새 탑이 스택 top보다 높으면 조건을 만족한 인덱스를 계속 pop하며 정답을 기록합니다.",
+    correctness:
+      "스택에 남아 있는 인덱스들은 아직 오른쪽에서 더 높은 탑을 만나지 못한 위치들입니다. 처음 pop시키는 현재 탑이 바로 그 위치의 가장 가까운 높은 탑입니다.",
+    time:
+      "O(N)",
+    operation:
+      "각 인덱스는 스택에 한 번 push되고 최대 한 번 pop되므로 N=1,000,000일 때 약 200만 회의 스택 연산 규모입니다.",
+    space:
+      "O(N)",
+    memory:
+      "인덱스를 int로 최대 N개 저장하면 스택 원소 데이터는 약 4MB입니다.",
+  },
+  {
+    title: "섬을 잇는 최소 비용",
+    topic: "크루스칼 · 분리 집합",
+    problem:
+      "N개의 섬과 M개의 다리 후보가 있고 각 다리를 건설하는 비용이 주어집니다. 모든 섬이 서로 이동 가능하도록 만들 때 필요한 최소 건설 비용을 구하세요.",
+    constraints: "2 ≤ N ≤ 200,000, 1 ≤ M ≤ 300,000, 비용 ≤ 10^9",
+    keyConstraint:
+      "모든 정점을 연결해야 하지만 불필요한 사이클에 비용을 사용할 이유는 없습니다. 최소 신장 트리 문제입니다.",
+    naive:
+      "다리 부분집합을 모두 시도하는 것은 2^M 경우라 불가능합니다.",
+    algorithm:
+      "다리를 비용순으로 정렬하고, 서로 다른 컴포넌트를 잇는 다리만 선택합니다. 연결 여부는 경로 압축과 union by size/rank를 적용한 분리 집합으로 관리합니다.",
+    correctness:
+      "현재 서로 다른 두 컴포넌트를 잇는 가장 싼 간선은 MST의 cut property에 의해 안전하게 선택할 수 있습니다.",
+    time:
+      "O(M log M)",
+    operation:
+      "M=300,000이면 log₂M≈18.2이므로 정렬 비교는 대략 550만 회 규모이고, union/find는 거의 상수 시간에 가깝습니다.",
+    space:
+      "O(N+M)",
+    memory:
+      "부모·크기 배열은 int 기준 약 1.6MB, 간선 300,000개는 저장 구조체 크기에 따라 수 MB 이상이 필요합니다.",
+  },
+  {
+    title: "선행 작업이 있는 프로젝트",
+    topic: "위상 정렬 · DAG DP",
+    problem:
+      "N개의 작업마다 수행 시간이 있고 M개의 선행 관계가 주어집니다. 서로 선행 관계가 없는 작업은 동시에 수행할 수 있습니다. 모든 작업을 끝내는 데 필요한 최소 시간을 구하세요.",
+    constraints: "1 ≤ N ≤ 200,000, 0 ≤ M ≤ 400,000, 작업 시간 ≤ 10^9, 선행 관계에는 사이클이 없음",
+    keyConstraint:
+      "전체 수행 시간은 단순한 작업 시간 합이 아니라 선행 관계 DAG에서 가장 오래 걸리는 경로의 누적 시간입니다.",
+    naive:
+      "각 작업에서 가능한 선행 경로를 반복 탐색하면 같은 부분을 여러 번 계산해 매우 느려질 수 있습니다.",
+    algorithm:
+      "위상 정렬 순서로 작업을 처리하면서 finish[v]=max(finish[v], finish[u]+time[v]) 형태로 가장 늦은 선행 완료 시간을 전파합니다.",
+    correctness:
+      "위상 순서에서는 모든 선행 작업이 먼저 계산되므로, 어떤 작업을 시작할 수 있는 가장 이른 시각은 모든 선행 작업 중 가장 늦게 끝나는 시각입니다.",
+    time:
+      "O(N+M)",
+    operation:
+      "N=200,000, M=400,000이면 각 정점과 간선을 한 번씩 처리하므로 약 600,000개 요소를 중심으로 처리합니다.",
+    space:
+      "O(N+M)",
+    memory:
+      "진입차수·완료시간 배열은 O(N), 선행 관계 인접 리스트는 O(M)입니다.",
+  },
+  {
+    title: "대규모 센서 구간 질의",
+    topic: "세그먼트 트리",
+    problem:
+      "N개의 센서 값이 주어지고 Q개의 명령이 들어옵니다. 명령은 한 센서 값을 변경하거나, 구간 [L,R]의 최솟값을 묻는 두 종류입니다. 모든 질의에 답하세요.",
+    constraints: "1 ≤ N,Q ≤ 200,000, 센서 값의 절댓값 ≤ 10^9",
+    keyConstraint:
+      "값이 중간에 계속 바뀌기 때문에 단순 prefix 방식으로는 최솟값 질의를 빠르게 갱신할 수 없습니다.",
+    naive:
+      "각 질의마다 L부터 R까지 모두 확인하면 O(NQ), 최악 약 400억 번의 확인이 필요합니다.",
+    algorithm:
+      "세그먼트 트리에 각 구간의 최솟값을 저장합니다. 점 갱신과 구간 최솟값 질의를 트리 높이만큼 처리합니다.",
+    correctness:
+      "질의 구간을 완전히 포함하는 트리 노드들의 최솟값만 합치면 정확한 구간 최솟값이 되며, 갱신 시 루트까지 영향을 받는 노드만 다시 계산하면 됩니다.",
+    time:
+      "O((N+Q) log N)",
+    operation:
+      "N=Q=200,000, log₂N≈17.6이므로 구축·갱신·질의를 합쳐 수백만 회 노드 방문 규모입니다.",
+    space:
+      "O(N)",
+    memory:
+      "일반적으로 세그먼트 트리 배열을 약 4N 잡으면 int 기준 800,000×4Byte≈3.2MB입니다.",
+  },
+];
+
 const cKeywordTokens = new Set([
   "int", "long", "char", "float", "double", "return",
   "if", "else", "for", "while", "break", "continue",
@@ -619,16 +852,6 @@ export default function CompetitionWinnerInterviewStudy() {
           </article>
 
           <div className="contest-complexity-reference">
-            <strong>시간복잡도 빠르게 판단하기 · N = 10,000인 경우</strong>
-            <div className="contest-complexity-reference-grid">
-              <div><span>O(N)</span><b>약 10,000회</b><p>데이터를 한 번 순회</p></div>
-              <div><span>O(N log N)</span><b>약 13만 회</b><p>일반적인 정렬 수준</p></div>
-              <div><span>O(N²)</span><b>1억 회</b><p>시간 제한을 반드시 확인</p></div>
-              <div><span>O(N³)</span><b>1조 회</b><p>일반적으로 사실상 불가능</p></div>
-            </div>
-          </div>
-
-          <div className="contest-complexity-reference">
             <strong>자주 사용하는 자료형 크기</strong>
             <div className="contest-complexity-reference-grid">
               <div><span>char</span><b>1Byte</b><p>문자·작은 정수</p></div>
@@ -649,6 +872,66 @@ export default function CompetitionWinnerInterviewStudy() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="contest-analysis-practice">
+        <div className="contest-section-heading">
+          <span>ANALYSIS PRACTICE</span>
+          <h2>문제 분석 연습 10문제</h2>
+          <p>
+            아래 문제는 실제 정보올림피아드 기출문제가 아니라, 비슷한 수준의 알고리즘 분석 연습을 위해 새로 만든 문제입니다.
+            먼저 문제와 제한을 보고 풀이·시간복잡도·공간복잡도를 직접 분석한 뒤 답을 펼쳐 확인하세요.
+          </p>
+        </div>
+
+        <div className="contest-analysis-practice-list">
+          {analysisPracticeProblems.map((item, index) => (
+            <details className="contest-analysis-practice-item" key={item.title}>
+              <summary>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <div className="contest-analysis-practice-meta">{item.topic}</div>
+                  <h3>{item.title}</h3>
+                  <p>{item.problem}</p>
+                  <b>{item.constraints}</b>
+                </div>
+                <i aria-hidden="true" />
+              </summary>
+
+              <div className="contest-analysis-practice-answer">
+                <div>
+                  <strong>핵심 제약</strong>
+                  <p>{item.keyConstraint}</p>
+                </div>
+                <div>
+                  <strong>단순 접근과 한계</strong>
+                  <p>{item.naive}</p>
+                </div>
+                <div>
+                  <strong>선택 알고리즘</strong>
+                  <p>{item.algorithm}</p>
+                </div>
+                <div>
+                  <strong>정당성</strong>
+                  <p>{item.correctness}</p>
+                </div>
+
+                <div className="contest-analysis-practice-complexity">
+                  <article>
+                    <span>TIME COMPLEXITY</span>
+                    <strong>{item.time}</strong>
+                    <p>{item.operation}</p>
+                  </article>
+                  <article>
+                    <span>SPACE COMPLEXITY</span>
+                    <strong>{item.space}</strong>
+                    <p>{item.memory}</p>
+                  </article>
+                </div>
+              </div>
+            </details>
+          ))}
         </div>
       </section>
 
