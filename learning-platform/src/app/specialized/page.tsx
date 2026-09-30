@@ -4,9 +4,9 @@ export default function SpecializedPage() {
   return (
     <ProtectedCoursePage
       permission="specialized"
-      eyebrow="SPECIALIZED HIGH SCHOOL"
-      title="고등학교 입학전형 준비"
-      description="디미고·대덕소마고 등 특성화고 지원을 위한 전용 학습 공간입니다."
+      eyebrow="DIMIGO ADMISSION"
+      title="디미고 입학전형 대비"
+      description="디미고 입학전형을 준비하기 위한 전용 학습 공간입니다."
       hideIntro
       items={[
         {
