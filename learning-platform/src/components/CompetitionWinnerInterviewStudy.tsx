@@ -98,7 +98,7 @@ const bigOExamples = [
     summary: "N번 반복하면 핵심 연산의 횟수가 N에 비례합니다.",
     problem: "예시 문제: N이 주어졌을 때 1부터 N까지의 합을 구하세요.",
     analysis: "덧셈이 N번 수행되므로 T(N) = N입니다. 따라서 O(N)입니다.",
-    code: \`#include <stdio.h>
+    code: `#include <stdio.h>
 
 int main(void) {
     int N;
@@ -112,7 +112,7 @@ int main(void) {
 
     printf("%lld\\n", sum);
     return 0;
-}\`,
+}`,
   },
   {
     title: "중첩 반복문",
@@ -120,7 +120,7 @@ int main(void) {
     summary: "N번 반복하는 반복문 안에서 다시 N번 반복하면 N × N번 수행됩니다.",
     problem: "예시 문제: 1부터 N까지의 수로 만들 수 있는 순서쌍 (i, j)의 개수를 구하세요.",
     analysis: "바깥 반복문 N번 × 안쪽 반복문 N번 = N²번이므로 O(N²)입니다.",
-    code: \`#include <stdio.h>
+    code: `#include <stdio.h>
 
 int main(void) {
     int N;
@@ -136,7 +136,7 @@ int main(void) {
 
     printf("%lld\\n", count);
     return 0;
-}\`,
+}`,
   },
   {
     title: "순차 실행",
@@ -144,7 +144,7 @@ int main(void) {
     summary: "O(N) 작업 뒤에 O(N²) 작업을 실행하면 더 빠르게 증가하는 N²이 남습니다.",
     problem: "예시 문제: 1부터 N까지의 합을 구한 뒤, 모든 순서쌍 (i, j)의 개수도 구하세요.",
     analysis: "첫 번째 반복문은 N번, 두 번째 중첩 반복문은 N²번입니다. T(N) = N + N²이므로 O(N²)입니다.",
-    code: \`#include <stdio.h>
+    code: `#include <stdio.h>
 
 int main(void) {
     int N;
@@ -165,7 +165,7 @@ int main(void) {
 
     printf("%lld %lld\\n", sum, count);
     return 0;
-}\`,
+}`,
   },
   {
     title: "상수 제거",
@@ -173,7 +173,7 @@ int main(void) {
     summary: "3N + 20처럼 상수배와 고정 횟수는 N이 커질수록 영향이 작아져 생략합니다.",
     problem: "예시 문제: 1부터 N까지의 합을 세 번 계산한 뒤, 추가 연산을 20번 수행하세요.",
     analysis: "N번 반복을 3번 수행하고 고정 연산을 20번 수행하므로 T(N) = 3N + 20입니다. 상수 3과 20을 생략하면 O(N)입니다.",
-    code: \`#include <stdio.h>
+    code: `#include <stdio.h>
 
 int main(void) {
     int N;
@@ -199,7 +199,7 @@ int main(void) {
 
     printf("%lld\\n", total);
     return 0;
-}\`,
+}`,
   },
   {
     title: "범위를 절반씩 감소",
@@ -207,7 +207,7 @@ int main(void) {
     summary: "탐색 범위를 매번 절반으로 줄이면 반복 횟수는 log₂N에 비례합니다.",
     problem: "예시 문제: 오름차순으로 정렬된 N개의 정수에서 목표값 X가 있는지 이분 탐색으로 찾으세요.",
     analysis: "탐색 범위가 N → N/2 → N/4 → …로 줄어듭니다. 약 log₂N번 만에 범위가 1이 되므로 O(log N)입니다.",
-    code: \`#include <stdio.h>
+    code: `#include <stdio.h>
 
 int main(void) {
     int N, X;
@@ -240,7 +240,7 @@ int main(void) {
 
     printf("%d\\n", found);
     return 0;
-}\`,
+}`,
   },
   {
     title: "정렬 후 한 번 순회",
@@ -248,7 +248,7 @@ int main(void) {
     summary: "O(N log N) 정렬 뒤에 O(N) 순회를 해도 전체는 O(N log N)입니다.",
     problem: "예시 문제: N개의 정수를 정렬한 뒤 서로 다른 값의 개수를 구하세요.",
     analysis: "병합 정렬이 O(N log N), 정렬 후 서로 다른 값을 세는 순회가 O(N)입니다. T(N) = N log N + N이므로 O(N log N)입니다.",
-    code: \`#include <stdio.h>
+    code: `#include <stdio.h>
 
 int a[100000];
 int temp[100000];
@@ -312,7 +312,7 @@ int main(void) {
 
     printf("%d\\n", uniqueCount);
     return 0;
-}\`,
+}`,
   },
 ];
 
