@@ -3450,3 +3450,192 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Separate complexity section + core algorithm/data-structure concepts */
+.contest-interview-complexity,
+.contest-core-concepts {
+  padding: 28px;
+  border: 1px solid #ddd7ed;
+  border-radius: 18px;
+  background: #fff;
+}
+.contest-interview-complexity .contest-complexity-guide {
+  margin-top: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+.contest-core-concept-rule,
+.contest-core-concept-summary {
+  margin-top: 16px;
+  padding: 16px 18px;
+  border: 1px solid #cfdcf3;
+  border-radius: 13px;
+  background: #f5f8fe;
+}
+.contest-core-concept-rule strong,
+.contest-core-concept-summary strong {
+  color: #315f9e;
+}
+.contest-core-concept-rule p,
+.contest-core-concept-summary p {
+  margin: 6px 0 0;
+  color: #4e5c72;
+  line-height: 1.75;
+}
+.contest-core-concept-group {
+  margin-top: 26px;
+}
+.contest-core-concept-heading {
+  margin-bottom: 12px;
+}
+.contest-core-concept-heading > span {
+  display: block;
+  color: #65579a;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+.contest-core-concept-heading h3 {
+  margin: 5px 0 0;
+  color: #302a40;
+  font-size: 20px;
+}
+.contest-core-concept-heading p {
+  margin: 6px 0 0;
+  color: #687183;
+  line-height: 1.7;
+}
+.contest-core-concept-list {
+  display: grid;
+  gap: 10px;
+}
+.contest-core-concept-item {
+  overflow: hidden;
+  border: 1px solid #e2deeb;
+  border-radius: 13px;
+  background: #fbfafd;
+}
+.contest-core-concept-item > summary {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 24px;
+  gap: 13px;
+  align-items: center;
+  padding: 16px 18px;
+  cursor: pointer;
+  list-style: none;
+}
+.contest-core-concept-item > summary::-webkit-details-marker {
+  display: none;
+}
+.contest-core-concept-item > summary > span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #65579a;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+}
+.contest-core-algorithm-item > summary > span {
+  background: #315f9e;
+}
+.contest-core-concept-item summary h4 {
+  margin: 0;
+  color: #302a40;
+  font-size: 17px;
+}
+.contest-core-concept-item summary p {
+  margin: 4px 0 0;
+  color: #687183;
+  line-height: 1.55;
+}
+.contest-core-concept-item summary > b {
+  position: relative;
+  width: 22px;
+  height: 22px;
+}
+.contest-core-concept-item summary > b::before,
+.contest-core-concept-item summary > b::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 4px;
+  width: 14px;
+  height: 2px;
+  border-radius: 2px;
+  background: #756b93;
+}
+.contest-core-concept-item summary > b::after {
+  transform: rotate(90deg);
+  transition: transform .2s ease;
+}
+.contest-core-concept-item[open] summary > b::after {
+  transform: rotate(0);
+}
+.contest-core-concept-item[open] > summary {
+  border-bottom: 1px solid #e8e4ef;
+  background: #f7f5fb;
+}
+.contest-core-concept-body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 16px 18px 18px;
+  background: #fff;
+}
+.contest-core-concept-body > div {
+  padding: 14px 15px;
+  border: 1px solid #ece8f2;
+  border-radius: 11px;
+  background: #fbfafd;
+}
+.contest-core-concept-body strong {
+  color: #40385f;
+}
+.contest-core-concept-body p {
+  margin: 6px 0 0;
+  color: #626b7d;
+  line-height: 1.7;
+}
+.contest-core-concept-example {
+  background: #f5f8fe !important;
+  border-color: #d8e2f2 !important;
+}
+.contest-core-concept-example strong {
+  color: #315f9e;
+}
+.contest-core-concept-key,
+.contest-core-concept-question {
+  background: #fffaf0 !important;
+  border-color: #ead9b7 !important;
+}
+.contest-core-concept-key strong,
+.contest-core-concept-question strong {
+  color: #84652e;
+}
+.contest-core-concept-question {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 760px) {
+  .contest-interview-complexity,
+  .contest-core-concepts {
+    padding: 20px 16px;
+  }
+  .contest-core-concept-item > summary {
+    grid-template-columns: 34px minmax(0, 1fr);
+  }
+  .contest-core-concept-item summary > b {
+    grid-column: 2;
+  }
+  .contest-core-concept-body {
+    grid-template-columns: 1fr;
+  }
+  .contest-core-concept-question {
+    grid-column: auto;
+  }
+}
