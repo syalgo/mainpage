@@ -66,7 +66,7 @@ const evidenceQuestions = [
 
 const prepChecklist = [
   {
-    title: "입상 실적을 30초 안에 설명하기",
+    title: "출전 대회에 대한 이해",
     body: "대회명 → 연도·부문 → 본선 진행 방식 → 수상 등급 → 내가 증명했다고 생각하는 역량의 순서로 짧게 정리합니다.",
   },
   {
@@ -200,8 +200,8 @@ export default function CompetitionWinnerInterviewStudy() {
 
       <section className="contest-interview-koi">
         <div className="contest-section-heading">
-          <span>KOI APPLICANT</span>
-          <h2>정보올림피아드 입상자라면 이렇게 준비합니다</h2>
+          <span>ALGORITHM ANSWER GUIDE</span>
+          <h2>알고리즘 문제 풀이과정에 대한 답변</h2>
         </div>
 
         <div className="contest-koi-flow">
@@ -211,32 +211,6 @@ export default function CompetitionWinnerInterviewStudy() {
           <div><span>04</span><strong>정당성</strong><p>왜 항상 올바른 답이 나오는지 반례와 함께 검증</p></div>
           <div><span>05</span><strong>구현·디버깅</strong><p>예외 처리, 실수, 디버깅 과정을 구체적으로 설명</p></div>
           <div><span>06</span><strong>확장 질문</strong><p>조건이 바뀌었을 때 풀이가 어떻게 달라지는지 설명</p></div>
-        </div>
-      </section>
-
-      <section className="contest-interview-past">
-        <div className="contest-section-heading">
-          <span>PAST QUESTION</span>
-          <h2>학교가 공개한 실제 기출의 방향</h2>
-          <p>2026학년도 심층면접 기출문항의 취지를 요약했습니다.</p>
-        </div>
-        <div className="contest-past-grid">
-          <article>
-            <span>기출 요지 01</span>
-            <h3>왜 내가 지원 학과에 적합한 학생인지 전공 역량을 근거로 설명하기</h3>
-            <p>
-              대회 성적만 말하는 것이 아니라, 그 성적을 만들기까지의 학습 과정과
-              문제해결 능력을 지원 학과와 연결해서 설명합니다.
-            </p>
-          </article>
-          <article>
-            <span>기출 요지 02</span>
-            <h3>가장 열심히 공부한 과목과 그 이유를 구체적으로 설명하기</h3>
-            <p>
-              어떤 과목을 좋아한다는 수준을 넘어, 무엇을 어떻게 공부했고 그 경험이
-              자신의 진로·전공 학습과 어떻게 이어졌는지 준비합니다.
-            </p>
-          </article>
         </div>
       </section>
 
@@ -383,6 +357,32 @@ export default function CompetitionWinnerInterviewStudy() {
           반복해야 합니다. 특히 알고리즘 이름을 말하는 것보다 왜 그 방법이 필요한지
           설명할 수 있는지를 기준으로 준비하세요.
         </p>
+      </section>
+
+      <section className="contest-interview-past">
+        <div className="contest-section-heading">
+          <span>PAST QUESTION</span>
+          <h2>학교가 공개한 실제 기출의 방향</h2>
+          <p>2026학년도 심층면접 기출문항의 취지를 요약했습니다.</p>
+        </div>
+        <div className="contest-past-grid">
+          <article>
+            <span>기출 요지 01</span>
+            <h3>왜 내가 지원 학과에 적합한 학생인지 전공 역량을 근거로 설명하기</h3>
+            <p>
+              대회 성적만 말하는 것이 아니라, 그 성적을 만들기까지의 학습 과정과
+              문제해결 능력을 지원 학과와 연결해서 설명합니다.
+            </p>
+          </article>
+          <article>
+            <span>기출 요지 02</span>
+            <h3>가장 열심히 공부한 과목과 그 이유를 구체적으로 설명하기</h3>
+            <p>
+              어떤 과목을 좋아한다는 수준을 넘어, 무엇을 어떻게 공부했고 그 경험이
+              자신의 진로·전공 학습과 어떻게 이어졌는지 준비합니다.
+            </p>
+          </article>
+        </div>
       </section>
     </section>
   );
