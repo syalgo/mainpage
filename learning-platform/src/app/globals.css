@@ -2715,3 +2715,97 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Big-O full examples */
+.contest-bigo-core {
+  margin-top: 14px;
+  padding: 16px 18px;
+  border: 1px solid #cfdcf3;
+  border-radius: 12px;
+  background: #f5f8fe;
+}
+.contest-bigo-core strong {
+  color: #315f9e;
+}
+.contest-bigo-core p {
+  margin: 6px 0 0;
+  color: #40516e;
+  line-height: 1.75;
+}
+.contest-bigo-examples {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+.contest-bigo-example {
+  overflow: hidden;
+  border: 1px solid #e2deeb;
+  border-radius: 14px;
+  background: #fff;
+}
+.contest-bigo-example-head {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 18px;
+  background: #fbfafd;
+  border-bottom: 1px solid #ece8f2;
+}
+.contest-bigo-example-head > span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #65579a;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+}
+.contest-bigo-example-head h4 {
+  margin: 0;
+  color: #2e293c;
+  font-size: 17px;
+}
+.contest-bigo-example-head p {
+  margin: 6px 0 0;
+  color: #667085;
+  line-height: 1.65;
+}
+.contest-bigo-analysis {
+  padding: 16px 18px;
+}
+.contest-bigo-analysis strong {
+  color: #514586;
+}
+.contest-bigo-analysis p {
+  margin: 6px 0 0;
+  color: #596274;
+  line-height: 1.7;
+}
+.contest-bigo-code {
+  margin: 0;
+  padding: 18px;
+  overflow-x: auto;
+  background: #171821;
+  color: #f4f4f5;
+  font-size: 13px;
+  line-height: 1.65;
+  tab-size: 4;
+}
+.contest-bigo-code code {
+  font-family: Consolas, "Courier New", monospace;
+  white-space: pre;
+}
+
+@media (max-width: 650px) {
+  .contest-bigo-example-head {
+    grid-template-columns: 34px 1fr;
+    padding: 15px;
+  }
+  .contest-bigo-code {
+    font-size: 12px;
+  }
+}
