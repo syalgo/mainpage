@@ -573,8 +573,6 @@ export default function ElementaryInformationGlossary() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("전체");
 
-  const totalTerms = glossaryGroups.reduce((sum, group) => sum + group.terms.length, 0);
-
   const filteredGroups = useMemo(() => {
     const keyword = query.trim().toLowerCase();
 
@@ -602,22 +600,10 @@ export default function ElementaryInformationGlossary() {
         <div>
           <span className="eyebrow">ELEMENTARY INFORMATION GLOSSARY</span>
           <h1>초등 정보용어 백과</h1>
-          <p>
-            첨부된 초등 소프트웨어 용어 자료의 구성과 핵심 용어를 바탕으로,
-            학생이 빠르게 이해할 수 있도록 설명을 다시 정리했습니다.
-          </p>
         </div>
         <Link className="secondary-button" href="/specialized/information-glossary">
           정보용어 백과로
         </Link>
-      </div>
-
-      <div className="elementary-glossary-source-note">
-        <strong>자료 구성 반영</strong>
-        <p>
-          원자료의 4개 영역인 <b>정보과학 및 윤리 · 정보기기의 구성 · 정보 표현 및 관리 · 문제해결방법 및 절차</b>를
-          그대로 학습 구조로 사용하고, 총 {totalTerms}개의 용어를 학생용 문장으로 요약했습니다.
-        </p>
       </div>
 
       <section className="elementary-glossary-quick">
