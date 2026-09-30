@@ -174,10 +174,25 @@ export default function CompetitionWinnerInterviewStudy() {
         <div className="contest-official-note">
           <strong>대회입상자는 무엇이 다른가?</strong>
           <p>
-            대회입상 부문은 별도의 실적설명서보다 수상 실적 자체가 활동증빙의
-            중심입니다. 따라서 면접에서는 단순히 “상을 받았다”는 사실보다
+            대회입상 부문은 별도의 실적설명서를 작성하지 않고 상장 사본으로
+            수상 실적을 증빙합니다. 따라서 면접에서는 단순히 “상을 받았다”는 사실보다
             그 실적에 걸맞은 알고리즘 이해와 문제해결 역량을 실제로 갖추고 있는지
             자신의 말로 설명할 수 있어야 합니다.
+          </p>
+        </div>
+
+        <div className="contest-koi-score">
+          <div>
+            <span>KOI 2차 · 동상 이상</span>
+            <strong>1등급 · 60점</strong>
+          </div>
+          <div>
+            <span>KOI 2차 · 장려상</span>
+            <strong>2등급 · 55점</strong>
+          </div>
+          <p>
+            2027학년도 대회입상 부문 활동증빙 기준입니다. 실제 지원 시에는
+            해당 연도의 최종 모집요강과 제출서류 안내를 다시 확인하세요.
           </p>
         </div>
       </section>
