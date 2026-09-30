@@ -4049,3 +4049,49 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
     grid-template-columns: 1fr auto;
   }
 }
+
+
+/* Expanded elementary glossary term learning blocks */
+.elementary-glossary-term-body {
+  display: grid;
+  gap: 10px;
+}
+.elementary-glossary-term-body > div {
+  padding: 12px 13px;
+  border: 1px solid #ece8f2;
+  border-radius: 10px;
+  background: #fbfafd;
+}
+.elementary-glossary-term-body > div > strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #40385f;
+  font-size: 12px;
+}
+.elementary-glossary-term-body > div > p {
+  margin: 0;
+  color: #5f697b;
+  line-height: 1.74;
+}
+.elementary-glossary-term-definition {
+  border-color: #d7e1f1 !important;
+  background: #f5f8fe !important;
+}
+.elementary-glossary-term-definition > strong {
+  color: #315f9e !important;
+}
+.elementary-glossary-term-example {
+  border-color: #ead9b7 !important;
+  background: #fffaf0 !important;
+}
+.elementary-glossary-term-example > strong {
+  color: #84652e !important;
+}
+.elementary-glossary-term-related {
+  padding: 10px 12px !important;
+  background: #f8f7fb !important;
+}
+.elementary-glossary-term-related > p {
+  color: #65579a !important;
+  font-weight: 700;
+}
