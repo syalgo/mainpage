@@ -29,7 +29,11 @@ export default function SpecializedPage() {
           description: "언어·논리·수열·수리·자료·도형·공간·주의집중 유형을 회차별로 연습합니다.",
           href: "/specialized/job-basic-literacy",
         },
-        { title: "포트폴리오", description: "활동 기록과 프로젝트 결과물을 체계적으로 준비합니다." },
+        {
+          title: "대회입상자 심화면접",
+          description: "정보올림피아드 등 대회 실적을 바탕으로 알고리즘·문제해결력·진로·인성 면접을 준비합니다.",
+          href: "/specialized/competition-interview",
+        },
       ]}
     />
   );
