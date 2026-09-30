@@ -132,8 +132,9 @@ export default function CompetitionWinnerInterviewStudy() {
           <span className="eyebrow">DIMIGO · SPECIAL ADMISSION</span>
           <h1>대회입상자 심화면접</h1>
           <p>
-            정보올림피아드 본선 입상자가 자신의 알고리즘 역량과 문제해결 과정을
-            실제 경험을 근거로 설명할 수 있도록 준비합니다.
+            정보올림피아드 본선 입상자가
+            <br />
+            자신의 알고리즘 역량과 문제해결 과정을 실제 경험을 근거로 설명할 수 있도록 준비합니다.
           </p>
         </div>
         <Link className="secondary-button" href="/specialized">
@@ -156,13 +157,13 @@ export default function CompetitionWinnerInterviewStudy() {
           </div>
           <div>
             <span>진행 시간</span>
-            <strong>약 10분</strong>
-            <p>학생 1인당 ±2분</p>
+            <strong>약 10분~15분</strong>
+            <p>학생 1명 단독 진행</p>
           </div>
           <div>
             <span>대회입상 부문</span>
             <strong>실적 기반 확인</strong>
-            <p>입상 실적과 관련된 소양·역량 확인 가능</p>
+            <p>입상 실적과 관련된 소양·역량 확인</p>
           </div>
           <div>
             <span>주요 평가</span>
