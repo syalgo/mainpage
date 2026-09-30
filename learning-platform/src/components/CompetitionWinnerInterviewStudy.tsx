@@ -724,6 +724,168 @@ const koi2026Problems = [
   },
 ];
 
+const coreDataStructures = [
+  {
+    name: "배열 · vector",
+    role: "여러 값을 순서대로 저장",
+    idea: "번호가 붙은 칸에 값을 저장한다고 생각하면 됩니다. i번째 값을 바로 꺼낼 수 있어 특정 위치 접근이 매우 빠릅니다.",
+    when: "학생 점수 N개, 수열 A[1..N], 그래프의 거리 배열처럼 번호와 값이 대응될 때 사용합니다.",
+    example: "N명의 점수가 주어졌을 때 37번 학생의 점수를 확인하려면 배열에서는 바로 37번 칸을 읽으면 됩니다.",
+    keyPoint: "인덱스로 접근 O(1), 전체 순회 O(N). vector는 크기를 실행 중에 늘릴 수 있는 배열이라고 이해하면 됩니다.",
+  },
+  {
+    name: "stack",
+    role: "마지막에 넣은 것을 먼저 꺼냄",
+    idea: "접시를 쌓아 놓은 모습과 같습니다. 가장 마지막에 올린 접시부터 꺼낼 수 있습니다.",
+    when: "괄호 검사, 되돌아가기, DFS의 반복문 구현, 단조 스택처럼 최근 정보부터 처리해야 할 때 사용합니다.",
+    example: "( [ ] ) 같은 괄호 문자열을 검사할 때 여는 괄호를 stack에 넣고 닫는 괄호가 나오면 가장 최근 괄호와 짝을 맞춥니다.",
+    keyPoint: "push, pop, top이 보통 O(1)입니다.",
+  },
+  {
+    name: "queue · deque",
+    role: "먼저 들어온 것을 먼저 처리",
+    idea: "줄을 서서 기다리는 것과 같습니다. 먼저 온 사람이 먼저 나갑니다. deque는 앞과 뒤 양쪽에서 넣고 뺄 수 있습니다.",
+    when: "BFS, 작업 대기열, 0-1 BFS, 슬라이딩 윈도우 등 처리 순서가 중요한 문제에서 사용합니다.",
+    example: "미로에서 시작점과 가까운 칸부터 탐색하려면 새로 발견한 칸을 queue 뒤에 넣고 앞에서부터 처리합니다.",
+    keyPoint: "queue의 push/pop, deque의 앞·뒤 삽입/삭제는 보통 O(1)입니다.",
+  },
+  {
+    name: "priority_queue",
+    role: "가장 큰 값 또는 가장 작은 값을 우선 처리",
+    idea: "줄을 선 순서가 아니라 우선순위가 가장 높은 항목부터 꺼내는 자료구조입니다.",
+    when: "다익스트라, 가장 작은/큰 값 반복 선택, 일정 관리처럼 매번 최솟값 또는 최댓값이 필요할 때 사용합니다.",
+    example: "현재까지 알려진 거리가 가장 짧은 정점부터 처리해야 하는 다익스트라에서 최소 힙을 사용합니다.",
+    keyPoint: "삽입과 삭제가 O(log N), 최상단 값 확인은 O(1)입니다.",
+  },
+  {
+    name: "set · map",
+    role: "중복 제거와 빠른 탐색 · 대응 관계 저장",
+    idea: "set은 값 자체를 모아 두고, map은 '이름 → 값'처럼 key와 value를 연결해 저장합니다.",
+    when: "중복 없는 값 관리, 특정 값 존재 여부, 빈도/정보 연결이 필요할 때 사용합니다.",
+    example: "학생 이름으로 점수를 찾고 싶다면 map에서 이름을 key, 점수를 value로 저장할 수 있습니다.",
+    keyPoint: "C++의 정렬 기반 set/map은 탐색·삽입·삭제가 O(log N)입니다. unordered 계열은 평균 O(1)이지만 최악은 달라질 수 있습니다.",
+  },
+  {
+    name: "그래프 인접 리스트",
+    role: "누가 누구와 연결되어 있는지 저장",
+    idea: "각 정점마다 '나와 연결된 정점 목록'을 따로 저장합니다.",
+    when: "정점 N개, 간선 M개인 그래프에서 실제 존재하는 연결만 저장하고 탐색할 때 사용합니다.",
+    example: "1번과 2·5번이 연결되어 있다면 1번의 목록에 2와 5를 저장합니다. 무방향 간선은 양쪽 목록에 모두 넣습니다.",
+    keyPoint: "전체 저장량은 O(N+M), DFS/BFS 탐색도 인접 리스트 기준 O(N+M)입니다.",
+  },
+];
+
+const coreAlgorithms = [
+  {
+    name: "완전탐색 · 브루트포스",
+    tag: "가능한 경우를 전부 확인",
+    idea: "정답이 될 수 있는 모든 경우를 빠짐없이 시도하는 가장 기본적인 방법입니다.",
+    when: "N이 작거나 경우의 수가 충분히 적을 때, 또는 더 좋은 알고리즘을 떠올리기 전 기준 풀이를 만들 때 사용합니다.",
+    example: "학생 N명 중 두 명을 고르는 모든 경우를 확인한다면 약 N²개의 쌍을 검사합니다. N=3,000이면 약 450만 쌍이라 가능하지만 N=200,000이면 불가능합니다.",
+    complexity: "문제에 따라 O(N²), O(2^N), O(N!) 등",
+    question: "모든 경우를 확인했을 때 최대 입력에서도 시간 안에 끝나는가?",
+  },
+  {
+    name: "그리디",
+    tag: "지금 가장 좋은 선택을 반복",
+    idea: "현재 순간에 가장 좋아 보이는 선택을 하고, 그 선택을 되돌리지 않아도 전체 최적해가 된다는 성질을 이용합니다.",
+    when: "가장 작은 것부터 선택, 가장 빨리 끝나는 것부터 선택처럼 안전한 선택 규칙을 증명할 수 있을 때 사용합니다.",
+    example: "회의실을 최대한 많이 사용하려면 종료 시간이 가장 빠른 회의부터 선택합니다. 빨리 끝나는 회의를 고르면 뒤에 더 많은 회의를 넣을 여지가 생깁니다.",
+    complexity: "정렬이 필요하면 보통 O(N log N), 이미 정렬되어 있으면 O(N)",
+    question: "지금의 최선 선택이 나중 선택의 가능성을 망치지 않는다고 설명할 수 있는가?",
+  },
+  {
+    name: "DP · 동적 계획법",
+    tag: "작은 문제의 답을 저장해 재사용",
+    idea: "큰 문제를 여러 작은 문제로 나누고, 같은 작은 문제를 다시 계산하지 않도록 답을 저장합니다.",
+    when: "현재 답이 이전 상태들의 답으로 표현되고, 같은 상태가 반복해서 등장할 때 사용합니다.",
+    example: "계단을 1칸 또는 2칸씩 올라가는 방법 수는 dp[n] = dp[n-1] + dp[n-2]로 구할 수 있습니다. 이전 답을 저장하면 각 n을 한 번만 계산합니다.",
+    complexity: "상태 수 × 상태 하나를 계산하는 비용",
+    question: "상태를 무엇으로 정의할지, 점화식과 초기값을 어떻게 정할지 설명할 수 있는가?",
+  },
+  {
+    name: "이분 탐색",
+    tag: "범위를 절반씩 줄여 탐색",
+    idea: "정답 후보가 정렬되어 있거나 '여기까지는 가능, 그다음부터는 불가능'처럼 경계가 있을 때 범위를 절반씩 줄입니다.",
+    when: "정렬된 배열에서 값 찾기, lower_bound/upper_bound, 정답 자체를 이분 탐색하는 문제에 사용합니다.",
+    example: "100만 개의 정렬된 수에서 한 값을 찾을 때 처음부터 찾으면 최대 100만 번이지만 이분 탐색은 약 20번 비교하면 됩니다.",
+    complexity: "O(log N), 정답 판정 함수가 있다면 O(판정비용 × log 범위)",
+    question: "탐색 대상이 정렬되어 있거나, 가능/불가능이 한 번만 바뀌는 단조성이 있는가?",
+  },
+  {
+    name: "누적합",
+    tag: "구간 합을 빠르게 계산",
+    idea: "앞에서부터 합을 미리 저장해 두면 임의의 구간 합을 두 값의 차이로 바로 계산할 수 있습니다.",
+    when: "배열 값은 거의 바뀌지 않고 구간 합 질문이 여러 번 들어올 때 사용합니다.",
+    example: "prefix[i]를 1번부터 i번까지의 합이라고 하면 L..R 합은 prefix[R] - prefix[L-1]입니다.",
+    complexity: "전처리 O(N), 구간 합 질의 O(1)",
+    question: "같은 구간 계산을 여러 번 반복하고 있지는 않은가?",
+  },
+  {
+    name: "투 포인터 · 슬라이딩 윈도우",
+    tag: "두 위치를 움직이며 구간 관리",
+    idea: "왼쪽과 오른쪽 두 포인터를 한 방향으로 움직여 모든 구간을 일일이 만들지 않고 필요한 구간만 확인합니다.",
+    when: "정렬된 배열의 두 수 문제, 연속 부분수열의 합·길이, 일정 크기 구간을 다룰 때 사용합니다.",
+    example: "양수 수열에서 합이 S 이상인 가장 짧은 구간은 오른쪽을 늘려 합을 키우고, 조건을 만족하면 왼쪽을 당겨 길이를 줄일 수 있습니다.",
+    complexity: "각 포인터가 최대 N번 움직이면 O(N)",
+    question: "한 번 지나간 위치로 다시 돌아갈 필요가 없는가?",
+  },
+  {
+    name: "DFS · BFS",
+    tag: "그래프와 격자를 탐색",
+    idea: "DFS는 한 방향으로 깊게 들어가고, BFS는 현재 위치와 가까운 곳부터 넓게 탐색합니다.",
+    when: "연결 요소 찾기, 미로·격자 탐색, 트리 순회, 경로 존재 여부를 확인할 때 사용합니다.",
+    example: "가중치가 없는 미로에서 최소 이동 횟수를 구할 때 BFS를 사용하면 거리 0, 1, 2… 순서로 탐색하므로 처음 도착한 거리가 최단거리입니다.",
+    complexity: "인접 리스트 기준 O(V+E)",
+    question: "단순 연결 탐색인가? 가중치 없는 최단거리라면 BFS가 필요한가?",
+  },
+  {
+    name: "다익스트라",
+    tag: "양의 가중치 그래프 최단거리",
+    idea: "현재까지 거리가 가장 짧게 알려진 정점부터 확정하며 주변 정점의 거리를 갱신합니다.",
+    when: "도로마다 거리·시간·비용이 다르고 모든 간선 가중치가 음수가 아닐 때 한 시작점의 최단거리를 구합니다.",
+    example: "A에서 B까지 3분, A에서 C까지 10분, B에서 C까지 2분이면 A→B→C의 5분이 더 짧다는 식으로 거리를 갱신합니다.",
+    complexity: "인접 리스트 + priority_queue 기준 O((V+E) log V)",
+    question: "간선 비용이 있는 최단거리 문제이며 음수 간선이 없는가?",
+  },
+  {
+    name: "Union-Find · 분리 집합",
+    tag: "같은 그룹인지 빠르게 관리",
+    idea: "여러 원소가 어느 집합에 속하는지 관리하고 두 집합을 합치는 자료구조입니다.",
+    when: "두 정점이 이미 연결되어 있는지 반복 확인하거나, 크루스칼 MST에서 사이클을 막을 때 사용합니다.",
+    example: "1-2가 연결되고 2-3이 연결되었다면 1과 3은 같은 그룹입니다. 새 간선이 같은 그룹끼리 연결하면 사이클이 됩니다.",
+    complexity: "경로 압축 등을 사용하면 연산당 거의 O(1)에 가까움",
+    question: "연결 관계가 계속 합쳐지고 '같은 집합인가?'를 자주 묻는가?",
+  },
+  {
+    name: "위상 정렬",
+    tag: "선행 관계가 있는 순서 정하기",
+    idea: "A를 끝내야 B를 할 수 있다는 식의 방향 관계가 있을 때 가능한 작업 순서를 구합니다.",
+    when: "선수 과목, 작업 순서, 빌드 순서처럼 DAG의 선후 관계를 처리할 때 사용합니다.",
+    example: "기초수학 → 알고리즘 → 심화문제 순서가 반드시 지켜져야 한다면 진입차수가 0인 작업부터 queue에 넣어 처리합니다.",
+    complexity: "O(V+E)",
+    question: "방향 그래프에서 '먼저 해야 하는 일'이 있고 사이클이 없는가?",
+  },
+  {
+    name: "최소 신장 트리 · MST",
+    tag: "모든 정점을 최소 비용으로 연결",
+    idea: "모든 정점을 서로 연결하되 필요한 간선만 선택하여 전체 비용을 최소화합니다.",
+    when: "섬·도시·컴퓨터를 모두 연결하는 최소 건설 비용 문제에서 사용합니다.",
+    example: "크루스칼은 가장 싼 간선부터 보면서 서로 다른 두 그룹을 잇는 간선만 선택합니다. 같은 그룹이면 사이클이 생기므로 건너뜁니다.",
+    complexity: "크루스칼 기준 O(E log E)",
+    question: "모든 정점을 연결해야 하지만 경로 자체보다 전체 연결 비용이 중요한가?",
+  },
+  {
+    name: "세그먼트 트리",
+    tag: "값 변경과 구간 질의를 모두 빠르게",
+    idea: "배열의 여러 구간 정보를 트리 형태로 미리 저장해 값이 바뀌어도 필요한 구간만 다시 계산합니다.",
+    when: "원소 변경이 자주 일어나면서 구간 합·최솟값·최댓값 질의도 많이 들어올 때 사용합니다.",
+    example: "센서 값 하나가 바뀌고 'L부터 R까지 최솟값' 질문이 반복된다면 매번 전부 보는 대신 세그먼트 트리를 사용할 수 있습니다.",
+    complexity: "구축 O(N), 갱신 O(log N), 구간 질의 O(log N)",
+    question: "누적합으로는 처리하기 어려운 값 변경이 반복되는가?",
+  },
+];
+
 const cKeywordTokens = new Set([
   "int", "long", "char", "float", "double", "return",
   "if", "else", "for", "while", "break", "continue",
@@ -988,6 +1150,9 @@ export default function CompetitionWinnerInterviewStudy() {
           </div>
         </div>
 
+      </section>
+
+      <section className="contest-interview-complexity">
         <div className="contest-complexity-guide">
           <div className="contest-complexity-heading">
             <span>COMPLEXITY ANALYSIS</span>
@@ -1420,6 +1585,124 @@ int main() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="contest-core-concepts">
+        <div className="contest-section-heading">
+          <span>ALGORITHM & DATA STRUCTURE</span>
+          <h2>알고리즘·자료구조 핵심 개념</h2>
+          <p>
+            문제 분석에서 “왜 이 알고리즘을 선택했는가?”를 설명하려면 알고리즘 이름만 외우는 것이 아니라
+            <b> 무엇인지 → 언제 쓰는지 → 어떤 예에서 필요한지 → 시간복잡도가 얼마인지</b>까지 연결해서 이해해야 합니다.
+          </p>
+        </div>
+
+        <div className="contest-core-concept-rule">
+          <strong>문제를 볼 때 먼저 이렇게 생각하세요</strong>
+          <p>
+            N이 작으면 완전탐색이 가능한지 확인하고, 같은 계산이 반복되면 DP,
+            정렬된 범위를 절반씩 줄일 수 있으면 이분 탐색, 연결 관계를 따라가면 DFS/BFS처럼
+            <b> 문제의 특징과 알고리즘의 특징을 연결</b>하는 것이 핵심입니다.
+          </p>
+        </div>
+
+        <div className="contest-core-concept-group">
+          <div className="contest-core-concept-heading">
+            <span>DATA STRUCTURE</span>
+            <h3>먼저 알아야 할 자료구조</h3>
+            <p>자료구조는 데이터를 어떤 모양으로 저장하고 꺼낼지를 결정합니다.</p>
+          </div>
+
+          <div className="contest-core-concept-list">
+            {coreDataStructures.map((item, index) => (
+              <details className="contest-core-concept-item" key={item.name}>
+                <summary>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h4>{item.name}</h4>
+                    <p>{item.role}</p>
+                  </div>
+                  <b aria-hidden="true" />
+                </summary>
+                <div className="contest-core-concept-body">
+                  <div>
+                    <strong>쉽게 이해하기</strong>
+                    <p>{item.idea}</p>
+                  </div>
+                  <div>
+                    <strong>언제 사용하나?</strong>
+                    <p>{item.when}</p>
+                  </div>
+                  <div className="contest-core-concept-example">
+                    <strong>예시</strong>
+                    <p>{item.example}</p>
+                  </div>
+                  <div className="contest-core-concept-key">
+                    <strong>꼭 기억할 것</strong>
+                    <p>{item.keyPoint}</p>
+                  </div>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+
+        <div className="contest-core-concept-group">
+          <div className="contest-core-concept-heading">
+            <span>ALGORITHM</span>
+            <h3>문제 분석에 자주 등장하는 알고리즘</h3>
+            <p>
+              아래 항목은 “정의를 외우는 것”보다 어떤 문제의 특징을 보고 이 방법을 떠올리는지가 중요합니다.
+            </p>
+          </div>
+
+          <div className="contest-core-concept-list">
+            {coreAlgorithms.map((item, index) => (
+              <details className="contest-core-concept-item contest-core-algorithm-item" key={item.name}>
+                <summary>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h4>{item.name}</h4>
+                    <p>{item.tag}</p>
+                  </div>
+                  <b aria-hidden="true" />
+                </summary>
+
+                <div className="contest-core-concept-body">
+                  <div>
+                    <strong>무엇인가?</strong>
+                    <p>{item.idea}</p>
+                  </div>
+                  <div>
+                    <strong>언제 사용하나?</strong>
+                    <p>{item.when}</p>
+                  </div>
+                  <div className="contest-core-concept-example">
+                    <strong>예시</strong>
+                    <p>{item.example}</p>
+                  </div>
+                  <div>
+                    <strong>대표 시간복잡도</strong>
+                    <p>{item.complexity}</p>
+                  </div>
+                  <div className="contest-core-concept-question">
+                    <strong>문제를 보고 스스로 물어볼 질문</strong>
+                    <p>{item.question}</p>
+                  </div>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+
+        <div className="contest-core-concept-summary">
+          <strong>면접에서는 이렇게 설명하면 됩니다</strong>
+          <p>
+            “이 문제는 같은 상태가 반복되므로 DP를 사용했습니다. dp[i]를 i번째 위치까지의 최적값으로 정의했고,
+            이전 상태에서 현재 상태를 만들 수 있습니다. 상태가 N개이고 각 상태를 O(1)에 계산하므로 시간복잡도는 O(N)입니다.”
+            처럼 <b>문제 특징 → 알고리즘 선택 → 상태/동작 → 복잡도</b> 순서로 설명하는 연습을 하세요.
+          </p>
         </div>
       </section>
 
