@@ -3004,3 +3004,159 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Algorithm analysis practice problems */
+.contest-analysis-practice {
+  padding: 28px;
+  border: 1px solid #ddd7ed;
+  border-radius: 18px;
+  background: #fff;
+}
+.contest-analysis-practice-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+.contest-analysis-practice-item {
+  overflow: hidden;
+  border: 1px solid #e2deeb;
+  border-radius: 14px;
+  background: #fbfafd;
+}
+.contest-analysis-practice-item > summary {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+  padding: 18px;
+  cursor: pointer;
+  list-style: none;
+}
+.contest-analysis-practice-item > summary::-webkit-details-marker {
+  display: none;
+}
+.contest-analysis-practice-item > summary > span {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #65579a;
+  color: white;
+  font-size: 11px;
+  font-weight: 900;
+}
+.contest-analysis-practice-meta {
+  color: #2457d6;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .06em;
+}
+.contest-analysis-practice-item h3 {
+  margin: 5px 0 7px;
+  color: #2e293c;
+  font-size: 18px;
+}
+.contest-analysis-practice-item summary p {
+  margin: 0;
+  color: #60697a;
+  line-height: 1.75;
+}
+.contest-analysis-practice-item summary b {
+  display: block;
+  margin-top: 8px;
+  color: #756b93;
+  font-size: 12px;
+  font-weight: 700;
+}
+.contest-analysis-practice-item summary i {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin-top: 6px;
+}
+.contest-analysis-practice-item summary i::before,
+.contest-analysis-practice-item summary i::after {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 5px;
+  width: 14px;
+  height: 2px;
+  border-radius: 2px;
+  background: #756b93;
+}
+.contest-analysis-practice-item summary i::after {
+  transform: rotate(90deg);
+  transition: transform .2s ease;
+}
+.contest-analysis-practice-item[open] summary i::after {
+  transform: rotate(0);
+}
+.contest-analysis-practice-item[open] > summary {
+  border-bottom: 1px solid #e8e4ef;
+  background: #f7f5fb;
+}
+.contest-analysis-practice-answer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 18px;
+  background: #fff;
+}
+.contest-analysis-practice-answer > div:not(.contest-analysis-practice-complexity) {
+  padding: 15px 16px;
+  border: 1px solid #ece8f2;
+  border-radius: 12px;
+  background: #fbfafd;
+}
+.contest-analysis-practice-answer strong {
+  color: #3a3450;
+}
+.contest-analysis-practice-answer p {
+  margin: 6px 0 0;
+  color: #626b7d;
+  line-height: 1.72;
+}
+.contest-analysis-practice-complexity {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.contest-analysis-practice-complexity article {
+  padding: 16px;
+  border: 1px solid #cfdcf3;
+  border-radius: 12px;
+  background: #f5f8fe;
+}
+.contest-analysis-practice-complexity span {
+  display: block;
+  color: #2457d6;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .07em;
+}
+.contest-analysis-practice-complexity strong {
+  display: block;
+  margin-top: 5px;
+  color: #315f9e;
+  font-size: 18px;
+}
+
+@media (max-width: 760px) {
+  .contest-analysis-practice {
+    padding: 20px 16px;
+  }
+  .contest-analysis-practice-item > summary {
+    grid-template-columns: 36px minmax(0, 1fr);
+  }
+  .contest-analysis-practice-item summary i {
+    grid-column: 2;
+  }
+  .contest-analysis-practice-answer,
+  .contest-analysis-practice-complexity {
+    grid-template-columns: 1fr;
+  }
+}
