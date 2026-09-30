@@ -206,6 +206,46 @@ function renderCLine(line: string, keyPrefix: string) {
   });
 }
 
+function getHighlightedLineIndexes(code: string, highlightContains: string[]) {
+  const lines = code.split("\n");
+  const highlighted = new Set<number>();
+
+  lines.forEach((line, index) => {
+    if (highlightContains.some((part) => line.includes(part))) {
+      highlighted.add(index);
+    }
+  });
+
+  lines.forEach((line, index) => {
+    const trimmed = line.trim();
+
+    if (!highlighted.has(index) || !trimmed.startsWith("for (")) {
+      return;
+    }
+
+    let depth =
+      (line.match(/{/g) ?? []).length -
+      (line.match(/}/g) ?? []).length;
+
+    if (depth <= 0) {
+      return;
+    }
+
+    for (let next = index + 1; next < lines.length; next++) {
+      depth +=
+        (lines[next].match(/{/g) ?? []).length -
+        (lines[next].match(/}/g) ?? []).length;
+
+      if (depth === 0) {
+        highlighted.add(next);
+        break;
+      }
+    }
+  });
+
+  return highlighted;
+}
+
 function QuestionGroup({
   number,
   title,
@@ -461,18 +501,25 @@ export default function CompetitionWinnerInterviewStudy() {
                   </div>
 
                   <pre className="contest-bigo-code"><code>
-                    {item.code.split("\n").map((line, lineIndex) => {
-                      const highlighted = item.highlightContains.some((part) => line.includes(part));
-
-                      return (
-                        <span
-                          className={`contest-bigo-code-line${highlighted ? " is-highlighted" : ""}`}
-                          key={`${item.title}-${lineIndex}`}
-                        >
-                          {renderCLine(line, `${item.title}-${lineIndex}`)}
-                        </span>
+                    {(() => {
+                      const highlightedLines = getHighlightedLineIndexes(
+                        item.code,
+                        item.highlightContains
                       );
-                    })}
+
+                      return item.code.split("\n").map((line, lineIndex) => {
+                        const highlighted = highlightedLines.has(lineIndex);
+
+                        return (
+                          <span
+                            className={`contest-bigo-code-line${highlighted ? " is-highlighted" : ""}`}
+                            key={`${item.title}-${lineIndex}`}
+                          >
+                            {renderCLine(line, `${item.title}-${lineIndex}`)}
+                          </span>
+                        );
+                      });
+                    })()}
                   </code></pre>
                 </details>
               ))}
