@@ -3221,3 +3221,100 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
     padding: 20px 16px;
   }
 }
+
+
+/* Space complexity container and recursion guidance */
+.contest-memory-guide,
+.contest-recursion-memory {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid #d8e0ef;
+  border-radius: 14px;
+  background: #f8faff;
+}
+.contest-memory-guide > strong,
+.contest-recursion-heading h5 {
+  color: #315f9e;
+}
+.contest-memory-guide > p,
+.contest-recursion-heading p {
+  margin: 7px 0 0;
+  color: #586579;
+  line-height: 1.75;
+}
+.contest-memory-structure-grid,
+.contest-recursion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.contest-memory-structure-grid > div,
+.contest-recursion-grid > div {
+  padding: 14px 15px;
+  border: 1px solid #e4e8f1;
+  border-radius: 11px;
+  background: #fff;
+}
+.contest-memory-structure-grid span,
+.contest-memory-structure-grid b,
+.contest-recursion-grid strong {
+  display: block;
+}
+.contest-memory-structure-grid span {
+  color: #6a5f8e;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+.contest-memory-structure-grid b {
+  margin-top: 4px;
+  color: #40385f;
+}
+.contest-memory-structure-grid p,
+.contest-recursion-grid p {
+  margin: 6px 0 0;
+  color: #657083;
+  line-height: 1.68;
+}
+.contest-memory-guide code,
+.contest-recursion-memory code {
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: #eef2f8;
+  color: #4b4f68;
+  font-family: Consolas, "Courier New", monospace;
+}
+.contest-recursion-heading > span {
+  display: block;
+  color: #65579a;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .07em;
+}
+.contest-recursion-heading h5 {
+  margin: 6px 0 0;
+  font-size: 18px;
+}
+.contest-recursion-example {
+  margin-top: 12px;
+  padding: 15px 16px;
+  border: 1px solid #cfdcf3;
+  border-radius: 12px;
+  background: #fff;
+}
+.contest-recursion-example strong {
+  color: #315f9e;
+}
+.contest-recursion-example p {
+  margin: 6px 0 0;
+  color: #5b6679;
+  line-height: 1.75;
+}
+
+@media (max-width: 760px) {
+  .contest-memory-structure-grid,
+  .contest-recursion-grid {
+    grid-template-columns: 1fr;
+  }
+}
