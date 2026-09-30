@@ -1135,8 +1135,9 @@ export default function CompetitionWinnerInterviewStudy() {
             <div className="contest-memory-guide">
               <strong>배열·vector·stack·queue는 모두 원소 수 × 자료형 크기만 계산하면 될까?</strong>
               <p>
-                <b>원소 수 × 자료형 크기</b>는 좋은 출발점이지만, 모든 자료구조의 실제 사용량과 정확히 같지는 않습니다.
-                배열은 거의 그대로 계산할 수 있지만 STL 컨테이너는 원소 저장 공간 외에 관리용 메모리와 여유 공간이 추가될 수 있습니다.
+                학생 수준에서는 우선 <b>저장하는 원소 개수 × 자료형 크기</b>로 계산하면 충분합니다.
+                배열은 거의 그대로 계산할 수 있고, vector·stack·queue는 내부 관리 정보나 여유 공간 때문에 실제로는 조금 더 메모리를 사용합니다.
+                하지만 일반적인 알고리즘 문제에서는 그 차이가 크지 않으므로 <b>대략 원소 개수 × 자료형 크기</b>로 근사해서 계산해도 됩니다.
               </p>
 
               <div className="contest-memory-structure-grid">
@@ -1152,16 +1153,16 @@ export default function CompetitionWinnerInterviewStudy() {
                   <span>vector</span>
                   <b>capacity 기준으로 생각</b>
                   <p>
-                    <code>vector&lt;int&gt;</code>는 보통 실제 확보한 <b>capacity × 4Byte</b>가 원소 저장 공간입니다.
-                    vector 객체 자체와 동적 할당 관리 비용도 조금 추가되며, capacity가 size보다 클 수도 있습니다.
+                    실제로는 capacity와 관리용 메모리 때문에 배열보다 조금 더 사용할 수 있습니다.
+                    하지만 문제 풀이에서는 보통 <b>저장한 int 개수 × 4Byte</b> 정도로 계산해도 충분합니다.
                   </p>
                 </div>
                 <div>
                   <span>stack / queue</span>
                   <b>원소 크기 + 컨테이너 오버헤드</b>
                   <p>
-                    C++의 <code>stack</code>, <code>queue</code>는 기본적으로 <code>deque</code>를 사용하므로
-                    단순히 원소 수 × 자료형 크기보다 조금 더 사용합니다. 블록·포인터 등의 관리 메모리가 추가됩니다.
+                    내부적으로 관리용 메모리가 더 들어가서 단순 계산보다 조금 더 사용합니다.
+                    하지만 일반적인 알고리즘 문제에서는 그 차이는 크게 신경 쓰지 않고 <b>원소 개수 × 자료형 크기</b>로 근사해도 됩니다.
                   </p>
                 </div>
                 <div>
@@ -1173,6 +1174,15 @@ export default function CompetitionWinnerInterviewStudy() {
                   </p>
                 </div>
               </div>
+            </div>
+
+            <div className="contest-memory-simple-rule">
+              <strong>학생용으로 이렇게 기억하면 됩니다</strong>
+              <p>
+                배열·vector·stack·queue는 일단 <b>저장 개수 × 자료형 크기</b>로 계산합니다.
+                vector·stack·queue는 실제로 조금 더 쓰지만 일반적인 알고리즘 문제에서는 그 차이는 무시해도 됩니다.
+                다만 <b>재귀 호출은 예외</b>입니다. 재귀는 호출 깊이만큼 스택 메모리가 계속 쌓이므로 별도로 확인해야 합니다.
+              </p>
             </div>
 
             <div className="contest-space-examples">
@@ -1187,8 +1197,8 @@ export default function CompetitionWinnerInterviewStudy() {
               <div className="contest-complexity-example">
                 <strong>예시 2 · vector&lt;int&gt;에 10,000개 저장</strong>
                 <p>
-                  capacity가 정확히 10,000이라면 원소 저장 공간은 약 <b>10,000 × 4Byte = 40KB</b>입니다.
-                  다만 capacity가 16,384처럼 더 크게 잡혀 있다면 약 <b>65.5KB</b>를 확보한 상태이며 vector 객체·할당 관리 비용이 추가됩니다.
+                  수업이나 문제 풀이에서는 배열과 비슷하게 <b>10,000 × 4Byte ≈ 40KB</b>로 계산하면 됩니다.
+                  실제로는 관리 정보와 여유 공간 때문에 조금 더 사용할 수 있지만, 보통 이 차이는 무시하고 계산해도 충분합니다.
                 </p>
               </div>
 
