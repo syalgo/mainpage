@@ -2961,3 +2961,46 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
     text-align: left;
   }
 }
+
+
+/* Full-width time and space complexity sections */
+.contest-complexity-wide {
+  margin-top: 14px;
+  padding: 20px;
+  border: 1px solid #e2deeb;
+  border-radius: 14px;
+  background: #fff;
+}
+.contest-complexity-wide > span {
+  color: #65579a;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .06em;
+}
+.contest-complexity-wide h4 {
+  margin: 8px 0 10px;
+  color: #302a40;
+  font-size: 17px;
+  line-height: 1.5;
+}
+.contest-complexity-wide ol {
+  margin: 0;
+  padding-left: 20px;
+  color: #626b7d;
+  line-height: 1.8;
+}
+.contest-space-examples {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.contest-space-examples .contest-complexity-example {
+  margin-top: 0;
+}
+
+@media (max-width: 760px) {
+  .contest-space-examples {
+    grid-template-columns: 1fr;
+  }
+}
