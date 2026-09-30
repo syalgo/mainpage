@@ -70,7 +70,7 @@ const prepChecklist = [
     body: "대회명 → 연도·부문 → 본선 진행 방식 → 수상 등급 → 내가 증명했다고 생각하는 역량의 순서로 짧게 정리합니다.",
   },
   {
-    title: "대표 문제 2~3개 완전 분석",
+    title: "기출문제 모두 완전 분석",
     body: "문제 요약, 입력 제한, 단순 풀이, 선택 알고리즘, 자료구조, 시간·공간복잡도, 정당성, 예외 케이스, 구현 실수까지 설명할 수 있어야 합니다.",
   },
   {
@@ -232,31 +232,108 @@ export default function CompetitionWinnerInterviewStudy() {
 
       <section className="contest-interview-problem-sheet">
         <div className="contest-section-heading">
-          <span>REPRESENTATIVE PROBLEM</span>
-          <h2>대표 문제 분석표</h2>
-          <p>본선 문제 2~3개를 아래 항목으로 완전히 정리해 두세요.</p>
+          <span>PROBLEM ANALYSIS</span>
+          <h2>문제 분석 항목</h2>
+          <p>본선 기출문제를 아래 항목으로 빠짐없이 분석해 두세요.</p>
         </div>
-        <div className="contest-analysis-table-wrap">
-          <table className="contest-analysis-table">
-            <thead>
-              <tr>
-                <th>항목</th>
-                <th>정리할 내용</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>문제 요약</td><td>문제를 처음 듣는 사람도 이해할 수 있도록 2~3문장으로 설명</td></tr>
-              <tr><td>핵심 제약</td><td>N의 범위, 시간·메모리 제한, 입력의 특징</td></tr>
-              <tr><td>단순 풀이</td><td>브루트포스 등 가장 먼저 떠올릴 수 있는 방법과 복잡도</td></tr>
-              <tr><td>최종 알고리즘</td><td>선택한 알고리즘과 자료구조, 선택 이유</td></tr>
-              <tr><td>복잡도</td><td>시간복잡도와 공간복잡도, 실제 제한에서 통과 가능한 이유</td></tr>
-              <tr><td>정당성</td><td>왜 이 풀이가 항상 맞는지 핵심 논리 또는 증명</td></tr>
-              <tr><td>예외 케이스</td><td>최솟값·최댓값·중복·경계값 등 실수하기 쉬운 입력</td></tr>
-              <tr><td>구현 과정</td><td>가장 어려웠던 부분, 오류 원인, 디버깅 방법</td></tr>
-              <tr><td>대안 풀이</td><td>다른 풀이가 가능한지, 장단점과 복잡도 비교</td></tr>
-              <tr><td>확장</td><td>입력 제한이나 조건이 바뀌면 어떻게 수정할지</td></tr>
-            </tbody>
-          </table>
+
+        <div className="contest-analysis-columns">
+          <div className="contest-analysis-table-wrap">
+            <table className="contest-analysis-table contest-analysis-table-compact">
+              <thead>
+                <tr>
+                  <th>항목</th>
+                  <th>정리할 내용</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>문제 요약</td><td>문제를 처음 듣는 사람도 이해할 수 있도록 2~3문장으로 설명</td></tr>
+                <tr><td>핵심 제약</td><td>N의 범위, 시간·메모리 제한, 입력의 특징</td></tr>
+                <tr><td>단순 풀이</td><td>브루트포스 등 가장 먼저 떠올릴 수 있는 방법과 복잡도</td></tr>
+                <tr><td>최종 알고리즘</td><td>선택한 알고리즘과 자료구조, 선택 이유</td></tr>
+                <tr><td>복잡도</td><td>시간복잡도와 공간복잡도, 실제 제한에서 통과 가능한 이유</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="contest-analysis-table-wrap">
+            <table className="contest-analysis-table contest-analysis-table-compact">
+              <thead>
+                <tr>
+                  <th>항목</th>
+                  <th>정리할 내용</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>정당성</td><td>왜 이 풀이가 항상 맞는지 핵심 논리 또는 증명</td></tr>
+                <tr><td>예외 케이스</td><td>최솟값·최댓값·중복·경계값 등 실수하기 쉬운 입력</td></tr>
+                <tr><td>구현 과정</td><td>가장 어려웠던 부분, 오류 원인, 디버깅 방법</td></tr>
+                <tr><td>대안 풀이</td><td>다른 풀이가 가능한지, 장단점과 복잡도 비교</td></tr>
+                <tr><td>확장</td><td>입력 제한이나 조건이 바뀌면 어떻게 수정할지</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="contest-complexity-guide">
+          <div className="contest-complexity-heading">
+            <span>COMPLEXITY ANALYSIS</span>
+            <h3>시간·공간 복잡도 분석 방법</h3>
+            <p>
+              복잡도는 단순히 O(N)이라는 결과만 외우는 것이 아니라,
+              어떤 연산과 자료구조 때문에 그 복잡도가 나오는지 설명할 수 있어야 합니다.
+            </p>
+          </div>
+
+          <div className="contest-complexity-grid">
+            <article>
+              <span>TIME COMPLEXITY</span>
+              <h4>시간복잡도는 연산 횟수를 N으로 표현합니다</h4>
+              <ol>
+                <li>입력 크기를 나타내는 값을 N으로 정합니다.</li>
+                <li>반복문·재귀·정렬·탐색이 몇 번 수행되는지 확인합니다.</li>
+                <li>가장 빠르게 증가하는 항만 남겨 Big-O로 표현합니다.</li>
+                <li>문제의 N 제한에서 실제로 수행 가능한지도 함께 판단합니다.</li>
+              </ol>
+              <div className="contest-complexity-example">
+                <strong>예시 · 배열에서 최댓값 찾기</strong>
+                <p>
+                  원소 N개를 처음부터 끝까지 한 번씩 확인하므로 연산 횟수가 N에 비례합니다.
+                  따라서 시간복잡도는 <b>O(N)</b>입니다.
+                </p>
+              </div>
+            </article>
+
+            <article>
+              <span>SPACE COMPLEXITY</span>
+              <h4>공간복잡도는 추가로 사용하는 메모리를 계산합니다</h4>
+              <ol>
+                <li>입력 데이터 자체를 제외하고 추가로 만든 저장공간을 확인합니다.</li>
+                <li>배열·리스트·큐·스택·방문 배열과 재귀 호출 스택을 포함합니다.</li>
+                <li>추가 저장공간의 크기를 N에 대한 식으로 나타내 Big-O로 정리합니다.</li>
+                <li>메모리 제한 안에서 사용할 수 있는 크기인지 확인합니다.</li>
+              </ol>
+              <div className="contest-complexity-example">
+                <strong>예시 · 배열에서 최댓값 찾기</strong>
+                <p>
+                  최댓값을 저장할 변수 몇 개만 추가로 사용하므로 입력 크기 N이 커져도
+                  추가 메모리는 일정합니다. 따라서 공간복잡도는 <b>O(1)</b>입니다.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div className="contest-complexity-reference">
+            <strong>대표적인 분석 예시</strong>
+            <div className="contest-complexity-reference-grid">
+              <div><span>한 번 순회</span><b>O(N)</b><p>N개 원소를 한 번씩 확인</p></div>
+              <div><span>이중 반복문</span><b>O(N²)</b><p>각 원소마다 다시 N개를 확인</p></div>
+              <div><span>정렬</span><b>O(N log N)</b><p>일반적인 비교 기반 정렬</p></div>
+              <div><span>이분 탐색</span><b>O(log N)</b><p>탐색 범위를 절반씩 줄임</p></div>
+              <div><span>N칸 배열</span><b>O(N)</b><p>입력 크기만큼 추가 배열 사용</p></div>
+              <div><span>변수 몇 개</span><b>O(1)</b><p>N과 무관한 고정 크기 메모리</p></div>
+            </div>
+          </div>
         </div>
       </section>
 
