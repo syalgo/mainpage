@@ -1,19 +1,45 @@
-import ProtectedCoursePage from "@/components/ProtectedCoursePage";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import MiddleInformationGlossary from "@/components/MiddleInformationGlossary";
+import { getSessionUser } from "@/lib/auth-server";
+import { isFirebaseAdminConfigured } from "@/lib/firebase-admin";
 
-export default function MiddleInformationGlossaryPage() {
-  return (
-    <ProtectedCoursePage
-      permission="specialized"
-      eyebrow="MIDDLE SCHOOL INFORMATION GLOSSARY"
-      title="중등 정보용어 백과"
-      description="중학교 정보 교과에서 사용하는 핵심 용어를 정리하는 공간입니다."
-      items={[
-        {
-          title: "중등 정보용어",
-          description: "중등용 자료를 추가하면 교과 영역별 용어와 설명을 정리합니다.",
-        },
-      ]}
-      hideIntro
-    />
-  );
+export default async function MiddleInformationGlossaryPage() {
+  if (!isFirebaseAdminConfigured()) {
+    return (
+      <section className="access-state">
+        <span className="eyebrow">SETUP MODE</span>
+        <h1>중등 정보용어 백과</h1>
+        <p>Firebase 연결 후 승인된 고등학교 입학전형 준비 계정만 이용할 수 있습니다.</p>
+        <Link className="secondary-button" href="/specialized/information-glossary">돌아가기</Link>
+      </section>
+    );
+  }
+
+  const user = await getSessionUser();
+  if (!user) redirect("/login");
+
+  if (!user.approved) {
+    return (
+      <section className="access-state">
+        <span className="status pending">승인 대기</span>
+        <h1>관리자 승인 대기 중입니다.</h1>
+        <p>관리자 승인 후 중등 정보용어 백과를 이용할 수 있습니다.</p>
+        <Link className="secondary-button" href="/account">내 계정 확인</Link>
+      </section>
+    );
+  }
+
+  if (!user.admin && !user.permissions.specialized) {
+    return (
+      <section className="access-state">
+        <span className="eyebrow">NO COURSE ACCESS</span>
+        <h1>고등학교 입학전형 준비 권한이 없습니다.</h1>
+        <p>관리자에게 고등학교 입학전형 준비 이용 권한을 요청해주세요.</p>
+        <Link className="secondary-button" href="/account">내 권한 확인</Link>
+      </section>
+    );
+  }
+
+  return <MiddleInformationGlossary />;
 }
