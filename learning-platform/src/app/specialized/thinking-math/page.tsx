@@ -3,7 +3,7 @@ import ProtectedCoursePage from "@/components/ProtectedCoursePage";
 export default function ThinkingMathPage() {
   return (
     <ProtectedCoursePage
-      permission="specialized"
+      permission="dimigo"
       eyebrow="THINKING MATH"
       title="사고력 수학 - 기초"
       description=""
