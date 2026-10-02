@@ -30,7 +30,7 @@ export default async function CompetitionWinnerInterviewPage() {
     );
   }
 
-  if (!user.admin && !user.permissions.specialized) {
+  if (!user.admin && !user.permissions.dimigo) {
     return (
       <section className="access-state">
         <span className="eyebrow">NO COURSE ACCESS</span>
