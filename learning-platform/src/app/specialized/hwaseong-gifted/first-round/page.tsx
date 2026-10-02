@@ -3,7 +3,7 @@ import ProtectedCoursePage from "@/components/ProtectedCoursePage";
 export default function HwaseongGiftedFirstRoundPage() {
   return (
     <ProtectedCoursePage
-      permission="specialized"
+      permission="hwaseong"
       eyebrow="HWASEONG GIFTED · FIRST ROUND"
       title="1차 전형(지필 평가)"
       description="1차 전형 준비 항목을 순서대로 학습합니다."
