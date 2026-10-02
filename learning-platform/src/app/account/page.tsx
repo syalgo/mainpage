@@ -19,8 +19,10 @@ export default async function AccountPage() {
       <div className="account-status-card">
         <div><span>가입 상태</span><strong>{user.approved ? "승인 완료" : "관리자 승인 대기"}</strong></div>
         <div><span>기본 교재</span><strong>{user.admin || user.permissions.basic ? "이용 가능" : "권한 없음"}</strong></div>
-        <div><span>고등학교 입학전형 준비</span><strong>{user.admin || user.permissions.specialized ? "이용 가능" : "권한 없음"}</strong></div>
-        <div><span>정보올림피아드 대비반</span><strong>{user.admin || user.permissions.koi ? "이용 가능" : "권한 없음"}</strong></div>
+        <div><span>디미고 입학전형 대비</span><strong>{user.admin || user.permissions.dimigo ? "이용 가능" : "권한 없음"}</strong></div>
+        <div><span>대덕소마고 입학전형 대비</span><strong>{user.admin || user.permissions.daedeok ? "이용 가능" : "권한 없음"}</strong></div>
+        <div><span>화성시 영재교육원 대비</span><strong>{user.admin || user.permissions.hwaseong ? "이용 가능" : "권한 없음"}</strong></div>
+        <div><span>정보올림피아드 대비</span><strong>{user.admin || user.permissions.koi ? "이용 가능" : "권한 없음"}</strong></div>
       </div>
       <div className="hero-actions">
         <Link className="secondary-button" href="/">메인으로</Link>
