@@ -10,7 +10,7 @@ export default async function JobBasicLiteracyPage() {
       <section className="access-state">
         <span className="eyebrow">SETUP MODE</span>
         <h1>직업기초 소양 평가</h1>
-        <p>Firebase 연결 후 승인된 고등학교 입학전형 준비 계정만 이용할 수 있습니다.</p>
+        <p>Firebase 연결 후 승인된 대덕소마고 입학전형 대비 계정만 이용할 수 있습니다.</p>
         <Link className="secondary-button" href="/specialized">돌아가기</Link>
       </section>
     );
@@ -30,12 +30,12 @@ export default async function JobBasicLiteracyPage() {
     );
   }
 
-  if (!user.admin && !user.permissions.specialized) {
+  if (!user.admin && !user.permissions.daedeok) {
     return (
       <section className="access-state">
         <span className="eyebrow">NO COURSE ACCESS</span>
-        <h1>고등학교 입학전형 준비 권한이 없습니다.</h1>
-        <p>관리자에게 고등학교 입학전형 준비 이용 권한을 요청해주세요.</p>
+        <h1>대덕소마고 입학전형 대비 권한이 없습니다.</h1>
+        <p>관리자에게 대덕소마고 입학전형 대비 이용 권한을 요청해주세요.</p>
         <Link className="secondary-button" href="/account">내 권한 확인</Link>
       </section>
     );
