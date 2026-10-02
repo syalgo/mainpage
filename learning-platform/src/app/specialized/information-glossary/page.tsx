@@ -3,7 +3,7 @@ import ProtectedCoursePage from "@/components/ProtectedCoursePage";
 export default function InformationGlossaryPage() {
   return (
     <ProtectedCoursePage
-      permission="specialized"
+      permission="dimigo"
       eyebrow="INFORMATION GLOSSARY"
       title="정보용어 백과"
       description="정보 교과와 컴퓨터 과학에서 자주 사용하는 핵심 용어를 수준별로 정리합니다."
