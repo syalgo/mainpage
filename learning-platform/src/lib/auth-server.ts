@@ -6,7 +6,7 @@ import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
 import { getFirebaseAdminApp } from "@/lib/firebase-admin";
 
-export type CoursePermission = "basic" | "specialized" | "koi";
+export type CoursePermission = "basic" | "dimigo" | "daedeok" | "hwaseong" | "koi";
 
 export type PlatformUser = {
   uid: string;
@@ -30,7 +30,15 @@ function normalizeUser(uid: string, email: string, data: Record<string, unknown>
     admin: Boolean(data.admin) || isBootstrapAdmin,
     permissions: {
       basic: Boolean(permissions.basic) || isBootstrapAdmin,
-      specialized: Boolean(permissions.specialized) || isBootstrapAdmin,
+      dimigo:
+        (typeof permissions.dimigo === "boolean" ? permissions.dimigo : Boolean(permissions.specialized)) ||
+        isBootstrapAdmin,
+      daedeok:
+        (typeof permissions.daedeok === "boolean" ? permissions.daedeok : Boolean(permissions.specialized)) ||
+        isBootstrapAdmin,
+      hwaseong:
+        (typeof permissions.hwaseong === "boolean" ? permissions.hwaseong : Boolean(permissions.specialized)) ||
+        isBootstrapAdmin,
       koi: Boolean(permissions.koi) || isBootstrapAdmin,
     },
   };
