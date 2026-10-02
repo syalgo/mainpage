@@ -4095,3 +4095,68 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
   color: #65579a !important;
   font-weight: 700;
 }
+
+
+/* Hwaseong gifted handwritten personal statement and study plan */
+.gifted-writing-page{display:grid;gap:20px}
+.gifted-writing-hero,.gifted-writing-section,.gifted-writing-official,.gifted-writing-sources{padding:28px;border:1px solid #ddd7ed;border-radius:18px;background:#fff}
+.gifted-writing-hero h1{margin:8px 0 0;color:#171424;font-size:clamp(30px,4vw,46px)}
+.gifted-writing-hero p{max-width:820px;margin:12px 0 0;color:#687183;line-height:1.8}
+.gifted-writing-section-heading>span{display:block;color:#65579a;font-size:10px;font-weight:900;letter-spacing:.08em}
+.gifted-writing-section-heading h2{margin:5px 0 0;color:#302a40;font-size:25px}
+.gifted-writing-section-heading p{margin:7px 0 0;color:#687183;line-height:1.72}
+.gifted-writing-official-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+.gifted-writing-official-grid article,.gifted-writing-rule-grid article,.gifted-writing-plan-grid article{padding:15px 16px;border:1px solid #e4e8f1;border-radius:12px;background:#f8faff}
+.gifted-writing-official-grid strong{color:#315f9e}
+.gifted-writing-official-grid p,.gifted-writing-rule-grid p,.gifted-writing-plan-grid p{margin:6px 0 0;color:#5d687b;line-height:1.72}
+.gifted-writing-notice{margin-top:12px;padding:14px 16px;border:1px solid #ead9b7;border-radius:12px;background:#fffaf0}
+.gifted-writing-notice strong{color:#84652e}
+.gifted-writing-notice p{margin:6px 0 0;color:#665d50;line-height:1.72}
+.gifted-writing-rule-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:16px}
+.gifted-writing-rule-grid article>span{display:block;color:#65579a;font-size:11px;font-weight:900}
+.gifted-writing-rule-grid strong{display:block;margin-top:6px;color:#302a40}
+.gifted-writing-step-list{display:grid;gap:10px;margin-top:16px}
+.gifted-writing-step-list>article{display:grid;grid-template-columns:48px minmax(0,1fr);gap:14px;padding:16px;border:1px solid #e4e0eb;border-radius:13px;background:#fff}
+.gifted-writing-step-list>article>span{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#65579a;color:#fff;font-size:11px;font-weight:900}
+.gifted-writing-step-list h3{margin:0;color:#302a40;font-size:17px}
+.gifted-writing-step-list p{margin:5px 0 0;color:#626c7d;line-height:1.7}
+.gifted-writing-mini-example{margin-top:9px;padding:10px 12px;border-radius:9px;background:#f5f8fe;color:#536179;line-height:1.65}
+.gifted-writing-mini-example b{margin-right:8px;color:#315f9e}
+.gifted-writing-template{margin-top:16px;padding:18px;border:1px solid #cfdcf3;border-radius:13px;background:#f5f8fe}
+.gifted-writing-template strong{color:#315f9e}
+.gifted-writing-template p{margin:8px 0 0;color:#4f5d73;line-height:1.9}
+.gifted-writing-template u{text-decoration-color:#9eb6dc;text-decoration-thickness:2px;text-underline-offset:3px}
+.gifted-writing-compare,.gifted-writing-field-examples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.gifted-writing-compare article,.gifted-writing-field-examples article{padding:16px;border:1px solid #e4e0eb;border-radius:12px;background:#fff}
+.gifted-writing-compare article>span,.gifted-writing-field-examples article>span{font-size:11px;font-weight:900}
+.gifted-writing-compare .is-weak>span{color:#a05656}
+.gifted-writing-compare .is-strong>span,.gifted-writing-field-examples article>span{color:#315f9e}
+.gifted-writing-compare p,.gifted-writing-field-examples p{margin:7px 0 0;color:#606a7b;line-height:1.72}
+.gifted-writing-compare b{display:block;margin-top:12px;color:#40385f}
+.gifted-writing-plan-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin-top:16px}
+.gifted-writing-plan-grid article>span{display:block;color:#65579a;font-size:11px;font-weight:900}
+.gifted-writing-plan-grid strong{display:block;margin-top:5px;color:#302a40}
+.gifted-writing-field-examples h3{margin:5px 0 0;color:#302a40;font-size:17px}
+.gifted-writing-flow{display:grid;grid-template-columns:repeat(9,auto);align-items:center;justify-content:space-between;gap:8px;margin-top:18px}
+.gifted-writing-flow>div{min-width:120px;padding:14px;border:1px solid #e4e0eb;border-radius:12px;background:#f8f7fb;text-align:center}
+.gifted-writing-flow>div span{display:grid;place-items:center;width:28px;height:28px;margin:0 auto 7px;border-radius:50%;background:#65579a;color:#fff;font-size:10px;font-weight:900}
+.gifted-writing-flow strong{display:block;color:#302a40}
+.gifted-writing-flow p{margin:4px 0 0;color:#7a8291;font-size:12px}
+.gifted-writing-flow>i{color:#9d95ad;font-style:normal}
+.gifted-writing-prompts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}
+.gifted-writing-prompts article{padding:15px 16px;border:1px solid #e4e0eb;border-radius:12px;background:#fff}
+.gifted-writing-prompts span{color:#65579a;font-size:11px;font-weight:900}
+.gifted-writing-prompts p{margin:6px 0 0;color:#535f72;line-height:1.7}
+.gifted-writing-practice-rule{margin-top:12px;padding:14px 16px;border:1px solid #d7e1f1;border-radius:12px;background:#f7faff}
+.gifted-writing-practice-rule strong{color:#315f9e}
+.gifted-writing-practice-rule p{margin:6px 0 0;color:#566379;line-height:1.72}
+.gifted-writing-check-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}
+.gifted-writing-check-grid label{display:flex;align-items:flex-start;gap:9px;padding:12px 13px;border:1px solid #e4e0eb;border-radius:10px;background:#fbfafd;color:#565f70;line-height:1.55}
+.gifted-writing-check-grid input{margin-top:3px}
+.gifted-writing-sources{background:#faf9fc}
+.gifted-writing-sources>strong{color:#40385f}
+.gifted-writing-sources>p{margin:6px 0 0;color:#737b8a;line-height:1.7}
+.gifted-writing-sources>div{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.gifted-writing-sources a{display:inline-flex;padding:7px 10px;border:1px solid #ddd7ed;border-radius:9px;background:#fff;color:#51466d;font-size:12px;font-weight:800;text-decoration:none}
+@media(max-width:900px){.gifted-writing-rule-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gifted-writing-plan-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gifted-writing-flow{grid-template-columns:1fr}.gifted-writing-flow>i{transform:rotate(90deg);text-align:center}}
+@media(max-width:700px){.gifted-writing-hero,.gifted-writing-section,.gifted-writing-official,.gifted-writing-sources{padding:20px 16px}.gifted-writing-official-grid,.gifted-writing-rule-grid,.gifted-writing-compare,.gifted-writing-field-examples,.gifted-writing-prompts,.gifted-writing-check-grid,.gifted-writing-plan-grid{grid-template-columns:1fr}.gifted-writing-step-list>article{grid-template-columns:38px minmax(0,1fr)}}
