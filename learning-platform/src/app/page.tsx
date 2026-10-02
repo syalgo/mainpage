@@ -4,7 +4,7 @@ const sections = [
   { href: "/materials", label: "기본교재", tag: "ALL STUDENTS" },
   { href: "/specialized", label: "디미고 입학전형 대비", tag: "DIMIGO" },
   { href: "/specialized/job-basic-literacy", label: "대덕소마고 입학전형 대비", tag: "DAEDEOK SW" },
-  { href: "/specialized/thinking-math", label: "화성시 영재교육원 대비", tag: "HWASEONG GIFTED" },
+  { href: "/specialized/hwaseong-gifted", label: "화성시 영재교육원 대비", tag: "HWASEONG GIFTED" },
   { href: "/koi", label: "정보올림피아드 대비", tag: "KOI · ALGORITHM" },
 ];
 
