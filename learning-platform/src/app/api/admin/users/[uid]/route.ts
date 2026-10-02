@@ -21,14 +21,18 @@ export async function PATCH(
   const body = (await request.json()) as {
     approved?: boolean;
     basic?: boolean;
-    specialized?: boolean;
+    dimigo?: boolean;
+    daedeok?: boolean;
+    hwaseong?: boolean;
     koi?: boolean;
   };
 
   const update: Record<string, unknown> = { updatedAt: FieldValue.serverTimestamp() };
   if (typeof body.approved === "boolean") update.approved = body.approved;
   if (typeof body.basic === "boolean") update["permissions.basic"] = body.basic;
-  if (typeof body.specialized === "boolean") update["permissions.specialized"] = body.specialized;
+  if (typeof body.dimigo === "boolean") update["permissions.dimigo"] = body.dimigo;
+  if (typeof body.daedeok === "boolean") update["permissions.daedeok"] = body.daedeok;
+  if (typeof body.hwaseong === "boolean") update["permissions.hwaseong"] = body.hwaseong;
   if (typeof body.koi === "boolean") update["permissions.koi"] = body.koi;
 
   await getFirestore(app).collection("users").doc(uid).update(update);
