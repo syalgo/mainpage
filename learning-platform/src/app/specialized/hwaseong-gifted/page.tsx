@@ -3,7 +3,7 @@ import ProtectedCoursePage from "@/components/ProtectedCoursePage";
 export default function HwaseongGiftedPage() {
   return (
     <ProtectedCoursePage
-      permission="specialized"
+      permission="hwaseong"
       eyebrow="HWASEONG GIFTED EDUCATION"
       title="화성시 영재교육원 대비"
       description="화성시 영재교육원 전형 단계별 학습 공간입니다."
