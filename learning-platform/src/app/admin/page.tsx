@@ -27,7 +27,7 @@ export default async function AdminPage() {
       <div className="section-heading">
         <span className="eyebrow">ADMIN</span>
         <h1>회원 승인 및 권한 관리</h1>
-        <p>승인 여부와 기본 교재·특성화고·정보올림피아드 이용 권한을 각각 설정합니다.</p>
+        <p>승인 여부와 기본 교재·디미고·대덕소마고·화성시 영재교육원·정보올림피아드 이용 권한을 각각 설정합니다.</p>
       </div>
       <AdminUsersTable initialUsers={users} />
       <div className="pending-box wide">
