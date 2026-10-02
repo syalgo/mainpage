@@ -3,7 +3,7 @@ import ProtectedCoursePage from "@/components/ProtectedCoursePage";
 export default function SpecializedPage() {
   return (
     <ProtectedCoursePage
-      permission="specialized"
+      permission="dimigo"
       eyebrow="DIMIGO ADMISSION"
       title="디미고 입학전형 대비"
       description="디미고 입학전형을 준비하기 위한 전용 학습 공간입니다."
