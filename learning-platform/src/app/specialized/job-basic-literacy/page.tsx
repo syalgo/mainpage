@@ -11,7 +11,7 @@ export default async function JobBasicLiteracyPage() {
         <span className="eyebrow">SETUP MODE</span>
         <h1>직업기초 소양 평가</h1>
         <p>Firebase 연결 후 승인된 대덕소마고 입학전형 대비 계정만 이용할 수 있습니다.</p>
-        <Link className="secondary-button" href="/specialized">돌아가기</Link>
+        <Link className="secondary-button" href="/specialized/daedeok-software">돌아가기</Link>
       </section>
     );
   }
