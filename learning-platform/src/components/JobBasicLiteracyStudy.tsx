@@ -116,8 +116,8 @@ export default function JobBasicLiteracyStudy() {
             시간 압박과 다단계 사고에 맞춰 연습합니다.
           </p>
         </div>
-        <Link className="secondary-button" href="/">
-          학습 메뉴로
+        <Link className="secondary-button" href="/specialized/daedeok-software">
+          대덕소마고 메뉴로
         </Link>
       </div>
 
