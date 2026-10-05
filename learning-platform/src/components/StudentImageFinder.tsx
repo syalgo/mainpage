@@ -20,9 +20,19 @@ type Dimension = {
   images: string[];
 };
 
-type Question = {
+type Choice = {
   text: string;
   dimension: DimensionKey;
+};
+
+type ChoiceSet = {
+  title: string;
+  choices: Choice[];
+};
+
+type SetAnswer = {
+  most?: DimensionKey;
+  least?: DimensionKey;
 };
 
 const dimensions: Dimension[] = [
@@ -132,76 +142,115 @@ const dimensions: Dimension[] = [
   },
 ];
 
-const questions: Question[] = [
-  { text: "모르는 내용이 생기면 그냥 넘어가기보다 이유나 원리를 더 찾아보는 편이다.", dimension: "curiosity" },
-  { text: "수업에서 배운 내용이 다른 상황에서는 어떻게 적용될지 궁금해지는 편이다.", dimension: "curiosity" },
-  { text: "정답을 맞히는 것보다 ‘왜 그런지’를 이해했을 때 더 만족스럽다.", dimension: "curiosity" },
-
-  { text: "문제가 생기면 원인을 한꺼번에 추측하기보다 조건을 나누어 하나씩 확인한다.", dimension: "analysis" },
-  { text: "한 가지 풀이만 찾기보다 다른 방법과 비교해 보는 편이다.", dimension: "analysis" },
-  { text: "중요한 판단을 할 때 느낌보다 근거나 자료를 먼저 확인하려고 한다.", dimension: "analysis" },
-
-  { text: "과제가 생각보다 어렵더라도 가능한 방법을 다시 찾아 끝까지 해보는 편이다.", dimension: "persistence" },
-  { text: "실패하거나 틀렸을 때 포기하기보다 무엇이 잘못되었는지 확인하고 다시 시도한다.", dimension: "persistence" },
-  { text: "시간이 오래 걸려도 시작한 일은 가능한 한 마무리하려고 한다.", dimension: "persistence" },
-
-  { text: "누가 계속 확인하지 않아도 해야 할 일을 스스로 정리해 진행하는 편이다.", dimension: "responsibility" },
-  { text: "내가 맡은 역할이나 약속한 기한은 가능한 한 지키려고 한다.", dimension: "responsibility" },
-  { text: "중요한 일이 있으면 마지막 순간보다 미리 준비해 두는 편이다.", dimension: "responsibility" },
-
-  { text: "정해진 방법이 잘되지 않으면 다른 방식으로 해볼 생각이 자주 떠오른다.", dimension: "creativity" },
-  { text: "좋은 아이디어가 떠오르면 생각으로 끝내기보다 직접 만들어 보거나 시험해 보는 편이다.", dimension: "creativity" },
-  { text: "처음 해보는 과제라도 흥미가 생기면 먼저 도전해 보는 편이다.", dimension: "creativity" },
-
-  { text: "모둠 활동에서는 내 의견을 말하기 전에 다른 사람의 의견도 충분히 들으려고 한다.", dimension: "cooperation" },
-  { text: "친구가 어려움을 겪고 있으면 내가 도울 수 있는 부분이 있는지 살피는 편이다.", dimension: "cooperation" },
-  { text: "의견이 다를 때 누가 이기는지보다 모두가 함께 할 수 있는 방법을 찾으려고 한다.", dimension: "cooperation" },
-
-  { text: "다른 사람에게 설명할 때 결론만 말하기보다 이유와 순서를 함께 설명하는 편이다.", dimension: "communication" },
-  { text: "팀이 무엇부터 해야 할지 혼란스러우면 해야 할 일을 정리해 제안하는 편이다.", dimension: "communication" },
-  { text: "말이 적은 친구도 의견을 낼 수 있도록 질문하거나 참여를 도와주는 편이다.", dimension: "communication" },
-
-  { text: "일이 끝난 뒤 잘한 점과 아쉬운 점을 스스로 돌아보는 편이다.", dimension: "reflection" },
-  { text: "선생님이나 친구에게 받은 피드백 중 필요한 부분은 다음 행동에 반영하려고 한다.", dimension: "reflection" },
-  { text: "계획대로 되지 않을 때 고집하기보다 상황에 맞게 방법을 바꾸는 편이다.", dimension: "reflection" },
-];
-
-const scale = [
-  { value: 1, label: "전혀 아니다" },
-  { value: 2, label: "아니다" },
-  { value: 3, label: "보통이다" },
-  { value: 4, label: "그렇다" },
-  { value: 5, label: "매우 그렇다" },
+const choiceSets: ChoiceSet[] = [
+  {
+    title: "세 가지 중 나와 가장 가까운 모습과 가장 덜 가까운 모습을 고르세요.",
+    choices: [
+      { text: "모르는 내용이 생기면 이유나 원리를 더 찾아보는 편이다.", dimension: "curiosity" },
+      { text: "어려운 과제라도 방법을 바꾸어 가며 끝까지 해보는 편이다.", dimension: "persistence" },
+      { text: "친구가 어려움을 겪으면 내가 도울 수 있는 부분을 먼저 살피는 편이다.", dimension: "cooperation" },
+    ],
+  },
+  {
+    title: "세 가지 모두 좋은 모습이지만, 상대적으로 더 나다운 순서를 생각해 보세요.",
+    choices: [
+      { text: "문제가 생기면 원인을 조건별로 나누어 하나씩 확인하는 편이다.", dimension: "analysis" },
+      { text: "누가 계속 확인하지 않아도 해야 할 일을 스스로 정리해 진행하는 편이다.", dimension: "responsibility" },
+      { text: "정해진 방법이 잘되지 않으면 새로운 방식을 직접 시험해 보는 편이다.", dimension: "creativity" },
+    ],
+  },
+  {
+    title: "평소 학교생활에서 실제로 더 자주 보이는 모습을 기준으로 고르세요.",
+    choices: [
+      { text: "다른 사람에게 설명할 때 이유와 순서를 함께 정리해서 말하는 편이다.", dimension: "communication" },
+      { text: "일이 끝난 뒤 잘한 점과 아쉬운 점을 스스로 돌아보는 편이다.", dimension: "reflection" },
+      { text: "배운 내용이 다른 상황에는 어떻게 적용될지 궁금해지는 편이다.", dimension: "curiosity" },
+    ],
+  },
+  {
+    title: "좋아 보이는 답보다, 실제 행동과 가장 가까운 것을 선택하세요.",
+    choices: [
+      { text: "실패하거나 틀렸을 때 무엇이 잘못됐는지 확인하고 다시 시도한다.", dimension: "persistence" },
+      { text: "한 가지 풀이만 찾기보다 다른 방법과 비교해 보는 편이다.", dimension: "analysis" },
+      { text: "팀이 혼란스러우면 해야 할 일을 정리해서 제안하는 편이다.", dimension: "communication" },
+    ],
+  },
+  {
+    title: "세 가지 장점 중 나를 더 잘 설명하는 것과 덜 설명하는 것을 구분해 보세요.",
+    choices: [
+      { text: "중요한 일이 있으면 마지막 순간보다 미리 준비해 두는 편이다.", dimension: "responsibility" },
+      { text: "의견이 다를 때 누가 이기는지보다 함께 할 수 있는 방법을 찾으려 한다.", dimension: "cooperation" },
+      { text: "선생님이나 친구의 피드백 중 필요한 부분을 다음 행동에 반영하려 한다.", dimension: "reflection" },
+    ],
+  },
+  {
+    title: "공부나 프로젝트를 할 때 자연스럽게 나타나는 모습을 떠올려 보세요.",
+    choices: [
+      { text: "좋은 아이디어가 떠오르면 생각으로 끝내지 않고 직접 만들어 보거나 시험해 본다.", dimension: "creativity" },
+      { text: "정답을 맞히는 것보다 왜 그런지를 이해했을 때 더 만족스럽다.", dimension: "curiosity" },
+      { text: "중요한 판단을 할 때 느낌보다 근거나 자료를 먼저 확인하려 한다.", dimension: "analysis" },
+    ],
+  },
+  {
+    title: "내가 반복해서 보여 온 행동을 기준으로 선택하세요.",
+    choices: [
+      { text: "말이 적은 친구도 의견을 낼 수 있도록 질문하거나 참여를 돕는 편이다.", dimension: "communication" },
+      { text: "맡은 역할이나 약속한 기한은 가능한 한 끝까지 지키려고 한다.", dimension: "responsibility" },
+      { text: "시간이 오래 걸려도 시작한 일은 가능한 한 마무리하려고 한다.", dimension: "persistence" },
+    ],
+  },
+  {
+    title: "마지막 세트입니다. 세 가지 중 상대적으로 더 나다운 모습을 골라보세요.",
+    choices: [
+      { text: "모둠 활동에서는 내 의견만 말하기보다 다른 사람의 의견도 충분히 들으려 한다.", dimension: "cooperation" },
+      { text: "처음 해보는 과제라도 흥미가 생기면 먼저 도전해 보는 편이다.", dimension: "creativity" },
+      { text: "계획대로 되지 않을 때 고집하기보다 상황에 맞게 방법을 바꾸는 편이다.", dimension: "reflection" },
+    ],
+  },
 ];
 
 export default function StudentImageFinder() {
-  const [answers, setAnswers] = useState<Record<number, number>>({});
+  const [answers, setAnswers] = useState<Record<number, SetAnswer>>({});
   const [showResult, setShowResult] = useState(false);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
 
-  const answeredCount = Object.keys(answers).length;
+  const completedCount = choiceSets.filter((_, index) => {
+    const answer = answers[index];
+    return Boolean(answer?.most && answer?.least && answer.most !== answer.least);
+  }).length;
 
   const ranked = useMemo(() => {
-    const scores = dimensions.map((dimension) => {
-      const related = questions
-        .map((question, index) => ({ question, index }))
-        .filter(({ question }) => question.dimension === dimension.key);
+    const scoreMap = new Map<DimensionKey, number>(
+      dimensions.map((dimension) => [dimension.key, 0]),
+    );
 
-      const score = related.reduce((sum, { index }) => sum + (answers[index] ?? 0), 0);
-      const answered = related.filter(({ index }) => answers[index] !== undefined).length;
-
-      return {
-        ...dimension,
-        score,
-        max: related.length * 5,
-        answered,
-      };
+    Object.values(answers).forEach((answer) => {
+      if (answer.most) scoreMap.set(answer.most, (scoreMap.get(answer.most) ?? 0) + 1);
+      if (answer.least) scoreMap.set(answer.least, (scoreMap.get(answer.least) ?? 0) - 1);
     });
 
-    return scores.sort((a, b) => b.score - a.score);
+    return dimensions
+      .map((dimension) => ({
+        ...dimension,
+        score: scoreMap.get(dimension.key) ?? 0,
+      }))
+      .sort((a, b) => b.score - a.score);
   }, [answers]);
 
   const topDimensions = ranked.slice(0, 3);
+
+  function choose(setIndex: number, dimension: DimensionKey, type: "most" | "least") {
+    setAnswers((current) => {
+      const previous = current[setIndex] ?? {};
+      const next = { ...previous, [type]: dimension };
+
+      if (type === "most" && next.least === dimension) delete next.least;
+      if (type === "least" && next.most === dimension) delete next.most;
+
+      return { ...current, [setIndex]: next };
+    });
+    setShowResult(false);
+  }
 
   function selectImage(image: string) {
     setSelectedImages((current) => {
@@ -215,6 +264,10 @@ export default function StudentImageFinder() {
     setAnswers({});
     setShowResult(false);
     setSelectedImages([]);
+  }
+
+  function scoreWidth(score: number) {
+    return String(((score + 3) / 6) * 100) + "%";
   }
 
   return (
@@ -255,22 +308,23 @@ export default function StudentImageFinder() {
       <div className="student-image-test">
         <div className="student-image-test-head">
           <div>
-            <span>SELF-REFLECTION TEST</span>
-            <h3>질문으로 대표 이미지 찾아보기</h3>
+            <span>FORCED-CHOICE SELF-REFLECTION</span>
+            <h3>비교 선택으로 대표 이미지 찾아보기</h3>
             <p>
-              각 문장을 읽고 평소의 나와 얼마나 비슷한지 선택하세요.
-              ‘좋아 보이는 답’을 고르기보다 실제 학교생활에서 자주 보이는 행동을 기준으로 답하는 것이 중요합니다.
+              한 세트마다 세 문장이 모두 장점으로 보이도록 구성했습니다.
+              세 문장 중 <b>가장 나와 가까운 것 1개</b>와 <b>가장 덜 가까운 것 1개</b>를 반드시 골라주세요.
+              모든 문항에 높은 점수를 주는 대신, 나의 장점들 사이에서 상대적인 우선순위를 찾는 방식입니다.
             </p>
           </div>
-          <b>{answeredCount} / {questions.length}</b>
+          <b>{completedCount} / {choiceSets.length} 세트</b>
         </div>
 
         <div className="student-image-basis">
           <strong>검사에 대해</strong>
           <p>
-            이 자기점검은 학생의 호기심·끈기·책임감·협력 등 사회정서적 역량을 다루는 OECD SSES와,
-            공개 성격 문항 체계인 IPIP의 구성개념을 참고해 자기소개서 소재 탐색용으로 새롭게 구성한 문항입니다.
-            공식 심리검사나 IQ검사가 아니며, 합격 가능성을 판단하는 도구도 아닙니다.
+            이 자기점검은 호기심·끈기·책임감·협력 등 사회정서적 역량을 다루는 OECD SSES와
+            공개 성격 문항 체계인 IPIP의 구성개념을 참고하되, 자기소개서 소재 탐색 목적에 맞게 새롭게 구성했습니다.
+            공식 심리검사나 IQ검사가 아니며 합격 가능성을 판단하는 도구도 아닙니다.
           </p>
           <div>
             <a href="https://www.oecd.org/en/about/programmes/oecd-survey-on-social-and-emotional-skills.html" target="_blank" rel="noreferrer">OECD SSES</a>
@@ -278,38 +332,70 @@ export default function StudentImageFinder() {
           </div>
         </div>
 
-        <div className="student-image-questions">
-          {questions.map((question, index) => (
-            <article key={index}>
-              <div>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <p>{question.text}</p>
-              </div>
-              <div className="student-image-scale" role="group" aria-label={String(index + 1) + "번 문항 응답"}>
-                {scale.map((item) => (
-                  <button
-                    type="button"
-                    key={item.value}
-                    className={answers[index] === item.value ? "selected" : ""}
-                    onClick={() => {
-                      setAnswers((current) => ({ ...current, [index]: item.value }));
-                      setShowResult(false);
-                    }}
-                  >
-                    <b>{item.value}</b>
-                    <span>{item.label}</span>
-                  </button>
-                ))}
-              </div>
-            </article>
-          ))}
+        <div className="student-image-choice-sets">
+          {choiceSets.map((set, setIndex) => {
+            const answer = answers[setIndex] ?? {};
+
+            return (
+              <article className="student-image-choice-set" key={setIndex}>
+                <header>
+                  <span>SET {String(setIndex + 1).padStart(2, "0")}</span>
+                  <p>{set.title}</p>
+                </header>
+
+                <div className="student-image-choice-grid">
+                  {set.choices.map((choice, choiceIndex) => {
+                    const isMost = answer.most === choice.dimension;
+                    const isLeast = answer.least === choice.dimension;
+
+                    return (
+                      <section
+                        className={"student-image-choice-card" + (isMost ? " is-most" : "") + (isLeast ? " is-least" : "")}
+                        key={choice.dimension}
+                      >
+                        <div className="student-image-choice-text">
+                          <b>{String.fromCharCode(65 + choiceIndex)}</b>
+                          <p>{choice.text}</p>
+                        </div>
+                        <div className="student-image-choice-buttons">
+                          <button
+                            type="button"
+                            className={isMost ? "selected most" : ""}
+                            onClick={() => choose(setIndex, choice.dimension, "most")}
+                          >
+                            가장 나와 가까움
+                          </button>
+                          <button
+                            type="button"
+                            className={isLeast ? "selected least" : ""}
+                            onClick={() => choose(setIndex, choice.dimension, "least")}
+                          >
+                            가장 덜 가까움
+                          </button>
+                        </div>
+                      </section>
+                    );
+                  })}
+                </div>
+
+                <div className="student-image-choice-status">
+                  <span className={answer.most ? "done" : ""}>
+                    가장 가까움 {answer.most ? "선택 완료" : "미선택"}
+                  </span>
+                  <span className={answer.least ? "done" : ""}>
+                    가장 덜 가까움 {answer.least ? "선택 완료" : "미선택"}
+                  </span>
+                </div>
+              </article>
+            );
+          })}
         </div>
 
         <div className="student-image-actions">
           <button
             type="button"
             className="primary-button"
-            disabled={answeredCount !== questions.length}
+            disabled={completedCount !== choiceSets.length}
             onClick={() => setShowResult(true)}
           >
             나의 대표 이미지 후보 보기
@@ -319,31 +405,32 @@ export default function StudentImageFinder() {
           </button>
         </div>
 
-        {answeredCount !== questions.length && (
+        {completedCount !== choiceSets.length && (
           <p className="student-image-incomplete">
-            결과를 보려면 {questions.length - answeredCount}개 문항에 더 답해주세요.
+            결과를 보려면 {choiceSets.length - completedCount}개 세트를 더 완료해주세요.
           </p>
         )}
 
-        {showResult && answeredCount === questions.length && (
+        {showResult && completedCount === choiceSets.length && (
           <section className="student-image-results">
             <div className="student-image-result-title">
               <span>RESULT</span>
-              <h3>나에게 비교적 강하게 나타난 이미지 영역</h3>
+              <h3>상대적으로 더 자주 선택된 대표 이미지 영역</h3>
               <p>
-                높은 점수 순으로 세 영역을 보여줍니다. 결과를 그대로 자기소개서에 쓰기보다,
-                <b> 실제 경험을 떠올렸을 때 가장 잘 증명되는 표현</b>을 최종 선택하세요.
+                ‘가장 나와 가까움’은 +1, ‘가장 덜 가까움’은 -1로 계산했습니다.
+                낮은 점수는 약점이라는 뜻이 아니라, <b>다른 장점에 비해 상대적으로 덜 선택되었다는 의미</b>입니다.
+                최종적으로는 실제 경험으로 가장 잘 증명되는 이미지를 선택하세요.
               </p>
             </div>
 
             <div className="student-image-result-grid">
               {topDimensions.map((dimension, index) => (
                 <article key={dimension.key}>
-                  <span>{index + 1}순위</span>
+                  <span>{index + 1}순위 · 상대점수 {dimension.score > 0 ? "+" : ""}{dimension.score}</span>
                   <h4>{dimension.title}</h4>
                   <b>{dimension.keywords}</b>
                   <div className="student-image-score">
-                    <span style={{ width: String((dimension.score / dimension.max) * 100) + "%" }} />
+                    <span style={{ width: scoreWidth(dimension.score) }} />
                   </div>
                   <p>{dimension.description}</p>
                   <strong>추천 대표 이미지</strong>
@@ -377,7 +464,7 @@ export default function StudentImageFinder() {
             </div>
             <p>
               이제 각 이미지가 실제로 드러난 <b>교과 활동 · 학교 내 활동 · 도덕·인성 경험</b>을 하나씩 찾아보세요.
-              세 문항에서 같은 문장을 반복할 필요는 없지만, 여러 경험을 읽었을 때 비슷한 학생상이 느껴지면 좋습니다.
+              세 문항에서 같은 표현을 반복할 필요는 없지만, 여러 경험을 읽었을 때 비슷한 학생상이 느껴지면 좋습니다.
             </p>
           </div>
         )}
