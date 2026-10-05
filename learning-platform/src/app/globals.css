@@ -4309,3 +4309,28 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
 .student-image-selected p{margin:10px 0 0;color:#5d6b82;line-height:1.68}
 @media(max-width:900px){.student-image-result-grid{grid-template-columns:1fr}.student-image-library{grid-template-columns:1fr}}
 @media(max-width:700px){.student-image-test{padding:14px}.student-image-test-head{flex-direction:column}.student-image-scale{grid-template-columns:1fr}.student-image-scale button{flex-direction:row;justify-content:flex-start;padding:9px 11px}.student-image-library header{align-items:flex-start;flex-direction:column;gap:4px}}
+
+
+/* Forced-choice representative-image assessment */
+.student-image-choice-sets{display:grid;gap:12px;margin-top:14px}
+.student-image-choice-set{padding:15px;border:1px solid #e1e5ed;border-radius:12px;background:#fff}
+.student-image-choice-set>header{display:flex;align-items:flex-start;gap:10px}
+.student-image-choice-set>header>span{flex:0 0 auto;padding:5px 8px;border-radius:999px;background:#f0eef8;color:#65579a;font-size:10px;font-weight:900;letter-spacing:.06em}
+.student-image-choice-set>header>p{margin:1px 0 0;color:#535d70;font-size:13px;line-height:1.55}
+.student-image-choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:12px}
+.student-image-choice-card{display:flex;flex-direction:column;justify-content:space-between;gap:12px;padding:13px;border:1px solid #e3e7ee;border-radius:11px;background:#fbfcfe;transition:border-color .15s ease,background .15s ease}
+.student-image-choice-card.is-most{border-color:#9fc1ee;background:#f5f9ff}
+.student-image-choice-card.is-least{border-color:#e5c9c6;background:#fff9f8}
+.student-image-choice-text{display:flex;gap:9px;align-items:flex-start}
+.student-image-choice-text>b{display:grid;place-items:center;flex:0 0 25px;width:25px;height:25px;border-radius:50%;background:#eef2f8;color:#536987;font-size:11px}
+.student-image-choice-text p{margin:1px 0 0;color:#3f495c;font-size:13px;line-height:1.6}
+.student-image-choice-buttons{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.student-image-choice-buttons button{min-height:38px;padding:7px 8px;border:1px solid #dfe4eb;border-radius:8px;background:#fff;color:#687183;font-size:11px;font-weight:800;cursor:pointer}
+.student-image-choice-buttons button:hover{border-color:#b9c6dc;background:#f8faff}
+.student-image-choice-buttons button.selected.most{border-color:#7ba7e2;background:#eaf3ff;color:#2457a6}
+.student-image-choice-buttons button.selected.least{border-color:#d5aaa5;background:#fff0ee;color:#9b514b}
+.student-image-choice-status{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.student-image-choice-status span{padding:5px 8px;border-radius:999px;background:#f3f4f6;color:#8a92a0;font-size:10px;font-weight:800}
+.student-image-choice-status span.done{background:#eef8f0;color:#39744a}
+@media(max-width:900px){.student-image-choice-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.student-image-choice-buttons{grid-template-columns:1fr}.student-image-choice-set>header{flex-direction:column;gap:6px}}
