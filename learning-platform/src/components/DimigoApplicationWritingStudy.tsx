@@ -13,7 +13,7 @@ const officialWarnings = [
   },
   {
     title: "분량 제한을 반드시 지키기",
-    body: "각 문항은 정해진 박스 범위 안에서 작성합니다. 현재 기준은 공백 포함 539자 이하, 공백 제외 433자 이하입니다. 두 조건을 모두 만족해야 합니다.",
+    body: "각 문항은 정해진 박스 범위 안에서 작성합니다. 대략, 공백 포함 539자/공백 제외 433자 이하 정도입니다.",
   },
 ];
 
@@ -87,9 +87,8 @@ export default function DimigoApplicationWritingStudy() {
           <span className="eyebrow">DIMIGO PERSONAL STATEMENT</span>
           <h1>자기소개서 작성</h1>
           <p>
-            세 문항을 각각 따로 쓰기 전에, 디미고의 작성 기준을 정확히 이해하고
-            <b> “이 지원자는 어떤 학생인가?”라는 하나의 이미지를 세운 뒤</b>
-            그 이미지를 실제 경험으로 증명하는 방식으로 작성합니다.
+            문항에 대한 답변을 적기 전에, &quot;나는 어떤 학생인가&quot;라는 고찰을 통해,
+            자신을 대표할 수 있는 몇 가지의 이미지를 세운 뒤 그 이미지를 실제 경험으로 증명하는 방식으로 작성합니다.
           </p>
         </div>
       </header>
@@ -98,7 +97,6 @@ export default function DimigoApplicationWritingStudy() {
         <div className="dimigo-writing-heading">
           <span>01 · OFFICIAL GUIDE</span>
           <h2>디미고가 안내하는 자기소개서 작성 원칙</h2>
-          <p>형식적인 제출 방법은 제외하고, 실제 내용을 작성할 때 반드시 지켜야 할 기준만 정리했습니다.</p>
         </div>
 
         <div className="dimigo-warning-grid">
@@ -122,16 +120,6 @@ export default function DimigoApplicationWritingStudy() {
             <span>출신 중학교·출신/거주 지역명</span>
             <span>부모·친인척의 직업·직장·직위 등</span>
           </div>
-          <p>
-            특히 활동 자체가 훌륭하더라도 <b>자기소개서에 써도 되는 소재인지</b>는 별개의 문제입니다.
-            소재를 고를 때 먼저 이 기준부터 확인합니다.
-          </p>
-        </div>
-
-        <div className="dimigo-limit-card">
-          <span>문항별 분량 제한</span>
-          <strong>공백 포함 539자 이하 · 공백 제외 433자 이하</strong>
-          <p>두 기준을 모두 만족하도록 작성합니다. 여러 활동을 나열하기보다 한 경험을 선명하게 쓰는 것이 유리합니다.</p>
         </div>
       </section>
 
