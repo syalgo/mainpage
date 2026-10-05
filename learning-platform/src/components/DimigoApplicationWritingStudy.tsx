@@ -88,6 +88,7 @@ export default function DimigoApplicationWritingStudy() {
           <h1>자기소개서 작성</h1>
           <p>
             문항에 대한 답변을 적기 전에, &quot;나는 어떤 학생인가&quot;라는 고찰을 통해,
+            <br />
             자신을 대표할 수 있는 몇 가지의 이미지를 세운 뒤 그 이미지를 실제 경험으로 증명하는 방식으로 작성합니다.
           </p>
         </div>
