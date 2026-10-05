@@ -15,6 +15,11 @@ export default function SpecializedPage() {
           href: "/specialized/competition-interview",
         },
         {
+          title: "자기소개서, 취업(창업) 계획서 작성",
+          description: "자기소개서와 취업·창업 계획서를 항목별로 정리하고 작성 연습을 합니다.",
+          href: "/specialized/application-career-plan",
+        },
+        {
           title: "중학교 정보 교과서",
           description: "2022 개정 정보 교과서의 핵심 내용을 단원별로 학습합니다.",
           href: "/specialized/middle-school-info",
