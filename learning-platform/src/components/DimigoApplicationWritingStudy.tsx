@@ -1,3 +1,5 @@
+import StudentImageFinder from "@/components/StudentImageFinder";
+
 const officialWarnings = [
   {
     title: "반드시 지원자 본인이 작성",
@@ -184,6 +186,8 @@ export default function DimigoApplicationWritingStudy() {
             그 안에서 반복되는 특징을 발견해 대표 이미지를 정합니다.
           </small>
         </div>
+
+        <StudentImageFinder />
       </section>
 
       <section className="dimigo-writing-section">
