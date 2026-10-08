@@ -10,6 +10,7 @@ export default function RealWorldCreativeProblemSolvingStudy() {
         <div className="rw-topic-heading">
           <span>TOPIC 06</span>
           <h2>창의적 문제해결력</h2>
+          <p>A트랙 - 현실상황형</p>
         </div>
 
         <article className="rw-reading-card">
@@ -37,6 +38,12 @@ export default function RealWorldCreativeProblemSolvingStudy() {
             “좋은 답”을 가를까?
           </div>
         </article>
+
+        <div className="rw-choice-scene">
+          <p>셋 다 좋아 보이는데… 정답이 뭐지?</p>
+          <strong>어디로 소풍을 갈까?</strong>
+          <div><span>에버랜드</span><span>부산 바다</span><span>가까운 산</span></div>
+        </div>
 
         <div className="rw-guide-grid">
           <article className="rw-guide-card">
