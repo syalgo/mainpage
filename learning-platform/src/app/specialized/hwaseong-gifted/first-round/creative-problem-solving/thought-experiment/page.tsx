@@ -1,14 +1,45 @@
-import ProtectedCoursePage from "@/components/ProtectedCoursePage";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import ThoughtExperimentCreativeProblemSolvingStudy from "@/components/ThoughtExperimentCreativeProblemSolvingStudy";
+import { getSessionUser } from "@/lib/auth-server";
+import { isFirebaseAdminConfigured } from "@/lib/firebase-admin";
 
-export default function ThoughtExperimentCreativeProblemSolvingPage() {
-  return (
-    <ProtectedCoursePage
-      permission="hwaseong"
-      eyebrow="CREATIVE PROBLEM SOLVING · THOUGHT EXPERIMENT"
-      title="사고실험,탐구형"
-      description="가상의 조건이나 탐구 상황에서 가설을 세우고 사고 과정을 단계적으로 설명하는 문제를 학습합니다."
-      hideIntro
-      items={[]}
-    />
-  );
+export default async function ThoughtExperimentCreativeProblemSolvingPage() {
+  if (!isFirebaseAdminConfigured()) {
+    return (
+      <section className="access-state">
+        <span className="eyebrow">SETUP MODE</span>
+        <h1>사고실험,탐구형</h1>
+        <p>Firebase 연결 후 승인된 화성시 영재교육원 대비 계정만 이용할 수 있습니다.</p>
+        <Link className="secondary-button" href="/specialized/hwaseong-gifted/first-round/creative-problem-solving">돌아가기</Link>
+      </section>
+    );
+  }
+
+  const user = await getSessionUser();
+  if (!user) redirect("/login");
+
+  if (!user.approved) {
+    return (
+      <section className="access-state">
+        <span className="status pending">승인 대기</span>
+        <h1>관리자 승인 대기 중입니다.</h1>
+        <p>관리자 승인 후 학습 페이지를 이용할 수 있습니다.</p>
+        <Link className="secondary-button" href="/account">내 계정 확인</Link>
+      </section>
+    );
+  }
+
+  if (!user.admin && !user.permissions.hwaseong) {
+    return (
+      <section className="access-state">
+        <span className="eyebrow">NO COURSE ACCESS</span>
+        <h1>화성시 영재교육원 대비 권한이 없습니다.</h1>
+        <p>관리자에게 화성시 영재교육원 대비 이용 권한을 요청해주세요.</p>
+        <Link className="secondary-button" href="/account">내 권한 확인</Link>
+      </section>
+    );
+  }
+
+  return <ThoughtExperimentCreativeProblemSolvingStudy />;
 }
