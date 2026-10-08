@@ -4395,3 +4395,70 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
 .rw-inline-answer-body h4{margin:16px 0 6px;color:#4a5571;font-size:16px}
 .rw-inline-answer-body h4:first-child{margin-top:0}
 .rw-inline-answer-body p{margin:7px 0;color:#4e586b;line-height:1.78}
+
+
+/* Hwaseong giftedness self-report practice */
+.gifted-self-page{display:grid;gap:20px;padding-top:18px}
+.gifted-self-hero,.gifted-self-intro,.gifted-self-test,.gifted-self-result{padding:28px;background:#fff;border:1px solid var(--line);border-radius:18px}
+.gifted-self-hero h1{margin:9px 0 0;font-size:clamp(32px,5vw,50px);letter-spacing:-.04em}
+.gifted-self-hero p{max-width:900px;margin:12px 0 0;color:var(--muted);line-height:1.78}
+.gifted-self-guide{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.gifted-self-guide article{padding:15px;border:1px solid #e1e5ed;border-radius:12px;background:#fbfcfe}
+.gifted-self-guide article>span{display:block;color:#526aa0;font-size:10px;font-weight:900}
+.gifted-self-guide strong{display:block;margin-top:5px;color:#2d3c58}
+.gifted-self-guide p{margin:5px 0 0;color:#697487;font-size:12px;line-height:1.6}
+.gifted-self-notice{margin-top:13px;padding:15px 17px;border-left:4px solid #526aa0;border-radius:0 12px 12px 0;background:#f6f9ff}
+.gifted-self-notice strong{color:#314b7d}
+.gifted-self-notice p{margin:6px 0 0;color:#5f6c82;line-height:1.7}
+.gifted-self-basis{margin-top:13px;border:1px solid #e0e4ec;border-radius:12px;background:#fafbfe;overflow:hidden}
+.gifted-self-basis>summary{padding:13px 15px;cursor:pointer;color:#44536d;font-weight:800}
+.gifted-self-basis>div{padding:0 15px 15px}
+.gifted-self-basis p{margin:7px 0;color:#667184;font-size:12px;line-height:1.7}
+.gifted-self-basis>div>div{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.gifted-self-basis a{padding:6px 9px;border:1px solid #d6dfef;border-radius:8px;background:#fff;color:#476291;font-size:11px;font-weight:800}
+.gifted-self-progress-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}
+.gifted-self-progress-head span,.gifted-self-result-head>span{display:block;color:#526aa0;font-size:10px;font-weight:900;letter-spacing:.08em}
+.gifted-self-progress-head h2,.gifted-self-result-head h2{margin:5px 0 0;color:#29384f;font-size:24px}
+.gifted-self-progress-head>b{padding:7px 10px;border-radius:999px;background:#334f85;color:#fff;font-size:12px}
+.gifted-self-progress{height:8px;margin-top:12px;border-radius:999px;background:#edf0f5;overflow:hidden}
+.gifted-self-progress>span{display:block;height:100%;background:#526aa0;border-radius:inherit;transition:width .2s ease}
+.gifted-self-questions{display:grid;gap:10px;margin-top:16px}
+.gifted-self-questions>article{padding:15px;border:1px solid #e1e5ec;border-radius:12px;background:#fff}
+.gifted-self-question-text{display:flex;gap:10px;align-items:flex-start}
+.gifted-self-question-text>span{display:grid;place-items:center;flex:0 0 34px;height:30px;border-radius:999px;background:#eef2f8;color:#526987;font-size:10px;font-weight:900}
+.gifted-self-question-text p{margin:3px 0 0;color:#3f4a5d;line-height:1.65}
+.gifted-self-options{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin-top:12px}
+.gifted-self-options button{display:flex;flex-direction:column;align-items:center;gap:3px;min-height:56px;padding:8px 6px;border:1px solid #dfe3ea;border-radius:9px;background:#fbfcfe;color:#6b7484;cursor:pointer}
+.gifted-self-options button b{font-size:12px}
+.gifted-self-options button span{font-size:10px}
+.gifted-self-options button:hover{border-color:#9fb3d7;background:#f5f8fe}
+.gifted-self-options button.selected{border-color:#526aa0;background:#edf3ff;color:#324f88;font-weight:800}
+.gifted-self-nav{display:flex;justify-content:space-between;gap:8px;margin-top:16px}
+.gifted-self-incomplete{margin:9px 0 0;color:#7a8494;font-size:12px;text-align:right}
+.gifted-self-result-head p{margin:7px 0 0;color:#667184;line-height:1.72}
+.gifted-self-top-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:17px}
+.gifted-self-top-grid article{padding:17px;border:1px solid #dce2ee;border-radius:13px;background:#f9fbff}
+.gifted-self-top-grid article>span{color:#526aa0;font-size:10px;font-weight:900}
+.gifted-self-top-grid h3{margin:5px 0 4px;color:#2f3d58;font-size:18px}
+.gifted-self-top-grid article>strong{color:#405b91;font-size:12px}
+.gifted-self-top-grid p{margin:9px 0;color:#657187;font-size:12px;line-height:1.65}
+.gifted-self-result-bar{height:8px;border-radius:999px;background:#e9edf4;overflow:hidden}
+.gifted-self-result-bar>span{display:block;height:100%;background:#526aa0;border-radius:inherit}
+.gifted-self-conclusion{margin-top:14px;padding:18px;border:1px solid #d8e0ef;border-radius:13px;background:#f7faff}
+.gifted-self-conclusion h3{margin:0;color:#2e4777}
+.gifted-self-conclusion p{margin:9px 0 0;color:#5b687e;line-height:1.75}
+.gifted-self-domain-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:14px}
+.gifted-self-domain-list article{padding:14px;border:1px solid #e1e5ec;border-radius:11px;background:#fff}
+.gifted-self-domain-row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.gifted-self-domain-row>div{display:grid;gap:2px}
+.gifted-self-domain-row strong{color:#39475e}
+.gifted-self-domain-row span{color:#818a99;font-size:10px}
+.gifted-self-domain-row>b{color:#405b91;font-size:18px}
+.gifted-self-domain-list .gifted-self-result-bar{margin-top:8px}
+.gifted-self-domain-list p{margin:7px 0 0;color:#6b7586;font-size:11px;line-height:1.55}
+.gifted-self-response-check{margin-top:14px;padding:14px 16px;border:1px solid #e5dcc7;border-radius:12px;background:#fffaf1}
+.gifted-self-response-check strong{color:#745b2e}
+.gifted-self-response-check p{margin:6px 0 0;color:#6e6555;line-height:1.65}
+.gifted-self-result-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+@media(max-width:900px){.gifted-self-guide{grid-template-columns:repeat(2,minmax(0,1fr))}.gifted-self-top-grid{grid-template-columns:1fr}.gifted-self-domain-list{grid-template-columns:1fr}}
+@media(max-width:700px){.gifted-self-hero,.gifted-self-intro,.gifted-self-test,.gifted-self-result{padding:20px 16px}.gifted-self-guide{grid-template-columns:1fr}.gifted-self-options{grid-template-columns:1fr}.gifted-self-options button{min-height:auto;flex-direction:row;justify-content:flex-start;padding:9px 11px}.gifted-self-nav{flex-direction:column}.gifted-self-progress-head{flex-direction:column}}
