@@ -210,7 +210,7 @@ export default function ThoughtExperimentCreativeProblemSolvingStudy() {
             <table className="rw-table">
               <thead><tr><th>이름</th><th>좋아하는 것</th><th>최근 읽은 책</th><th>별점</th></tr></thead>
               <tbody>
-                <tr><td>도윤</td><td>축구, 게임</td><td>《정글북》</td><td>★★★★★</td></tr>
+                <tr><td>도윤</td><td>동물, 탐험</td><td>《정글북》</td><td>★★★★★</td></tr>
                 <tr><td>지우</td><td>수학, 퍼즐</td><td>《수학귀신》</td><td>★★★★</td></tr>
                 <tr><td>설아</td><td>동물, 그림</td><td>《파브르곤충기》</td><td>★★★★★</td></tr>
               </tbody>
@@ -249,15 +249,15 @@ export default function ThoughtExperimentCreativeProblemSolvingStudy() {
         </article>
 
         <article className="rw-problem-card">
-          <header><span>문제7</span><h3>확률게임 게임 설계자가 된다</h3></header>
+          <header><span>문제7</span><h3>로블록스 게임 설계자가 된 나</h3></header>
           <div className="rw-situation-box">
-            <p>뽑기를 할 때 아이템 획득 확률을 네가 직접 설정 가능.</p>
+            <p><b>상황 1) 아이템 확률 설계</b></p><p>몬스터 잡으면 아이템 획득. 네가 확률 설정 가능.</p>
             <table className="rw-table">
               <thead><tr><th>아이템</th><th>등급</th><th>내가 설정한 확률(%)</th></tr></thead>
               <tbody>
-                <tr><td>나무지팡이</td><td>흔함</td><td></td></tr>
-                <tr><td>활</td><td>보통</td><td></td></tr>
-                <tr><td>황금 단검</td><td>희귀</td><td></td></tr>
+                <tr><td>나뭇가지</td><td>흔함</td><td></td></tr>
+                <tr><td>동검</td><td>보통</td><td></td></tr>
+                <tr><td>황금 갑옷</td><td>희귀</td><td></td></tr>
                 <tr><td>전설의 검</td><td>전설</td><td></td></tr>
               </tbody>
             </table>
@@ -378,17 +378,17 @@ export default function ThoughtExperimentCreativeProblemSolvingStudy() {
         </article>
 
         <article className="rw-problem-card">
-          <header><span>문제9</span><h3>바로셈 (틀린 계산이 만든 특별한 수열)</h3></header>
+          <header><span>문제9</span><h3>바보셈 (틀린 계산이 만든 특별한 수열)</h3></header>
           <div className="rw-situation-box">
             <p>수학 시간에 지훈이가 분수 덧셈을 이렇게 했어.</p>
-            <p>1/3 + 1/2 = (1+2)/(3+2) = 3/5 (분자끼리 더하고, 분모끼리 더했어.)</p>
+            <p>1/3 + 1/2 = (1+1)/(3+2) = 2/5 (분자끼리 더하고, 분모끼리 더했어.)</p>
             <p>선생님이 말했어.</p>
             <p>“틀렸어. 근데 … 잠깐, 이게 신기하네.” 자, 봐봐.</p>
           </div>
           <div className="rw-question-list">
             <p><b>01</b> 지훈이 계산이 왜 틀렸는지 써봐. 올바른 분수 덧셈은 1/3 + 1/2를 계산하면 얼마야?</p>
-            <p>사실 이렇게 분자끼리, 분모끼리 더하는 계산을 바로셈이라고 부를거야. 그런데 수학자들은 이 바로셈에서 신기한 걸 발견했어. 지금부터 그걸 찾아보자.</p>
-            <p><b>02</b> 바로셈으로 나온 2/5를 소수로 바꿔봐. 1/3과 1/2도 소수로 바꿔서 아래 표 채워봐.</p>
+            <p>사실 이렇게 분자끼리, 분모끼리 더하는 계산을 ‘바보셈’이라고 불러. 분수 덧셈에서는 틀린 방법이야. 그런데 수학자들은 이 바보셈에서 신기한 걸 발견했어. 지금부터 그걸 찾아보자.</p>
+            <p><b>02</b> 바보셈으로 나온 2/5를 소수로 바꿔봐. 1/3과 1/2도 소수로 바꿔서 아래 표 채워봐.</p>
             <table className="rw-table">
               <thead><tr><th>분수</th><th>소수로 바꾸면?</th></tr></thead>
               <tbody>
@@ -399,22 +399,22 @@ export default function ThoughtExperimentCreativeProblemSolvingStudy() {
             </table>
             <p>바꾼 소수를 아래 수직선에 점으로 표시해봐.</p>
             <p>세 수를 작은 것부터 순서대로 써봐 : ______ &lt; ______ &lt; ______</p>
-            <p><b>03</b> 아래 분수 쌍에도 바로셈을 써봐. 소수로 바꿔서 크기를 비교해봐.</p>
+            <p><b>03</b> 아래 분수 쌍에도 바보셈을 써봐. 소수로 바꿔서 크기를 비교해봐.</p>
             <table className="rw-table">
-              <thead><tr><th>분수 쌍</th><th>바로셈 결과</th><th>소수로 바꾸면</th><th>크기 비교</th></tr></thead>
+              <thead><tr><th>분수 쌍</th><th>바보셈 결과</th><th>소수로 바꾸면</th><th>크기 비교</th></tr></thead>
               <tbody>
                 <tr><td>1/4, 1/3</td><td></td><td></td><td></td></tr>
                 <tr><td>1/2, 2/3</td><td></td><td></td><td></td></tr>
               </tbody>
             </table>
-            <p><b>04</b> 수학자들은 이 “틀린 계산”을 버리지 않고 연구했어. 0과 1 사이 분수들을 바로셈 방식으로 계속 끼우다 보니 이런 수열이 만들어졌어.</p>
+            <p><b>04</b> 수학자들은 이 “틀린 계산”을 버리지 않고 연구했어. 0과 1 사이 분수들을 바보셈 방식으로 계속 끼우다 보니 이런 수열이 만들어졌어.</p>
             <div className="rw-sequence-box">
               <p>0/1　　1/1</p>
               <p>0/1　1/2　1/1</p>
               <p>0/1　1/3　1/2　2/3　1/1</p>
               <p>0/1　1/4　1/3　2/5　1/2　3/5　2/3　3/4　1/1</p>
             </div>
-            <p>표시된 2/5와 3/5가 어떤 두 분수의 바로셈인지 찾아봐.</p>
+            <p>표시된 2/5와 3/5가 어떤 두 분수의 바보셈인지 찾아봐.</p>
             <p><b>05</b> 틀린 것이 오히려 새로운 발견이 된 경험이 있어? 수학 말고도 괜찮아. 써봐.</p>
           </div>
 
