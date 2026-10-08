@@ -4334,3 +4334,46 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
 .student-image-choice-status span.done{background:#eef8f0;color:#39744a}
 @media(max-width:900px){.student-image-choice-grid{grid-template-columns:1fr}}
 @media(max-width:700px){.student-image-choice-buttons{grid-template-columns:1fr}.student-image-choice-set>header{flex-direction:column;gap:6px}}
+
+
+/* Hwaseong gifted real-world creative problem solving */
+.rw-study-page{display:grid;gap:22px;padding-top:18px}
+.rw-study-hero,.rw-study-section{padding:28px;background:#fff;border:1px solid var(--line);border-radius:18px}
+.rw-study-hero h1{margin:9px 0 0;font-size:clamp(34px,5vw,52px);letter-spacing:-.04em}
+.rw-topic-heading>span,.rw-answer-heading>span{display:block;color:#4b5772;font-size:11px;font-weight:900;letter-spacing:.08em}
+.rw-topic-heading h2,.rw-answer-heading h2{margin:5px 0 0;color:#24304d;font-size:28px;letter-spacing:-.025em}
+.rw-topic-heading>p,.rw-answer-heading>p{margin:6px 0 0;color:#59647a;font-weight:700}
+.rw-reading-card,.rw-problem-card,.rw-answer-card,.rw-guide-card{margin-top:16px;padding:20px;border:1px solid #e0e3eb;border-radius:14px;background:#fbfcfe}
+.rw-reading-card>strong{display:inline-flex;padding:6px 10px;border-radius:999px;background:#eceaf6;color:#51466d}
+.rw-reading-card h3{margin:24px 0 8px;color:#30394d;font-size:19px}
+.rw-reading-card p,.rw-guide-card p,.rw-problem-card p,.rw-answer-card p{margin:7px 0;color:#4e586b;line-height:1.78}
+.rw-reading-question{margin-top:18px;padding:14px 16px;border-left:4px solid #65579a;background:#f6f4fb;color:#40385f;font-weight:800;line-height:1.7}
+.rw-reading-question-wide{margin-top:14px}
+.rw-guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.rw-guide-card{margin-top:0;background:#fff}
+.rw-guide-card h3{margin:0 0 12px;color:#39435a;font-size:18px}
+.rw-guide-card ol{margin:0;padding-left:23px}
+.rw-guide-card li{margin:9px 0;color:#4e586b;line-height:1.65}
+.rw-table{width:100%;min-width:0;margin:13px 0;border-collapse:collapse;background:#fff}
+.rw-table th,.rw-table td{padding:10px 11px;border:1px solid #cfd4df;text-align:center;font-size:14px}
+.rw-table thead th{background:#465070;color:#fff}
+.rw-table tbody th{background:#f1f3f7;color:#485368}
+.rw-name-table{max-width:720px}
+.rw-problem-card>header{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.rw-problem-card>header>span{display:inline-flex;padding:5px 10px;border-radius:999px;background:#554b85;color:#fff;font-size:12px;font-weight:900}
+.rw-problem-card>header h3{margin:0;color:#273147;font-size:21px}
+.rw-condition-box,.rw-situation-box{margin-top:12px;padding:14px 16px;border-radius:11px;background:#f1f0f6}
+.rw-condition-box p,.rw-situation-box p{margin:4px 0}
+.rw-question-list{display:grid;gap:11px;margin-top:16px}
+.rw-question-list>p{margin:0;padding:12px 14px;border:1px solid #e4e7ee;border-radius:10px;background:#fff}
+.rw-question-list>p>b{display:inline-grid;place-items:center;width:30px;height:30px;margin-right:9px;border-radius:50%;background:#f0eef7;color:#65579a}
+.rw-question-list .rw-hint{border-color:#ead9b7;background:#fffaf0;color:#6f6049}
+.rw-answer-section{margin-top:30px;padding-top:26px;border-top:2px solid #d6d9e2}
+.rw-answer-card{background:#fff}
+.rw-answer-card h3{margin:0 0 14px;color:#25304b;font-size:22px}
+.rw-answer-card h4{margin:18px 0 6px;color:#4a5571;font-size:16px}
+.rw-answer-card h4:first-of-type{margin-top:0}
+.rw-followup{margin-top:15px;padding:14px 16px;border:1px solid #d8d3e8;border-radius:11px;background:#f7f5fb}
+.rw-followup strong{color:#5a4f7c}
+.rw-followup p{margin:5px 0;color:#5f6878}
+@media(max-width:820px){.rw-guide-grid{grid-template-columns:1fr}.rw-study-hero,.rw-study-section{padding:20px 16px}.rw-table th,.rw-table td{padding:8px 7px;font-size:12px}.rw-problem-card,.rw-answer-card,.rw-reading-card,.rw-guide-card{padding:16px}}
