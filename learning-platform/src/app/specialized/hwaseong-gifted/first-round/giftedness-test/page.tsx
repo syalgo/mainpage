@@ -1,14 +1,45 @@
-import ProtectedCoursePage from "@/components/ProtectedCoursePage";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import GiftednessSelfReportTest from "@/components/GiftednessSelfReportTest";
+import { getSessionUser } from "@/lib/auth-server";
+import { isFirebaseAdminConfigured } from "@/lib/firebase-admin";
 
-export default function GiftednessTestPage() {
-  return (
-    <ProtectedCoursePage
-      permission="hwaseong"
-      eyebrow="GIFTEDNESS TEST"
-      title="자기보고식 영재성 판별 검사(객관식)"
-      description="자기보고식 영재성 판별 검사의 객관식 문항을 학습합니다."
-      hideIntro
-      items={[]}
-    />
-  );
+export default async function GiftednessTestPage() {
+  if (!isFirebaseAdminConfigured()) {
+    return (
+      <section className="access-state">
+        <span className="eyebrow">SETUP MODE</span>
+        <h1>자기보고식 영재성 판별 검사(객관식)</h1>
+        <p>Firebase 연결 후 승인된 화성시 영재교육원 대비 계정만 이용할 수 있습니다.</p>
+        <Link className="secondary-button" href="/specialized/hwaseong-gifted/first-round">돌아가기</Link>
+      </section>
+    );
+  }
+
+  const user = await getSessionUser();
+  if (!user) redirect("/login");
+
+  if (!user.approved) {
+    return (
+      <section className="access-state">
+        <span className="status pending">승인 대기</span>
+        <h1>관리자 승인 대기 중입니다.</h1>
+        <p>관리자 승인 후 학습 페이지를 이용할 수 있습니다.</p>
+        <Link className="secondary-button" href="/account">내 계정 확인</Link>
+      </section>
+    );
+  }
+
+  if (!user.admin && !user.permissions.hwaseong) {
+    return (
+      <section className="access-state">
+        <span className="eyebrow">NO COURSE ACCESS</span>
+        <h1>화성시 영재교육원 대비 권한이 없습니다.</h1>
+        <p>관리자에게 화성시 영재교육원 대비 이용 권한을 요청해주세요.</p>
+        <Link className="secondary-button" href="/account">내 권한 확인</Link>
+      </section>
+    );
+  }
+
+  return <GiftednessSelfReportTest />;
 }
