@@ -35,10 +35,6 @@ export default function ThinkingMathPage() {
           href: "/specialized/thinking-math/optimization",
         },
         {
-          title: "창의적 문제해결력",
-          description: "정답이 하나가 아닐 때, 어떻게?",
-        },
-        {
           title: "도형의 분해와 비",
           description: "자르고 옮겨서 알아내는 넓이",
         },
@@ -53,10 +49,6 @@ export default function ThinkingMathPage() {
         {
           title: "비둘기집의 원리",
           description: "세어 보지 않고도 확신하는 법",
-        },
-        {
-          title: "창의적 문제해결력",
-          description: "정답이 하나가 아닐 때, 어떻게?",
         },
       ]}
     />
