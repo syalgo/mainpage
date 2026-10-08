@@ -4383,3 +4383,15 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
 .rw-choice-scene strong{display:block;margin-top:12px;color:#3e4860}
 .rw-choice-scene>div{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:9px}
 .rw-choice-scene span{padding:7px 10px;border:1px solid #dfe3ec;border-radius:999px;background:#fff;color:#59647a;font-size:13px;font-weight:700}
+
+
+/* Inline answers for real-world creative problem solving */
+.rw-inline-answer{margin-top:16px;border:1px solid #d8dce6;border-radius:12px;background:#fff;overflow:hidden}
+.rw-inline-answer>summary{padding:13px 15px;cursor:pointer;color:#405174;font-weight:800;background:#f6f8fc;list-style:none}
+.rw-inline-answer>summary::-webkit-details-marker{display:none}
+.rw-inline-answer>summary::after{content:"＋";float:right;color:#65728c;font-weight:900}
+.rw-inline-answer[open]>summary::after{content:"−"}
+.rw-inline-answer-body{padding:16px 17px;border-top:1px solid #e1e4eb}
+.rw-inline-answer-body h4{margin:16px 0 6px;color:#4a5571;font-size:16px}
+.rw-inline-answer-body h4:first-child{margin-top:0}
+.rw-inline-answer-body p{margin:7px 0;color:#4e586b;line-height:1.78}
