@@ -7,11 +7,6 @@ export default function RealWorldCreativeProblemSolvingStudy() {
       </header>
 
       <section className="rw-study-section">
-        <div className="rw-topic-heading">
-          <span>TOPIC 06</span>
-          <h2>창의적 문제해결력</h2>
-          <p>A트랙 - 현실상황형</p>
-        </div>
 
         <article className="rw-reading-card">
           <strong>읽을거리</strong>
@@ -105,44 +100,11 @@ export default function RealWorldCreativeProblemSolvingStudy() {
             <p><b>02</b> 8명 중 5명을 골라 모둠을 만들어봐. 조건 1, 2를 지키면서. 누구를 골랐는지, 왜 그렇게 골랐는지 써봐.</p>
             <p><b>03</b> 친한 친구랑 꼭 같은 모둠이 되고 싶은 친구가 있는데, 조건 때문에 안 됐어. 그 친구에게 뭐라고 말해줄 거야?</p>
           </div>
-        </article>
 
-        <article className="rw-problem-card">
-          <header><span>문제2</span><h3>급식 줄이 너무 길어</h3></header>
-          <div className="rw-situation-box">
-            <p>점심시간마다 급식 줄이 너무 길어서 20분씩 기다려. 다 먹고 나면 쉴 시간이 없어.</p>
-          </div>
-          <div className="rw-question-list">
-            <p><b>01</b> 급식 줄이 왜 이렇게 길어지는 걸까? 이유를 2가지 이상 생각해봐.</p>
-            <p><b>02</b> 지금은 음식을 받는 곳(배식대)이 1군데야. 만약 배식대를 2군데로 늘리면 기다리는 시간이 어떻게 될까?</p>
-            <p><b>03</b> 배식대를 2군데로 늘리면 20분이 몇 분으로 줄어들까? 숫자로 어림잡아봐. 4군데로 늘리면?</p>
-          </div>
-        </article>
-
-        <article className="rw-problem-card">
-          <header><span>문제3</span><h3>로봇세, 찬성? 반대?</h3></header>
-          <div className="rw-situation-box">
-            <p>가까운 미래, 사람 대신 일하는 로봇이 공장에 많이 들어왔어.</p>
-            <p>회사들이 사람 대신 로봇을 쓰기 시작했지.</p>
-            <p>정부가 고민해. “로봇한테도 세금을 걷어야 할까?” 이걸 로봇세라고 해.</p>
-          </div>
-          <div className="rw-question-list">
-            <p><b>01</b> 로봇세에 찬성하는 사람은 왜 찬성할까? 이유를 생각해봐.</p>
-            <p><b>02</b> 반대하는 사람은 왜 반대할까? 이유를 생각해봐.</p>
-            <p><b>03</b> 너는 찬성이야, 반대야? 하나를 고르고, 반대편 사람을 설득할 가장 강한 이유 1가지를 써봐.</p>
-          </div>
-        </article>
-
-        <section className="rw-answer-section">
-          <div className="rw-answer-heading">
-            <span>부록</span>
-            <h2>정답 및 해설</h2>
-            <p>TOPIC 06 창의적 문제해결력 [A트랙 - 현실상황형]</p>
-          </div>
-
-          <article className="rw-answer-card">
-            <h3>문제11</h3>
-            <h4>① 채점 포인트</h4>
+          <details className="rw-inline-answer">
+            <summary>정답 및 해설 확인</summary>
+            <div className="rw-inline-answer-body">
+              <h4>① 채점 포인트</h4>
             <p>추가 기준 예시: 남녀 비율, 발표 잘하는 친구 분산, 조용한 친구와 활발한 친구 섞기, 리더 역할 한 명씩.</p>
             <p>★ 표에 없는 새 기준을 스스로 만들면 “상”</p>
             <p>▲ “친한 친구”처럼 이미 준 조건 반복하면</p>
@@ -162,11 +124,25 @@ export default function RealWorldCreativeProblemSolvingStudy() {
               <strong>채점 후 질문</strong>
               <p>네가 만든 모둠에서 가장 신경 쓴 조건은 뭐야? 두 조건이 부딪힐 때 어떤 걸 먼저 지켰어?</p>
             </div>
-          </article>
+            </div>
+          </details>
+        </article>
 
-          <article className="rw-answer-card">
-            <h3>문제12</h3>
-            <h4>① 채점 포인트</h4>
+        <article className="rw-problem-card">
+          <header><span>문제2</span><h3>급식 줄이 너무 길어</h3></header>
+          <div className="rw-situation-box">
+            <p>점심시간마다 급식 줄이 너무 길어서 20분씩 기다려. 다 먹고 나면 쉴 시간이 없어.</p>
+          </div>
+          <div className="rw-question-list">
+            <p><b>01</b> 급식 줄이 왜 이렇게 길어지는 걸까? 이유를 2가지 이상 생각해봐.</p>
+            <p><b>02</b> 지금은 음식을 받는 곳(배식대)이 1군데야. 만약 배식대를 2군데로 늘리면 기다리는 시간이 어떻게 될까?</p>
+            <p><b>03</b> 배식대를 2군데로 늘리면 20분이 몇 분으로 줄어들까? 숫자로 어림잡아봐. 4군데로 늘리면?</p>
+          </div>
+
+          <details className="rw-inline-answer">
+            <summary>정답 및 해설 확인</summary>
+            <div className="rw-inline-answer-body">
+              <h4>① 채점 포인트</h4>
             <p>이유 예시: 학생 수가 많다. 배식대가 1개뿐이다. 한 명당 받는 시간이 길다. 메뉴가 많다.</p>
             <p>★ 2가지 이상 + “왜 그게 시간을 늘리는지” 설명되면 “상”</p>
 
@@ -187,11 +163,27 @@ export default function RealWorldCreativeProblemSolvingStudy() {
               <p>배식대를 10군데로 늘리면 진짜 2분이 될까?</p>
               <p>끝없이 줄일 수 있을까, 아니면 한계가 있을까?</p>
             </div>
-          </article>
+            </div>
+          </details>
+        </article>
 
-          <article className="rw-answer-card">
-            <h3>문제13</h3>
-            <h4>① 찬성 이유 예시</h4>
+        <article className="rw-problem-card">
+          <header><span>문제3</span><h3>로봇세, 찬성? 반대?</h3></header>
+          <div className="rw-situation-box">
+            <p>가까운 미래, 사람 대신 일하는 로봇이 공장에 많이 들어왔어.</p>
+            <p>회사들이 사람 대신 로봇을 쓰기 시작했지.</p>
+            <p>정부가 고민해. “로봇한테도 세금을 걷어야 할까?” 이걸 로봇세라고 해.</p>
+          </div>
+          <div className="rw-question-list">
+            <p><b>01</b> 로봇세에 찬성하는 사람은 왜 찬성할까? 이유를 생각해봐.</p>
+            <p><b>02</b> 반대하는 사람은 왜 반대할까? 이유를 생각해봐.</p>
+            <p><b>03</b> 너는 찬성이야, 반대야? 하나를 고르고, 반대편 사람을 설득할 가장 강한 이유 1가지를 써봐.</p>
+          </div>
+
+          <details className="rw-inline-answer">
+            <summary>정답 및 해설 확인</summary>
+            <div className="rw-inline-answer-body">
+              <h4>① 찬성 이유 예시</h4>
             <p>로봇이 사람 일자리를 뺏으니 그 세금으로 일자리 잃은 사람을 도와야 한다. 로봇도 도로·전기를 쓰니 사용료를 내야 한다.</p>
 
             <h4>② 반대 이유 예시</h4>
@@ -206,19 +198,15 @@ export default function RealWorldCreativeProblemSolvingStudy() {
               <strong>채점 후 질문</strong>
               <p>네 반대편 사람이 가장 강하게 말할 것 같은 한마디는 뭘까? 거기에 뭐라고 답할 거야?</p>
             </div>
-          </article>
-        </section>
+            </div>
+          </details>
+        </article>
       </section>
 
       <section className="rw-study-section">
-        <div className="rw-topic-heading">
-          <span>TOPIC 05</span>
-          <h2>창의적 문제해결력</h2>
-          <p>A트랙 - 현실상황형</p>
-        </div>
 
         <article className="rw-problem-card">
-          <header><span>문제1</span><h3>지하철에서 폰을 잃어버렸다</h3></header>
+          <header><span>문제4</span><h3>지하철에서 폰을 잃어버렸다</h3></header>
           <div className="rw-situation-box">
             <p>가족과 상하이 지하철 이동 중 폰이 없어짐. 소매치기 추정.</p>
             <p>낯선 역, 가족과 다른 칸을 타서 이미 떨어진 상태.</p>
@@ -234,88 +222,11 @@ export default function RealWorldCreativeProblemSolvingStudy() {
             <p><b>03</b> 최종 결정 + “기준”이 드러나게 서술</p>
             <p className="rw-hint">💡 지금 가장 위험한 것이 뭔지, 가장 먼저 해결해야 할 것이 뭔지 생각해 봐.</p>
           </div>
-        </article>
 
-        <article className="rw-problem-card">
-          <header><span>문제2</span><h3>소풍 장소를 결정해야 해</h3></header>
-          <div className="rw-situation-box">
-            <p>26명이 소풍 장소를 결정하려고 한다.</p>
-            <p>의견 : 민준(에버랜드) / 서연(부산 해변) / 지호(근처 산)</p>
-            <p>선생님 : “한 곳만 고를 수 있어. 네가 결정해 봐.”</p>
-          </div>
-          <div className="rw-question-list">
-            <p><b>01</b> 비교 기준 3가지 직접 만들기</p>
-            <p><b>02</b> 기준으로 아래 표 채우기 (○ △ ×)</p>
-            <table className="rw-table">
-              <thead><tr><th>기준</th><th>에버랜드</th><th>부산 해변</th><th>근처 산</th></tr></thead>
-              <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody>
-            </table>
-            <p><b>03</b> 최종 선택 + 친구들이 납득할 설득 문장 쓰기</p>
-          </div>
-        </article>
-
-        <article className="rw-problem-card">
-          <header><span>문제3</span><h3>수학자라면 잔반 문제를 어떻게 해결할까?</h3></header>
-          <div className="rw-situation-box">
-            <p>급식 잔반 : 월요일 최다, 금요일 최소.</p>
-            <p>영양 선생님 : “왜 그럴까? 어떻게 줄일 수 있을까?” → 수학자 시점으로 접근</p>
-          </div>
-          <div className="rw-question-list">
-            <p><b>01</b> 필요한 자료(데이터) 3가지 이상 쓰기</p>
-            <p><b>02</b> 자료 수집 방법을 순서대로 쓰기</p>
-            <p><b>03</b> 잔반 줄이기 수학적 방법 제안</p>
-            <p className="rw-hint">💡 평균, 비율, 그래프 중 하나 반드시 포함</p>
-          </div>
-        </article>
-
-        <article className="rw-problem-card">
-          <header><span>문제4</span><h3>학교 축제 매점 창업</h3></header>
-          <div className="rw-situation-box">
-            <p>우리 반이 학교 축제에서 매점을 운영한다.</p>
-            <p>선생님 : “예산은 50,000원이야. 뭘 팔지, 얼마에 팔지 너희가 결정해.”</p>
-          </div>
-          <div className="rw-question-list">
-            <p><b>01</b> 팔 물건 3가지 선택 + 개당 원가 + 몇 개 살지 결정. 합계 50,000원 이하.</p>
-            <table className="rw-table">
-              <thead><tr><th>물건</th><th>개당 원가</th><th>수량</th><th>소계</th></tr></thead>
-              <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><th>합계</th><td colSpan={3}></td></tr></tbody>
-            </table>
-            <p><b>02</b> 각 물건 판매가 결정 + 왜 그 가격인지 이유 쓰기</p>
-            <p><b>03</b> 물건이 다 팔리면 얼마를 벌 수 있어? 계산하기</p>
-            <p><b>04</b> 인기 없는 물건이 절반 남았어. 어떻게 할 거야? 이유도 쓰기</p>
-          </div>
-        </article>
-
-        <article className="rw-problem-card">
-          <header><span>문제5</span><h3>우리 반 자리 배치</h3></header>
-          <div className="rw-situation-box">
-            <p>교실 : 한 줄에 3자리씩, 앞·중간·뒤 세 줄.</p>
-            <p>조건 1 : 키 큰 아이 → 뒤쪽 /</p>
-            <p>조건 2 : 사이 안 좋은 짝 → 분리 /</p>
-            <p>조건 3 : 시력 나쁜 아이 → 앞쪽</p>
-            <p>상황 : 지호(키 크고 시력 나쁨) / 민준·서연(사이 안 좋고 둘 다 시력 나쁨)</p>
-          </div>
-          <div className="rw-question-list">
-            <p><b>01</b> 조건 1과 조건 3이 지호한테 동시에 만족될 수 있어? 왜 그런지 쓰기</p>
-            <p><b>02</b> 민준·서연을 앞쪽에 앉히되 옆자리에 앉히지 않는 배치. 아래 표 이름 써넣기</p>
-            <table className="rw-table">
-              <thead><tr><th></th><th>왼쪽</th><th>가운데</th><th>오른쪽</th></tr></thead>
-              <tbody><tr><th>앞줄</th><td></td><td></td><td></td></tr><tr><th>중간줄</th><td></td><td></td><td></td></tr><tr><th>뒷줄</th><td></td><td></td><td></td></tr></tbody>
-            </table>
-            <p><b>03</b> 조건이 충돌할 때 어떤 조건을 먼저 해결할 거야? 우선순위 기준 + 이유 쓰기</p>
-          </div>
-        </article>
-
-        <section className="rw-answer-section">
-          <div className="rw-answer-heading">
-            <span>부록</span>
-            <h2>정답 및 해설</h2>
-            <p>TOPIC 05 창의적 문제해결력 [A트랙 - 현실상황형]</p>
-          </div>
-
-          <article className="rw-answer-card">
-            <h3>문제11</h3>
-            <h4>① 자원 분류 예시</h4>
+          <details className="rw-inline-answer">
+            <summary>정답 및 해설 확인</summary>
+            <div className="rw-inline-answer-body">
+              <h4>① 자원 분류 예시</h4>
             <p>교통카드 → 지하철 탑승 /</p>
             <p>한국 돈 5,000원 → 중국에서 바로 사용 불가 (이걸 인식하면 ★) /</p>
             <p>지하철 노선도 → 현재 역·호텔 근처 역 파악 /</p>
@@ -333,11 +244,31 @@ export default function RealWorldCreativeProblemSolvingStudy() {
               <p>“네가 고른 방법에서 가장 위험한 상황이 생긴다면 어떻게 될까?”</p>
               <p>“호텔 명함을 어떻게 쓸 수 있을지 더 생각해봤어?”</p>
             </div>
-          </article>
+            </div>
+          </details>
+        </article>
 
-          <article className="rw-answer-card">
-            <h3>문제12</h3>
-            <h4>① 기준 예시</h4>
+        <article className="rw-problem-card">
+          <header><span>문제5</span><h3>소풍 장소를 결정해야 해</h3></header>
+          <div className="rw-situation-box">
+            <p>26명이 소풍 장소를 결정하려고 한다.</p>
+            <p>의견 : 민준(에버랜드) / 서연(부산 해변) / 지호(근처 산)</p>
+            <p>선생님 : “한 곳만 고를 수 있어. 네가 결정해 봐.”</p>
+          </div>
+          <div className="rw-question-list">
+            <p><b>01</b> 비교 기준 3가지 직접 만들기</p>
+            <p><b>02</b> 기준으로 아래 표 채우기 (○ △ ×)</p>
+            <table className="rw-table">
+              <thead><tr><th>기준</th><th>에버랜드</th><th>부산 해변</th><th>근처 산</th></tr></thead>
+              <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody>
+            </table>
+            <p><b>03</b> 최종 선택 + 친구들이 납득할 설득 문장 쓰기</p>
+          </div>
+
+          <details className="rw-inline-answer">
+            <summary>정답 및 해설 확인</summary>
+            <div className="rw-inline-answer-body">
+              <h4>① 기준 예시</h4>
             <p>비용, 이동 시간, 날씨 영향, 모두가 즐길 수 있는지, 안전</p>
 
             <h4>② 채점 포인트</h4>
@@ -353,11 +284,27 @@ export default function RealWorldCreativeProblemSolvingStudy() {
               <p>네가 만든 기준 중에서 가장 중요한 것 하나만 고른다면 뭐야? 왜?</p>
               <p>반 친구 중 네 설득에 반대할 것 같은 친구는 누구야? 그 친구를 어떻게 설득할 거야?</p>
             </div>
-          </article>
+            </div>
+          </details>
+        </article>
 
-          <article className="rw-answer-card">
-            <h3>문제13</h3>
-            <h4>① 자료 예시</h4>
+        <article className="rw-problem-card">
+          <header><span>문제6</span><h3>수학자라면 잔반 문제를 어떻게 해결할까?</h3></header>
+          <div className="rw-situation-box">
+            <p>급식 잔반 : 월요일 최다, 금요일 최소.</p>
+            <p>영양 선생님 : “왜 그럴까? 어떻게 줄일 수 있을까?” → 수학자 시점으로 접근</p>
+          </div>
+          <div className="rw-question-list">
+            <p><b>01</b> 필요한 자료(데이터) 3가지 이상 쓰기</p>
+            <p><b>02</b> 자료 수집 방법을 순서대로 쓰기</p>
+            <p><b>03</b> 잔반 줄이기 수학적 방법 제안</p>
+            <p className="rw-hint">💡 평균, 비율, 그래프 중 하나 반드시 포함</p>
+          </div>
+
+          <details className="rw-inline-answer">
+            <summary>정답 및 해설 확인</summary>
+            <div className="rw-inline-answer-body">
+              <h4>① 자료 예시</h4>
             <p>요일별 잔반량, 그날 메뉴, 날씨, 체육 수업 여부, 학생 선호도 조사</p>
             <p>★ 잔반량에 영향을 주는 변수(메뉴, 날씨 등)까지 쓰면 “상”</p>
             <p>▲ 잔반량만 쓰면 “중”</p>
@@ -375,11 +322,31 @@ export default function RealWorldCreativeProblemSolvingStudy() {
               <p>자료를 모은 다음 어디서 패턴이 보였어?</p>
               <p>잔반을 줄이는 방법이 한 가지가 아닐 수 있어. 또 다른 방법은 없을까?</p>
             </div>
-          </article>
+            </div>
+          </details>
+        </article>
 
-          <article className="rw-answer-card">
-            <h3>문제14</h3>
-            <h4>① 채점 포인트</h4>
+        <article className="rw-problem-card">
+          <header><span>문제7</span><h3>학교 축제 매점 창업</h3></header>
+          <div className="rw-situation-box">
+            <p>우리 반이 학교 축제에서 매점을 운영한다.</p>
+            <p>선생님 : “예산은 50,000원이야. 뭘 팔지, 얼마에 팔지 너희가 결정해.”</p>
+          </div>
+          <div className="rw-question-list">
+            <p><b>01</b> 팔 물건 3가지 선택 + 개당 원가 + 몇 개 살지 결정. 합계 50,000원 이하.</p>
+            <table className="rw-table">
+              <thead><tr><th>물건</th><th>개당 원가</th><th>수량</th><th>소계</th></tr></thead>
+              <tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><th>합계</th><td colSpan={3}></td></tr></tbody>
+            </table>
+            <p><b>02</b> 각 물건 판매가 결정 + 왜 그 가격인지 이유 쓰기</p>
+            <p><b>03</b> 물건이 다 팔리면 얼마를 벌 수 있어? 계산하기</p>
+            <p><b>04</b> 인기 없는 물건이 절반 남았어. 어떻게 할 거야? 이유도 쓰기</p>
+          </div>
+
+          <details className="rw-inline-answer">
+            <summary>정답 및 해설 확인</summary>
+            <div className="rw-inline-answer-body">
+              <h4>① 채점 포인트</h4>
             <p>★ 합계 50,000원 이하+상품 선택 이유 있음</p>
 
             <h4>② 채점 포인트</h4>
@@ -398,11 +365,33 @@ export default function RealWorldCreativeProblemSolvingStudy() {
               <p>네가 설정한 판매가가 원가보다 얼마나 높아? 그 차이가 왜 중요해?</p>
               <p>남은 물건을 묶음으로 팔면 한 개씩 팔 때보다 뭐가 달라져?</p>
             </div>
-          </article>
+            </div>
+          </details>
+        </article>
 
-          <article className="rw-answer-card">
-            <h3>문제15</h3>
-            <h4>① 예시 답안</h4>
+        <article className="rw-problem-card">
+          <header><span>문제8</span><h3>우리 반 자리 배치</h3></header>
+          <div className="rw-situation-box">
+            <p>교실 : 한 줄에 3자리씩, 앞·중간·뒤 세 줄.</p>
+            <p>조건 1 : 키 큰 아이 → 뒤쪽 /</p>
+            <p>조건 2 : 사이 안 좋은 짝 → 분리 /</p>
+            <p>조건 3 : 시력 나쁜 아이 → 앞쪽</p>
+            <p>상황 : 지호(키 크고 시력 나쁨) / 민준·서연(사이 안 좋고 둘 다 시력 나쁨)</p>
+          </div>
+          <div className="rw-question-list">
+            <p><b>01</b> 조건 1과 조건 3이 지호한테 동시에 만족될 수 있어? 왜 그런지 쓰기</p>
+            <p><b>02</b> 민준·서연을 앞쪽에 앉히되 옆자리에 앉히지 않는 배치. 아래 표 이름 써넣기</p>
+            <table className="rw-table">
+              <thead><tr><th></th><th>왼쪽</th><th>가운데</th><th>오른쪽</th></tr></thead>
+              <tbody><tr><th>앞줄</th><td></td><td></td><td></td></tr><tr><th>중간줄</th><td></td><td></td><td></td></tr><tr><th>뒷줄</th><td></td><td></td><td></td></tr></tbody>
+            </table>
+            <p><b>03</b> 조건이 충돌할 때 어떤 조건을 먼저 해결할 거야? 우선순위 기준 + 이유 쓰기</p>
+          </div>
+
+          <details className="rw-inline-answer">
+            <summary>정답 및 해설 확인</summary>
+            <div className="rw-inline-answer-body">
+              <h4>① 예시 답안</h4>
             <p>지호는 키가 크니까 뒤에, 시력이 나쁘니까 앞에 앉아야 한다. 동시에 만족 불가능.</p>
             <p>★ “불가능하다”+두 조건 명시 → “상”</p>
             <p>▲ “불가능하다”만 → “중”</p>
@@ -420,8 +409,9 @@ export default function RealWorldCreativeProblemSolvingStudy() {
               <p>지호를 중간줄에 앉히면 조건 1, 3이 둘 다 완전히 만족되진 않지만 절충은 돼. 그게 나을까, 한 조건만 완전히 지키는 게 나을까?</p>
               <p>조건이 충돌할 때 규칙이 정해져 있지 않으면 어떻게 결정해야 할까?</p>
             </div>
-          </article>
-        </section>
+            </div>
+          </details>
+        </article>
       </section>
     </section>
   );
