@@ -1,14 +1,45 @@
-import ProtectedCoursePage from "@/components/ProtectedCoursePage";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import DaedeokInterviewStudy from "@/components/DaedeokInterviewStudy";
+import { getSessionUser } from "@/lib/auth-server";
+import { isFirebaseAdminConfigured } from "@/lib/firebase-admin";
 
-export default function DaedeokSoftwareInterviewPage() {
-  return (
-    <ProtectedCoursePage
-      permission="daedeok"
-      eyebrow="DAEDEOK SW · INTERVIEW"
-      title="심층 면접"
-      description="대덕소마고 심층 면접을 준비하는 학습 공간입니다."
-      hideIntro
-      items={[]}
-    />
-  );
+export default async function DaedeokSoftwareInterviewPage() {
+  if (!isFirebaseAdminConfigured()) {
+    return (
+      <section className="access-state">
+        <span className="eyebrow">SETUP MODE</span>
+        <h1>대덕소마고 심층 면접</h1>
+        <p>Firebase 연결 후 승인된 대덕소마고 입학전형 대비 계정만 이용할 수 있습니다.</p>
+        <Link className="secondary-button" href="/specialized/daedeok-software">돌아가기</Link>
+      </section>
+    );
+  }
+
+  const user = await getSessionUser();
+  if (!user) redirect("/login");
+
+  if (!user.approved) {
+    return (
+      <section className="access-state">
+        <span className="status pending">승인 대기</span>
+        <h1>관리자 승인 대기 중입니다.</h1>
+        <p>관리자 승인 후 심층 면접 학습 페이지를 이용할 수 있습니다.</p>
+        <Link className="secondary-button" href="/account">내 계정 확인</Link>
+      </section>
+    );
+  }
+
+  if (!user.admin && !user.permissions.daedeok) {
+    return (
+      <section className="access-state">
+        <span className="eyebrow">NO COURSE ACCESS</span>
+        <h1>대덕소마고 입학전형 대비 권한이 없습니다.</h1>
+        <p>관리자에게 대덕소마고 입학전형 대비 이용 권한을 요청해주세요.</p>
+        <Link className="secondary-button" href="/account">내 권한 확인</Link>
+      </section>
+    );
+  }
+
+  return <DaedeokInterviewStudy />;
 }
