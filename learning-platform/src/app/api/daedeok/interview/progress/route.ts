@@ -86,6 +86,7 @@ async function getAuthorizedAccount() {
   return {
     ref: getFirestore(app).collection("users").doc(user.uid).collection("studyProgress").doc("daedeokInterview"),
     db: getFirestore(app),
+    uid: user.uid,
   };
 }
 
@@ -97,7 +98,7 @@ export async function GET() {
   try {
     const snapshot = await auth.ref.get();
     return NextResponse.json(
-      { progress: normalizeProgress(snapshot.exists ? snapshot.data() : undefined) },
+      { accountUid: auth.uid, progress: normalizeProgress(snapshot.exists ? snapshot.data() : undefined) },
       { headers: noStore },
     );
   } catch {
@@ -121,7 +122,11 @@ export async function PATCH(request: NextRequest) {
       return NextResponse.json({ error: "저장할 내용이 너무 깁니다." }, { status: 413, headers: noStore });
     }
 
-    const changes = parseChanges(JSON.parse(raw) as unknown);
+    const payload = JSON.parse(raw) as unknown;
+    if (!isRecord(payload) || payload.accountUid !== auth.uid) {
+      return NextResponse.json({ error: "로그인 계정이 변경되었습니다. 페이지를 다시 열어 주세요." }, { status: 409, headers: noStore });
+    }
+    const changes = parseChanges(payload.changes);
     if (!changes) {
       return NextResponse.json({ error: "올바른 답변 데이터가 아닙니다." }, { status: 400, headers: noStore });
     }
