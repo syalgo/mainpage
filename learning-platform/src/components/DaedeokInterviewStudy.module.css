@@ -130,3 +130,46 @@
   .section { break-before: page; }
   .heroStats { grid-template-columns: repeat(4,1fr); }
 }
+
+/* Firebase account-scoped progress and optional legacy import */
+.saveBanner, .legacyNotice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 22px;
+  margin-bottom: 16px;
+  background: #fff;
+  border: 1px solid #dae3f0;
+  border-radius: 14px;
+}
+.saveBanner > div:first-child, .legacyNotice > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.saveBanner strong, .legacyNotice strong { font-size: 14px; color: #194185; }
+.saveBanner span, .legacyNotice p { font-size: 12px; color: #667085; line-height: 1.65; }
+.legacyNotice { background: #f7f9ff; border-color: #cdddf7; }
+.legacyNotice p { margin: 0; }
+.saveRight { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; justify-content: flex-end; flex: 0 0 auto; max-width: 35%; }
+.saveRight .saveStatus { color: #15803d; font-size: 12px; font-weight: 800; white-space: nowrap; }
+.saveRight .saveError { color: #b42318; font-size: 12px; font-weight: 700; line-height: 1.5; }
+.retryButton, .legacyActions button {
+  color: #194185;
+  background: #fff;
+  border: 1px solid #b6c9ef;
+  border-radius: 9px;
+  padding: 10px 13px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.retryButton:hover, .legacyActions button:hover { background: #eaf0ff; }
+.legacyActions { display: flex; gap: 7px; flex-wrap: wrap; flex: 0 0 auto; }
+.legacyActions button:first-child { color: #fff; background: #2457d6; border-color: #2457d6; }
+.legacyActions button:first-child:hover { background: #1946b0; }
+@media (max-width: 850px) {
+  .saveBanner, .legacyNotice { flex-direction: column; align-items: stretch; }
+  .saveRight { max-width: 100%; flex: 1 1 auto; justify-content: flex-start; }
+}
