@@ -10,54 +10,20 @@ import {
   rubric,
 } from "@/data/daedeokInterview";
 import styles from "./DaedeokInterviewStudy.module.css";
-
-const storageKey = "daedeok-interview-practice-v1";
-type StoredProgress = {
-  completed: number[];
-  notes: Record<number, string>;
-  checklist: number[];
-};
-const emptyProgress: StoredProgress = { completed: [], notes: {}, checklist: [] };
+import { useDaedeokInterviewProgress } from "@/lib/useDaedeokInterviewProgress";
 
 export default function DaedeokInterviewStudy() {
   const [section, setSection] = useState("all");
   const [search, setSearch] = useState("");
   const [priorityOnly, setPriorityOnly] = useState(false);
   const [opened, setOpened] = useState<number[]>([]);
-  const [progress, setProgress] = useState<StoredProgress>(emptyProgress);
-  const [loaded, setLoaded] = useState(false);
   const [scores, setScores] = useState<number[]>([0, 0, 0, 0, 0]);
 
-  useEffect(() => {
-    try {
-      const value = localStorage.getItem(storageKey);
-      if (value) {
-        const parsed = JSON.parse(value) as Partial<StoredProgress>;
-        setProgress({
-          completed: Array.isArray(parsed.completed)
-            ? parsed.completed.filter((n): n is number => typeof n === "number" && n >= 1 && n <= 60)
-            : [],
-          notes: parsed.notes && typeof parsed.notes === "object" ? parsed.notes : {},
-          checklist: Array.isArray(parsed.checklist)
-            ? parsed.checklist.filter((n): n is number => typeof n === "number" && n >= 0 && n < 12)
-            : [],
-        });
-      }
-    } catch {
-      // Private browsing or unavailable storage: the page remains usable.
-    } finally {
-      setLoaded(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!loaded) return;
-    try {
-      localStorage.setItem(storageKey, JSON.stringify(progress));
-    } catch {
-      // Saving is optional; practice is still available in this session.
-    }
-  }, [loaded, progress]);
+  const {
+    progress, loadStatus, loadError, saveStatus, saveError,
+    saveNow, legacy, importLegacy, dismissLegacy,
+    toggleCompleted, toggleCore, updateNote, clearCore,
+  } = useDaedeokInterviewProgress();
 
   const visibleQuestions = useMemo(() => {
     const keyword = search.trim().toLocaleLowerCase();
@@ -75,31 +41,6 @@ export default function DaedeokInterviewStudy() {
   const checkedCore = progress.checklist.length;
   const scoreTotal = scores.reduce((sum, n) => sum + n, 0);
 
-  function toggleCompleted(id: number) {
-    setProgress((previous) => ({
-      ...previous,
-      completed: previous.completed.includes(id)
-        ? previous.completed.filter((n) => n !== id)
-        : [...previous.completed, id],
-    }));
-  }
-
-  function toggleCore(index: number) {
-    setProgress((previous) => ({
-      ...previous,
-      checklist: previous.checklist.includes(index)
-        ? previous.checklist.filter((n) => n !== index)
-        : [...previous.checklist, index],
-    }));
-  }
-
-  function updateNote(id: number, value: string) {
-    setProgress((previous) => ({
-      ...previous,
-      notes: { ...previous.notes, [id]: value },
-    }));
-  }
-
   function copyChecklist() {
     const text = coreChecklist
       .map((question, index) => `${progress.checklist.includes(index) ? "[완료]" : "[미완료]"} ${index + 1}. ${question}`)
@@ -110,6 +51,23 @@ export default function DaedeokInterviewStudy() {
   function changeSection(next: string) {
     setSection(next);
     document.getElementById("interview-questions")?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  if (loadStatus !== "ready") {
+    return (
+      <section className="access-state" aria-live="polite">
+        <span className="eyebrow">DAEDEOK INTERVIEW · FIREBASE</span>
+        <h1>{loadStatus === "loading" ? "저장된 답변을 불러오는 중입니다." : "답변을 불러오지 못했습니다."}</h1>
+        <p>{loadStatus === "loading"
+          ? "로그인 계정에 저장된 면접 준비 기록을 확인하고 있습니다."
+          : loadError + " 저장된 기록을 덮어쓰지 않도록 답변 입력을 일시 중단했습니다."}</p>
+        {loadStatus === "error" && (
+          <button type="button" className="primary-button" onClick={() => window.location.reload()}>
+            다시 불러오기
+          </button>
+        )}
+      </section>
+    );
   }
 
   return (
@@ -124,6 +82,40 @@ export default function DaedeokInterviewStudy() {
           ← 대덕소마고 메뉴
         </Link>
       </div>
+
+      <div className={styles.saveBanner} role="status" aria-live="polite">
+        <div>
+          <strong>Firebase 계정별 자동 저장</strong>
+          <span>답변 메모와 준비 완료 표시가 로그인한 학생의 계정에 저장됩니다. 다른 기기에서도 같은 계정으로 이어서 공부할 수 있습니다.</span>
+        </div>
+        <div className={styles.saveRight}>
+          <span className={saveStatus === "error" ? styles.saveError : styles.saveStatus}>
+            {saveStatus === "saved" && "✓ 모든 변경사항 저장됨"}
+            {saveStatus === "pending" && "● 저장 대기 중"}
+            {saveStatus === "saving" && "↻ 서버에 저장 중"}
+            {saveStatus === "error" && "⚠ 저장 실패"}
+          </span>
+          {(saveStatus === "pending" || saveStatus === "error") && (
+            <button type="button" className={styles.retryButton} onClick={() => { void saveNow(); }}>
+              {saveStatus === "error" ? "다시 저장" : "지금 저장"}
+            </button>
+          )}
+          {saveStatus === "error" && <small className={styles.saveError}>{saveError}</small>}
+        </div>
+      </div>
+
+      {legacy && (
+        <div className={styles.legacyNotice}>
+          <div>
+            <strong>이 브라우저에 이전 방식으로 저장된 답변이 있습니다.</strong>
+            <p>본인의 예전 기록이라면 Firebase로 가져올 수 있습니다. 다른 학생이 사용했던 브라우저라면 가져오지 마세요. 기존 서버 답변은 덮어쓰지 않습니다.</p>
+          </div>
+          <div className={styles.legacyActions}>
+            <button type="button" onClick={importLegacy}>내 이전 기록 가져오기</button>
+            <button type="button" onClick={dismissLegacy}>나중에</button>
+          </div>
+        </div>
+      )}
 
       <div className={styles.heroStats}>
         <div><strong>5</strong><span>공식 평가 요소</span></div>
@@ -246,10 +238,12 @@ export default function DaedeokInterviewStudy() {
                       id={`interview-answer-${question.id}`}
                       value={progress.notes[question.id] ?? ""}
                       onChange={(event) => updateNote(question.id, event.target.value)}
+                      onBlur={() => { void saveNow(); }}
+                      maxLength={3000}
                       rows={5}
                       placeholder="나의 실제 경험을 바탕으로 답변을 적어 보세요."
                     />
-                    <small>입력한 내용은 이 브라우저에만 저장됩니다. 공용 기기에서는 개인정보를 적지 마세요.</small>
+                    <small>답변은 로그인한 학생의 Firebase 계정에 자동 저장됩니다. 저장 완료 표시를 확인해 주세요.</small>
                   </div>
                 )}
               </article>
@@ -299,7 +293,7 @@ export default function DaedeokInterviewStudy() {
         </div>
         <div className={styles.corePanel}>
           <div className={styles.coreProgress}>
-            <div><strong>필수 답변 준비표</strong><span>체크한 항목은 현재 브라우저에 보관됩니다.</span></div>
+            <div><strong>필수 답변 준비표</strong><span>체크한 항목은 로그인한 학생의 계정에 저장됩니다.</span></div>
             <div><b>{checkedCore}</b> / 12</div>
           </div>
           <div className={styles.track}><div style={{ width: `${(checkedCore / 12) * 100}%` }} /></div>
@@ -314,7 +308,7 @@ export default function DaedeokInterviewStudy() {
           </div>
           <div className={styles.coreActions}>
             <button type="button" onClick={copyChecklist}>준비 현황 복사</button>
-            <button type="button" onClick={() => setProgress((previous) => ({ ...previous, checklist: [] }))}>체크 초기화</button>
+            <button type="button" onClick={clearCore}>체크 초기화</button>
           </div>
         </div>
       </section>
