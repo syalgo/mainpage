@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AlgorithmInterviewSimulator from "@/components/AlgorithmInterviewSimulator";
 
 const deepDiveQuestions = [
   "정보올림피아드에 처음 도전하게 된 계기는 무엇인가요?",
@@ -1715,6 +1716,8 @@ int main() {
             ))}
           </div>
         </div>
+
+        <AlgorithmInterviewSimulator />
 
         <div className="contest-core-concept-summary">
           <strong>면접에서는 이렇게 설명하면 됩니다</strong>
