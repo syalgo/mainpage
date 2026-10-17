@@ -23,6 +23,7 @@ export default async function AccountPage() {
         <div><span>대덕소마고 입학전형 대비</span><strong>{user.admin || user.permissions.daedeok ? "이용 가능" : "권한 없음"}</strong></div>
         <div><span>화성시 영재교육원 대비</span><strong>{user.admin || user.permissions.hwaseong ? "이용 가능" : "권한 없음"}</strong></div>
         <div><span>정보올림피아드 대비</span><strong>{user.admin || user.permissions.koi ? "이용 가능" : "권한 없음"}</strong></div>
+        <div><span>수원하이텍고 입학전형 대비</span><strong>{user.admin || user.permissions.suwon ? "이용 가능" : "권한 없음"}</strong></div>
       </div>
       <div className="hero-actions">
         <Link className="secondary-button" href="/">메인으로</Link>
