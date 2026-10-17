@@ -6,6 +6,7 @@ const sections = [
   { href: "/specialized/daedeok-software", label: "대덕소마고 입학전형 대비", tag: "DAEDEOK SW" },
   { href: "/specialized/hwaseong-gifted", label: "화성시 영재교육원 대비", tag: "HWASEONG GIFTED" },
   { href: "/koi", label: "정보올림피아드 대비", tag: "KOI · ALGORITHM" },
+  { href: "/specialized/suwon-hightech", label: "수원하이텍고 입학전형 대비", tag: "SUWON HITECH" },
 ];
 
 export default function Home() {
