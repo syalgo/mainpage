@@ -4536,3 +4536,27 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
 .algo-dp-table>div.filled b{color:#31528f}
 @media(max-width:900px){.algo-sim-explain{grid-template-columns:1fr}.algo-graph-layout{grid-template-columns:1fr}.algo-dp-table{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.algo-sim{padding:16px}.algo-array{grid-template-columns:repeat(4,1fr)}.algo-sort-bars{gap:8px}.algo-sort-bars span{width:40px}.algo-heap-tree{grid-template-columns:repeat(2,1fr)}.algo-sim-stage-head{align-items:flex-start;flex-direction:column}}
+
+
+/* Suwon Hi-Tech 2024 aptitude past questions */
+.suwon-2024-page{display:grid;gap:18px;padding-top:18px}
+.suwon-2024-hero,.suwon-2024-question{padding:24px;background:#fff;border:1px solid var(--line);border-radius:18px}
+.suwon-2024-hero h1{margin:8px 0 0;font-size:clamp(34px,5vw,52px);letter-spacing:-.04em}
+.suwon-2024-jump{position:sticky;top:10px;z-index:5;display:flex;gap:7px;flex-wrap:wrap;padding:10px;border:1px solid #dfe4ec;border-radius:12px;background:rgba(255,255,255,.94);backdrop-filter:blur(10px)}
+.suwon-2024-jump a{padding:7px 10px;border-radius:8px;background:#f1f4f9;color:#4c5f80;font-size:12px;font-weight:800}
+.suwon-2024-list{display:grid;gap:14px}
+.suwon-2024-question{scroll-margin-top:80px}
+.suwon-2024-question-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.suwon-2024-question-head>span{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#465f93;color:#fff;font-size:12px;font-weight:900}
+.suwon-2024-question-head strong{color:#3d4b64;font-size:13px}
+.suwon-2024-source{display:flex;justify-content:center;padding:12px;border:1px solid #e4e7ed;border-radius:12px;background:#f8f9fb;overflow:hidden}
+.suwon-2024-source img{display:block;width:min(100%,760px);height:auto;border-radius:8px}
+.suwon-2024-answer{margin-top:12px;border:1px solid #dbe1eb;border-radius:11px;background:#fff;overflow:hidden}
+.suwon-2024-answer>summary{padding:13px 15px;cursor:pointer;list-style:none;color:#425374;font-weight:800;background:#f5f7fb}
+.suwon-2024-answer>summary::-webkit-details-marker{display:none}
+.suwon-2024-answer>summary::after{content:"＋";float:right;color:#60708e;font-size:18px;font-weight:900}
+.suwon-2024-answer[open]>summary::after{content:"−"}
+.suwon-2024-answer>div{display:flex;align-items:center;gap:12px;padding:15px 17px;border-top:1px solid #e1e5ec}
+.suwon-2024-answer>div span{color:#7b8494;font-size:12px;font-weight:800}
+.suwon-2024-answer>div strong{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#465f93;color:#fff;font-size:20px}
+@media(max-width:700px){.suwon-2024-hero,.suwon-2024-question{padding:18px 14px}.suwon-2024-source{padding:6px}.suwon-2024-jump{top:6px}}
