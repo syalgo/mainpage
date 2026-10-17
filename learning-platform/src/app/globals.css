@@ -4560,3 +4560,16 @@ td input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue)
 .suwon-2024-answer>div span{color:#7b8494;font-size:12px;font-weight:800}
 .suwon-2024-answer>div strong{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#465f93;color:#fff;font-size:20px}
 @media(max-width:700px){.suwon-2024-hero,.suwon-2024-question{padding:18px 14px}.suwon-2024-source{padding:6px}.suwon-2024-jump{top:6px}}
+
+
+/* Suwon Hi-Tech 2024 text-first question layout */
+.suwon-2024-context{margin:0 0 14px;padding:13px 15px;border-left:4px solid #6277a3;border-radius:0 10px 10px 0;background:#f5f7fb;color:#4b5870;white-space:pre-line;line-height:1.75;font-weight:700}
+.suwon-2024-question-text{color:#303a4d;font-size:15px;line-height:1.82}
+.suwon-2024-question-text p{margin:7px 0}
+.suwon-2024-question-text p:first-child{margin-top:0}
+.suwon-2024-question-text .choice-line{padding-left:2px}
+.suwon-2024-question-text .condition-line{padding-left:12px;color:#46536a}
+.suwon-2024-question-text .section-label{display:inline-block;margin-top:12px;padding:5px 9px;border-radius:7px;background:#eef1f6;color:#45536b;font-weight:900}
+.suwon-2024-question-text .note-line{color:#667184;font-size:13px}
+.suwon-2024-visual{display:flex;justify-content:center;margin:14px 0 17px;padding:12px;border:1px solid #e1e5ec;border-radius:12px;background:#fff;overflow:hidden}
+.suwon-2024-visual canvas{display:block;width:min(100%,820px);height:auto;background:#fff}
