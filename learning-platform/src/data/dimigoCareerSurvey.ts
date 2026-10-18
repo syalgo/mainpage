@@ -253,12 +253,12 @@ export function makeCareerPlanSamples(track: CareerTrack, route: CareerRoute): {
     {
       title: "예시 2 · 문제 해결·프로젝트 중심",
       focus: "관심 있는 보안 문제 → 개선 실험 → 성과 검증",
-      body: `저는 ${track.role}가 되어 ${track.activities}을 실천하고 싶습니다. 디미고에서 ${track.basics}를 익히고, ${track.advanced} 등 실무 지식을 공부하겠습니다. 가장 해 보고 싶은 활동은 ${track.project}입니다. 안전한 실습 환경을 구성한 뒤 정상 사례와 문제 사례를 비교해 원인을 찾아보겠습니다. 결과는 ${track.validation}로 남겨 다른 사람이 같은 조건에서 확인할 수 있도록 하겠습니다. 또한 ${track.collaboration}을 통해 다른 관점의 의견도 반영하고 싶습니다. ${destination} 장기적으로는 ${track.outcome} 전문가로 성장하겠습니다.`,
+      body: `저는 ${track.role}로 성장하여 ${track.activities}을 하고 싶습니다. 디미고에서 ${track.basics}를 익히고, ${track.advanced} 등 실무 지식을 공부하겠습니다. 가장 해 보고 싶은 활동은 ${track.project}입니다. 안전한 실습 환경을 구성한 뒤 정상 사례와 문제 사례를 비교해 원인을 찾아보겠습니다. 결과는 ${track.validation}로 남겨 다른 사람이 같은 조건에서 확인할 수 있도록 하겠습니다. 또한 ${track.collaboration}을 통해 다른 관점의 의견도 반영하고 싶습니다. ${destination} 장기적으로는 ${track.outcome} 전문가로 성장하겠습니다.`,
     },
     {
       title: "예시 3 · 성장 계획·사회 기여 중심",
       focus: "학년별 목표 → 협업·기록 → 사회적 활용",
-      body: `저는 ${track.role}를 희망하며, ${track.activities}을 실천하고 싶습니다. 1학년에는 ${track.basics}를 익히고, 모르는 부분을 직접 실습해 이해하겠습니다. 2학년에는 ${track.advanced} 등 심화 기술을 공부하고, ${track.collaboration}에 참여하겠습니다. 3학년에는 ${track.project}를 완성하는 것을 목표로 삼고, ${track.validation}를 통해 작업 과정을 돌아보겠습니다. 실습 중 발견한 오류와 해결책은 기록하여 후배들과 공유하겠습니다. ${destination} 또한 ${track.contribution} 자료를 만들어 일상 속 보안 실천을 돕는 ${track.outcome} 전문가가 되고 싶습니다.`,
+      body: `저는 ${track.role}를 희망하며, ${track.activities}을 실천하고 싶습니다. 1학년에는 ${track.basics}를 익히고, 모르는 부분을 직접 실습해 이해하겠습니다. 2학년에는 ${track.advanced} 등 심화 기술을 공부하고, ${track.collaboration}에 참여하겠습니다. 3학년에는 ${track.project}를 수행하고, ${track.validation}를 작성해 결과를 검증하겠습니다. 실습 중 발견한 오류와 해결책은 기록하여 후배들과 공유하겠습니다. ${destination} 또한 ${track.contribution} 자료를 만들어 일상 속 보안 실천을 돕는 ${track.outcome} 전문가가 되고 싶습니다.`,
     },
   ];
 }
