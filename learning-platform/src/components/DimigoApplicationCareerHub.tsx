@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import DimigoApplicationWritingStudy from "@/components/DimigoApplicationWritingStudy";
 import DimigoHackingCareerPlan from "@/components/DimigoHackingCareerPlan";
+import DimigoEBusinessCareerPlan from "@/components/DimigoEBusinessCareerPlan";
 import styles from "./DimigoApplicationCareer.module.css";
 
 type DocumentKind = "personal" | "career";
@@ -95,6 +96,8 @@ export default function DimigoApplicationCareerHub() {
             <DimigoApplicationWritingStudy />
           ) : department === "hacking" ? (
             <DimigoHackingCareerPlan />
+          ) : department === "business" ? (
+            <DimigoEBusinessCareerPlan />
           ) : (
             <section className={styles.empty}>
               <h2>{selectedDepartment?.title} 취업(창업)계획서</h2>
