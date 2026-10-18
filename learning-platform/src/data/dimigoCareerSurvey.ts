@@ -248,17 +248,17 @@ export function makeCareerPlanSamples(track: CareerTrack, route: CareerRoute): {
     {
       title: "예시 1 · 직무 역량 중심",
       focus: "전공 학습 → 실습 → 검증 → 취업 목표",
-      body: `저는 ${track.activities}에 관심이 있어, ${track.role}로 성장하는 것을 목표로 하고 있습니다. 디미고 해킹방어과에서는 ${track.basics}부터 꾸준히 익혀 기술적 기본기를 갖추겠습니다. 이후 ${track.advanced}에 대한 이해를 넓히고, 배운 내용을 수업 노트와 Git 저장소에 정리해 학습 과정을 기록하겠습니다. 학교의 전공 활동과 팀 프로젝트에서는 ${track.project}를 수행해 보고 싶습니다. 단순히 프로그램을 만드는 데 그치지 않고 ${track.validation}를 완성하여 결과를 객관적으로 검토하겠습니다. 필요한 자격증과 실무 지식을 단계적으로 준비하며 부족한 부분을 찾아 보완하겠습니다. ${destination} 나아가 ${track.outcome} 인재가 되고 싶습니다.`,
+      body: `저는 ${track.activities}에 관심이 있으며, ${track.role}를 목표로 합니다. 디미고 해킹방어과에서 ${track.basics}를 익혀 기본기를 다지겠습니다. 이후 ${track.advanced} 등을 공부하고 학습 과정을 Git 저장소에 정리하겠습니다. 학교의 전공 활동과 팀 프로젝트에서는 ${track.project}를 수행해 보고 싶습니다. 단순히 프로그램을 만드는 데 그치지 않고 ${track.validation}를 완성하여 결과를 객관적으로 검토하겠습니다. 필요한 자격증과 실무 지식을 단계적으로 준비하며 부족한 부분을 찾아 보완하겠습니다. ${destination} 나아가 ${track.outcome} 인재가 되고 싶습니다.`,
     },
     {
       title: "예시 2 · 문제 해결·프로젝트 중심",
       focus: "관심 있는 보안 문제 → 개선 실험 → 성과 검증",
-      body: `저의 진로 목표는 ${track.role}가 되어 ${track.activities}입니다. 먼저 디미고에서 ${track.basics}를 익히고, ${track.advanced}을 학습하면서 실제 현장에 필요한 지식을 쌓겠습니다. 가장 해 보고 싶은 활동은 ${track.project}입니다. 처음부터 완벽한 결과를 기대하기보다 실습 환경을 안전하게 구성하고, 정상 사례와 문제 사례를 비교해 원인을 찾아보겠습니다. 결과는 ${track.validation}로 남겨 다른 사람이 같은 조건에서 확인할 수 있도록 하겠습니다. 또한 ${track.collaboration}을 통해 다른 관점의 의견도 반영하고 싶습니다. ${destination} 장기적으로는 ${track.outcome} 전문가로 성장하겠습니다.`,
+      body: `저는 ${track.role}가 되어 ${track.activities}을 실천하고 싶습니다. 디미고에서 ${track.basics}를 익히고, ${track.advanced} 등 실무 지식을 공부하겠습니다. 가장 해 보고 싶은 활동은 ${track.project}입니다. 안전한 실습 환경을 구성한 뒤 정상 사례와 문제 사례를 비교해 원인을 찾아보겠습니다. 결과는 ${track.validation}로 남겨 다른 사람이 같은 조건에서 확인할 수 있도록 하겠습니다. 또한 ${track.collaboration}을 통해 다른 관점의 의견도 반영하고 싶습니다. ${destination} 장기적으로는 ${track.outcome} 전문가로 성장하겠습니다.`,
     },
     {
       title: "예시 3 · 성장 계획·사회 기여 중심",
       focus: "학년별 목표 → 협업·기록 → 사회적 활용",
-      body: `저는 ${track.role}를 희망하며, ${track.activities}을 실천할 수 있는 실력을 기르고자 합니다. 1학년에는 ${track.basics}를 중심으로 기초를 탄탄하게 익히고, 이해하지 못한 부분은 직접 실습하여 해결하겠습니다. 2학년에는 ${track.advanced}를 공부하면서 ${track.collaboration}에 참여해 보겠습니다. 3학년에는 ${track.project}를 완성하는 것을 목표로 삼고, ${track.validation}를 통해 작업 과정을 돌아보겠습니다. 실습 과정에서 발견한 오류와 해결 방법은 계속 기록하여 후배들과도 공유하겠습니다. ${destination} 또한 ${track.contribution}을 제작해 주변 사람들이 보안을 일상에서 실천하도록 돕는 ${track.outcome} 전문가가 되고 싶습니다.`,
+      body: `저는 ${track.role}를 희망하며, ${track.activities}을 실천하고 싶습니다. 1학년에는 ${track.basics}를 익히고, 모르는 부분을 직접 실습해 이해하겠습니다. 2학년에는 ${track.advanced} 등 심화 기술을 공부하고, ${track.collaboration}에 참여하겠습니다. 3학년에는 ${track.project}를 완성하는 것을 목표로 삼고, ${track.validation}를 통해 작업 과정을 돌아보겠습니다. 실습 중 발견한 오류와 해결책은 기록하여 후배들과 공유하겠습니다. ${destination} 또한 ${track.contribution} 자료를 만들어 일상 속 보안 실천을 돕는 ${track.outcome} 전문가가 되고 싶습니다.`,
     },
   ];
 }
