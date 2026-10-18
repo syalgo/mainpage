@@ -1,4 +1,5 @@
 import styles from "./DimigoApplicationCareer.module.css";
+import DimigoCareerInterestSurvey from "@/components/DimigoCareerInterestSurvey";
 
 const results = [
   { department: "해킹방어과", graduate: 65, university: "59명 (90.8%)", employed: "2명 (3.1%)" },
@@ -157,6 +158,7 @@ export default function DimigoHackingCareerPlan() {
         <div className={styles.sourceList}>{sources.map(item => <a key={item.url} href={item.url} target="_blank" rel="noopener noreferrer">{item.label} ↗</a>)}</div>
         <p className={styles.muted}>자료 정리 기준일: 2026년 10월 18일. 교육과정 편제와 전형요항은 추후 변경될 수 있습니다.</p>
       </section>
+      <DimigoCareerInterestSurvey />
     </div>
   );
 }
