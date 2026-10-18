@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import DimigoApplicationWritingStudy from "@/components/DimigoApplicationWritingStudy";
+import DimigoApplicationCareerHub from "@/components/DimigoApplicationCareerHub";
 import { getSessionUser } from "@/lib/auth-server";
 import { isFirebaseAdminConfigured } from "@/lib/firebase-admin";
 
@@ -41,5 +41,5 @@ export default async function ApplicationCareerPlanPage() {
     );
   }
 
-  return <DimigoApplicationWritingStudy />;
+  return <DimigoApplicationCareerHub />;
 }
