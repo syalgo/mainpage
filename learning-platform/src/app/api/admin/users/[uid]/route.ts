@@ -26,6 +26,7 @@ export async function PATCH(
     hwaseong?: boolean;
     koi?: boolean;
     suwon?: boolean;
+    computer2?: boolean;
   };
 
   const update: Record<string, unknown> = { updatedAt: FieldValue.serverTimestamp() };
@@ -36,6 +37,7 @@ export async function PATCH(
   if (typeof body.hwaseong === "boolean") update["permissions.hwaseong"] = body.hwaseong;
   if (typeof body.koi === "boolean") update["permissions.koi"] = body.koi;
   if (typeof body.suwon === "boolean") update["permissions.suwon"] = body.suwon;
+  if (typeof body.computer2 === "boolean") update["permissions.computer2"] = body.computer2;
 
   await getFirestore(app).collection("users").doc(uid).update(update);
   return NextResponse.json({ ok: true });
