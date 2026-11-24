@@ -86,7 +86,7 @@ export default function ComputerLiteracySystemSecurityStudy(){
     <tr><th>웜(Worm)</th><td>네트워크를 통해 연속적으로 자신을 복제하여 시스템의 부하를 높여 결국 시스템을 다운시키는 바이러스의 일종</td></tr>
     <tr><th>트로이 목마(Trojan Horse)</th><td>정상적인 기능을 하는 프로그램으로 가장하여 프로그램 내에 숨어 있다가 해당 프로그램이 동작할 때 활성화되어 부작용을 일으키는 것</td></tr>
     <tr><th>백도어(Back Door, Trap Door)</th><td>서비스 기술자나 유지 보수 프로그램들의 액세스 편의를 위해 만든 보안이 제거된 비밀 통로를 이르는 말로, 시스템에 무단 접근하기 위한 일종의 비상구로 사용함</td></tr>
-    <tr><th>스푸핑(Spoofing)</th><td>누속수(Spoof)에서 파생된 것으로, 검증된 사람이 네트워크를 통해 데이터를 보낸 것처럼 데이터를 변조(위조)하여 접속을 시도하는 침입 형태</td></tr>
+    <tr><th>스푸핑(Spoofing)</th><td>눈속임(Spoof)에서 파생된 것으로, 검증된 사람이 네트워크를 통해 데이터를 보낸 것처럼 데이터를 변조(위조)하여 접속을 시도하는 침입 형태</td></tr>
     <tr><th>스니핑(Sniffing)</th><td>네트워크 주변을 지나다니는 패킷을 엿보면서 계정과 패스워드를 알아내는 행위</td></tr>
     <tr><th>분산 서비스 거부 공격(DDoS; Distributed Denial of Service)</th><td>여러 대의 장비를 이용하여 대량의 데이터를 특정한 서버에 집중적으로 전송함으로써 서버의 정상적인 기능을 방해하는 행위</td></tr>
     <tr><th>피싱(Phishing)</th><td>개인정보(Private Data)와 낚시(Fishing)의 합성어로, 금융기관을 가장한 이메일 발송 후 이메일에 있는 인터넷 주소를 클릭하면 허위 은행 사이트로 유도하여 개인 금융 정보를 빼내는 행위</td></tr>
